@@ -21,7 +21,9 @@ the repo.
   hand; never import another lab's prices or result times), page `src/pages/catalogue.mjs` + `src/assets/catalogue.js`.
 - Departments `src/data/services.mjs`, common tests and panels `src/data/tests.mjs`, FAQ `src/data/faq.mjs`,
   shared UI text `src/data/ui.mjs`, page texts at the top of each `src/pages/*.mjs`.
-- Design: `src/assets/site.css` (tokens at the top; institutional look: navy bands, Public Sans, 8 px buttons).
+- Design: `src/assets/site.css` (tokens at the top). Follow the Human+ brand book: Green `#28cc63` + Black are the main
+  colours (green buttons carry black text; green text on white uses Deep Green `--brand`), black bands with the H-mark
+  pattern, font Pangram (files in `src/assets/fonts/pangram/`, Outfit until then), 8 px buttons. README → Brand.
   Behaviour: `src/assets/site.js` (vanilla; shares helpers with catalogue.js on `window.HP`).
 
 ## Rules (from the owner's past projects)

@@ -6,8 +6,10 @@ Albanian first, English one click away. The previous site at humanplusks.com was
 what patients actually come to do: **find a test, see how to prepare, ask the price, book a time.** The lab-test catalogue,
 check-up panels, preparation guide and online booking follow the lab sites the client likes (beo-lab.rs), in Human+'s own look.
 
-An institutional look: navy header bands with a fine "+" pattern, the deep teal of the Human+ mark, white cards with
-thin borders, square-cornered buttons and **Public Sans** (the typeface made for government sites). The lab parts borrow
+Built on the **Human+ brand book** (v1.0, 19.01.2024): the green icon, Green and Black as the main colours, black bands
+with the H-mark pattern like the brand posters, Deep Green, Soft Grey and Calm Blue in support, and the brand font
+Pangram (see [Brand](#brand)). The layout is institutional – clear bands, white cards with thin borders, square-cornered
+buttons. The lab parts borrow
 the online-lab habits the owner likes from Beo-lab – a test-tube "lab list" with a counter in the header, "Shto në listë"
 on every test, a running list bar while browsing the catalogue, and the lab's diagnostic areas as entry points – without
 using Beo-lab's name, logo or colours (they are registered trademarks). **No framework and no dependencies:** a small Node script writes plain HTML, one CSS file and
@@ -112,6 +114,32 @@ node scripts/import-catalogue.mjs path/to/catalogue.js
 Search matches the start of words in the Albanian and Serbian names and in a panel's components, so "krvna slika",
 "hemogram" and "gjaku komplet" all find the blood count. Results are sorted A–Z; 40 are shown at a time.
 
+## Brand
+
+From the Human+ brand book (v1.0, 19.01.2024). Colours are CSS variables at the top of `src/assets/site.css`.
+
+| Role | Variable | Value | Used for |
+| --- | --- | --- | --- |
+| **Green** (main) | `--green` | `#28cc63` (sampled from the brand-book icon) | logo square, primary buttons (black text), accents on black, active menu underline |
+| **Black** (main) | `--black`, `--black-2` | `#000000`, `#0d100f` | top bar, page bands, footer, call-to-action band (like the posters) |
+| Deep Green | `--deep`, `--brand` | `#0a3d24`, `#0d7a3d` | the laboratory band; green text and links on white (the bright green is too light for text) |
+| Soft Grey | `--bg`, `--tint` | `#f3f5f4`, `#edf2ef` | page background, alternate sections |
+| Calm Blue | `--blue`, `--blue-bg` | `#2f6fb0`, `#e7eff8` | information notes, keyboard focus ring |
+| Pure White | `--surface` | `#ffffff` | cards, header |
+
+The brand book names Deep Green, Soft Grey and Calm Blue without values here; replace these with the official hex codes
+when the full brand book is at hand.
+
+- **Logo** – the green icon with the black wordmark on white (header); green icon with a white wordmark on black
+  (footer). Vector paths in `src/lib/logo-paths.mjs`; favicon and app icons in `src/static/`.
+- **Pattern** – the H mark repeated on a 64 px grid (`--pattern`), very light on the black and deep-green bands.
+- **Font** – the brand font is **Pangram** (7 weights, ExtraLight to Black). It is a licensed typeface, so it is not in
+  the repository. Until its web-font files are added, the site uses **Outfit** (open licence) – a close geometric
+  stand-in. To switch: put the licensed `.woff2` files (e.g. `Pangram-Regular.woff2`, `Pangram-Bold.woff2` …) in
+  `src/assets/fonts/pangram/` and rebuild – the build writes the `@font-face` rules from the file names on its own.
+- The brand-book posters show the address **humanplus-ks.com**; the site and this README use **humanplusks.com** (the
+  address of the previous site). Confirm which domain is current.
+
 ## Languages
 
 - **Shqip** is the main language (`/`), **English** lives under `/en/` with the same page names.
@@ -137,7 +165,7 @@ Search matches the start of words in the Albanian and Serbian names and in a pan
 | `src/lib/icons.mjs`, `src/lib/logo-paths.mjs` | icons (Lucide, Simple Icons) and the Human+ logo as vector paths |
 | `src/assets/site.css` | the whole design; colours are the variables at the top |
 | `src/assets/site.js` | browser behaviour: status, menus, list, search, booking, contact form |
-| `src/assets/fonts/` | Public Sans (WOFF2, self-hosted) |
+| `src/assets/fonts/` | Outfit (WOFF2, self-hosted); `pangram/` for the licensed brand font when available |
 | `src/assets/catalogue.js` | the catalogue page: loads `assets/catalogue.json`, search, categories, details, Add buttons |
 | `src/assets/og/og-sq.png`, `og-en.png` | the 1200 × 630 pictures WhatsApp / Facebook show when a link is shared |
 | `src/static/` | favicons and app icons, copied to the site root |
@@ -218,8 +246,8 @@ Only facts the clinic has published are used:
 - "Continues the work of the BAKTOLAB laboratory", supplements and nutrition – the clinic's Facebook page
   ([QDHumanPlus](https://www.facebook.com/QDHumanPlus/)) and its directory listing.
 - Team roles (specialists, laboratory technicians, nurses) – the clinic's 2025 job advert.
-- Logo – the vector mark from the ITD partners set (`ITD2027/alternative-v2/site/assets/partners/humanplus.svg`),
-  recoloured.
+- Logo, colours, pattern and font – the Human+ brand book (v1.0, 19.01.2024); logo vector paths from the ITD partners
+  set (`ITD2027/alternative-v2/site/assets/partners/humanplus.svg`), coloured as in the brand book.
 
 No prices, doctor names, ratings, reviews, certificates, result times, home visits or online results are claimed –
 none of them were published. No stock photos are used.
@@ -232,7 +260,7 @@ none of them were published. No stock photos are used.
   [Lab catalogue](#lab-catalogue)); names and descriptions are working Albanian translations. The 61 common tests
   and the 8 check-up panels are suggestions. The lab should mark what Human+ does in-house, sends out or does not offer.
 - **Preparation guide** – standard lab guidance; ask the lab manager to approve it.
-- **Brand colour** – teal `#0b5f64` was chosen to match the mark; swap `--brand` if the clinic has an official colour.
+- **Brand values** – Green `#28cc63` is sampled from the brand book; Deep Green, Soft Grey and Calm Blue are close matches until the official hex codes are confirmed (see [Brand](#brand)). The brand font Pangram needs its licensed web-font files.
 - **WhatsApp / Viber** – messages go to +383 44 709 072. Confirm that number uses WhatsApp and Viber, or change
   `whatsapp` / `viber` in `src/data/site.mjs`.
 - **Map** – a Google Maps search link; replace `mapsUrl` with the clinic's own Maps place link.
@@ -263,5 +291,5 @@ none of them were published. No stock photos are used.
 
 ## Credits
 
-Font: [Public Sans](https://public-sans.digital.gov) (SIL Open Font License), self-hosted from Fontsource. Icons: [Lucide](https://lucide.dev) (ISC) and
+Fonts: brand font Pangram (licensed, added by the client); stand-in [Outfit](https://fonts.google.com/specimen/Outfit) (SIL Open Font License), self-hosted from Fontsource. Icons: [Lucide](https://lucide.dev) (ISC) and
 [Simple Icons](https://simpleicons.org) (CC0) for WhatsApp, Viber and Facebook. Logo © Human+ Qendra Diagnostike.

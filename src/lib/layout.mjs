@@ -69,7 +69,7 @@ function head(ctx) {
     <link rel="alternate" hreflang="en" href="${esc(en)}" />
     <link rel="alternate" hreflang="x-default" href="${esc(sq)}" />`}
     <meta name="robots" content="${ctx.noindex || page.noindex ? 'noindex, follow' : 'index, follow'}" />
-    <meta name="theme-color" content="#0b2a45" />
+    <meta name="theme-color" content="#000000" />
     <meta name="format-detection" content="telephone=no" />
     <meta property="og:site_name" content="${esc(SITE.fullName)}" />
     <meta property="og:locale" content="${lang === 'sq' ? 'sq_AL' : 'en_GB'}" />
@@ -86,7 +86,7 @@ function head(ctx) {
     <link rel="icon" href="${base}favicon-32.png" sizes="32x32" type="image/png" />
     <link rel="apple-touch-icon" href="${base}apple-touch-icon.png" />
     <link rel="manifest" href="${base}manifest.webmanifest" />
-    <link rel="preload" href="${base}assets/fonts/public-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="${base}assets/fonts/outfit-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="${base}assets/site.css?v=${ctx.version}" />
     <script>document.documentElement.className=document.documentElement.className.replace('no-js','js')</script>
     ${jsonld.map((j) => `<script type="application/ld+json">${JSON.stringify(j).replace(/</g, '\\u003c')}</script>`)}

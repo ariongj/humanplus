@@ -131,6 +131,30 @@ copyDir(path.join(ROOT, 'src/assets'), path.join(DIST, 'assets'));
 copyDir(path.join(ROOT, 'src/static'), DIST);
 // The stylesheet refers to fonts relatively ("fonts/…"), so it works under any base path.
 const version = crypto.createHash('sha1').update(['src/assets/site.css', 'src/assets/site.js', 'src/assets/catalogue.js', 'src/data/catalogue.json'].map(read).join('')).digest('hex').slice(0, 8);
+// Brand font: when the licensed Pangram files are in src/assets/fonts/pangram/ (e.g. Pangram-Regular.woff2,
+// Pangram-Bold.woff2 …), write their @font-face rules into the stylesheet; otherwise Outfit is used.
+{
+  const dir = path.join(ROOT, 'src/assets/fonts/pangram');
+  const files = fs.existsSync(dir) ? fs.readdirSync(dir).filter((f) => /\.woff2?$/i.test(f)) : [];
+  const weight = (f) => {
+    const n = f.toLowerCase().replace(/[-_ ]/g, '');
+    if (/extralight|ultralight|thin/.test(n)) return 200;
+    if (/light/.test(n)) return 300;
+    if (/medium/.test(n)) return 500;
+    if (/semibold|demibold/.test(n)) return 600;
+    if (/extrabold|ultrabold/.test(n)) return 800;
+    if (/bold/.test(n)) return 700;
+    if (/black|heavy/.test(n)) return 900;
+    return 400;
+  };
+  const faces = files
+    .map((f) => `@font-face { font-family: 'Pangram'; font-style: ${/italic/i.test(f) ? 'italic' : 'normal'}; font-weight: ${weight(f)}; font-display: swap; src: url(fonts/pangram/${f}) format('${/\.woff2$/i.test(f) ? 'woff2' : 'woff'}'); }`)
+    .join('\n');
+  const cssFile = path.join(DIST, 'assets/site.css');
+  const css = fs.readFileSync(cssFile, 'utf8').replace(/\/\* PANGRAM-FONTS[^\n]*\*\/\n/, faces ? `${faces}\n` : '');
+  fs.writeFileSync(cssFile, css);
+  if (files.length) console.log(`Pangram: ${files.length} font file(s)`);
+}
 // The full lab catalogue, loaded by assets/catalogue.js on /analizat/.
 fs.copyFileSync(path.join(ROOT, 'src/data/catalogue.json'), path.join(DIST, 'assets/catalogue.json'));
 
@@ -179,8 +203,8 @@ write(
       start_url: BASE,
       scope: BASE,
       display: 'standalone',
-      background_color: '#f3f6f9',
-      theme_color: '#0b2a45',
+      background_color: '#f3f5f4',
+      theme_color: '#000000',
       icons: [
         { src: `${BASE}icon-192.png`, sizes: '192x192', type: 'image/png' },
         { src: `${BASE}icon-512.png`, sizes: '512x512', type: 'image/png' },
