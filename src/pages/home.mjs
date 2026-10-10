@@ -34,12 +34,6 @@ const T = dict('home', {
     lab_eyebrow: 'Laboratori',
     lab_title: 'Laboratori ynë, *vazhdimësi* e BAKTOLAB.',
     lab_text: 'Analizat biokimike, hematologjike dhe mikrobiologjike bëhen këtu në qendër. Kërkoni një analizë, shtojeni në listë dhe na e dërgoni për çmimin dhe terminin.',
-    lab_c1: 'Biokimi',
-    lab_c1_d: 'Glukoza, HbA1c, yndyrnat, veshkat, mëlçia, hormonet, vitaminat.',
-    lab_c2: 'Hematologji',
-    lab_c2_d: 'Gjaku komplet, sedimentimi, koagulimi, grupi i gjakut.',
-    lab_c3: 'Mikrobiologji',
-    lab_c3_d: 'Urinokultura, koprokultura, brisët, Helicobacter pylori.',
     lab_all: 'Shiko të gjitha analizat',
     pan_eyebrow: 'Paketat',
     pan_title: 'Check-up i menduar *për ju*.',
@@ -98,12 +92,6 @@ const T = dict('home', {
     lab_eyebrow: 'Laboratory',
     lab_title: 'Our laboratory, *continuing* BAKTOLAB.',
     lab_text: 'Biochemistry, haematology and microbiology tests are done here at the centre. Find a test, add it to your list and send it to us for the price and a time.',
-    lab_c1: 'Biochemistry',
-    lab_c1_d: 'Glucose, HbA1c, blood fats, kidneys, liver, hormones, vitamins.',
-    lab_c2: 'Haematology',
-    lab_c2_d: 'Blood count, ESR, coagulation, blood group.',
-    lab_c3: 'Microbiology',
-    lab_c3_d: 'Urine and stool cultures, swabs, Helicobacter pylori.',
     lab_all: 'See all lab tests',
     pan_eyebrow: 'Check-ups',
     pan_title: 'Check-ups made *for you*.',
@@ -213,21 +201,19 @@ export function homePage(ctx) {
       <div class="lab-text">
         ${sectionHead({ eyebrow: t.lab_eyebrow, title: t.lab_title, text: t.lab_text, id: 'h-lab', light: true })}
         ${testSearch(ctx, { id: 'lab-q', landmark: false })}
-        <a class="btn btn-light" href="${esc(ctx.url('analizat'))}">${icon('list-checks', { size: 18 })}${esc(t.lab_all)} (${CATALOGUE.count})</a>
+        <a class="btn btn-light" href="${esc(ctx.url('analizat'))}">${icon('test-tubes', { size: 18 })}${esc(t.lab_all)} (${CATALOGUE.count})</a>
       </div>
-      <ul class="lab-cards">
-        ${[
-          ['flask-conical', t.lab_c1, t.lab_c1_d, 'laboratori-biokimik-dhe-hematologjik'],
-          ['droplet', t.lab_c2, t.lab_c2_d, 'laboratori-biokimik-dhe-hematologjik'],
-          ['microscope', t.lab_c3, t.lab_c3_d, 'laboratori-mikrobiologjik'],
-        ].map(
-          ([ic, title, d, slug], i) => h`<li class="lab-card reveal"><a href="${esc(ctx.url(`sherbim/${slug}`))}">
-            <span class="lab-card-num" aria-hidden="true">0${i + 1} / 03</span>
-            ${icon(ic, { size: 28 })}
-            <h3>${esc(title)}</h3>
-            <p>${esc(d)}</p>
-          </a></li>`,
-        )}
+      <ul class="lab-areas">
+        ${['biokimi', 'imunokimi', 'mikrobiologji', 'alergologji', 'serologji', 'hematologji', 'gjenetike-pcr', 'hormone-seksuale']
+          .map((id) => CATALOGUE.categories.find((c) => c.id === id))
+          .filter(Boolean)
+          .map(
+            (c) => h`<li class="reveal"><a class="lab-area" href="${esc(ctx.url('analizat'))}?kategoria=${c.id}">
+              ${icon(c.icon, { size: 22 })}
+              <span class="lab-area-name">${esc(lang === 'en' ? c.en : c.sq)}</span>
+              <span class="lab-area-count">${c.count}</span>
+            </a></li>`,
+          )}
       </ul>
     </div>
   </section>`;

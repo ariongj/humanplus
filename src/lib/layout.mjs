@@ -133,7 +133,7 @@ function header(ctx) {
       <nav class="nav" aria-label="${esc(t.nav_main)}"><ul>${links}</ul></nav>
       <div class="header-actions">
         <button class="list-btn js-only" type="button" data-list-open aria-haspopup="dialog" aria-controls="lab-list">
-          ${icon('list-checks', { size: 20 })}<span class="list-btn-label">${esc(t.list)}</span><span class="list-count" data-list-count aria-hidden="true">0</span><span class="sr-only" data-list-count-sr></span>
+          ${icon('test-tubes', { size: 20 })}<span class="list-btn-label">${esc(t.list)}</span><span class="list-count" data-list-count aria-hidden="true">0</span><span class="sr-only" data-list-count-sr></span>
         </button>
         <a class="btn btn-primary btn-book" href="${esc(ctx.url('rezervo'))}">${icon('calendar-check', { size: 18 })}<span>${esc(t.book)}</span></a>
         <button class="menu-btn" type="button" data-menu-open aria-haspopup="dialog" aria-controls="menu" aria-label="${esc(t.nav_menu)}">${icon('menu', { size: 24 })}</button>
@@ -224,7 +224,7 @@ function drawer(ctx) {
   const t = UI[ctx.lang];
   return h`<dialog class="sheet drawer" id="lab-list" aria-labelledby="lab-list-title">
     <div class="sheet-head">
-      <h2 id="lab-list-title">${icon('list-checks', { size: 22 })}${esc(t.list_title)}</h2>
+      <h2 id="lab-list-title">${icon('test-tubes', { size: 22 })}${esc(t.list_title)}</h2>
       <button class="icon-btn" type="button" data-close aria-label="${esc(t.close)}">${icon('x', { size: 22 })}</button>
     </div>
     <div class="drawer-empty" data-list-empty>
@@ -258,7 +258,7 @@ function drawer(ctx) {
 function clientData(ctx) {
   const { lang } = ctx;
   const t = UI[lang];
-  const keys = ['open_now', 'closed_now', 'open_until', 'opens_at', 'opens_day', 'tomorrow', 'days', 'days_short', 'days_on', 'months', 'list_count_one', 'list_count_many', 'list_add', 'list_added', 'list_remove', 'list_remove_aria', 'list_msg_hello', 'list_msg_thanks', 'list_mail_subject', 'list_copied'];
+  const keys = ['open_now', 'closed_now', 'open_until', 'opens_at', 'opens_day', 'tomorrow', 'days', 'days_short', 'days_on', 'months', 'list_count_one', 'list_count_many', 'list_add', 'list_added', 'list_bar_open', 'list_remove', 'list_remove_aria', 'list_msg_hello', 'list_msg_thanks', 'list_mail_subject', 'list_copied'];
   const strings = Object.fromEntries(keys.map((k) => [k, t[k]]));
   const tests = Object.fromEntries(TESTS.map((x) => [x.id, [L(x.name, lang), L(PREP[x.prep].short, lang)]]));
   return {

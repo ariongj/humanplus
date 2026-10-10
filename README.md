@@ -7,7 +7,10 @@ what patients actually come to do: **find a test, see how to prepare, ask the pr
 check-up panels, preparation guide and online booking follow the lab sites the client likes (beo-lab.rs), in Human+'s own look.
 
 An institutional look: navy header bands with a fine "+" pattern, the deep teal of the Human+ mark, white cards with
-thin borders, square-cornered buttons and **Public Sans** (the typeface made for government sites). **No framework and no dependencies:** a small Node script writes plain HTML, one CSS file and
+thin borders, square-cornered buttons and **Public Sans** (the typeface made for government sites). The lab parts borrow
+the online-lab habits the owner likes from Beo-lab – a test-tube "lab list" with a counter in the header, "Shto në listë"
+on every test, a running list bar while browsing the catalogue, and the lab's diagnostic areas as entry points – without
+using Beo-lab's name, logo or colours (they are registered trademarks). **No framework and no dependencies:** a small Node script writes plain HTML, one CSS file and
 one JavaScript file into `dist/`, which you can upload to any web host.
 
 **Live preview:** https://ariongj.github.io/humanplus/ (GitHub Pages, hidden from search engines) ·
@@ -56,8 +59,9 @@ Statuses always use text + a dot, never colour alone. Visitors who prefer reduce
 
 ## How "Lista ime" (my test list) works
 
-1. The patient presses **Shto** on tests in the catalogue, on a department page or adds a whole check-up panel.
-2. **Lista ime** in the header opens the list: every test with its preparation, remove buttons and a link to the
+1. The patient presses **Shto në listë** on tests in the catalogue, on a department page or adds a whole check-up panel.
+   On the catalogue a bar at the bottom keeps the count ("3 analiza · Shiko dhe dërgo listën").
+2. **Lista ime** (the test-tube button in the header) opens the list: every test with its preparation, remove buttons and a link to the
    preparation guide.
 3. **Dërgo në WhatsApp** opens WhatsApp with a ready message ("Përshëndetje Human+! Dëshiroj informata për çmimin dhe
    terminin për këto analiza: 1. … 2. …"). Also by e-mail, or copied for Viber.

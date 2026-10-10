@@ -366,6 +366,19 @@ main:focus { outline: none; }
 .lab-card p { color: #d3e5e3; font-size: 0.95rem; }
 .lab-card-num { display: none; }
 
+.lab-areas { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.lab-area { display: flex; align-items: center; gap: 12px; min-height: 64px; height: 100%; padding: 14px 16px; border-radius: var(--r-lg); background: rgb(255 255 255 / 0.07); border: 1px solid rgb(255 255 255 / 0.16); color: #fff; text-decoration: none; font-weight: 650; transition: background 0.2s, border-color 0.2s; }
+.lab-area:hover { background: rgb(255 255 255 / 0.13); border-color: rgb(255 255 255 / 0.35); }
+.lab-area .i { color: #8fd8d2; }
+.lab-area-name { flex: 1; min-width: 0; line-height: 1.3; overflow-wrap: break-word; hyphens: auto; }
+.lab-area-count { font-size: 0.8rem; font-weight: 700; font-variant-numeric: tabular-nums; color: #d3e5e3; background: rgb(255 255 255 / 0.1); border-radius: var(--r-sm); padding: 2px 8px; }
+
+/* running list bar on the catalogue (like an online lab order) */
+.list-bar { position: fixed; left: 50%; bottom: calc(80px + env(safe-area-inset-bottom)); z-index: 44; transform: translateX(-50%); display: flex; align-items: center; gap: 14px; width: max-content; max-width: calc(100% - 24px); padding: 8px 8px 8px 16px; border-radius: var(--r-lg); background: var(--navy); color: #fff; box-shadow: var(--shadow-lg); }
+.list-bar-text { display: inline-flex; align-items: center; gap: 8px; font-size: 0.95rem; }
+.list-bar-text .i { color: #8fd8d2; }
+.list-bar .btn { min-height: 44px; }
+
 /* panels */
 .panel-grid { display: grid; gap: 14px; }
 .panel { display: flex; flex-direction: column; padding: 22px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg); scroll-margin-top: calc(var(--header-h) + 24px); transition: box-shadow 0.25s, border-color 0.2s; }
@@ -478,7 +491,7 @@ main:focus { outline: none; }
 /* catalogue */
 .catalog { display: grid; gap: 28px; align-items: start; }
 .catalog-main, .booking-in > div, .svc-layout > div { min-width: 0; }
-.catalog-bar { position: sticky; top: var(--header-h); z-index: 5; background: var(--bg); padding: 12px 0; margin-top: -12px; }
+.catalog-bar { position: relative; z-index: 5; background: var(--bg); padding: 12px 0; margin-top: -12px; }
 .catalog-bar .search { margin-top: 0; max-width: none; }
 .filters { display: flex; gap: 8px; overflow-x: auto; padding: 14px 0 6px; scrollbar-width: none; -webkit-mask-image: linear-gradient(90deg, #000 92%, transparent); mask-image: linear-gradient(90deg, #000 92%, transparent); }
 .filters::-webkit-scrollbar { display: none; }
@@ -728,6 +741,7 @@ main:focus { outline: none; }
   .cta-in { padding: 48px 44px; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .action-bar { display: none; }
+  .list-bar { bottom: 24px; }
   .wa-fab { position: fixed; right: 22px; bottom: 22px; z-index: 45; display: grid; place-items: center; width: 60px; height: 60px; border-radius: 50%; background: var(--wa); color: #fff; box-shadow: 0 10px 28px -8px rgb(11 122 67 / 0.65); transform: scale(0.6); opacity: 0; pointer-events: none; transition: transform 0.3s var(--ease), opacity 0.3s, background 0.2s; }
   .wa-fab.is-on { transform: none; opacity: 1; pointer-events: auto; }
   .wa-fab:hover { background: var(--wa-700); }
@@ -761,6 +775,7 @@ main:focus { outline: none; }
   .svc-layout { grid-template-columns: 1fr 340px; gap: 48px; }
   .catalog { grid-template-columns: 1fr 300px; gap: 40px; }
   .catalog-aside { display: block; }
+  .catalog-bar { position: sticky; top: var(--header-h); }
   .booking-in { grid-template-columns: 1fr 340px; gap: 40px; }
   .booking-aside { display: block; }
   .story-in { grid-template-columns: 1.1fr 0.9fr; gap: 64px; }
@@ -771,6 +786,7 @@ main:focus { outline: none; }
 }
 
 @media (min-width: 1120px) {
+  .lab-areas { gap: 10px; }
   .cat-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .nav { display: block; }
   .menu-btn { display: none; }

@@ -200,6 +200,11 @@
       if (prev !== String(list.length)) { c.classList.remove('bump'); void c.offsetWidth; c.classList.add('bump'); }
     });
     $$('[data-list-count-sr]').forEach(function (c) { c.textContent = '(' + countText(list.length) + ')'; });
+    $$('[data-list-bar]').forEach(function (bar) {
+      bar.hidden = list.length === 0;
+      var tx = $('[data-list-bar-text]', bar);
+      if (tx) tx.textContent = countText(list.length);
+    });
   }
   function renderList() {
     var empty = $('[data-list-empty]');

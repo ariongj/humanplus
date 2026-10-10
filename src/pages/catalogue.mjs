@@ -148,7 +148,7 @@ export function testsPage(ctx) {
         <div class="aside-card sticky">
           <h2>${icon('list-checks', { size: 20 })}${esc(t.hint_title)}</h2>
           <ol class="mini-steps"><li>${esc(t.hint_1)}</li><li>${esc(t.hint_2)}</li><li>${esc(t.hint_3)}</li></ol>
-          <button class="btn btn-primary btn-block js-only" type="button" data-list-open aria-haspopup="dialog" aria-controls="lab-list">${icon('list-checks', { size: 18 })}${esc(u.list)} <span class="list-count list-count-inline" data-list-count aria-hidden="true">0</span></button>
+          <button class="btn btn-primary btn-block js-only" type="button" data-list-open aria-haspopup="dialog" aria-controls="lab-list">${icon('test-tubes', { size: 18 })}${esc(u.list)} <span class="list-count list-count-inline" data-list-count aria-hidden="true">0</span></button>
           <p class="small muted">${esc(t.hint_note)}</p>
           <a class="link" href="${esc(ctx.url('paketat'))}">${esc(u.nav_panels)}${icon('arrow-right', { size: 16 })}</a>
           <a class="link" href="${esc(ctx.url('pergatitja'))}">${esc(u.prep_link)}${icon('arrow-right', { size: 16 })}</a>
@@ -165,6 +165,10 @@ export function testsPage(ctx) {
     add: u.list_add,
     added: u.list_added,
   };
+  const bar = h`<div class="list-bar js-only" data-list-bar hidden>
+    <span class="list-bar-text">${icon('test-tubes', { size: 20 })}<strong data-list-bar-text></strong></span>
+    <button class="btn btn-light btn-sm" type="button" data-list-open aria-haspopup="dialog" aria-controls="lab-list">${esc(u.list_bar_open)}${icon('arrow-right', { size: 16 })}</button>
+  </div>`;
   const scripts = h`<script type="application/json" id="hp-cat">${JSON.stringify(config).replace(/</g, '\\u003c')}</script>
   <script src="${ctx.base}assets/catalogue.js?v=${ctx.version}" defer></script>`;
   return {
@@ -172,7 +176,7 @@ export function testsPage(ctx) {
     title: `${fill(t.title, lang)} · ${SITE.name}`,
     description: fill(t.description, lang),
     jsonld: [hero.jsonld],
-    body: hero.html + body + scripts,
+    body: hero.html + body + bar + scripts,
   };
 }
 
