@@ -1,0 +1,16 @@
+{
+  "name": "humanplus-web",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Human+ Qendra Diagnostike, Prishtinë — static website (Albanian + English). No dependencies.",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "check": "node scripts/check.mjs",
+    "preview": "node scripts/serve.mjs",
+    "test": "node scripts/build.mjs && node scripts/check.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
