@@ -6,9 +6,9 @@ Albanian first, English one click away. The previous site at humanplusks.com was
 what patients actually come to do: **find a test, see how to prepare, ask the price, book a time.** The lab-test catalogue,
 check-up panels, preparation guide and online booking follow the lab sites the client likes (beo-lab.rs), in Human+'s own look.
 
-Built on the **Human+ brand book** (v1.0, 19.01.2024): the green icon, Green and Black as the main colours, black bands
-with the H-mark pattern like the brand posters, Deep Green, Soft Grey and Calm Blue in support, and the brand font
-Pangram (see [Brand](#brand)). The layout is institutional – clear bands, white cards with thin borders, square-cornered
+Built on the **Human+ brand book** (v1.0, 19.01.2024) in the light look of the original humanplusks.com: **green, white
+and a bluish white** – bluish-white page bands with a faint H-mark pattern, brand-green laboratory and call-to-action
+bands, a deep-green footer, the green icon, and the brand font Pangram (see [Brand](#brand)). The layout is institutional – clear bands, white cards with thin borders, square-cornered
 buttons. The lab parts borrow
 the online-lab habits the owner likes from Beo-lab – a test-tube "lab list" with a counter in the header, "Shto në listë"
 on every test, a running list bar while browsing the catalogue, and the lab's diagnostic areas as entry points – without
@@ -120,19 +120,20 @@ From the Human+ brand book (v1.0, 19.01.2024). Colours are CSS variables at the 
 
 | Role | Variable | Value | Used for |
 | --- | --- | --- | --- |
-| **Green** (main) | `--green` | `#28cc63` (sampled from the brand-book icon) | logo square, primary buttons (black text), accents on black, active menu underline |
-| **Black** (main) | `--black`, `--black-2` | `#000000`, `#0d100f` | top bar, page bands, footer, call-to-action band (like the posters) |
-| Deep Green | `--deep`, `--brand` | `#0a3d24`, `#0d7a3d` | the laboratory band; green text and links on white (the bright green is too light for text) |
-| Soft Grey | `--bg`, `--tint` | `#f3f5f4`, `#edf2ef` | page background, alternate sections |
+| **Green** (main) | `--green`, `--green-band` | `#28cc63` (sampled from the brand-book icon) | logo square, primary buttons (black text), laboratory and call-to-action bands, active menu underline |
+| Green for text | `--brand`, `--green-lg` | `#0d7a3d`, `#1a9a4f` | links and small green text on white; large green headline words (the bright green is too light for text) |
+| Bluish white | `--bg`, `--tint`, `--sky-band` | `#f4f8fb`, `#eaf2f8`, `#e4f0fa → #f4f8fb` | page background, alternate sections, top bar, page header bands |
+| Deep Green | `--deep` | `#0a3d24` | footer, the running list bar, green words on the green bands |
+| **Black** (main) | `--ink`, `--black` | `#111318`, `#000000` | text, the language switch, buttons on green bands |
 | Calm Blue | `--blue`, `--blue-bg` | `#2f6fb0`, `#e7eff8` | information notes, keyboard focus ring |
 | Pure White | `--surface` | `#ffffff` | cards, header |
 
 The brand book names Deep Green, Soft Grey and Calm Blue without values here; replace these with the official hex codes
 when the full brand book is at hand.
 
-- **Logo** – the green icon with the black wordmark on white (header); green icon with a white wordmark on black
-  (footer). Vector paths in `src/lib/logo-paths.mjs`; favicon and app icons in `src/static/`.
-- **Pattern** – the H mark repeated on a 64 px grid (`--pattern`), very light on the black and deep-green bands.
+- **Logo** – the green icon with the black wordmark on white (header); green icon with a white wordmark on the
+  deep-green footer. Vector paths in `src/lib/logo-paths.mjs`; favicon and app icons in `src/static/`.
+- **Pattern** – the H mark repeated on a 64 px grid: faint green on the bluish-white bands (`--pattern-green`), faint white on the green bands (`--pattern`).
 - **Font** – the brand font is **Pangram** (7 weights, ExtraLight to Black). It is a licensed typeface, so it is not in
   the repository. Until its web-font files are added, the site uses **Outfit** (open licence) – a close geometric
   stand-in. To switch: put the licensed `.woff2` files (e.g. `Pangram-Regular.woff2`, `Pangram-Bold.woff2` …) in

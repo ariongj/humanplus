@@ -203,8 +203,8 @@ write(
       start_url: BASE,
       scope: BASE,
       display: 'standalone',
-      background_color: '#f3f5f4',
-      theme_color: '#000000',
+      background_color: '#f4f8fb',
+      theme_color: '#ffffff',
       icons: [
         { src: `${BASE}icon-192.png`, sizes: '192x192', type: 'image/png' },
         { src: `${BASE}icon-512.png`, sizes: '512x512', type: 'image/png' },

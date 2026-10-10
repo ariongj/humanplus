@@ -138,7 +138,7 @@ export function homePage(ctx) {
   const hero = h`<section class="hero">
     <div class="wrap hero-in">
       <div class="hero-text">
-        <p class="eyebrow eyebrow-light">${esc(t.eyebrow)}</p>
+        <p class="eyebrow">${esc(t.eyebrow)}</p>
         <h1>${accent(t.h1)}</h1>
         <p class="lead">${esc(t.lead)}</p>
         ${testSearch(ctx, { id: 'hero-q', big: true })}
@@ -147,8 +147,8 @@ export function homePage(ctx) {
           return h`<a class="chip chip-link" href="${esc(ctx.url('analizat'))}?q=${encodeURIComponent(label)}">${esc(label)}</a>`;
         })}</p>
         <div class="actions">
-          <a class="btn btn-light btn-lg" href="${esc(ctx.url('rezervo'))}">${icon('calendar-check', { size: 20 })}${esc(u.book)}</a>
-          <a class="btn btn-outline-light btn-lg" href="${esc(ctx.url('sherbimet'))}">${esc(u.all_services)}${icon('arrow-right', { size: 20 })}</a>
+          <a class="btn btn-primary btn-lg" href="${esc(ctx.url('rezervo'))}">${icon('calendar-check', { size: 20 })}${esc(u.book)}</a>
+          <a class="btn btn-outline btn-lg" href="${esc(ctx.url('sherbimet'))}">${esc(u.all_services)}${icon('arrow-right', { size: 20 })}</a>
         </div>
       </div>
       <aside class="hero-info" aria-labelledby="h-hours">
@@ -199,7 +199,7 @@ export function homePage(ctx) {
   const lab = h`<section class="section section-brand" aria-labelledby="h-lab">
     <div class="wrap lab-in">
       <div class="lab-text">
-        ${sectionHead({ eyebrow: t.lab_eyebrow, title: t.lab_title, text: t.lab_text, id: 'h-lab', light: true })}
+        ${sectionHead({ eyebrow: t.lab_eyebrow, title: t.lab_title, text: t.lab_text, id: 'h-lab' })}
         ${testSearch(ctx, { id: 'lab-q', landmark: false })}
         <a class="btn btn-light" href="${esc(ctx.url('analizat'))}">${icon('test-tubes', { size: 18 })}${esc(t.lab_all)} (${CATALOGUE.count})</a>
       </div>

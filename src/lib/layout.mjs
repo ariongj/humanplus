@@ -69,7 +69,7 @@ function head(ctx) {
     <link rel="alternate" hreflang="en" href="${esc(en)}" />
     <link rel="alternate" hreflang="x-default" href="${esc(sq)}" />`}
     <meta name="robots" content="${ctx.noindex || page.noindex ? 'noindex, follow' : 'index, follow'}" />
-    <meta name="theme-color" content="#000000" />
+    <meta name="theme-color" content="#ffffff" />
     <meta name="format-detection" content="telephone=no" />
     <meta property="og:site_name" content="${esc(SITE.fullName)}" />
     <meta property="og:locale" content="${lang === 'sq' ? 'sq_AL' : 'en_GB'}" />
@@ -99,13 +99,13 @@ function topbar(ctx) {
   const p = SITE.phones[0];
   return h`<section class="topbar" aria-label="${esc(t.quick_contact)}">
     <div class="wrap topbar-in">
-      ${status(lang, { cls: 'status-dark' })}
+      ${status(lang)}
       <a class="topbar-link" href="tel:${p.tel}">${icon('phone', { size: 16 })}<span>${esc(p.display)}</span></a>
       <a class="topbar-link hide-sm" href="${esc(SITE.mapsUrl)}" target="_blank" rel="noopener">${icon('map-pin', { size: 16 })}<span>${esc(SITE.address.street)}, ${esc(lang === 'sq' ? SITE.address.city : SITE.address.cityEn)}</span></a>
       <span class="topbar-spacer"></span>
       <a class="topbar-link hide-sm" href="mailto:${SITE.email}">${icon('mail', { size: 16 })}<span>${esc(SITE.email)}</span></a>
       <a class="topbar-icon hide-sm" href="${esc(SITE.facebook)}" target="_blank" rel="noopener" aria-label="${esc(t.facebook)}">${brand('facebook', { size: 16 })}</a>
-      ${langSwitch(ctx, 'lang-dark')}
+      ${langSwitch(ctx)}
     </div>
   </section>`;
 }

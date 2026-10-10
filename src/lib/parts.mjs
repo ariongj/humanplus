@@ -153,7 +153,7 @@ export function ctaBand(ctx, { title, text }) {
       <div class="actions">
         <a class="btn btn-light" href="${esc(ctx.url('rezervo'))}">${icon('calendar-check', { size: 18 })}${esc(t.book)}</a>
         <a class="btn btn-wa" href="${esc(ctx.wa())}" target="_blank" rel="noopener">${brand('whatsapp', { size: 18 })}${esc(t.whatsapp)}</a>
-        <a class="btn btn-outline-light" href="tel:${SITE.phones[0].tel}">${icon('phone', { size: 18 })}${esc(SITE.phones[0].display)}</a>
+        <a class="btn btn-outline-dark" href="tel:${SITE.phones[0].tel}">${icon('phone', { size: 18 })}${esc(SITE.phones[0].display)}</a>
       </div>
     </div></div>
   </section>`;
