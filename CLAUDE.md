@@ -17,9 +17,12 @@ the repo.
 ## Where things are
 
 - Facts (phones, hours, address, WhatsApp number): `src/data/site.mjs` — the only place to change them.
-- Departments `src/data/services.mjs`, lab tests and panels `src/data/tests.mjs`, FAQ `src/data/faq.mjs`,
+- Full lab catalogue `src/data/catalogue.json` (generated: `node scripts/import-catalogue.mjs <export.js>`, never edit by
+  hand; never import another lab's prices or result times), page `src/pages/catalogue.mjs` + `src/assets/catalogue.js`.
+- Departments `src/data/services.mjs`, common tests and panels `src/data/tests.mjs`, FAQ `src/data/faq.mjs`,
   shared UI text `src/data/ui.mjs`, page texts at the top of each `src/pages/*.mjs`.
-- Design: `src/assets/site.css` (tokens at the top). Behaviour: `src/assets/site.js` (vanilla, one file).
+- Design: `src/assets/site.css` (tokens at the top; institutional look: navy bands, Public Sans, 8 px buttons).
+  Behaviour: `src/assets/site.js` (vanilla; shares helpers with catalogue.js on `window.HP`).
 
 ## Rules (from the owner's past projects)
 

@@ -1,4 +1,4 @@
-// /analizat/ (catalogue), /paketat/ (check-ups) and /pergatitja/ (preparation guide).
+// /paketat/ (check-ups) and /pergatitja/ (preparation guide). The catalogue /analizat/ is in catalogue.mjs.
 import { SITE } from '../data/site.mjs';
 import { TESTS, CATEGORIES, PANELS, PREP } from '../data/tests.mjs';
 import { UI } from '../data/ui.mjs';
@@ -7,25 +7,6 @@ import { pageHero, sectionHead, testRow, testSearch, panelCard, ctaBand } from '
 
 const T = dict('lab', {
   sq: {
-    tests_title: 'Analizat laboratorike — katalogu dhe përgatitja',
-    tests_desc: 'Katalogu i analizave në Human+ Prishtinë: gjaku komplet, glukoza, vitamina D, TSH, hormonet, alergjitë, urinokultura dhe më shumë. Shikoni përgatitjen, krijoni listën dhe pyetni për çmimin.',
-    tests_eyebrow: 'Laboratori',
-    tests_h1: 'Gjeni *analizën* që ju duhet.',
-    tests_lead: 'Kërkoni sipas emrit ose shkurtesës, shikoni si të përgatiteni dhe shtojini në listë. Pastaj na e dërgoni listën në WhatsApp — ju kthejmë përgjigje me çmimin dhe terminin.',
-    all: 'Të gjitha',
-    filter: 'Filtro sipas kategorisë',
-    count_one: '1 analizë',
-    count_many: '{n} analiza',
-    none_title: 'Nuk e gjetëm këtë analizë në katalog',
-    none_text: 'Katalogu nuk është i plotë — na shkruani dhe ju tregojmë nëse e bëjmë.',
-    none_wa: 'Pyet në WhatsApp',
-    none_msg: 'Përshëndetje Human+! A e bëni analizën:',
-    reset: 'Pastro kërkimin',
-    hint_title: 'Si funksionon lista?',
-    hint_1: 'Shtypni “Shto” te analizat që ju duhen.',
-    hint_2: 'Hapni “Lista ime” lart në faqe.',
-    hint_3: 'Dërgojeni në WhatsApp, Viber ose me e-mail.',
-    hint_note: 'Çmimet i jep recepsioni. Lista ruhet vetëm në shfletuesin tuaj.',
     panels_title: 'Paketat check-up — analiza të grupuara sipas nevojës',
     panels_desc: 'Paketat check-up në Human+ Prishtinë: check-up bazë, për fëmijë, tiroidja, shëndeti i gruas dhe i burrit 40+, vitaminat, zemra dhe alergjitë.',
     panels_eyebrow: 'Paketat',
@@ -60,25 +41,6 @@ const T = dict('lab', {
     prep_cta_text: 'Na shkruani analizat që keni — ju tregojmë saktësisht çfarë duhet të bëni.',
   },
   en: {
-    tests_title: 'Lab tests — catalogue and preparation',
-    tests_desc: 'The lab test catalogue at Human+ Prishtina: blood count, glucose, vitamin D, TSH, hormones, allergies, urine culture and more. See how to prepare, build your list and ask for the price.',
-    tests_eyebrow: 'Laboratory',
-    tests_h1: 'Find the *test* you need.',
-    tests_lead: 'Search by name or abbreviation, see how to prepare and add tests to your list. Then send the list to us on WhatsApp — we reply with the price and a time.',
-    all: 'All',
-    filter: 'Filter by category',
-    count_one: '1 test',
-    count_many: '{n} tests',
-    none_title: 'We could not find this test in the catalogue',
-    none_text: 'The catalogue is not complete — message us and we will tell you whether we do it.',
-    none_wa: 'Ask on WhatsApp',
-    none_msg: 'Hello Human+! Do you do this test:',
-    reset: 'Clear the search',
-    hint_title: 'How does the list work?',
-    hint_1: 'Press “Add” on the tests you need.',
-    hint_2: 'Open “My list” at the top of the page.',
-    hint_3: 'Send it on WhatsApp, Viber or by e-mail.',
-    hint_note: 'Reception gives the prices. The list is kept only in your browser.',
     panels_title: 'Check-ups — tests grouped by need',
     panels_desc: 'Check-ups at Human+ Prishtina: basic check-up, children, thyroid, women’s health, men’s health 40+, vitamins, heart and allergies.',
     panels_eyebrow: 'Check-ups',
@@ -114,68 +76,6 @@ const T = dict('lab', {
   },
 });
 
-export function testsPage(ctx) {
-  const { lang } = ctx;
-  const t = T[lang];
-  const u = UI[lang];
-  const hero = pageHero(ctx, {
-    trail: [[u.nav_tests, 'analizat']],
-    eyebrow: t.tests_eyebrow,
-    title: t.tests_h1,
-    lead: t.tests_lead,
-    cls: 'page-hero-tests',
-  });
-  const filters = h`<div class="filters" role="group" aria-label="${esc(t.filter)}" data-filters>
-    <button type="button" class="filter" data-filter="" aria-pressed="true">${esc(t.all)} <span>${TESTS.length}</span></button>
-    ${CATEGORIES.map((c) => h`<button type="button" class="filter" data-filter="${c.id}" aria-pressed="false">${esc(L(c.name, lang))} <span>${TESTS.filter((x) => x.cat === c.id).length}</span></button>`)}
-  </div>`;
-  const groups = CATEGORIES.map(
-    (c) => h`<section class="test-group" data-group="${c.id}" aria-labelledby="cat-${c.id}">
-      <h2 class="test-group-title" id="cat-${c.id}"><span class="tile tile-brand tile-sm">${icon(c.icon, { size: 16 })}</span>${esc(L(c.name, lang))}</h2>
-      <ul class="tests">${TESTS.filter((x) => x.cat === c.id).map((x) => testRow(ctx, x))}</ul>
-    </section>`,
-  );
-  const body = h`<section class="section section-tight">
-    <div class="wrap catalog">
-      <div class="catalog-main">
-        <div class="catalog-bar">
-          ${testSearch(ctx, { id: 'tests-q', big: true })}
-          ${filters}
-          <p class="catalog-count" aria-live="polite" data-count data-one="${esc(t.count_one)}" data-many="${esc(t.count_many)}">${esc(t.count_many.replace('{n}', TESTS.length))}</p>
-        </div>
-        <div data-groups>${groups}</div>
-        <div class="empty" data-none hidden>
-          <span class="empty-icon">${icon('search', { size: 28 })}</span>
-          <h2>${esc(t.none_title)}</h2>
-          <p>${esc(t.none_text)}</p>
-          <div class="actions center">
-            <a class="btn btn-wa" data-none-wa data-msg="${esc(t.none_msg)}" href="${esc(ctx.wa())}" target="_blank" rel="noopener">${brand('whatsapp', { size: 18 })}${esc(t.none_wa)}</a>
-            <button class="btn btn-outline" type="button" data-reset>${esc(t.reset)}</button>
-          </div>
-        </div>
-      </div>
-      <aside class="catalog-aside">
-        <div class="aside-card sticky">
-          <h2>${icon('list-checks', { size: 20 })}${esc(t.hint_title)}</h2>
-          <ol class="mini-steps"><li>${esc(t.hint_1)}</li><li>${esc(t.hint_2)}</li><li>${esc(t.hint_3)}</li></ol>
-          <button class="btn btn-primary btn-block js-only" type="button" data-list-open aria-haspopup="dialog" aria-controls="lab-list">${icon('list-checks', { size: 18 })}${esc(u.list)} <span class="list-count list-count-inline" data-list-count aria-hidden="true">0</span></button>
-          <p class="small muted">${esc(t.hint_note)}</p>
-          <a class="link" href="${esc(ctx.url('paketat'))}">${esc(u.nav_panels)}${icon('arrow-right', { size: 16 })}</a>
-          <a class="link" href="${esc(ctx.url('pergatitja'))}">${esc(u.prep_link)}${icon('arrow-right', { size: 16 })}</a>
-        </div>
-      </aside>
-    </div>
-  </section>`;
-  const itemList = {
-    '@context': 'https://schema.org',
-    '@type': 'ItemList',
-    name: t.tests_title,
-    numberOfItems: TESTS.length,
-    itemListElement: TESTS.map((x, i) => ({ '@type': 'ListItem', position: i + 1, item: { '@type': 'MedicalTest', name: L(x.name, lang) } })),
-  };
-  return { id: 'tests', title: `${t.tests_title} · ${SITE.name}`, description: t.tests_desc, jsonld: [hero.jsonld, itemList], body: hero.html + body };
-}
-
 export function panelsPage(ctx) {
   const { lang } = ctx;
   const t = T[lang];
@@ -202,14 +102,14 @@ export function prepPage(ctx) {
   const hero = pageHero(ctx, { trail: [[u.nav_prep, 'pergatitja']], eyebrow: t.prep_eyebrow, title: t.prep_h1, lead: t.prep_lead });
   const general = h`<section class="section section-tight" aria-labelledby="h-general">
     <div class="wrap">
-      ${sectionHead({ num: '01', eyebrow: t.prep_eyebrow, title: t.general, id: 'h-general' })}
+      ${sectionHead({ eyebrow: t.prep_eyebrow, title: t.general, id: 'h-general' })}
       <ol class="rules">${[t.g1, t.g2, t.g3, t.g4, t.g5].map((g, i) => h`<li class="reveal"><span class="rule-num">${String(i + 1).padStart(2, '0')}</span><p>${esc(g)}</p></li>`)}</ol>
     </div>
   </section>`;
   const types = Object.keys(PREP).filter((k) => k !== 'none');
   const byType = h`<section class="section section-tint" aria-labelledby="h-types">
     <div class="wrap">
-      ${sectionHead({ num: '02', eyebrow: t.prep_eyebrow, title: t.by_type, id: 'h-types' })}
+      ${sectionHead({ eyebrow: t.prep_eyebrow, title: t.by_type, id: 'h-types' })}
       <div class="prep-grid">${types.map((k) => {
         const tests = TESTS.filter((x) => x.prep === k).slice(0, 6);
         return h`<article class="prep-card reveal" id="prep-${k}">

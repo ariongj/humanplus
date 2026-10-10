@@ -1,11 +1,12 @@
 import { SITE } from '../data/site.mjs';
 import { SERVICES } from '../data/services.mjs';
-import { TESTS, PANELS } from '../data/tests.mjs';
+import { PANELS } from '../data/tests.mjs';
+import { CATALOGUE, CATALOGUE_ROUND } from './catalogue.mjs';
 import { FAQ } from '../data/faq.mjs';
 import { UI } from '../data/ui.mjs';
 import { esc, h, icon, brand, dict, L, accent } from '../lib/html.mjs';
-import { logoMark, hoursTable, status } from '../lib/layout.mjs';
-import { sectionHead, serviceCard, panelCard, testSearch, ctaBand, faqList, shortName } from '../lib/parts.mjs';
+import { hoursTable, status } from '../lib/layout.mjs';
+import { sectionHead, serviceCard, panelCard, testSearch, ctaBand, faqList, shortName, addButton } from '../lib/parts.mjs';
 
 const T = dict('home', {
   sq: {
@@ -19,10 +20,6 @@ const T = dict('home', {
     stat2: 'shërbime nën një çati',
     stat3: 'analiza në katalog',
     stat4: 'ditë në javë hapur',
-    card_status: 'Orari sot',
-    card_prep_title: 'Këshilla e ditës',
-    card_prep_text: 'Për glukozën dhe yndyrnat ejani esëll 8–12 orë. Uji i thjeshtë lejohet.',
-    card_depts: 'Departamentet',
     q1_t: 'Rezervo termin',
     q1_d: 'Zgjidhni shërbimin, ditën dhe orën.',
     q2_t: 'Kërko analizat',
@@ -54,6 +51,8 @@ const T = dict('home', {
     ped_cta: 'Rezervo te pediatri',
     ped_more: 'Rreth pediatrisë',
     ped_badge: 'Pediatri + laborator',
+    ped_tests: 'Analiza për fëmijë',
+    ped_panel: 'Check-up për fëmijë',
     how_eyebrow: 'Si funksionon',
     how_title: 'Tre hapa, *pa pritje* të panevojshme.',
     how1_t: 'Rezervoni',
@@ -85,10 +84,6 @@ const T = dict('home', {
     stat2: 'services under one roof',
     stat3: 'tests in the catalogue',
     stat4: 'days a week open',
-    card_status: 'Hours today',
-    card_prep_title: 'Tip of the day',
-    card_prep_text: 'For glucose and blood fats, come after fasting for 8–12 hours. Plain water is fine.',
-    card_depts: 'Departments',
     q1_t: 'Book an appointment',
     q1_d: 'Choose the service, day and time.',
     q2_t: 'Find lab tests',
@@ -120,6 +115,8 @@ const T = dict('home', {
     ped_cta: 'Book with a paediatrician',
     ped_more: 'About paediatrics',
     ped_badge: 'Paediatrics + laboratory',
+    ped_tests: 'Tests for children',
+    ped_panel: 'Children’s check-up',
     how_eyebrow: 'How it works',
     how_title: 'Three steps, *no needless* waiting.',
     how1_t: 'Book',
@@ -153,7 +150,7 @@ export function homePage(ctx) {
   const hero = h`<section class="hero">
     <div class="wrap hero-in">
       <div class="hero-text">
-        <p class="eyebrow eyebrow-pill"><span class="pulse" aria-hidden="true"></span>${esc(t.eyebrow)}</p>
+        <p class="eyebrow eyebrow-light">${esc(t.eyebrow)}</p>
         <h1>${accent(t.h1)}</h1>
         <p class="lead">${esc(t.lead)}</p>
         ${testSearch(ctx, { id: 'hero-q', big: true })}
@@ -162,38 +159,17 @@ export function homePage(ctx) {
           return h`<a class="chip chip-link" href="${esc(ctx.url('analizat'))}?q=${encodeURIComponent(label)}">${esc(label)}</a>`;
         })}</p>
         <div class="actions">
-          <a class="btn btn-primary btn-lg" href="${esc(ctx.url('rezervo'))}">${icon('calendar-check', { size: 20 })}${esc(u.book)}</a>
-          <a class="btn btn-outline btn-lg" href="tel:${SITE.phones[0].tel}">${icon('phone', { size: 20 })}${esc(SITE.phones[0].display)}</a>
+          <a class="btn btn-light btn-lg" href="${esc(ctx.url('rezervo'))}">${icon('calendar-check', { size: 20 })}${esc(u.book)}</a>
+          <a class="btn btn-outline-light btn-lg" href="${esc(ctx.url('sherbimet'))}">${esc(u.all_services)}${icon('arrow-right', { size: 20 })}</a>
         </div>
       </div>
-      <div class="hero-art" aria-hidden="true">
-        <div class="hero-panel">
-          ${logoMark({ cls: 'hero-mark' })}
-          <span class="hero-plus hp1">+</span><span class="hero-plus hp2">+</span><span class="hero-plus hp3">+</span>
-          <svg class="hero-wave" viewBox="0 0 600 160" preserveAspectRatio="none"><path d="M0 110 C 80 60 140 150 220 100 S 360 40 440 90 S 560 130 600 80 L600 160 L0 160 Z"/></svg>
-        </div>
-        <div class="float-card fc-status">
-          <p class="fc-label">${icon('clock', { size: 16 })}${esc(t.card_status)}</p>
-          ${status(lang, { cls: 'status-lg' })}
-          ${hoursTable(lang, { cls: 'hours-mini' })}
-        </div>
-        <div class="float-card fc-prep">
-          <span class="tile tile-sun">${icon('utensils-crossed', { size: 20 })}</span>
-          <div><p class="fc-title">${esc(t.card_prep_title)}</p><p>${esc(t.card_prep_text)}</p></div>
-        </div>
-        <div class="float-card fc-depts">
-          <p class="fc-label">${esc(t.card_depts)}</p>
-          <div class="fc-chips">${SERVICES.slice(0, 3).map((s) => h`<span class="chip chip-${s.tone}">${icon(s.icon, { size: 14 })}${esc(L(s.nameShort ?? s.name, lang))}</span>`)}</div>
-        </div>
-      </div>
-    </div>
-    <div class="wrap">
-      <ul class="stats">
-        <li><strong>${SITE.founded}</strong><span>${esc(t.stat1)}</span></li>
-        <li><strong>${SERVICES.length}</strong><span>${esc(t.stat2)}</span></li>
-        <li><strong>${Math.floor(TESTS.length / 10) * 10}+</strong><span>${esc(t.stat3)}</span></li>
-        <li><strong>${openDays}</strong><span>${esc(t.stat4)}</span></li>
-      </ul>
+      <aside class="hero-info" aria-labelledby="h-hours">
+        <div class="hero-info-head"><h2 id="h-hours">${icon('clock', { size: 20 })}${esc(u.hours)}</h2>${status(lang)}</div>
+        ${hoursTable(lang)}
+        <div class="hero-phones">${SITE.phones.map((p) => h`<a href="tel:${p.tel}">${icon('phone', { size: 18 })}<span>${esc(p.display)}</span><small>${esc(L(p.label, lang))}</small></a>`)}</div>
+        <a class="btn btn-primary btn-block" href="${esc(ctx.url('rezervo'))}">${icon('calendar-check', { size: 18 })}${esc(u.book)}</a>
+        <a class="btn btn-wa btn-block" href="${esc(ctx.wa())}" target="_blank" rel="noopener">${brand('whatsapp', { size: 18 })}${esc(u.whatsapp_label)}</a>
+      </aside>
     </div>
   </section>`;
 
@@ -213,13 +189,19 @@ export function homePage(ctx) {
           </a></li>`,
         )}
       </ul>
+      <ul class="stats">
+        <li><strong>${SITE.founded}</strong><span>${esc(t.stat1)}</span></li>
+        <li><strong>${SERVICES.length}</strong><span>${esc(t.stat2)}</span></li>
+        <li><strong>${CATALOGUE_ROUND.toLocaleString(lang === 'en' ? 'en-GB' : 'de-DE').replace('.', '\u202f')}+</strong><span>${esc(t.stat3)}</span></li>
+        <li><strong>${openDays}</strong><span>${esc(t.stat4)}</span></li>
+      </ul>
     </div>
   </section>`;
 
   const services = h`<section class="section" aria-labelledby="h-svc">
     <div class="wrap">
       <div class="split-head">
-        ${sectionHead({ num: '01', eyebrow: t.svc_eyebrow, title: t.svc_title, text: t.svc_text, id: 'h-svc' })}
+        ${sectionHead({ eyebrow: t.svc_eyebrow, title: t.svc_title, text: t.svc_text, id: 'h-svc' })}
         <a class="btn btn-outline" href="${esc(ctx.url('sherbimet'))}">${esc(u.all_services)}${icon('arrow-right', { size: 18 })}</a>
       </div>
       <ul class="svc-grid">${SERVICES.map((s, i) => serviceCard(ctx, s, i))}</ul>
@@ -229,9 +211,9 @@ export function homePage(ctx) {
   const lab = h`<section class="section section-brand" aria-labelledby="h-lab">
     <div class="wrap lab-in">
       <div class="lab-text">
-        ${sectionHead({ num: '02', eyebrow: t.lab_eyebrow, title: t.lab_title, text: t.lab_text, id: 'h-lab', light: true })}
+        ${sectionHead({ eyebrow: t.lab_eyebrow, title: t.lab_title, text: t.lab_text, id: 'h-lab', light: true })}
         ${testSearch(ctx, { id: 'lab-q', landmark: false })}
-        <a class="btn btn-light" href="${esc(ctx.url('analizat'))}">${icon('list-checks', { size: 18 })}${esc(t.lab_all)} (${TESTS.length})</a>
+        <a class="btn btn-light" href="${esc(ctx.url('analizat'))}">${icon('list-checks', { size: 18 })}${esc(t.lab_all)} (${CATALOGUE.count})</a>
       </div>
       <ul class="lab-cards">
         ${[
@@ -253,7 +235,7 @@ export function homePage(ctx) {
   const panels = h`<section class="section" aria-labelledby="h-pan">
     <div class="wrap">
       <div class="split-head">
-        ${sectionHead({ num: '03', eyebrow: t.pan_eyebrow, title: t.pan_title, text: t.pan_text, id: 'h-pan' })}
+        ${sectionHead({ eyebrow: t.pan_eyebrow, title: t.pan_title, text: t.pan_text, id: 'h-pan' })}
         <a class="btn btn-outline" href="${esc(ctx.url('paketat'))}">${esc(t.pan_all)}${icon('arrow-right', { size: 18 })}</a>
       </div>
       <div class="panel-grid">${PANELS.filter((p) => ['baze', 'femije', 'grua', 'burre'].includes(p.id)).map((p) => panelCard(ctx, p))}</div>
@@ -263,13 +245,18 @@ export function homePage(ctx) {
   const ped = SERVICES.find((s) => s.slug === 'pediatri');
   const kids = h`<section class="section section-tint" aria-labelledby="h-ped">
     <div class="wrap ped-in">
-      <div class="ped-art reveal" aria-hidden="true">
-        <div class="ped-blob">${icon('baby', { size: 96 })}</div>
-        <span class="ped-badge">${icon('heart-pulse', { size: 18 })}${esc(t.ped_badge)}</span>
-        <span class="ped-dot pd1"></span><span class="ped-dot pd2"></span><span class="ped-dot pd3"></span>
+      <div class="ped-card reveal">
+        <div class="ped-card-head">
+          <span class="tile tile-sun">${icon('baby', { size: 24 })}</span>
+          <div><h3>${esc(t.ped_tests)}</h3><p>${esc(t.ped_badge)}</p></div>
+        </div>
+        <ul class="ped-tests">${['cbc', 'ferritin', 'vitd', 'b12', 'allergy-panel', 'urinalysis'].map(
+          (id) => h`<li><span>${esc(shortName(id, lang))}</span>${addButton(ctx, id, { compact: true })}</li>`,
+        )}</ul>
+        <a class="link" href="${esc(ctx.url('paketat'))}#paketa-femije">${esc(t.ped_panel)}${icon('arrow-right', { size: 16 })}</a>
       </div>
       <div>
-        ${sectionHead({ num: '04', eyebrow: t.ped_eyebrow, title: t.ped_title, text: t.ped_text, id: 'h-ped' })}
+        ${sectionHead({ eyebrow: t.ped_eyebrow, title: t.ped_title, text: t.ped_text, id: 'h-ped' })}
         <ul class="ticks">${L(ped.items, lang).map((it) => h`<li>${icon('circle-check', { size: 20 })}<span>${esc(it)}</span></li>`)}</ul>
         <div class="actions">
           <a class="btn btn-primary" href="${esc(ctx.url('rezervo'))}?sherbimi=pediatri">${icon('calendar-check', { size: 18 })}${esc(t.ped_cta)}</a>
@@ -281,7 +268,7 @@ export function homePage(ctx) {
 
   const how = h`<section class="section" aria-labelledby="h-how">
     <div class="wrap">
-      ${sectionHead({ num: '05', eyebrow: t.how_eyebrow, title: t.how_title, id: 'h-how', center: true })}
+      ${sectionHead({ eyebrow: t.how_eyebrow, title: t.how_title, id: 'h-how', center: true })}
       <ol class="steps">
         ${[
           ['calendar-check', t.how1_t, t.how1_d, 'rezervo'],
@@ -303,7 +290,7 @@ export function homePage(ctx) {
   const visit = h`<section class="section section-tint" aria-labelledby="h-visit">
     <div class="wrap visit-in">
       <div>
-        ${sectionHead({ num: '06', eyebrow: t.visit_eyebrow, title: t.visit_title, text: t.visit_text, id: 'h-visit' })}
+        ${sectionHead({ eyebrow: t.visit_eyebrow, title: t.visit_title, text: t.visit_text, id: 'h-visit' })}
         <ul class="contact-list">
           <li><a href="${esc(SITE.mapsUrl)}" target="_blank" rel="noopener"><span class="tile tile-brand">${icon('map-pin', { size: 20 })}</span><span><strong>${esc(SITE.address.street)}</strong><small>${esc(SITE.address.postalCode)} ${esc(lang === 'sq' ? SITE.address.city : SITE.address.cityEn)} · ${esc(t.visit_map)}</small></span></a></li>
           ${SITE.phones.map((p) => h`<li><a href="tel:${p.tel}"><span class="tile tile-brand">${icon('phone', { size: 20 })}</span><span><strong>${esc(p.display)}</strong><small>${esc(L(p.label, lang))}</small></span></a></li>`)}
@@ -324,7 +311,7 @@ export function homePage(ctx) {
   const faq = h`<section class="section" aria-labelledby="h-faq">
     <div class="wrap faq-in">
       <div>
-        ${sectionHead({ num: '07', eyebrow: t.faq_eyebrow, title: t.faq_title, id: 'h-faq' })}
+        ${sectionHead({ eyebrow: t.faq_eyebrow, title: t.faq_title, id: 'h-faq' })}
         <a class="btn btn-outline" href="${esc(ctx.url('pyetje'))}">${esc(t.faq_all)}${icon('arrow-right', { size: 18 })}</a>
       </div>
       ${faqList(FAQ.filter((f) => f.home), lang)}

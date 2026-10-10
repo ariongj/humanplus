@@ -6,8 +6,8 @@ Albanian first, English one click away. The previous site at humanplusks.com was
 what patients actually come to do: **find a test, see how to prepare, ask the price, book a time.** The lab-test catalogue,
 check-up panels, preparation guide and online booking follow the lab sites the client likes (beo-lab.rs), in Human+'s own look.
 
-Warm paper background, the deep teal of the Human+ mark with a coral "+", Manrope with an italic Fraunces accent word,
-pill buttons, rounded cards. **No framework and no dependencies:** a small Node script writes plain HTML, one CSS file and
+An institutional look: navy header bands with a fine "+" pattern, the deep teal of the Human+ mark, white cards with
+thin borders, square-cornered buttons and **Public Sans** (the typeface made for government sites). **No framework and no dependencies:** a small Node script writes plain HTML, one CSS file and
 one JavaScript file into `dist/`, which you can upload to any web host.
 
 **Live preview:** https://ariongj.github.io/humanplus/ (GitHub Pages, hidden from search engines) ·
@@ -16,11 +16,11 @@ one JavaScript file into `dist/`, which you can upload to any web host.
 | | |
 | --- | --- |
 | Pages | 19 per language × 2 (sq + en), plus 404 |
-| Lab tests in the catalogue | 61, in 8 categories, each with sample type and preparation |
+| Lab-test catalogue | 1 006 tests and panels in 20 categories, searchable in Albanian and Serbian (see [Lab catalogue](#lab-catalogue)) |
 | Check-up panels | 8 |
 | Accessibility | axe-core: **0 violations** on all pages, desktop 1440 and phone 390 |
 | Layout | no horizontal scroll at 320, 390 and 1440 px; 44 px touch targets; 16 px form fields |
-| Weight | home page ≈ 27 kB HTML + 12 kB CSS + 8 kB JS (gzip), two self-hosted fonts (70 kB) |
+| Weight | home page ≈ 27 kB HTML + 11 kB CSS + 8 kB JS (gzip) + one font (27 kB); the catalogue data (113 kB gzip) loads only on `/analizat/` |
 
 ## What is on the site
 
@@ -32,7 +32,7 @@ All pages exist in Albanian (`/…`) and English (`/en/…`) with the **same add
 | Ballina / Home | `/` | hero with test search, live opening status, quick actions, services, lab, check-ups, paediatrics, how it works, hours, FAQ |
 | Shërbimet / Services | `/sherbimet/` | the ten departments, specialists and laboratory |
 | Department pages | `/sherbim/<slug>/` | what each department offers, its most requested tests (add to list), book / WhatsApp / call |
-| Analizat / Lab tests | `/analizat/` | searchable catalogue (name, abbreviation, other spellings), category filters, "Add" to *My list* |
+| Analizat / Lab tests | `/analizat/` | the full catalogue: search (Albanian, Serbian, abbreviations), 20 categories, details (description, sample, preparation, components), "Add" to *My list* |
 | Paketat / Check-ups | `/paketat/` | 8 panels (basic, children, thyroid, women, men 40+, vitamins, heart, allergy) — add a whole panel or ask the price |
 | Përgatitja / Preparation | `/pergatitja/` | fasting, morning tests, cycle-day hormones, PSA, urine, stool, swabs, children, samples from home |
 | Rezervo / Book | `/rezervo/` | booking request: service → day → time → details → WhatsApp, Viber or e-mail |
@@ -82,6 +82,32 @@ Department pages link here with the service already chosen: `/rezervo/?sherbimi=
 Optional: set `formEndpoint` in `src/data/site.mjs` to a form service (e.g. Formspree) to also receive every booking
 request by e-mail.
 
+## Lab catalogue
+
+`/analizat/` shows **1 006 lab tests and panels in 20 categories** (haematology, biochemistry, immunochemistry,
+hormones, pregnancy tests, tumour markers, allergology, immunology, serology, microbiology, parasitology, genetics,
+drug levels, functional medicine, histopathology, transfusion medicine). Each entry has its Albanian name, the
+Serbian name (many referrals in Kosovo are written in Serbian, so both are searchable), and – where available – a
+short description, the sample, how it is collected, the preparation and what a panel includes.
+
+**Source.** The client supplied an export of the public BeoLab catalogue (Serbia, checked 2026-10-10, 1 071 entries).
+`scripts/import-catalogue.mjs` turns it into `src/data/catalogue.json`. The import **leaves out** on purpose:
+
+- BeoLab's prices (in RSD) and result times – they are another lab's, not Human+'s;
+- BeoLab's own consultations, promotions and marketing packages;
+- reference ranges, methods, editorial notes, SKUs and source links;
+- every sentence that mentions the source lab, its website, its address or ordering (the import fails if one is left).
+
+The page says plainly that it is an information catalogue and that the Human+ laboratory confirms availability,
+price and preparation. To refresh the data from a new export:
+
+```bash
+node scripts/import-catalogue.mjs path/to/catalogue.js
+```
+
+Search matches the start of words in the Albanian and Serbian names and in a panel's components, so "krvna slika",
+"hemogram" and "gjaku komplet" all find the blood count. Results are sorted A–Z; 40 are shown at a time.
+
 ## Languages
 
 - **Shqip** is the main language (`/`), **English** lives under `/en/` with the same page names.
@@ -97,7 +123,8 @@ request by e-mail.
 | --- | --- |
 | `src/data/site.mjs` | **name, address, phones, WhatsApp / Viber number, e-mail, Facebook, opening hours, booking slots** – edit this first |
 | `src/data/services.mjs` | the ten departments: names, texts, what they offer, related tests |
-| `src/data/tests.mjs` | lab-test catalogue, categories, preparation rules, check-up panels |
+| `src/data/catalogue.json` | the full lab catalogue behind `/analizat/` (made by `scripts/import-catalogue.mjs`) |
+| `src/data/tests.mjs` | the 61 common tests used on department pages and in the check-up panels (sq + en), preparation rules, panels |
 | `src/data/faq.mjs` | questions and answers |
 | `src/data/ui.mjs` | shared interface texts (menu, buttons, status, list, footer) in sq + en |
 | `src/pages/*.mjs` | one file per page group, with that page's texts at the top |
@@ -106,12 +133,14 @@ request by e-mail.
 | `src/lib/icons.mjs`, `src/lib/logo-paths.mjs` | icons (Lucide, Simple Icons) and the Human+ logo as vector paths |
 | `src/assets/site.css` | the whole design; colours are the variables at the top |
 | `src/assets/site.js` | browser behaviour: status, menus, list, search, booking, contact form |
-| `src/assets/fonts/` | Manrope and Fraunces italic (WOFF2, self-hosted) |
+| `src/assets/fonts/` | Public Sans (WOFF2, self-hosted) |
+| `src/assets/catalogue.js` | the catalogue page: loads `assets/catalogue.json`, search, categories, details, Add buttons |
 | `src/assets/og/og-sq.png`, `og-en.png` | the 1200 × 630 pictures WhatsApp / Facebook show when a link is shared |
 | `src/static/` | favicons and app icons, copied to the site root |
 | `scripts/build.mjs` | builds `dist/`: pages, sitemap, robots, manifest, llms.txt, 404 and `.htaccess` for Hostinger |
 | `scripts/check.mjs` | checks `dist/`: links, anchors, one H1, titles, descriptions, hreflang, ids, JSON-LD, sitemap |
 | `scripts/serve.mjs` | local preview server |
+| `scripts/import-catalogue.mjs` | turns a catalogue export into `src/data/catalogue.json` (see below) |
 | `.github/workflows/pages.yml` | build + check on every push, publish the default branch to GitHub Pages |
 
 ## Editing
@@ -150,9 +179,10 @@ Then open http://localhost:8080 (Albanian) or http://localhost:8080/en/.
 
 ## Publishing
 
-**Preview – GitHub Pages.** Every push builds and checks the site. The repository's default branch is published to
-https://ariongj.github.io/humanplus/ with `noindex`, so the preview never competes with the real domain in Google.
-One-time setup: *Settings → Pages → Build and deployment → Source: **GitHub Actions***, then re-run the workflow.
+**Preview – GitHub Pages.** Every push builds and checks the site. On the repository's default branch the workflow
+then writes the built preview to the `gh-pages` branch, which GitHub Pages serves at https://ariongj.github.io/humanplus/
+with `noindex`, so the preview never competes with the real domain in Google. If the page does not appear within a few
+minutes, check *Settings → Pages*: *Deploy from a branch*, branch `gh-pages`, folder `/ (root)`.
 
 **Production – humanplusks.com (Hostinger or any Apache host).** Build for the real domain and upload the *contents*
 of `dist/` to `public_html`:
@@ -194,8 +224,9 @@ none of them were published. No stock photos are used.
 
 - **Department texts** – Paediatrics follows the old site; the other nine describe each specialty's usual scope in
   general words. Ask each doctor to read their page.
-- **Lab catalogue and panels** – a standard menu for a biochemistry, haematology and microbiology lab (61 tests) and
-  8 suggested panels. Remove what the lab does not do, add what is missing, agree the panels.
+- **Lab catalogue** – the 1 006 entries come from the BeoLab public catalogue the client supplied (see
+  [Lab catalogue](#lab-catalogue)); names and descriptions are working Albanian translations. The 61 common tests
+  and the 8 check-up panels are suggestions. The lab should mark what Human+ does in-house, sends out or does not offer.
 - **Preparation guide** – standard lab guidance; ask the lab manager to approve it.
 - **Brand colour** – teal `#0b5f64` was chosen to match the mark; swap `--brand` if the clinic has an official colour.
 - **WhatsApp / Viber** – messages go to +383 44 709 072. Confirm that number uses WhatsApp and Viber, or change
@@ -207,6 +238,9 @@ none of them were published. No stock photos are used.
 - [ ] Confirm with the clinic that **every listed department is currently licensed** and staffed. Take a department
       off `src/data/services.mjs` until that is confirmed.
 - [ ] Doctors approve their department texts; the lab approves the test list, panels and preparation guide.
+- [ ] **Lab catalogue**: confirm that the client may reuse the BeoLab catalogue texts commercially (the export itself
+      asks for this check), have the lab review the Albanian translations, and mark the tests Human+ does not offer
+      (remove them in `scripts/import-catalogue.mjs` or the export, then re-import).
 - [ ] Confirm the WhatsApp / Viber number and send one test booking from a staff phone.
 - [ ] Decide whether reception wants booking requests by e-mail as well (`formEndpoint`).
 - [ ] Photos of the centre, the lab and the team (with permission) if the clinic wants them – the design works without.
@@ -218,13 +252,12 @@ none of them were published. No stock photos are used.
 
 `npm test` runs on every push (GitHub Actions). Before a release the site was also checked in Chromium:
 
-- axe-core (WCAG 2.1 A/AA + best practice): 0 violations on all 25 pages × 2 widths;
+- axe-core (WCAG 2.1 A/AA + best practice): 0 violations on all 25 pages × 2 widths, including the catalogue with a test added and its details open;
 - no horizontal scroll at 320, 390 and 1440 px, no console errors;
 - opening status at Monday 06:10 / 10:00, Friday 19:30, Saturday 17:00 and Sunday 12:00;
-- search, filters, list across pages and tabs, panel add, booking validation, WhatsApp text, `.ics` time zone, contact form.
+- catalogue search (Albanian, Serbian, abbreviations), categories, "show more", details, list across pages and tabs (and lists saved by the earlier version), panel add, booking validation, WhatsApp text, `.ics` time zone, contact form.
 
 ## Credits
 
-Fonts: [Manrope](https://fonts.google.com/specimen/Manrope) and [Fraunces](https://fonts.google.com/specimen/Fraunces)
-(SIL Open Font License), self-hosted from Fontsource. Icons: [Lucide](https://lucide.dev) (ISC) and
+Font: [Public Sans](https://public-sans.digital.gov) (SIL Open Font License), self-hosted from Fontsource. Icons: [Lucide](https://lucide.dev) (ISC) and
 [Simple Icons](https://simpleicons.org) (CC0) for WhatsApp, Viber and Facebook. Logo © Human+ Qendra Diagnostike.

@@ -1,4 +1,4 @@
-/* Human+ — browser script (no framework). Live opening status, menus, "Lista ime" (lab list), catalogue search,
+/* Human+ — browser script (no framework). Live opening status, menus, "Lista ime" (lab list),
    booking request and contact message. Every feature checks that its markup exists, so one file serves all pages. */
 (function () {
   'use strict';
@@ -14,7 +14,7 @@
   var toMin = function (hm) { var p = hm.split(':'); return +p[0] * 60 + +p[1]; };
   var toHM = function (m) { return pad(Math.floor(m / 60)) + ':' + pad(m % 60); };
   var fold = function (s) {
-    return String(s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, ' ').trim();
+    return String(s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'dj').replace(/[^a-z0-9]+/g, ' ').trim();
   };
   var store = {
     get: function (k, d) { try { var v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch (e) { return d; } },
@@ -162,13 +162,24 @@
   }
 
   /* ---------- "Lista ime" — lab test list ---------- */
+  // Items are stored as { id, n: name, p: short note }. Curated tests take their name from the page data;
+  // tests from the full catalogue (/analizat/) carry it on their button (data-name, data-note).
   var KEY = 'hp-list';
-  var list = store.get(KEY, []).filter(function (id) { return D.tests[id]; });
+  function item(id, el) {
+    if (D.tests[id]) return { id: id, n: D.tests[id][0], p: D.tests[id][1] };
+    if (el && el.getAttribute('data-name')) return { id: id, n: el.getAttribute('data-name'), p: el.getAttribute('data-note') || '' };
+    return null;
+  }
+  function load() {
+    return store.get(KEY, []).map(function (x) { return typeof x === 'string' ? item(x) : x; })
+      .filter(function (x) { return x && x.id && x.n; });
+  }
+  var list = load();
   function save() { store.set(KEY, list); }
-  function has(id) { return list.indexOf(id) !== -1; }
+  function has(id) { return list.some(function (x) { return x.id === id; }); }
   function countText(n) { return n === 1 ? T.list_count_one : fmt(T.list_count_many, { n: n }); }
   function listMessage() {
-    var lines = list.map(function (id, i) { return (i + 1) + '. ' + D.tests[id][0]; });
+    var lines = list.map(function (x, i) { return (i + 1) + '. ' + x.n; });
     return T.list_msg_hello + '\n' + lines.join('\n') + '\n\n' + T.list_msg_thanks;
   }
   function syncButtons() {
@@ -176,9 +187,10 @@
       var id = b.getAttribute('data-add');
       var on = has(id);
       b.setAttribute('aria-pressed', on ? 'true' : 'false');
-      var name = D.tests[id] ? D.tests[id][0] : id;
-      b.setAttribute('aria-label', fmt(on ? T.list_remove_aria : T.list_add_aria, { name: name }));
-      var row = b.closest('.test');
+      var name = b.getAttribute('data-name') || (D.tests[id] ? D.tests[id][0] : id);
+      // The name starts with the visible text ("Shto" / "Në listë"); aria-pressed carries the state.
+      b.setAttribute('aria-label', (on ? T.list_added : T.list_add) + ': ' + name);
+      var row = b.closest('.test, .cat-row');
       if (row) row.classList.toggle('is-added', on);
     });
     $$('[data-list-count]').forEach(function (c) {
@@ -201,24 +213,26 @@
     $('[data-list-summary]').textContent = countText(n);
     var ul = $('[data-list-items]');
     ul.innerHTML = '';
-    list.forEach(function (id) {
+    list.forEach(function (x) {
       var li = document.createElement('li');
       var tx = document.createElement('div');
       tx.className = 'dl-text';
       var st = document.createElement('strong');
-      st.textContent = D.tests[id][0];
-      var sm = document.createElement('small');
-      sm.textContent = D.tests[id][1];
+      st.textContent = x.n;
       tx.appendChild(st);
-      tx.appendChild(sm);
+      if (x.p) {
+        var sm = document.createElement('small');
+        sm.textContent = x.p;
+        tx.appendChild(sm);
+      }
       var rm = document.createElement('button');
       rm.type = 'button';
       rm.className = 'icon-btn';
-      rm.setAttribute('aria-label', fmt(T.list_remove_aria, { name: D.tests[id][0] }));
+      rm.setAttribute('aria-label', fmt(T.list_remove_aria, { name: x.n }));
       rm.innerHTML = '<svg class="i" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>';
       rm.addEventListener('click', function () {
-        var idx = list.indexOf(id);
-        list = list.filter(function (x) { return x !== id; });
+        var idx = list.indexOf(x);
+        list = list.filter(function (y) { return y.id !== x.id; });
         save(); syncButtons(); renderList();
         var btns = $$('[data-list-items] .icon-btn');
         (btns[Math.min(idx, btns.length - 1)] || $('#lab-list [data-close]')).focus();
@@ -233,17 +247,17 @@
     var mail = $('[data-list-mail]');
     if (mail) mail.href = 'mailto:' + D.email + '?subject=' + encodeURIComponent(T.list_mail_subject) + '&body=' + encodeURIComponent(msg);
   }
-  function toggle(id) {
-    if (has(id)) list = list.filter(function (x) { return x !== id; });
-    else list.push(id);
+  function toggle(id, el) {
+    if (has(id)) list = list.filter(function (x) { return x.id !== id; });
+    else { var it = item(id, el); if (it) list.push(it); }
     save(); syncButtons(); renderList();
   }
   document.addEventListener('click', function (e) {
     var b = e.target.closest('[data-add]');
-    if (b) { toggle(b.getAttribute('data-add')); return; }
+    if (b) { toggle(b.getAttribute('data-add'), b); return; }
     var p = e.target.closest('[data-add-panel]');
     if (p) {
-      p.getAttribute('data-add-panel').split(',').forEach(function (id) { if (D.tests[id] && !has(id)) list.push(id); });
+      p.getAttribute('data-add-panel').split(',').forEach(function (id) { if (!has(id)) { var it = item(id); if (it) list.push(it); } });
       save(); syncButtons(); renderList();
       var label = $('span', p);
       p.classList.add('is-done');
@@ -257,51 +271,11 @@
   if (viberBtn) viberBtn.addEventListener('click', function () { copyText(listMessage()).then(function () { toast(T.list_copied); }); });
   var clearBtn = $('[data-list-clear]');
   if (clearBtn) clearBtn.addEventListener('click', function () { list = []; save(); syncButtons(); renderList(); $('#lab-list [data-close]').focus(); });
-  window.addEventListener('storage', function (e) { if (e.key === KEY) { list = store.get(KEY, []); syncButtons(); renderList(); } });
+  window.addEventListener('storage', function (e) { if (e.key === KEY) { list = load(); syncButtons(); renderList(); } });
   syncButtons();
 
-  /* ---------- catalogue search + filters (/analizat/) ---------- */
-  var groups = $('[data-groups]');
-  if (groups) {
-    var input = $('#tests-q');
-    var form = input && input.form;
-    var countEl = $('[data-count]');
-    var none = $('[data-none]');
-    var rows = $$('.test', groups).map(function (el) { return { el: el, cat: el.getAttribute('data-cat'), s: el.getAttribute('data-search') }; });
-    var cat = '';
-    var params = new URLSearchParams(location.search);
-    if (params.get('q')) input.value = params.get('q');
-    var apply = function () {
-      var q = fold(input.value);
-      var words = q ? q.split(' ') : [];
-      var shown = 0;
-      rows.forEach(function (r) {
-        var ok = (!cat || r.cat === cat) && words.every(function (w) { return r.s.indexOf(w) !== -1; });
-        r.el.hidden = !ok;
-        if (ok) shown++;
-      });
-      $$('[data-group]', groups).forEach(function (g) { g.hidden = !$$('.test:not([hidden])', g).length; });
-      countEl.textContent = shown === 1 ? countEl.getAttribute('data-one') : fmt(countEl.getAttribute('data-many'), { n: shown });
-      none.hidden = shown > 0;
-      var nw = $('[data-none-wa]');
-      if (nw) nw.href = waUrl(nw.getAttribute('data-msg') + ' ' + input.value.trim() + '?');
-      var url = new URL(location.href);
-      if (input.value.trim()) url.searchParams.set('q', input.value.trim()); else url.searchParams.delete('q');
-      history.replaceState(null, '', url.pathname + url.search + url.hash);
-    };
-    input.addEventListener('input', apply);
-    form.addEventListener('submit', function (e) { e.preventDefault(); apply(); input.blur(); });
-    $$('[data-filter]').forEach(function (b) {
-      b.addEventListener('click', function () {
-        cat = b.getAttribute('data-filter');
-        $$('[data-filter]').forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
-        apply();
-      });
-    });
-    var reset = $('[data-reset]');
-    if (reset) reset.addEventListener('click', function () { input.value = ''; cat = ''; $$('[data-filter]').forEach(function (x, i) { x.setAttribute('aria-pressed', i === 0 ? 'true' : 'false'); }); apply(); input.focus(); });
-    apply();
-  }
+  // Shared with assets/catalogue.js (the full catalogue on /analizat/).
+  window.HP = { sync: syncButtons, waUrl: waUrl, fold: fold, fmt: fmt, toast: toast };
 
   /* ---------- booking request (/rezervo/) ---------- */
   var bk = $('[data-booking]');

@@ -69,7 +69,7 @@ function head(ctx) {
     <link rel="alternate" hreflang="en" href="${esc(en)}" />
     <link rel="alternate" hreflang="x-default" href="${esc(sq)}" />`}
     <meta name="robots" content="${ctx.noindex || page.noindex ? 'noindex, follow' : 'index, follow'}" />
-    <meta name="theme-color" content="#0b5f64" />
+    <meta name="theme-color" content="#0b2a45" />
     <meta name="format-detection" content="telephone=no" />
     <meta property="og:site_name" content="${esc(SITE.fullName)}" />
     <meta property="og:locale" content="${lang === 'sq' ? 'sq_AL' : 'en_GB'}" />
@@ -86,7 +86,7 @@ function head(ctx) {
     <link rel="icon" href="${base}favicon-32.png" sizes="32x32" type="image/png" />
     <link rel="apple-touch-icon" href="${base}apple-touch-icon.png" />
     <link rel="manifest" href="${base}manifest.webmanifest" />
-    <link rel="preload" href="${base}assets/fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="${base}assets/fonts/public-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="${base}assets/site.css?v=${ctx.version}" />
     <script>document.documentElement.className=document.documentElement.className.replace('no-js','js')</script>
     ${jsonld.map((j) => `<script type="application/ld+json">${JSON.stringify(j).replace(/</g, '\\u003c')}</script>`)}
@@ -258,7 +258,7 @@ function drawer(ctx) {
 function clientData(ctx) {
   const { lang } = ctx;
   const t = UI[lang];
-  const keys = ['open_now', 'closed_now', 'open_until', 'opens_at', 'opens_day', 'tomorrow', 'days', 'days_short', 'days_on', 'months', 'list_count_one', 'list_count_many', 'list_add', 'list_added', 'list_add_aria', 'list_remove', 'list_remove_aria', 'list_msg_hello', 'list_msg_thanks', 'list_mail_subject', 'list_copied'];
+  const keys = ['open_now', 'closed_now', 'open_until', 'opens_at', 'opens_day', 'tomorrow', 'days', 'days_short', 'days_on', 'months', 'list_count_one', 'list_count_many', 'list_add', 'list_added', 'list_remove', 'list_remove_aria', 'list_msg_hello', 'list_msg_thanks', 'list_mail_subject', 'list_copied'];
   const strings = Object.fromEntries(keys.map((k) => [k, t[k]]));
   const tests = Object.fromEntries(TESTS.map((x) => [x.id, [L(x.name, lang), L(PREP[x.prep].short, lang)]]));
   return {

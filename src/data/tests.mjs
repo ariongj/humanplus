@@ -159,7 +159,7 @@ export const TESTS = [
   // Vitamina dhe minerale
   { id: 'vitd', cat: 'vitamina', sample: 'blood', prep: 'none', name: { sq: 'Vitamina D (25-OH)', en: 'Vitamin D (25-OH)' }, aka: 'vitamin d 25oh d3' },
   { id: 'b12', cat: 'vitamina', sample: 'blood', prep: 'morning', name: { sq: 'Vitamina B12', en: 'Vitamin B12' }, aka: 'kobalamina b 12' },
-  { id: 'folate', cat: 'vitamina', sample: 'blood', prep: 'morning', name: { sq: 'Acidi folik', en: 'Folic acid (folate)' }, aka: 'folati b9' },
+  { id: 'folate', cat: 'vitamina', sample: 'blood', prep: 'morning', name: { sq: 'Acidi folik', en: 'Folic acid (folate)' }, aka: 'folati b9 vitamina b9' },
   { id: 'iron', cat: 'vitamina', sample: 'blood', prep: 'fasting', name: { sq: 'Hekuri (Fe)', en: 'Iron (Fe)' }, aka: 'fe anemia hekur' },
   { id: 'ferritin', cat: 'vitamina', sample: 'blood', prep: 'morning', name: { sq: 'Feritina', en: 'Ferritin' }, aka: 'rezervat e hekurit anemia' },
   { id: 'magnesium', cat: 'vitamina', sample: 'blood', prep: 'morning', name: { sq: 'Magnezi', en: 'Magnesium' }, aka: 'mg' },

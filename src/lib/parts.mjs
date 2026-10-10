@@ -49,9 +49,9 @@ export function pageHero(ctx, { trail, eyebrow, title, lead, actions = '', aside
   };
 }
 
-export function sectionHead({ num, eyebrow, title, text = '', id = '', center = false, light = false }) {
+export function sectionHead({ eyebrow, title, text = '', id = '', center = false, light = false }) {
   return h`<div class="section-head${center ? ' center' : ''}${light ? ' light' : ''}">
-    <p class="eyebrow">${num && h`<span class="eyebrow-num">${esc(num)}</span>`}${esc(eyebrow)}</p>
+    <p class="eyebrow">${esc(eyebrow)}</p>
     <h2${id && ` id="${id}"`}>${accent(title)}</h2>
     ${text && h`<p class="section-text">${esc(text)}</p>`}
   </div>`;
@@ -74,7 +74,7 @@ export function serviceCard(ctx, s, i) {
 export function addButton(ctx, id, { compact = false } = {}) {
   const t = UI[ctx.lang];
   const name = testName(id, ctx.lang);
-  return h`<button class="add-btn js-only${compact ? ' add-btn-sm' : ''}" type="button" data-add="${id}" aria-pressed="false" aria-label="${esc(t.list_add_aria.replace('{name}', name))}">
+  return h`<button class="add-btn js-only${compact ? ' add-btn-sm' : ''}" type="button" data-add="${id}" aria-pressed="false" aria-label="${esc(`${t.list_add}: ${name}`)}">
     <span class="add-off">${icon('plus', { size: 16 })}${esc(t.list_add)}</span><span class="add-on">${icon('check', { size: 16 })}${esc(t.list_added)}</span>
   </button>`;
 }

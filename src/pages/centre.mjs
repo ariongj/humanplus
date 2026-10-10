@@ -147,7 +147,7 @@ export function aboutPage(ctx) {
   const story = h`<section class="section section-tight" aria-labelledby="h-story">
     <div class="wrap story-in">
       <div>
-        ${sectionHead({ num: '01', eyebrow: t.story_eyebrow, title: t.story_title, id: 'h-story' })}
+        ${sectionHead({ eyebrow: t.story_eyebrow, title: t.story_title, id: 'h-story' })}
         <p class="prose">${esc(t.story_1)}</p>
         <p class="prose">${esc(t.story_2)}</p>
       </div>
@@ -163,7 +163,7 @@ export function aboutPage(ctx) {
   </section>`;
   const team = h`<section class="section section-tint" aria-labelledby="h-team">
     <div class="wrap">
-      ${sectionHead({ num: '02', eyebrow: t.team_eyebrow, title: t.team_title, text: t.team_text, id: 'h-team' })}
+      ${sectionHead({ eyebrow: t.team_eyebrow, title: t.team_title, text: t.team_text, id: 'h-team' })}
       <ul class="card-grid three">${[
         ['stethoscope', t.team_1, t.team_1_d, 'brand'],
         ['microscope', t.team_2, t.team_2_d, 'sky'],
@@ -173,7 +173,7 @@ export function aboutPage(ctx) {
   </section>`;
   const values = h`<section class="section" aria-labelledby="h-values">
     <div class="wrap">
-      ${sectionHead({ num: '03', eyebrow: t.values_eyebrow, title: t.values_title, id: 'h-values' })}
+      ${sectionHead({ eyebrow: t.values_eyebrow, title: t.values_title, id: 'h-values' })}
       <ol class="values">${[
         [t.v1, t.v1_d],
         [t.v2, t.v2_d],

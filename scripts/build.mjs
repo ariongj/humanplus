@@ -13,7 +13,8 @@ import { SERVICES } from '../src/data/services.mjs';
 import { layout } from '../src/lib/layout.mjs';
 import { homePage } from '../src/pages/home.mjs';
 import { servicesPage, servicePage } from '../src/pages/services.mjs';
-import { testsPage, panelsPage, prepPage } from '../src/pages/lab.mjs';
+import { panelsPage, prepPage } from '../src/pages/lab.mjs';
+import { testsPage } from '../src/pages/catalogue.mjs';
 import { bookingPage } from '../src/pages/booking.mjs';
 import { aboutPage, contactPage, faqPage, notFoundPage } from '../src/pages/centre.mjs';
 
@@ -32,13 +33,12 @@ const write = (rel, content) => {
   fs.writeFileSync(file, content);
 };
 const copyDir = (from, to) => {
+  fs.mkdirSync(to, { recursive: true });
   for (const e of fs.readdirSync(from, { withFileTypes: true })) {
     const a = path.join(from, e.name);
     const b = path.join(to, e.name);
-    if (e.isDirectory()) {
-      fs.mkdirSync(b, { recursive: true });
-      copyDir(a, b);
-    } else fs.copyFileSync(a, b);
+    if (e.isDirectory()) copyDir(a, b);
+    else fs.copyFileSync(a, b);
   }
 };
 
@@ -130,7 +130,9 @@ for (const e of fs.readdirSync(DIST)) fs.rmSync(path.join(DIST, e), { recursive:
 copyDir(path.join(ROOT, 'src/assets'), path.join(DIST, 'assets'));
 copyDir(path.join(ROOT, 'src/static'), DIST);
 // The stylesheet refers to fonts relatively ("fonts/…"), so it works under any base path.
-const version = crypto.createHash('sha1').update(read('src/assets/site.css') + read('src/assets/site.js')).digest('hex').slice(0, 8);
+const version = crypto.createHash('sha1').update(['src/assets/site.css', 'src/assets/site.js', 'src/assets/catalogue.js', 'src/data/catalogue.json'].map(read).join('')).digest('hex').slice(0, 8);
+// The full lab catalogue, loaded by assets/catalogue.js on /analizat/.
+fs.copyFileSync(path.join(ROOT, 'src/data/catalogue.json'), path.join(DIST, 'assets/catalogue.json'));
 
 let count = 0;
 for (const lang of LANGS) {
@@ -177,8 +179,8 @@ write(
       start_url: BASE,
       scope: BASE,
       display: 'standalone',
-      background_color: '#f6f5f0',
-      theme_color: '#0b5f64',
+      background_color: '#f3f6f9',
+      theme_color: '#0b2a45',
       icons: [
         { src: `${BASE}icon-192.png`, sizes: '192x192', type: 'image/png' },
         { src: `${BASE}icon-512.png`, sizes: '512x512', type: 'image/png' },
@@ -234,7 +236,7 @@ ErrorDocument 404 ${BASE}404.html
   <FilesMatch "\\.(css|js|woff2)$">
     Header set Cache-Control "public, max-age=31536000, immutable"
   </FilesMatch>
-  <FilesMatch "\\.(png|svg|webmanifest|xml|txt)$">
+  <FilesMatch "\\.(png|svg|webmanifest|xml|txt|json)$">
     Header set Cache-Control "public, max-age=604800"
   </FilesMatch>
   <FilesMatch "\\.html$">
