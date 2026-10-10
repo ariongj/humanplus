@@ -291,7 +291,6 @@ main:focus { outline: none; }
 
 /* ---------- hero ---------- */
 .hero { position: relative; padding: 32px 0 96px; background: var(--sky-band); color: var(--ink); overflow: hidden; }
-.hero::before, .page-hero::after { content: ''; position: absolute; inset: 0; background: var(--pattern-green); opacity: 0.05; pointer-events: none; }
 .hero-in { position: relative; display: grid; gap: 40px; align-items: center; }
 .hero h1 { font-size: clamp(2.2rem, 1.3rem + 4vw, 3.9rem); margin-top: 16px; letter-spacing: -0.02em; font-weight: 650; color: var(--ink); }
 .hero .accent, .page-hero .accent { color: var(--green-lg); }
@@ -334,6 +333,42 @@ main:focus { outline: none; }
 .stats strong { font-size: clamp(1.6rem, 1.2rem + 1.4vw, 2.2rem); font-weight: 700; letter-spacing: -0.03em; color: var(--ink); font-variant-numeric: tabular-nums; }
 .stats span { color: var(--muted); font-weight: 600; font-size: 0.9rem; }
 
+/* animated laboratory equipment behind the bands (src/lib/labbg.mjs) */
+.lab-bg { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
+.lb { position: absolute; left: var(--x); top: var(--y); width: var(--s); transform: translate(-50%, 0) rotate(var(--r)); color: var(--green); opacity: 0.5; }
+.lb svg { display: block; width: 100%; height: auto; overflow: visible; }
+.lb-b { color: var(--blue); opacity: 0.34; }
+.lb-w { color: #fff; opacity: 0.5; }
+@media (prefers-reduced-motion: no-preference) {
+  .lb-float { animation: lb-float var(--t) ease-in-out var(--d) infinite; }
+  .lb-sway { animation: lb-sway var(--t) ease-in-out var(--d) infinite; }
+  .lb-pulse { animation: lb-pulse calc(var(--t) * 0.5) ease-in-out var(--d) infinite; }
+  .lb-spin svg { animation: lb-spin calc(var(--t) * 4) linear infinite; }
+  .lb .lb-liquid { animation: lb-wave 3.2s ease-in-out infinite; }
+  .lb .lb-bubble { animation: lb-rise 2.8s ease-in infinite; }
+  .lb .lb-bubble.lb-b2 { animation-delay: -1s; }
+  .lb .lb-bubble.lb-b3 { animation-delay: -1.9s; }
+  .lb .lb-drop { animation: lb-drip 2.6s ease-in infinite; transform-box: fill-box; transform-origin: center; }
+  .lb .lb-colony { animation: lb-grow 4s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+  .lb .lb-colony.lb-b2 { animation-delay: -1.3s; }
+  .lb .lb-colony.lb-b3 { animation-delay: -2.6s; }
+  .lb .lb-ecg { stroke-dasharray: 100; animation: lb-draw 3.6s linear infinite; }
+}
+@keyframes lb-float { 0%, 100% { transform: translate(-50%, 0) rotate(var(--r)); } 50% { transform: translate(-50%, -12px) rotate(calc(var(--r) + 4deg)); } }
+@keyframes lb-sway { 0%, 100% { transform: translate(-50%, 0) rotate(calc(var(--r) - 6deg)); } 50% { transform: translate(-50%, -6px) rotate(calc(var(--r) + 6deg)); } }
+@keyframes lb-pulse { 0%, 100% { transform: translate(-50%, 0) scale(1); } 50% { transform: translate(-50%, 0) scale(1.15); } }
+@keyframes lb-spin { to { transform: rotate(360deg); } }
+@keyframes lb-wave { 0%, 100% { transform: translateX(0); } 50% { transform: translate(-8px, 1.5px); } }
+@keyframes lb-rise { 0% { transform: translateY(0); opacity: 0; } 15% { opacity: 1; } 100% { transform: translateY(-18px); opacity: 0; } }
+@keyframes lb-drip { 0% { transform: translateY(-6px) scale(0.3); opacity: 0; } 35% { transform: translateY(-2px) scale(1); opacity: 1; } 75% { transform: translateY(7px); opacity: 1; } 100% { transform: translateY(12px); opacity: 0; } }
+@keyframes lb-grow { 0%, 100% { transform: scale(0.7); } 50% { transform: scale(1.15); } }
+@keyframes lb-draw { 0% { stroke-dashoffset: 100; } 60% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: -100; } }
+@media (max-width: 879px) {
+  .lb-hide-sm { display: none; }
+  .lb { width: calc(var(--s) * 0.72); opacity: 0.36; }
+  .lb-b { opacity: 0.26; }
+}
+
 /* quick actions */
 .quick { position: relative; z-index: 2; margin-top: -60px; padding-bottom: 8px; }
 .quick-grid { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--r-xl); overflow: hidden; box-shadow: var(--shadow-lg); }
@@ -355,7 +390,6 @@ main:focus { outline: none; }
 .section-brand .eyebrow::before { background: var(--ink); }
 .section-brand .accent { color: var(--deep); }
 .section-brand .section-text { color: var(--ink); }
-.section-brand::after { content: ''; position: absolute; inset: 0; background: var(--pattern); opacity: 0.1; pointer-events: none; }
 .section-head { max-width: 680px; }
 .section-head h2 { font-size: clamp(1.85rem, 1.25rem + 2.4vw, 3rem); margin-top: 12px; }
 .section-text { margin-top: 14px; color: var(--ink-2); font-size: 1.0625rem; }

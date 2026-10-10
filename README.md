@@ -133,7 +133,12 @@ when the full brand book is at hand.
 
 - **Logo** – the green icon with the black wordmark on white (header); green icon with a white wordmark on the
   deep-green footer. Vector paths in `src/lib/logo-paths.mjs`; favicon and app icons in `src/static/`.
-- **Pattern** – the H mark repeated on a 64 px grid: faint green on the bluish-white bands (`--pattern-green`), faint white on the green bands (`--pattern`).
+- **Pattern** – the H mark repeated on a 64 px grid, faint white on the call-to-action band (`--pattern`).
+- **Lab animation** – the home hero, every inner-page header and the green laboratory band show animated laboratory
+  equipment in the background (`src/lib/labbg.mjs`): test tubes with moving liquid and rising bubbles, a flask, a
+  dripping pipette, a microscope, an ECG line that draws itself, a petri dish with growing colonies, DNA, a syringe and
+  a molecule – line icons in green and Calm Blue, CSS-only, decorative (hidden from screen readers) and still for
+  visitors who prefer reduced motion. Positions and sizes are the `LAYOUTS` lists in that file.
 - **Font** – the brand font is **Pangram** (7 weights, ExtraLight to Black). It is a licensed typeface, so it is not in
   the repository. Until its web-font files are added, the site uses **Outfit** (open licence) – a close geometric
   stand-in. To switch: put the licensed `.woff2` files (e.g. `Pangram-Regular.woff2`, `Pangram-Bold.woff2` …) in
@@ -163,6 +168,7 @@ when the full brand book is at hand.
 | `src/pages/*.mjs` | one file per page group, with that page's texts at the top |
 | `src/lib/layout.mjs` | head tags, top bar, header, footer, phone bar, list drawer |
 | `src/lib/parts.mjs` | shared blocks (cards, test rows, search, CTA band, FAQ) |
+| `src/lib/labbg.mjs` | the animated laboratory equipment behind the page bands |
 | `src/lib/icons.mjs`, `src/lib/logo-paths.mjs` | icons (Lucide, Simple Icons) and the Human+ logo as vector paths |
 | `src/assets/site.css` | the whole design; colours are the variables at the top |
 | `src/assets/site.js` | browser behaviour: status, menus, list, search, booking, contact form |

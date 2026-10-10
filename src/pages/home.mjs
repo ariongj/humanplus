@@ -6,6 +6,7 @@ import { FAQ } from '../data/faq.mjs';
 import { UI } from '../data/ui.mjs';
 import { esc, h, icon, brand, dict, L, accent } from '../lib/html.mjs';
 import { hoursTable, status } from '../lib/layout.mjs';
+import { labBackground } from '../lib/labbg.mjs';
 import { sectionHead, serviceCard, panelCard, testSearch, ctaBand, faqList, shortName, addButton } from '../lib/parts.mjs';
 
 const T = dict('home', {
@@ -136,6 +137,7 @@ export function homePage(ctx) {
   const openDays = Object.values(SITE.hours).filter(Boolean).length;
 
   const hero = h`<section class="hero">
+    ${labBackground('hero')}
     <div class="wrap hero-in">
       <div class="hero-text">
         <p class="eyebrow">${esc(t.eyebrow)}</p>
@@ -197,6 +199,7 @@ export function homePage(ctx) {
   </section>`;
 
   const lab = h`<section class="section section-brand" aria-labelledby="h-lab">
+    ${labBackground('band')}
     <div class="wrap lab-in">
       <div class="lab-text">
         ${sectionHead({ eyebrow: t.lab_eyebrow, title: t.lab_title, text: t.lab_text, id: 'h-lab' })}

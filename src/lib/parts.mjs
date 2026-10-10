@@ -3,6 +3,7 @@ import { SITE } from '../data/site.mjs';
 import { TESTS, PREP, SAMPLES } from '../data/tests.mjs';
 import { UI } from '../data/ui.mjs';
 import { esc, h, icon, brand, L, accent, fold } from './html.mjs';
+import { labBackground } from './labbg.mjs';
 
 export const TEST_BY_ID = new Map(TESTS.map((x) => [x.id, x]));
 export const testName = (id, lang) => L(TEST_BY_ID.get(id)?.name, lang);
@@ -35,6 +36,7 @@ export function pageHero(ctx, { trail, eyebrow, title, lead, actions = '', aside
   return {
     jsonld: c.jsonld,
     html: h`<section class="page-hero ${cls}">
+      ${labBackground('page')}
       <div class="wrap page-hero-in">
         <div class="page-hero-text">
           ${c.html}
