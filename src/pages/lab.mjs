@@ -80,7 +80,7 @@ export function panelsPage(ctx) {
   const { lang } = ctx;
   const t = T[lang];
   const u = UI[lang];
-  const hero = pageHero(ctx, { trail: [[u.nav_panels, 'paketat']], eyebrow: t.panels_eyebrow, title: t.panels_h1, lead: t.panels_lead });
+  const hero = pageHero(ctx, { trail: [[u.nav_panels, 'paketat']], eyebrow: t.panels_eyebrow, title: t.panels_h1, lead: t.panels_lead, photo: 'lab' });
   const body = h`<section class="section section-tight">
     <div class="wrap"><h2 class="sr-only">${esc(t.panels_eyebrow)}</h2><div class="panel-grid panel-grid-full">${PANELS.map((p) => panelCard(ctx, p, { full: true }))}</div></div>
   </section>`;
@@ -99,7 +99,7 @@ export function prepPage(ctx) {
   const { lang } = ctx;
   const t = T[lang];
   const u = UI[lang];
-  const hero = pageHero(ctx, { trail: [[u.nav_prep, 'pergatitja']], eyebrow: t.prep_eyebrow, title: t.prep_h1, lead: t.prep_lead });
+  const hero = pageHero(ctx, { trail: [[u.nav_prep, 'pergatitja']], eyebrow: t.prep_eyebrow, title: t.prep_h1, lead: t.prep_lead, photo: 'sampling' });
   const general = h`<section class="section section-tight" aria-labelledby="h-general">
     <div class="wrap">
       ${sectionHead({ eyebrow: t.prep_eyebrow, title: t.general, id: 'h-general' })}

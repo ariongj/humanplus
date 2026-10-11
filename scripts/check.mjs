@@ -1,5 +1,6 @@
 // Checks the built site in dist/ (run after the build): internal links and #anchors, one <h1>, title, description,
-// canonical, hreflang pairs, html lang, unique ids, valid JSON-LD, sitemap entries and leftover placeholder text.
+// canonical, hreflang pairs, html lang, unique ids, valid JSON-LD, image alt and size, sitemap entries and leftover
+// placeholder text.
 // No dependencies: `node scripts/check.mjs`. Exits with 1 when something is wrong.
 import fs from 'node:fs';
 import path from 'node:path';
@@ -70,6 +71,11 @@ for (const f of html) {
     const visible = s.replace(/<script[\s\S]*?<\/script>/g, '').replace(/<[^>]+>/g, ' ');
     if (visible.includes(bad)) err(f, `visible text contains "${bad}"`);
   }
+  // images: every <img> has an alt (empty only when the picture is decorative) and its width / height
+  for (const m of s.matchAll(/<img\b[^>]*>/g)) {
+    if (!/\salt="/.test(m[0])) err(f, `image without alt: ${m[0].slice(0, 80)}`);
+    if (!/\swidth="\d+"/.test(m[0]) || !/\sheight="\d+"/.test(m[0])) err(f, `image without width/height: ${m[0].slice(0, 80)}`);
+  }
   // links and assets
   for (const m of s.matchAll(/\s(?:href|src)="([^"]+)"/g)) {
     const url = m[1].replace(/&amp;/g, '&');
@@ -97,4 +103,4 @@ if (errors.length) {
   console.error(`✗ ${errors.length} problem(s):\n  ${errors.join('\n  ')}`);
   process.exit(1);
 }
-console.log(`✓ ${html.length} HTML files, ${locs.length} sitemap URLs — links, anchors, titles, descriptions, hreflang, ids and JSON-LD OK`);
+console.log(`✓ ${html.length} HTML files, ${locs.length} sitemap URLs — links, anchors, images, titles, descriptions, hreflang, ids and JSON-LD OK`);

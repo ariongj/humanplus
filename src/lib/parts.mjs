@@ -2,8 +2,9 @@
 import { SITE } from '../data/site.mjs';
 import { TESTS, PREP, SAMPLES } from '../data/tests.mjs';
 import { UI } from '../data/ui.mjs';
-import { esc, h, icon, brand, L, accent, fold } from './html.mjs';
+import { esc, h, icon, brand, L, accent, fold, dict } from './html.mjs';
 import { labBackground } from './labbg.mjs';
+import { photo } from './photo.mjs';
 
 export const TEST_BY_ID = new Map(TESTS.map((x) => [x.id, x]));
 export const testName = (id, lang) => L(TEST_BY_ID.get(id)?.name, lang);
@@ -31,11 +32,14 @@ export function crumbs(ctx, trail) {
 }
 
 /** Inner-page hero: breadcrumbs, eyebrow, H1 (with *accent*), lead and optional actions / aside. */
-export function pageHero(ctx, { trail, eyebrow, title, lead, actions = '', aside = '', cls = '' }) {
+/** `photo` = a photo slot (or [slot, fallback]) shown beside the title on wide screens. */
+export function pageHero(ctx, { trail, eyebrow, title, lead, actions = '', aside = '', cls = '', photo: slot = '' }) {
+  const [name, fallback] = Array.isArray(slot) ? slot : [slot];
+  const pic = name && photo(ctx, name, { fallback, eager: true, sizes: '(min-width: 960px) 34vw, 100vw' });
   const c = crumbs(ctx, trail);
   return {
     jsonld: c.jsonld,
-    html: h`<section class="page-hero ${cls}">
+    html: h`<section class="page-hero${pic ? ' has-photo' : ''} ${cls}">
       ${labBackground('page')}
       <div class="wrap page-hero-in">
         <div class="page-hero-text">
@@ -46,6 +50,7 @@ export function pageHero(ctx, { trail, eyebrow, title, lead, actions = '', aside
           ${actions && h`<div class="actions">${actions}</div>`}
         </div>
         ${aside && h`<div class="page-hero-aside">${aside}</div>`}
+        ${pic && h`<div class="page-hero-photo">${pic}</div>`}
       </div>
     </section>`,
   };
@@ -165,4 +170,48 @@ export function faqList(items, lang) {
   return h`<div class="faq">${items.map(
     (f) => h`<details class="faq-item reveal" id="faq-${f.id}"><summary><span>${esc(L(f.q, lang))}</span>${icon('chevron-down', { size: 20 })}</summary><div class="faq-a"><p>${esc(L(f.a, lang))}</p></div></details>`,
   )}</div>`;
+}
+
+const G = dict('gallery', {
+  sq: {
+    lab: 'Laboratori',
+    lab_d: 'Biokimi, hematologji dhe mikrobiologji — këtu në qendër.',
+    sample: 'Marrja e mostrave',
+    sample_d: 'Gjaku dhe mostrat e tjera merren nga stafi ynë.',
+    ped: 'Pediatria',
+    ped_d: 'Pediatri dhe laborator në të njëjtin vend.',
+    spec: 'Specialistët',
+    spec_d: 'Gjinekologji, urologji, endokrinologji, gastroenterologji, dermatologji.',
+    rec: 'Recepsioni',
+    rec_d: 'Ju orienton dhe e konfirmon terminin.',
+  },
+  en: {
+    lab: 'Laboratory',
+    lab_d: 'Biochemistry, haematology and microbiology — here at the centre.',
+    sample: 'Sample collection',
+    sample_d: 'Blood and other samples are taken by our staff.',
+    ped: 'Paediatrics',
+    ped_d: 'Paediatrics and laboratory in one place.',
+    spec: 'Specialists',
+    spec_d: 'Gynaecology, urology, endocrinology, gastroenterology, dermatology.',
+    rec: 'Reception',
+    rec_d: 'Guides you and confirms your appointment.',
+  },
+});
+
+/** "Inside the centre": the lab, sample room, paediatrics, specialists and reception — photos or scenes. */
+export function centreGallery(ctx) {
+  const g = G[ctx.lang];
+  return h`<ul class="gallery">${[
+    ['lab', 'microscope', g.lab, g.lab_d, 'analizat'],
+    ['sampling', 'syringe', g.sample, g.sample_d, 'pergatitja'],
+    ['pediatrics', 'baby', g.ped, g.ped_d, 'sherbim/pediatri'],
+    ['consult', 'stethoscope', g.spec, g.spec_d, 'sherbimet'],
+    ['reception', 'calendar-check', g.rec, g.rec_d, 'rezervo'],
+  ].map(
+    ([slot, ic, title, d, path], i) => h`<li class="gallery-item reveal${i === 0 ? ' gallery-lead' : ''}"><a href="${esc(ctx.url(path))}">
+      ${photo(ctx, slot, { decorative: true, sizes: i === 0 ? '(min-width: 960px) 40vw, 100vw' : '(min-width: 960px) 28vw, (min-width: 560px) 50vw, 100vw' })}
+      <span class="gallery-cap"><span class="tile tile-brand">${icon(ic, { size: 20 })}</span><span class="gallery-text"><strong>${esc(title)}</strong><small>${esc(d)}</small></span>${icon('arrow-up-right', { size: 18, cls: 'gallery-arrow' })}</span>
+    </a></li>`,
+  )}</ul>`;
 }

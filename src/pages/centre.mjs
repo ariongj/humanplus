@@ -4,7 +4,8 @@ import { SERVICES } from '../data/services.mjs';
 import { FAQ } from '../data/faq.mjs';
 import { UI } from '../data/ui.mjs';
 import { esc, h, icon, brand, dict, L } from '../lib/html.mjs';
-import { pageHero, sectionHead, ctaBand, faqList } from '../lib/parts.mjs';
+import { pageHero, sectionHead, ctaBand, faqList, centreGallery } from '../lib/parts.mjs';
+import { photo } from '../lib/photo.mjs';
 import { hoursTable, status, logoMark } from '../lib/layout.mjs';
 
 const T = dict('centre', {
@@ -30,6 +31,9 @@ const T = dict('centre', {
     team_2_d: 'Mostra të marra me kujdes dhe analiza të bëra me përpikëri.',
     team_3: 'Infermierë',
     team_3_d: 'Pranë jush dhe fëmijës suaj gjatë gjithë vizitës.',
+    inside_eyebrow: 'Qendra',
+    inside_title: 'Një ndërtesë, *gjithë rruga* e pacientit.',
+    inside_text: `Recepsioni, marrja e mostrave, laboratori, pediatria dhe ordinancat e specialistëve — në ${SITE.address.street}.`,
     values_eyebrow: 'Si punojmë',
     values_title: 'Katër gjëra që *nuk* ndryshojnë.',
     v1: 'Saktësi',
@@ -94,6 +98,9 @@ const T = dict('centre', {
     team_2_d: 'Samples taken with care and tests done with precision.',
     team_3: 'Nurses',
     team_3_d: 'Beside you and your child throughout the visit.',
+    inside_eyebrow: 'The centre',
+    inside_title: 'One building, *the whole* patient journey.',
+    inside_text: `Reception, sample collection, the laboratory, paediatrics and the specialists’ rooms — at ${SITE.address.street}.`,
     values_eyebrow: 'How we work',
     values_title: 'Four things that *do not* change.',
     v1: 'Accuracy',
@@ -143,7 +150,7 @@ export function aboutPage(ctx) {
   const t = T[lang];
   const u = UI[lang];
   const openDays = Object.values(SITE.hours).filter(Boolean).length;
-  const hero = pageHero(ctx, { trail: [[u.nav_about, 'rreth-nesh']], eyebrow: t.about_eyebrow, title: t.about_h1, lead: t.about_lead });
+  const hero = pageHero(ctx, { trail: [[u.nav_about, 'rreth-nesh']], eyebrow: t.about_eyebrow, title: t.about_h1, lead: t.about_lead, photo: 'reception' });
   const story = h`<section class="section section-tight" aria-labelledby="h-story">
     <div class="wrap story-in">
       <div>
@@ -164,14 +171,20 @@ export function aboutPage(ctx) {
   const team = h`<section class="section section-tint" aria-labelledby="h-team">
     <div class="wrap">
       ${sectionHead({ eyebrow: t.team_eyebrow, title: t.team_title, text: t.team_text, id: 'h-team' })}
-      <ul class="card-grid three">${[
-        ['stethoscope', t.team_1, t.team_1_d, 'brand'],
-        ['microscope', t.team_2, t.team_2_d, 'sky'],
-        ['hand-heart', t.team_3, t.team_3_d, 'rose'],
-      ].map(([ic, ti, d, tone]) => h`<li class="info-card reveal"><span class="tile tile-${tone}">${icon(ic, { size: 22 })}</span><h3>${esc(ti)}</h3><p>${esc(d)}</p></li>`)}</ul>
+      <ul class="team-grid">${[
+        ['team-doctor', t.team_1, t.team_1_d],
+        ['team-lab', t.team_2, t.team_2_d],
+        ['team-nurse', t.team_3, t.team_3_d],
+      ].map(([slot, ti, d]) => h`<li class="team-card reveal">${photo(ctx, slot, { cls: 'team-photo', sizes: '(min-width: 960px) 30vw, (min-width: 560px) 50vw, 100vw' })}<div class="team-text"><h3>${esc(ti)}</h3><p>${esc(d)}</p></div></li>`)}</ul>
     </div>
   </section>`;
-  const values = h`<section class="section" aria-labelledby="h-values">
+  const inside = h`<section class="section" aria-labelledby="h-inside">
+    <div class="wrap">
+      ${sectionHead({ eyebrow: t.inside_eyebrow, title: t.inside_title, text: t.inside_text, id: 'h-inside' })}
+      ${centreGallery(ctx)}
+    </div>
+  </section>`;
+  const values = h`<section class="section section-tint" aria-labelledby="h-values">
     <div class="wrap">
       ${sectionHead({ eyebrow: t.values_eyebrow, title: t.values_title, id: 'h-values' })}
       <ol class="values">${[
@@ -187,7 +200,7 @@ export function aboutPage(ctx) {
     title: `${t.about_title}`,
     description: t.about_desc,
     jsonld: [hero.jsonld],
-    body: hero.html + story + team + values + ctaBand(ctx, { title: t.about_cta_title, text: t.about_cta_text }),
+    body: hero.html + story + team + inside + values + ctaBand(ctx, { title: t.about_cta_title, text: t.about_cta_text }),
   };
 }
 
@@ -195,7 +208,7 @@ export function contactPage(ctx) {
   const { lang } = ctx;
   const t = T[lang];
   const u = UI[lang];
-  const hero = pageHero(ctx, { trail: [[u.nav_contact, 'kontakt']], eyebrow: t.contact_eyebrow, title: t.contact_h1, lead: t.contact_lead });
+  const hero = pageHero(ctx, { trail: [[u.nav_contact, 'kontakt']], eyebrow: t.contact_eyebrow, title: t.contact_h1, lead: t.contact_lead, photo: 'reception' });
   const cards = h`<section class="section section-tight">
     <div class="wrap contact-grid">
       <article class="info-card">

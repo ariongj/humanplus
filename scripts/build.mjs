@@ -17,6 +17,7 @@ import { panelsPage, prepPage } from '../src/pages/lab.mjs';
 import { testsPage } from '../src/pages/catalogue.mjs';
 import { bookingPage } from '../src/pages/booking.mjs';
 import { aboutPage, contactPage, faqPage, notFoundPage } from '../src/pages/centre.mjs';
+import { sceneFiles } from '../src/lib/photo.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DIST = path.join(ROOT, 'dist');
@@ -173,6 +174,9 @@ for (const lang of LANGS) {
   ctx.page = page;
   write(lang === 'en' ? 'en/404.html' : '404.html', layout(ctx, page.body));
 }
+// Illustrated scenes used by the pages (stand-ins until the clinic's photos are in src/assets/photos/).
+const scenes = sceneFiles();
+for (const [name, svg] of scenes) write(`assets/scenes/${name}`, svg);
 
 /* ---- sitemap, robots, manifest, llms.txt ---- */
 const today = new Date().toISOString().slice(0, 10);
@@ -260,7 +264,7 @@ ErrorDocument 404 ${BASE}404.html
   <FilesMatch "\\.(css|js|woff2)$">
     Header set Cache-Control "public, max-age=31536000, immutable"
   </FilesMatch>
-  <FilesMatch "\\.(png|svg|webmanifest|xml|txt|json)$">
+  <FilesMatch "\\.(png|jpe?g|webp|avif|svg|webmanifest|xml|txt|json)$">
     Header set Cache-Control "public, max-age=604800"
   </FilesMatch>
   <FilesMatch "\\.html$">
@@ -271,4 +275,4 @@ ErrorDocument 404 ${BASE}404.html
   );
 }
 
-console.log(`Built ${count} pages + 2 × 404 into dist/ · base ${BASE} · ${ORIGIN}${NOINDEX ? ' · noindex' : ''}${PRODUCTION ? ' · .htaccess' : ''}`);
+console.log(`Built ${count} pages + 2 × 404 + ${scenes.length} scenes into dist/ · base ${BASE} · ${ORIGIN}${NOINDEX ? ' · noindex' : ''}${PRODUCTION ? ' · .htaccess' : ''}`);

@@ -26,6 +26,9 @@ the repo.
   text on white uses `--brand` / `--green-lg`; font Pangram (files in `src/assets/fonts/pangram/`, Outfit until then);
   8 px buttons. README → Brand.
   Behaviour: `src/assets/site.js` (vanilla; shares helpers with catalogue.js on `window.HP`).
+- Photos: slots in `src/data/photos.mjs` (alt texts). The clinic's photo goes in `src/assets/photos/<slot>.jpg|webp`
+  (optional `<slot>-sm`); without it the slot shows an illustrated scene from `src/lib/scenes.mjs` (written to
+  `assets/scenes/`). README → Photos.
 
 ## Rules (from the owner's past projects)
 
@@ -35,6 +38,7 @@ the repo.
   guarantees, reply-time promises or equipment. Ask, or answer "ask us". List anything assumed in README →
   *What is placeholder*.
 - **No stock photos.** Use the logo, illustration and type; real photos only from the clinic, with permission.
+  The site must still read as a clinic (doctors, lab, sample room) — the illustrated scenes do that until photos arrive.
 - **Quality bar: a real-client demo.** Polished and premium, no lorem ipsum, hover / empty / error states, responsive
   down to 320 px. Check desktop 1440×900 and phone 390×844, at least one screen in Albanian.
 - **Accessibility:** axe 0 violations, contrast ≥ 4.5:1, 44 px touch targets, 16 px form fields, skip link,

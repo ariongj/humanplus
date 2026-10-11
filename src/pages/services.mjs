@@ -2,6 +2,7 @@ import { SITE } from '../data/site.mjs';
 import { SERVICES } from '../data/services.mjs';
 import { UI } from '../data/ui.mjs';
 import { esc, h, icon, brand, dict, L } from '../lib/html.mjs';
+import { SERVICE_PHOTOS } from '../data/photos.mjs';
 import { pageHero, sectionHead, serviceCard, testRow, ctaBand, TEST_BY_ID } from '../lib/parts.mjs';
 
 const T = dict('services', {
@@ -57,7 +58,7 @@ const isLab = (s) => s.slug.startsWith('laboratori');
 export function servicesPage(ctx) {
   const { lang } = ctx;
   const t = T[lang];
-  const hero = pageHero(ctx, { trail: [[UI[lang].nav_services, 'sherbimet']], eyebrow: t.eyebrow, title: t.h1, lead: t.lead });
+  const hero = pageHero(ctx, { trail: [[UI[lang].nav_services, 'sherbimet']], eyebrow: t.eyebrow, title: t.h1, lead: t.lead, photo: 'consult' });
   const group = (title, list, offset) => h`<section class="section section-tight" aria-label="${esc(title)}">
     <div class="wrap">
       <h2 class="group-title">${esc(title)}</h2>
@@ -94,6 +95,7 @@ export function servicePage(ctx, s) {
     eyebrow: isLab(s) ? T[lang].lab_group : u.nav_services,
     title: name,
     lead: L(s.intro, lang),
+    photo: [`sherbim-${s.slug}`, SERVICE_PHOTOS[s.slug]],
   });
   const items = h`<section class="section section-tight" aria-labelledby="h-what">
     <div class="wrap svc-layout">

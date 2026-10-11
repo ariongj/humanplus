@@ -9,7 +9,10 @@ check-up panels, preparation guide and online booking follow the lab sites the c
 Built on the **Human+ brand book** (v1.0, 19.01.2024) in the light look of the original humanplusks.com: **green, white
 and a bluish white** – bluish-white page bands with a faint H-mark pattern, brand-green laboratory and call-to-action
 bands, a deep-green footer, the green icon, and the brand font Pangram (see [Brand](#brand)). The layout is institutional – clear bands, white cards with thin borders, square-cornered
-buttons. The lab parts borrow
+buttons – and it looks like a clinic, not a shop: doctors in white coats, the laboratory, the sample room, paediatrics,
+a specialist's room and the reception are on the home page, the about page and every department page. Until the clinic
+sends its own photos these are **illustrated scenes** drawn for the site in the brand colours (no stock photos, no real
+people); each one is a photo slot that switches to the real photo as soon as the file is added (see [Photos](#photos)). The lab parts borrow
 the online-lab habits the owner likes from Beo-lab – a test-tube "lab list" with a counter in the header, "Shto në listë"
 on every test, a running list bar while browsing the catalogue, and the lab's diagnostic areas as entry points – without
 using Beo-lab's name, logo or colours (they are registered trademarks). **No framework and no dependencies:** a small Node script writes plain HTML, one CSS file and
@@ -25,7 +28,7 @@ one JavaScript file into `dist/`, which you can upload to any web host.
 | Check-up panels | 8 |
 | Accessibility | axe-core: **0 violations** on all pages, desktop 1440 and phone 390 |
 | Layout | no horizontal scroll at 320, 390 and 1440 px; 44 px touch targets; 16 px form fields |
-| Weight | home page ≈ 27 kB HTML + 11 kB CSS + 8 kB JS (gzip) + one font (27 kB); the catalogue data (113 kB gzip) loads only on `/analizat/` |
+| Weight | home page ≈ 29 kB HTML + 14 kB CSS + 8 kB JS (gzip) + one font (27 kB) + 6 illustrated scenes (19 kB, cached across pages); the catalogue data (113 kB gzip) loads only on `/analizat/` |
 
 ## What is on the site
 
@@ -34,14 +37,14 @@ All pages exist in Albanian (`/…`) and English (`/en/…`) with the **same add
 
 | Page | Address | What it does |
 | --- | --- | --- |
-| Ballina / Home | `/` | hero with test search, live opening status, quick actions, services, lab, check-ups, paediatrics, how it works, hours, FAQ |
+| Ballina / Home | `/` | hero with a doctor and the lab, test search and live opening status; quick actions, services, inside the centre (lab, sample room, paediatrics, specialists, reception), lab, check-ups, paediatrics, how it works, hours, FAQ |
 | Shërbimet / Services | `/sherbimet/` | the ten departments, specialists and laboratory |
-| Department pages | `/sherbim/<slug>/` | what each department offers, its most requested tests (add to list), book / WhatsApp / call |
+| Department pages | `/sherbim/<slug>/` | a picture of that department, what it offers, its most requested tests (add to list), book / WhatsApp / call |
 | Analizat / Lab tests | `/analizat/` | the full catalogue: search (Albanian, Serbian, abbreviations), 20 categories, details (description, sample, preparation, components), "Add" to *My list* |
 | Paketat / Check-ups | `/paketat/` | 8 panels (basic, children, thyroid, women, men 40+, vitamins, heart, allergy) — add a whole panel or ask the price |
 | Përgatitja / Preparation | `/pergatitja/` | fasting, morning tests, cycle-day hormones, PSA, urine, stool, swabs, children, samples from home |
 | Rezervo / Book | `/rezervo/` | booking request: service → day → time → details → WhatsApp, Viber or e-mail |
-| Rreth nesh / About | `/rreth-nesh/` | since 2011, BAKTOLAB, the team, how they work |
+| Rreth nesh / About | `/rreth-nesh/` | since 2011, BAKTOLAB, the team (specialists, lab technicians, nurses), inside the centre, how they work |
 | Kontakt / Contact | `/kontakt/` | address and map link, three phones, WhatsApp, Viber, e-mail, Facebook, hours, message form |
 | Pyetje / FAQ | `/pyetje/` | ten questions (FAQPage data for Google) |
 
@@ -146,6 +149,34 @@ when the full brand book is at hand.
 - The brand-book posters show the address **humanplus-ks.com**; the site and this README use **humanplusks.com** (the
   address of the previous site). Confirm which domain is current.
 
+## Photos
+
+The site is built to show the clinic's **own photos**: the doctors, the laboratory, the sample room, the reception and
+the building. Until they arrive, every photo place shows an **illustrated scene** of the centre (`src/lib/scenes.mjs`)
+– drawn for this site in the brand colours, with no real people and no stock photos – and screen readers hear it
+announced as an illustration.
+
+**To add a photo:** put the file in `src/assets/photos/` named after its slot and rebuild (`npm test`). It replaces the
+scene everywhere that slot is used, with its width and height, lazy loading and a cache-busting version.
+JPEG, WebP, PNG or AVIF, about 1600 px on the long side; optionally a phone copy named `<slot>-sm.<ext>`
+(about 800 px). Then describe the real photo in its `alt` text in `src/data/photos.mjs`.
+
+| Slot (file name) | Shown on | Scene until then |
+| --- | --- | --- |
+| `hero` | home page, large picture | a doctor with a stethoscope and a tablet, the lab behind the glass |
+| `lab` | home page small picture, *inside the centre*, check-ups page | a laboratory technician holding up a sample tube |
+| `analyzer` | lab-tests page, biochemistry lab page | the analyser, centrifuge and sample rack |
+| `sampling` | *inside the centre*, preparation page | the sample room: blood-draw chair and a nurse labelling a tube |
+| `pediatrics` | home page paediatrics, *inside the centre*, paediatrics page | a paediatrician listening to a child with a teddy bear |
+| `consult` | *inside the centre*, services page | a specialist at the desk with a patient |
+| `reception` | *inside the centre*, about and contact pages | the reception with the Human+ logo |
+| `team-doctor`, `team-lab`, `team-nurse` | about page, the team | portraits of the three roles |
+| `sherbim-<slug>` (e.g. `sherbim-urologji`) | that department's page | the specialist's room, drawn with a different doctor per department |
+
+Use only the clinic's own photos, with the permission of everyone who can be recognised in them (patients only with
+written consent; avoid screens and papers with patient data). Good first set: the building and entrance, reception,
+the sample room, the lab with its analysers, each doctor in their room, the team together.
+
 ## Languages
 
 - **Shqip** is the main language (`/`), **English** lives under `/en/` with the same page names.
@@ -169,6 +200,9 @@ when the full brand book is at hand.
 | `src/lib/layout.mjs` | head tags, top bar, header, footer, phone bar, list drawer |
 | `src/lib/parts.mjs` | shared blocks (cards, test rows, search, CTA band, FAQ) |
 | `src/lib/labbg.mjs` | the animated laboratory equipment behind the page bands |
+| `src/data/photos.mjs` | photo slots: which scene stands in for each photo and the alt texts (see [Photos](#photos)) |
+| `src/lib/photo.mjs`, `src/lib/scenes.mjs` | a slot's real photo when it is in `src/assets/photos/`, otherwise the illustrated scene (written to `assets/scenes/`) |
+| `src/assets/photos/` | the clinic's photos, named after their slots (create the folder when the first photo arrives) |
 | `src/lib/icons.mjs`, `src/lib/logo-paths.mjs` | icons (Lucide, Simple Icons) and the Human+ logo as vector paths |
 | `src/assets/site.css` | the whole design; colours are the variables at the top |
 | `src/assets/site.js` | browser behaviour: status, menus, list, search, booking, contact form |
@@ -177,7 +211,7 @@ when the full brand book is at hand.
 | `src/assets/og/og-sq.png`, `og-en.png` | the 1200 × 630 pictures WhatsApp / Facebook show when a link is shared |
 | `src/static/` | favicons and app icons, copied to the site root |
 | `scripts/build.mjs` | builds `dist/`: pages, sitemap, robots, manifest, llms.txt, 404 and `.htaccess` for Hostinger |
-| `scripts/check.mjs` | checks `dist/`: links, anchors, one H1, titles, descriptions, hreflang, ids, JSON-LD, sitemap |
+| `scripts/check.mjs` | checks `dist/`: links, anchors, images (alt, width, height), one H1, titles, descriptions, hreflang, ids, JSON-LD, sitemap |
 | `scripts/serve.mjs` | local preview server |
 | `scripts/import-catalogue.mjs` | turns a catalogue export into `src/data/catalogue.json` (see below) |
 | `.github/workflows/pages.yml` | build + check on every push, publish the default branch to GitHub Pages |
@@ -195,6 +229,7 @@ when the full brand book is at hand.
 - **Texts of a page**: the dictionary at the top of its file in `src/pages/`.
 - **Colours**: the variables at the top of `src/assets/site.css` (`--brand`, `--accent`, …).
 - **Share pictures** (`src/assets/og/`) show the main phone and address; remake them if those change.
+- **Photos**: see [Photos](#photos).
 
 After any change:
 
@@ -257,7 +292,8 @@ Only facts the clinic has published are used:
   set (`ITD2027/alternative-v2/site/assets/partners/humanplus.svg`), coloured as in the brand book.
 
 No prices, doctor names, ratings, reviews, certificates, result times, home visits or online results are claimed –
-none of them were published. No stock photos are used.
+none of them were published. No stock photos are used: the pictures are illustrations drawn for the site, with no real
+people, until the clinic's own photos are added.
 
 ## What is placeholder / to confirm with the clinic
 
@@ -271,6 +307,8 @@ none of them were published. No stock photos are used.
 - **WhatsApp / Viber** – messages go to +383 44 709 072. Confirm that number uses WhatsApp and Viber, or change
   `whatsapp` / `viber` in `src/data/site.mjs`.
 - **Map** – a Google Maps search link; replace `mapsUrl` with the clinic's own Maps place link.
+- **Pictures** – all pictures are illustrated stand-ins until the clinic sends real photos (see [Photos](#photos)).
+  The scenes show generic staff and rooms; they do not depict the clinic's actual staff, rooms or equipment.
 
 ## Before launch
 
@@ -282,7 +320,8 @@ none of them were published. No stock photos are used.
       (remove them in `scripts/import-catalogue.mjs` or the export, then re-import).
 - [ ] Confirm the WhatsApp / Viber number and send one test booking from a staff phone.
 - [ ] Decide whether reception wants booking requests by e-mail as well (`formEndpoint`).
-- [ ] Photos of the centre, the lab and the team (with permission) if the clinic wants them – the design works without.
+- [ ] **Photos** of the building, reception, sample room, lab and doctors (with everyone's permission) into
+      `src/assets/photos/` – see [Photos](#photos). The illustrations work until then.
 - [ ] Build with `SITE_URL=https://humanplusks.com`, upload `dist/` to Hostinger, check https://humanplusks.com/en/sherbim/pediatri/.
 - [ ] Add the site to Google Search Console and submit `https://humanplusks.com/sitemap.xml`.
 - [ ] Update the Google Business Profile with the website, hours and phones.
@@ -291,12 +330,14 @@ none of them were published. No stock photos are used.
 
 `npm test` runs on every push (GitHub Actions). Before a release the site was also checked in Chromium:
 
-- axe-core (WCAG 2.1 A/AA + best practice): 0 violations on all 25 pages × 2 widths, including the catalogue with a test added and its details open;
-- no horizontal scroll at 320, 390 and 1440 px, no console errors;
+- axe-core (WCAG 2.1 A/AA + best practice): 0 violations on 25 pages × 2 widths, including the catalogue with a test added and its details open;
+- no horizontal scroll and no clipped content on all 38 pages at 320, 390 and 1440 px, no console errors;
+- photo slots: a real JPEG / WebP with a phone copy replaces its scene (srcset, width and height read from the file);
 - opening status at Monday 06:10 / 10:00, Friday 19:30, Saturday 17:00 and Sunday 12:00;
 - catalogue search (Albanian, Serbian, abbreviations), categories, "show more", details, list across pages and tabs (and lists saved by the earlier version), panel add, booking validation, WhatsApp text, `.ics` time zone, contact form.
 
 ## Credits
 
 Fonts: brand font Pangram (licensed, added by the client); stand-in [Outfit](https://fonts.google.com/specimen/Outfit) (SIL Open Font License), self-hosted from Fontsource. Icons: [Lucide](https://lucide.dev) (ISC) and
-[Simple Icons](https://simpleicons.org) (CC0) for WhatsApp, Viber and Facebook. Logo © Human+ Qendra Diagnostike.
+[Simple Icons](https://simpleicons.org) (CC0) for WhatsApp, Viber and Facebook. Illustrated scenes drawn for this site
+(`src/lib/scenes.mjs`). Logo © Human+ Qendra Diagnostike.

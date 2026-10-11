@@ -7,7 +7,8 @@ import { UI } from '../data/ui.mjs';
 import { esc, h, icon, brand, dict, L, accent } from '../lib/html.mjs';
 import { hoursTable, status } from '../lib/layout.mjs';
 import { labBackground } from '../lib/labbg.mjs';
-import { sectionHead, serviceCard, panelCard, testSearch, ctaBand, faqList, shortName, addButton } from '../lib/parts.mjs';
+import { sectionHead, serviceCard, panelCard, testSearch, ctaBand, faqList, shortName, centreGallery } from '../lib/parts.mjs';
+import { photo } from '../lib/photo.mjs';
 
 const T = dict('home', {
   sq: {
@@ -45,9 +46,14 @@ const T = dict('home', {
     ped_text: 'Që nga viti 2011 kemi qenë pranë mijëra prindërve dhe fëmijëve. Pediatri dhe laborator në të njëjtin vend: më pak pritje, më pak stres për fëmijën.',
     ped_cta: 'Rezervo te pediatri',
     ped_more: 'Rreth pediatrisë',
-    ped_badge: 'Pediatri + laborator',
-    ped_tests: 'Analiza për fëmijë',
     ped_panel: 'Check-up për fëmijë',
+    since_t: 'Që nga 2011',
+    since_d: 'vazhdimësi e BAKTOLAB',
+    call: 'Telefononi',
+    in_eyebrow: 'Qendra',
+    in_title: 'Mjekë dhe laborator *nën një çati*.',
+    in_text: 'Nga recepsioni te marrja e mostrës, laboratori dhe ordinancat e specialistëve — gjithçka në të njëjtën ndërtesë në Rruga B, pa u endur nga një adresë te tjetra.',
+    in_about: 'Rreth qendrës',
     how_eyebrow: 'Si funksionon',
     how_title: 'Tre hapa, *pa pritje* të panevojshme.',
     how1_t: 'Rezervoni',
@@ -103,9 +109,14 @@ const T = dict('home', {
     ped_text: 'Since 2011 we have looked after thousands of parents and children. Paediatrics and laboratory in one place: less waiting, less stress for your child.',
     ped_cta: 'Book with a paediatrician',
     ped_more: 'About paediatrics',
-    ped_badge: 'Paediatrics + laboratory',
-    ped_tests: 'Tests for children',
     ped_panel: 'Children’s check-up',
+    since_t: 'Since 2011',
+    since_d: 'continuing BAKTOLAB',
+    call: 'Call',
+    in_eyebrow: 'The centre',
+    in_title: 'Doctors and laboratory *under one roof*.',
+    in_text: 'From reception to sample collection, the laboratory and the specialists’ rooms — all in the same building on Rruga B, with no going from one address to another.',
+    in_about: 'About the centre',
     how_eyebrow: 'How it works',
     how_title: 'Three steps, *no needless* waiting.',
     how1_t: 'Book',
@@ -128,7 +139,7 @@ const T = dict('home', {
   },
 });
 
-const POPULAR = ['cbc', 'vitd', 'tsh', 'glucose', 'ferritin', 'urine-culture'];
+const POPULAR = ['cbc', 'vitd', 'tsh', 'glucose', 'ferritin'];
 
 export function homePage(ctx) {
   const { lang } = ctx;
@@ -153,13 +164,15 @@ export function homePage(ctx) {
           <a class="btn btn-outline btn-lg" href="${esc(ctx.url('sherbimet'))}">${esc(u.all_services)}${icon('arrow-right', { size: 20 })}</a>
         </div>
       </div>
-      <aside class="hero-info" aria-labelledby="h-hours">
-        <div class="hero-info-head"><h2 id="h-hours">${icon('clock', { size: 20 })}${esc(u.hours)}</h2>${status(lang)}</div>
-        ${hoursTable(lang)}
-        <div class="hero-phones">${SITE.phones.map((p) => h`<a href="tel:${p.tel}">${icon('phone', { size: 18 })}<span>${esc(p.display)}</span><small>${esc(L(p.label, lang))}</small></a>`)}</div>
-        <a class="btn btn-primary btn-block" href="${esc(ctx.url('rezervo'))}">${icon('calendar-check', { size: 18 })}${esc(u.book)}</a>
-        <a class="btn btn-wa btn-block" href="${esc(ctx.wa())}" target="_blank" rel="noopener">${brand('whatsapp', { size: 18 })}${esc(u.whatsapp_label)}</a>
-      </aside>
+      <div class="hero-visual">
+        ${photo(ctx, 'hero', { cls: 'hero-photo', eager: true, sizes: '(min-width: 960px) 42vw, 100vw' })}
+        ${photo(ctx, 'lab', { cls: 'hero-photo-sm', sizes: '(min-width: 960px) 16vw, 40vw' })}
+        <div class="hero-card hero-card-status">
+          ${status(lang)}
+          <a href="tel:${SITE.phones[0].tel}">${icon('phone', { size: 16 })}<span><span class="sr-only">${esc(t.call)}: </span>${esc(SITE.phones[0].display)}</span></a>
+        </div>
+        <p class="hero-card hero-card-since"><span class="tile tile-brand">${icon('microscope', { size: 20 })}</span><span><strong>${esc(t.since_t)}</strong><small>${esc(t.since_d)}</small></span></p>
+      </div>
     </div>
   </section>`;
 
@@ -195,6 +208,16 @@ export function homePage(ctx) {
         <a class="btn btn-outline" href="${esc(ctx.url('sherbimet'))}">${esc(u.all_services)}${icon('arrow-right', { size: 18 })}</a>
       </div>
       <ul class="svc-grid">${SERVICES.map((s, i) => serviceCard(ctx, s, i))}</ul>
+    </div>
+  </section>`;
+
+  const inside = h`<section class="section section-tint" aria-labelledby="h-inside">
+    <div class="wrap">
+      <div class="split-head">
+        ${sectionHead({ eyebrow: t.in_eyebrow, title: t.in_title, text: t.in_text, id: 'h-inside' })}
+        <a class="btn btn-outline" href="${esc(ctx.url('rreth-nesh'))}">${esc(t.in_about)}${icon('arrow-right', { size: 18 })}</a>
+      </div>
+      ${centreGallery(ctx)}
     </div>
   </section>`;
 
@@ -234,15 +257,13 @@ export function homePage(ctx) {
   const ped = SERVICES.find((s) => s.slug === 'pediatri');
   const kids = h`<section class="section section-tint" aria-labelledby="h-ped">
     <div class="wrap ped-in">
-      <div class="ped-card reveal">
-        <div class="ped-card-head">
-          <span class="tile tile-sun">${icon('baby', { size: 24 })}</span>
-          <div><h3>${esc(t.ped_tests)}</h3><p>${esc(t.ped_badge)}</p></div>
-        </div>
-        <ul class="ped-tests">${['cbc', 'ferritin', 'vitd', 'b12', 'allergy-panel', 'urinalysis'].map(
-          (id) => h`<li><span>${esc(shortName(id, lang))}</span>${addButton(ctx, id, { compact: true })}</li>`,
-        )}</ul>
-        <a class="link" href="${esc(ctx.url('paketat'))}#paketa-femije">${esc(t.ped_panel)}${icon('arrow-right', { size: 16 })}</a>
+      <div class="ped-visual reveal">
+        ${photo(ctx, 'pediatrics', { cls: 'ped-photo', sizes: '(min-width: 960px) 45vw, 100vw' })}
+        <a class="ped-float" href="${esc(ctx.url('paketat'))}#paketa-femije">
+          <span class="tile tile-sun">${icon('baby', { size: 22 })}</span>
+          <span><strong>${esc(t.ped_panel)}</strong><small>${esc(['cbc', 'ferritin', 'vitd', 'b12'].map((id) => shortName(id, lang)).join(' · '))}</small></span>
+          ${icon('arrow-right', { size: 18 })}
+        </a>
       </div>
       <div>
         ${sectionHead({ eyebrow: t.ped_eyebrow, title: t.ped_title, text: t.ped_text, id: 'h-ped' })}
@@ -312,7 +333,7 @@ export function homePage(ctx) {
     title: t.title,
     description: t.description,
     jsonld: [ctx.clinicJsonLd(), ctx.websiteJsonLd()],
-    body: hero + quick + services + lab + panels + kids + how + visit + faq + ctaBand(ctx, { title: t.cta_title, text: t.cta_text }),
+    body: hero + quick + services + inside + lab + panels + kids + how + visit + faq + ctaBand(ctx, { title: t.cta_title, text: t.cta_text }),
   };
 }
 

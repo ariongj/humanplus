@@ -108,6 +108,7 @@ export function testsPage(ctx) {
     eyebrow: t.eyebrow,
     title: t.h1,
     lead: fill(t.lead, lang),
+    photo: 'analyzer',
   });
   const filters = h`<div class="filters" role="group" aria-label="${esc(t.filter)}" data-filters>
     <button type="button" class="filter" data-filter="" aria-pressed="true">${esc(t.all)} <span>${CATALOGUE.count}</span></button>
