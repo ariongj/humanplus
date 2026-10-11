@@ -34,6 +34,10 @@ the repo.
 
 ## Rules (from the owner's past projects)
 
+- **Header first, on every screen size.** The header (logo, menu, language switcher, actions) is the first thing
+  on the page, and the language switcher (SQ / EN) lives inside it. Hours, phone, address and similar info go in a
+  strip *below* the header, never above it; on phones keep that strip to one line. A utility bar above the header
+  looks like a demo.
 - **Albanian first, English complete.** Every visible string exists in sq and en; `dict()` fails the build otherwise.
   Albanian writes weekdays and months in lower case inside a sentence.
 - **Missing facts stay missing.** No invented prices, doctor names, ratings, reviews, certificates, result times,

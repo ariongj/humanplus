@@ -53,9 +53,11 @@ Mjekësi Familjare, Urologji, Endokrinologji, Gastroenterologji, Dermatologji, S
 
 ### On every page
 
-1. **Top bar** – live status (*Hapur tani · deri në 19:00* / *Mbyllur tani · hapet të hënën në 07:30*, worked out in
-   Kosovo time), phone, address, e-mail, Facebook and the SQ / EN switch.
-2. **Header** – logo, menu, **Lista ime** (with the number of tests) and **Rezervo termin**.
+1. **Header** (always first, sticky) – logo, menu, the **SQ / EN** switch, **Lista ime** (with the number of tests)
+   and **Rezervo termin**. On phones: logo, the other language (EN / SQ), the list and the menu button.
+2. **Info strip** under the header – live status (*Hapur tani · deri në 19:00* / *Mbyllur tani · hapet të hënën në
+   07:30*, worked out in Kosovo time), phone, address, e-mail and Facebook; one line on phones (status, plus the
+   phone from 480 px).
 3. **Footer** – all departments, lab pages, address, three phones, e-mail, opening hours with today marked.
 4. On phones: a **Telefono / WhatsApp / Rezervo** bar at the bottom. On larger screens: a WhatsApp button that appears
    after the first screen.

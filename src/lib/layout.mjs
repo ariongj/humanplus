@@ -93,19 +93,19 @@ function head(ctx) {
   </head>`;
 }
 
-function topbar(ctx) {
+/** Hours and contact strip — always BELOW the header (the header comes first on every screen). */
+function infobar(ctx) {
   const { lang } = ctx;
   const t = UI[lang];
   const p = SITE.phones[0];
-  return h`<section class="topbar" aria-label="${esc(t.quick_contact)}">
-    <div class="wrap topbar-in">
+  return h`<section class="infobar" aria-label="${esc(t.quick_contact)}">
+    <div class="wrap infobar-in">
       ${status(lang)}
-      <a class="topbar-link" href="tel:${p.tel}">${icon('phone', { size: 16 })}<span>${esc(p.display)}</span></a>
-      <a class="topbar-link hide-sm" href="${esc(SITE.mapsUrl)}" target="_blank" rel="noopener">${icon('map-pin', { size: 16 })}<span>${esc(SITE.address.street)}, ${esc(lang === 'sq' ? SITE.address.city : SITE.address.cityEn)}</span></a>
-      <span class="topbar-spacer"></span>
-      <a class="topbar-link hide-sm" href="mailto:${SITE.email}">${icon('mail', { size: 16 })}<span>${esc(SITE.email)}</span></a>
-      <a class="topbar-icon hide-sm" href="${esc(SITE.facebook)}" target="_blank" rel="noopener" aria-label="${esc(t.facebook)}">${brand('facebook', { size: 16 })}</a>
-      ${langSwitch(ctx)}
+      <a class="infobar-link infobar-phone" href="tel:${p.tel}">${icon('phone', { size: 16 })}<span>${esc(p.display)}</span></a>
+      <a class="infobar-link hide-sm" href="${esc(SITE.mapsUrl)}" target="_blank" rel="noopener">${icon('map-pin', { size: 16 })}<span>${esc(SITE.address.street)}, ${esc(lang === 'sq' ? SITE.address.city : SITE.address.cityEn)}</span></a>
+      <span class="infobar-spacer"></span>
+      <a class="infobar-link hide-sm" href="mailto:${SITE.email}">${icon('mail', { size: 16 })}<span>${esc(SITE.email)}</span></a>
+      <a class="infobar-icon hide-sm" href="${esc(SITE.facebook)}" target="_blank" rel="noopener" aria-label="${esc(t.facebook)}">${brand('facebook', { size: 16 })}</a>
     </div>
   </section>`;
 }
@@ -132,10 +132,11 @@ function header(ctx) {
       <a class="brand" href="${esc(ctx.url(''))}" aria-label="${esc(`${SITE.fullName} — ${t.home}`)}">${logo({ label: SITE.fullName })}</a>
       <nav class="nav" aria-label="${esc(t.nav_main)}"><ul>${links}</ul></nav>
       <div class="header-actions">
+        ${langSwitch(ctx, 'lang-header')}
         <button class="list-btn js-only" type="button" data-list-open aria-haspopup="dialog" aria-controls="lab-list">
           ${icon('test-tubes', { size: 20 })}<span class="list-btn-label">${esc(t.list)}</span><span class="list-count" data-list-count aria-hidden="true">0</span><span class="sr-only" data-list-count-sr></span>
         </button>
-        <a class="btn btn-primary btn-book" href="${esc(ctx.url('rezervo'))}">${icon('calendar-check', { size: 18 })}<span>${esc(t.book)}</span></a>
+        <a class="btn btn-primary btn-book" href="${esc(ctx.url('rezervo'))}">${icon('calendar-check', { size: 18 })}<span class="book-long">${esc(t.book)}</span><span class="book-short">${esc(t.book_short)}</span></a>
         <button class="menu-btn" type="button" data-menu-open aria-haspopup="dialog" aria-controls="menu" aria-label="${esc(t.nav_menu)}">${icon('menu', { size: 24 })}</button>
       </div>
     </div>
@@ -285,8 +286,8 @@ export function layout(ctx, body) {
   ${head(ctx)}
   <body class="page-${esc(ctx.page.id)}">
     <a class="skip" href="#main">${esc(t.skip)}</a>
-    ${topbar(ctx)}
     ${header(ctx)}
+    ${infobar(ctx)}
     <main id="main" tabindex="-1">
       ${body}
     </main>
