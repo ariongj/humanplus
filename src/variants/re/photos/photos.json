@@ -1,0 +1,178 @@
+{
+ "hero": {
+  "alt": {
+   "sq": "Mjeke me stetoskop në tryezën e ordinancës",
+   "en": "A doctor with a stethoscope at her desk"
+  },
+  "position": "50% 22%",
+  "credit": "Unsplash photo-1758691462878-6edc3d3da1be (Unsplash License)"
+ },
+ "lab": {
+  "alt": {
+   "sq": "Dorë me dorezë mban një epruvetë me gjak mbi mbajtësen e mostrave",
+   "en": "A gloved hand holds a blood sample tube above a sample rack"
+  },
+  "position": "50% 50%",
+  "credit": "Unsplash photo-1639772823849-6efbd173043c (Unsplash License)"
+ },
+ "analyzer": {
+  "alt": {
+   "sq": "Epruveta me kapakë me ngjyra në laborator",
+   "en": "Sample tubes with coloured caps in the laboratory"
+  },
+  "position": "50% 50%",
+  "credit": "Unsplash photo-1606206591513-adbfbdd7a177 (Unsplash License)"
+ },
+ "sampling": {
+  "alt": {
+   "sq": "Dorë me dorezë zgjedh një epruvetë me mostër gjaku",
+   "en": "A gloved hand picks a blood sample tube"
+  },
+  "position": "50% 50%",
+  "credit": "Unsplash photo-1697192156499-d85cfe1452c0 (Unsplash License)"
+ },
+ "pediatrics": {
+  "alt": {
+   "sq": "Djalë me nënën e tij gjatë një vizite te mjeku",
+   "en": "A boy with his mother during a visit to the doctor"
+  },
+  "position": "50% 30%",
+  "credit": "Unsplash photo-1758691463331-2ac00e6f676f (Unsplash License)"
+ },
+ "consult": {
+  "alt": {
+   "sq": "Mjek me stetoskop bisedon me pacientin",
+   "en": "A doctor with a stethoscope talks with a patient"
+  },
+  "position": "50% 22%",
+  "credit": "Unsplash photo-1758691461935-202e2ef6b69f (Unsplash License)"
+ },
+ "reception": {
+  "alt": {
+   "sq": "Mjeku plotëson një formular së bashku me pacientin",
+   "en": "A doctor fills in a form together with a patient"
+  },
+  "position": "50% 50%",
+  "credit": "Unsplash photo-1758691461990-03b49d969495 (Unsplash License)"
+ },
+ "about": {
+  "alt": {
+   "sq": "Nënë dhe djali i saj gjatë vizitës",
+   "en": "A mother and her son during a visit"
+  },
+  "position": "50% 22%",
+  "credit": "Unsplash photo-1758691462119-792279713969 (Unsplash License)"
+ },
+ "contact": {
+  "alt": {
+   "sq": "Mjeke me stetoskop në ordinancë",
+   "en": "A doctor with a stethoscope in her office"
+  },
+  "position": "50% 22%",
+  "credit": "Unsplash photo-1758691462858-f1286e5daf40 (Unsplash License)"
+ },
+ "team-doctor": {
+  "alt": {
+   "sq": "Mjeke me stetoskop",
+   "en": "A doctor with a stethoscope"
+  },
+  "position": "50% 22%",
+  "credit": "Unsplash photo-1758691462858-f1286e5daf40 (Unsplash License)"
+ },
+ "team-lab": {
+  "alt": {
+   "sq": "Mikroskop dhe duar me doreza në laborator",
+   "en": "A microscope and gloved hands in the laboratory"
+  },
+  "position": "50% 50%",
+  "credit": "Unsplash photo-1639772823907-a716be4bdecc (Unsplash License)"
+ },
+ "team-nurse": {
+  "alt": {
+   "sq": "Duar me doreza vendosin leukoplast pas marrjes së gjakut",
+   "en": "Gloved hands place a plaster after a blood draw"
+  },
+  "position": "50% 50%",
+  "credit": "Unsplash photo-1625131135576-97ddbb6f063c (Unsplash License)"
+ },
+ "sherbim-pediatri": {
+  "alt": {
+   "sq": "Djalë me nënën e tij gjatë një vizite te mjeku",
+   "en": "A boy with his mother during a visit to the doctor"
+  },
+  "position": "50% 30%",
+  "credit": "Unsplash photo-1758691463331-2ac00e6f676f (Unsplash License)"
+ },
+ "sherbim-gjinekologji": {
+  "alt": {
+   "sq": "Mjeke me stetoskop në tryezën e ordinancës",
+   "en": "A doctor with a stethoscope at her desk"
+  },
+  "position": "50% 22%",
+  "credit": "Unsplash photo-1758691462878-6edc3d3da1be (Unsplash License)"
+ },
+ "sherbim-laboratori-biokimik-dhe-hematologjik": {
+  "alt": {
+   "sq": "Duar me doreza punojnë me mostra në laborator",
+   "en": "Gloved hands work with samples in the laboratory"
+  },
+  "position": "50% 50%",
+  "credit": "Unsplash photo-1615461066159-fea0960485d5 (Unsplash License)"
+ },
+ "sherbim-laboratori-mikrobiologjik": {
+  "alt": {
+   "sq": "Mikroskop dhe duar me doreza në laborator",
+   "en": "A microscope and gloved hands in the laboratory"
+  },
+  "position": "50% 50%",
+  "credit": "Unsplash photo-1639772823907-a716be4bdecc (Unsplash License)"
+ },
+ "sherbim-mjekesi-familjare": {
+  "alt": {
+   "sq": "Pacientes i matet tensioni i gjakut",
+   "en": "A patient has her blood pressure measured"
+  },
+  "position": "50% 35%",
+  "credit": "Unsplash photo-1758691462123-8a17ae95d203 (Unsplash License)"
+ },
+ "sherbim-urologji": {
+  "alt": {
+   "sq": "Mjek me syze shkruan në tryezën e ordinancës",
+   "en": "A doctor in glasses writes at his desk"
+  },
+  "position": "50% 22%",
+  "credit": "Unsplash photo-1758691463198-dc663b8a64e4 (Unsplash License)"
+ },
+ "sherbim-endokrinologji": {
+  "alt": {
+   "sq": "Mjeke me stetoskop në ordinancë",
+   "en": "A doctor with a stethoscope in her office"
+  },
+  "position": "50% 22%",
+  "credit": "Unsplash photo-1758691462858-f1286e5daf40 (Unsplash License)"
+ },
+ "sherbim-gastroenterologji": {
+  "alt": {
+   "sq": "Mjek me stetoskop bisedon me pacientin",
+   "en": "A doctor with a stethoscope talks with a patient"
+  },
+  "position": "50% 22%",
+  "credit": "Unsplash photo-1758691461935-202e2ef6b69f (Unsplash License)"
+ },
+ "sherbim-dermatologji": {
+  "alt": {
+   "sq": "Mjeke me stetoskop në dorë",
+   "en": "A doctor holding a stethoscope"
+  },
+  "position": "50% 40%",
+  "credit": "Unsplash photo-1638202993928-7267aad84c31 (Unsplash License)"
+ },
+ "sherbim-suplemente-dhe-nutricion": {
+  "alt": {
+   "sq": "Grua me një tabletë dhe një gotë ujë",
+   "en": "A woman with a tablet and a glass of water"
+  },
+  "position": "50% 40%",
+  "credit": "Unsplash photo-1674049406313-abb5511e0111 (Unsplash License)"
+ }
+}

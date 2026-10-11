@@ -193,8 +193,13 @@ point, e.g. `{ "hero": { "alt": { "sq": "…", "en": "…" }, "position": "50% 3
 ### The photo version (/re/)
 
 A second version of the same site, with photographs of real people instead of the illustrations, is published at
-https://ariongj.github.io/humanplus/re/ as soon as `src/variants/re/photos/` holds photos (same slot names, same
+**https://ariongj.github.io/humanplus/re/** from the photos in `src/variants/re/photos/` (same slot names, plus
 `photos.json`). The illustrated version at `/humanplus/` stays as it is, so the two can be compared side by side.
+
+Its photos come from the client's *Human Plus Ready Posts Q4* social-media pack: free Unsplash photos (Unsplash
+License – free commercial use, no attribution required), mostly one photographer's series of the same clinic and
+people. Each photo's Unsplash id is its `credit` in `photos.json`. They are **models, not Human+ staff**: fine for
+showing the look, but swap them for the clinic's own photos (same file names) before this version goes live.
 GitHub Actions builds and checks it after the main site; locally:
 
 ```bash
