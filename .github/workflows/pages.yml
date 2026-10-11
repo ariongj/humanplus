@@ -1,6 +1,7 @@
 # Builds and checks the site on every push. On the default branch the built preview is published to the
 # `gh-pages` branch, which GitHub Pages serves at https://<user>.github.io/<repo>/ (noindex, so it never
 # competes with humanplusks.com in search). No Pages settings change is needed for this.
+# A second version with real photos (src/variants/re/photos/) is published under /<repo>/re/ when it has photos.
 # The production site (humanplusks.com) is built with SITE_URL=https://humanplusks.com — see README → Publishing.
 name: Build, check and publish
 
@@ -36,6 +37,18 @@ jobs:
         run: node scripts/check.mjs
         env:
           BASE_PATH: /${{ github.event.repository.name }}/
+
+      - name: Build and check the photo version under /re/ (only when src/variants/re/photos/ has photos)
+        env:
+          REPO: ${{ github.event.repository.name }}
+          OWNER: ${{ github.repository_owner }}
+        run: |
+          if ls src/variants/re/photos/ 2>/dev/null | grep -qiE '\.(jpe?g|webp|png|avif)$'; then
+            OUT_DIR=dist/re PHOTOS_DIR=src/variants/re/photos BASE_PATH=/$REPO/re/ SITE_URL=https://$OWNER.github.io node scripts/build.mjs
+            OUT_DIR=dist/re BASE_PATH=/$REPO/re/ node scripts/check.mjs
+          else
+            echo "No photos in src/variants/re/photos/ yet: the /re/ version is not built."
+          fi
 
       - name: Publish to the gh-pages branch
         if: github.ref_name == github.event.repository.default_branch

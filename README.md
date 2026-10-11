@@ -177,6 +177,24 @@ Use only the clinic's own photos, with the permission of everyone who can be rec
 written consent; avoid screens and papers with patient data). Good first set: the building and entrance, reception,
 the sample room, the lab with its analysers, each doctor in their room, the team together.
 
+**Alt text and crop for real photos:** an optional `photos.json` next to the photos sets each one's alt text and focus
+point, e.g. `{ "hero": { "alt": { "sq": "…", "en": "…" }, "position": "50% 30%", "credit": "…" } }`.
+
+### The photo version (/re/)
+
+A second version of the same site, with photographs of real people instead of the illustrations, is published at
+https://ariongj.github.io/humanplus/re/ as soon as `src/variants/re/photos/` holds photos (same slot names, same
+`photos.json`). The illustrated version at `/humanplus/` stays as it is, so the two can be compared side by side.
+GitHub Actions builds and checks it after the main site; locally:
+
+```bash
+OUT_DIR=dist/re PHOTOS_DIR=src/variants/re/photos BASE_PATH=/re/ node scripts/build.mjs
+```
+
+then open http://localhost:8080/re/ (with `npm run preview`). If it uses licensed stock photos as stand-ins (Unsplash /
+Pexels licence), list each photographer under `credit` in `photos.json` and replace them with the clinic's own photos
+before launch – stock people must never be presented as Human+ staff (no names or titles under them).
+
 ## Languages
 
 - **Shqip** is the main language (`/`), **English** lives under `/en/` with the same page names.

@@ -1,13 +1,13 @@
 // Checks the built site in dist/ (run after the build): internal links and #anchors, one <h1>, title, description,
 // canonical, hreflang pairs, html lang, unique ids, valid JSON-LD, image alt and size, sitemap entries and leftover
 // placeholder text.
-// No dependencies: `node scripts/check.mjs`. Exits with 1 when something is wrong.
+// No dependencies: `node scripts/check.mjs` (OUT_DIR and BASE_PATH as for the build). Exits with 1 when something is wrong.
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const DIST = path.join(ROOT, 'dist');
+const DIST = path.resolve(ROOT, process.env.OUT_DIR || 'dist');
 const rawBase = (process.env.BASE_PATH ?? '/').trim();
 const BASE = !rawBase || rawBase === '/' ? '/' : `/${rawBase.replace(/^\/+|\/+$/g, '')}/`;
 

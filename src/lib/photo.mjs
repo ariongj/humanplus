@@ -1,5 +1,8 @@
-// photo(): the clinic's own photo for a slot when it is in src/assets/photos/, otherwise the illustrated scene.
+// photo(): the clinic's own photo for a slot when it is in the photo folder, otherwise the illustrated scene.
 // Photos get width/height (read from the file), lazy loading and an optional <slot>-sm copy for phones.
+// The photo folder is src/assets/photos/ unless PHOTOS_DIR names another one (the photo version under /re/ uses
+// src/variants/re/photos/). An optional photos.json there gives each real photo its alt text and crop:
+//   { "hero": { "alt": { "sq": "…", "en": "…" }, "position": "50% 30%", "credit": "Name / Unsplash" } }
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
@@ -8,7 +11,10 @@ import { PHOTOS } from '../data/photos.mjs';
 import { scene } from './scenes.mjs';
 import { esc, L } from './html.mjs';
 
-const DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), '../assets/photos');
+const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '../..');
+export const PHOTO_DIR = path.resolve(ROOT, process.env.PHOTOS_DIR || 'src/assets/photos');
+const DIR = PHOTO_DIR;
+const META = fs.existsSync(path.join(DIR, 'photos.json')) ? JSON.parse(fs.readFileSync(path.join(DIR, 'photos.json'), 'utf8')) : {};
 const EXT = ['webp', 'jpg', 'jpeg', 'png', 'avif'];
 const ILLUSTRATION = { sq: 'Ilustrim', en: 'Illustration' };
 
@@ -58,7 +64,7 @@ function real(name) {
   return out;
 }
 
-/** True when the clinic's photo for this slot is in src/assets/photos/. */
+/** True when the clinic's photo for this slot is in the photo folder. */
 export const hasPhoto = (slot) => Boolean(real(slot));
 
 /**
@@ -67,14 +73,16 @@ export const hasPhoto = (slot) => Boolean(real(slot));
  */
 export function photo(ctx, slot, { fallback, cls = '', eager = false, sizes = '(min-width: 960px) 50vw, 100vw', decorative = false } = {}) {
   const def = PHOTOS[slot] ?? fallback ?? PHOTOS.hero;
-  const alt = decorative ? '' : L(def.alt, ctx.lang);
   const img = real(slot);
+  const meta = img ? META[slot] ?? {} : {};
+  const alt = decorative ? '' : L(meta.alt ?? def.alt, ctx.lang);
   if (img) {
     const src = (f) => `${ctx.base}assets/photos/${f}`;
     const sm = real(`${slot}-sm`);
     const srcset = sm?.size && img.size ? ` srcset="${esc(src(sm.file))}?v=${sm.v} ${sm.size.w}w, ${esc(src(img.file))}?v=${img.v} ${img.size.w}w" sizes="${esc(sizes)}"` : '';
     const dims = img.size ? ` width="${img.size.w}" height="${img.size.h}"` : '';
-    return `<div class="photo is-photo ${cls}"><img src="${esc(src(img.file))}?v=${img.v}"${srcset}${dims} alt="${esc(alt)}" ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async"></div>`;
+    const pos = meta.position && /^[\d.]+% [\d.]+%$/.test(meta.position) ? ` style="object-position: ${meta.position}"` : '';
+    return `<div class="photo is-photo ${cls}"><img src="${esc(src(img.file))}?v=${img.v}"${srcset}${dims}${pos} alt="${esc(alt)}" ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async"></div>`;
   }
   const label = alt && `${ILLUSTRATION[ctx.lang]}: ${alt}`;
   const file = sceneFile(def);
@@ -92,6 +100,9 @@ function sceneFile(def) {
   }
   return SCENE_FILES.get(key);
 }
+
+/** The photo files to publish (images only, not photos.json). */
+export const photoFiles = () => (fs.existsSync(DIR) ? fs.readdirSync(DIR).filter((f) => EXT.includes(path.extname(f).slice(1).toLowerCase())) : []);
 
 /** The scene files the pages used: [[file name, svg]]. */
 export const sceneFiles = () => [...SCENE_FILES.values()].map((f) => [f.name, f.svg]);

@@ -4,6 +4,8 @@
 // env  BASE_PATH  sub-folder the site is served from (default "/"; GitHub Pages preview: "/humanplus/")
 //      SITE_URL   origin for canonical / share links (default https://humanplusks.com)
 //      NOINDEX    "1" keeps search engines out (default: on for *.github.io previews, off otherwise)
+//      OUT_DIR    output folder (default "dist"); PHOTOS_DIR  photo folder (default "src/assets/photos")
+//      The photo version: OUT_DIR=dist/re PHOTOS_DIR=src/variants/re/photos BASE_PATH=/re/ (README → Photos)
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
@@ -17,10 +19,12 @@ import { panelsPage, prepPage } from '../src/pages/lab.mjs';
 import { testsPage } from '../src/pages/catalogue.mjs';
 import { bookingPage } from '../src/pages/booking.mjs';
 import { aboutPage, contactPage, faqPage, notFoundPage } from '../src/pages/centre.mjs';
-import { sceneFiles } from '../src/lib/photo.mjs';
+import { sceneFiles, photoFiles, PHOTO_DIR } from '../src/lib/photo.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const DIST = path.join(ROOT, 'dist');
+const DIST = path.resolve(ROOT, process.env.OUT_DIR || 'dist');
+// The build empties its output folder, so it must be dist/ or a folder inside it.
+if (DIST !== path.join(ROOT, 'dist') && !DIST.startsWith(path.join(ROOT, 'dist') + path.sep)) throw new Error(`OUT_DIR must be dist/ or inside it (got ${DIST})`);
 const rawBase = (process.env.BASE_PATH ?? '/').trim();
 const BASE = !rawBase || rawBase === '/' ? '/' : `/${rawBase.replace(/^\/+|\/+$/g, '')}/`;
 const ORIGIN = (process.env.SITE_URL ?? 'https://humanplusks.com').replace(/\/+$/, '');
@@ -33,12 +37,13 @@ const write = (rel, content) => {
   fs.mkdirSync(path.dirname(file), { recursive: true });
   fs.writeFileSync(file, content);
 };
-const copyDir = (from, to) => {
+const copyDir = (from, to, skip = () => false) => {
   fs.mkdirSync(to, { recursive: true });
   for (const e of fs.readdirSync(from, { withFileTypes: true })) {
     const a = path.join(from, e.name);
     const b = path.join(to, e.name);
-    if (e.isDirectory()) copyDir(a, b);
+    if (skip(a)) continue;
+    if (e.isDirectory()) copyDir(a, b, skip);
     else fs.copyFileSync(a, b);
   }
 };
@@ -128,7 +133,12 @@ fs.mkdirSync(DIST, { recursive: true });
 for (const e of fs.readdirSync(DIST)) fs.rmSync(path.join(DIST, e), { recursive: true, force: true });
 
 // Assets (fonts, og images, css, js) and root files (favicons…).
-copyDir(path.join(ROOT, 'src/assets'), path.join(DIST, 'assets'));
+copyDir(path.join(ROOT, 'src/assets'), path.join(DIST, 'assets'), (p) => p === path.join(ROOT, 'src/assets/photos'));
+// Photos (from PHOTOS_DIR): images only.
+for (const f of photoFiles()) {
+  fs.mkdirSync(path.join(DIST, 'assets/photos'), { recursive: true });
+  fs.copyFileSync(path.join(PHOTO_DIR, f), path.join(DIST, 'assets/photos', f));
+}
 copyDir(path.join(ROOT, 'src/static'), DIST);
 // The stylesheet refers to fonts relatively ("fonts/…"), so it works under any base path.
 const version = crypto.createHash('sha1').update(['src/assets/site.css', 'src/assets/site.js', 'src/assets/catalogue.js', 'src/data/catalogue.json'].map(read).join('')).digest('hex').slice(0, 8);
@@ -275,4 +285,4 @@ ErrorDocument 404 ${BASE}404.html
   );
 }
 
-console.log(`Built ${count} pages + 2 × 404 + ${scenes.length} scenes into dist/ · base ${BASE} · ${ORIGIN}${NOINDEX ? ' · noindex' : ''}${PRODUCTION ? ' · .htaccess' : ''}`);
+console.log(`Built ${count} pages + 2 × 404 + ${scenes.length} scenes + ${photoFiles().length} photos into ${path.relative(ROOT, DIST)}/ · base ${BASE} · ${ORIGIN}${NOINDEX ? ' · noindex' : ''}${PRODUCTION ? ' · .htaccess' : ''}`);
