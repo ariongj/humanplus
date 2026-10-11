@@ -7,7 +7,7 @@
 // sample, collection, preparation, short description and components.
 // What is dropped on purpose: prices (another lab's, in RSD), turnaround times, reference ranges, methods,
 // editorial notes, source URLs and SKUs; the source lab's own consultations, promotions and marketing packages;
-// and every sentence that refers to the source lab or its website. Human+ confirms availability, price and
+// every sentence that refers to the source lab or its website, and sentences that only talk about the source text. Human+ confirms availability, price and
 // preparation itself (README → Lab catalogue).
 import fs from 'node:fs';
 import path from 'node:path';
@@ -55,12 +55,18 @@ const REWRITE = [
   [/\bfaqja përmend\b/g, 'përmendet'],
   [/\bFaqja thekson se\s+(\p{L})/gu, (_, c) => c.toUpperCase()],
   [/,?\s*sipas faqes\b/g, ''],
+  [/,?\s*por përdor në një pjesë edhe termin [^.;]*/g, ''],
+  [/të renditura në përshkrim/g, 'të përfshira në panel'],
+  [/\bGUT Patološki profil\b/g, 'Profili patologjik GUT'],
 ];
+// Sentences about the source text itself ("the available description only repeats the name…") or that only
+// restate the test's name carry nothing for a patient: they are dropped too.
+const META = /\b(përshkrimi|teksti) i disponueshëm\b|përsërit vetëm emrin|^(testi|shërbimi) i emërtuar\b|^emri i (shërbimit|analizës)\b|^emërtimi\b/i;
 function clean(text) {
   if (!text) return null;
   let t = String(text);
   for (const [re, to] of REWRITE) t = t.replace(re, to);
-  const parts = t.split(/(?<=[.;!?])\s+/).filter((s) => s && !SOURCE.test(s));
+  const parts = t.split(/(?<=[.;!?])\s+/).filter((s) => s && !SOURCE.test(s) && !META.test(s));
   const out = parts.join(' ').replace(/\s+/g, ' ').replace(/;\s*$/, '.').trim();
   return out.length > 3 ? out : null;
 }
