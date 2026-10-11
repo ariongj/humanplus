@@ -162,14 +162,26 @@
   }
 
   /* ---------- "Lista ime" — lab test list ---------- */
-  // Items are stored as { id, n: name, p: short note }. Curated tests take their name from the page data;
-  // tests from the full catalogue (/analizat/) carry it on their button (data-name, data-note).
+  // Items are stored as { id, n: name, p: short note }. Curated tests take their name from the page data (so
+  // always in the page language); tests from the full catalogue (/analizat/) carry it on their button in both
+  // languages (data-name / data-name-alt, data-note / data-note-alt), stored as { sq: …, en: … }.
   var KEY = 'hp-list';
+  var OTHER = D.lang === 'en' ? 'sq' : 'en';
+  function both(el, attr) {
+    var o = {};
+    o[D.lang] = el.getAttribute(attr) || '';
+    o[OTHER] = el.getAttribute(attr + '-alt') || o[D.lang];
+    return o;
+  }
   function item(id, el) {
     if (D.tests[id]) return { id: id, n: D.tests[id][0], p: D.tests[id][1] };
-    if (el && el.getAttribute('data-name')) return { id: id, n: el.getAttribute('data-name'), p: el.getAttribute('data-note') || '' };
+    if (el && el.getAttribute('data-name')) return { id: id, n: both(el, 'data-name'), p: both(el, 'data-note') };
     return null;
   }
+  // The text to show for an item in the page language (older lists stored plain strings).
+  function tr(v) { return v && typeof v === 'object' ? v[D.lang] || v[OTHER] || '' : v || ''; }
+  function nameOf(x) { return D.tests[x.id] ? D.tests[x.id][0] : tr(x.n); }
+  function noteOf(x) { return D.tests[x.id] ? D.tests[x.id][1] : tr(x.p); }
   function load() {
     return store.get(KEY, []).map(function (x) { return typeof x === 'string' ? item(x) : x; })
       .filter(function (x) { return x && x.id && x.n; });
@@ -179,7 +191,7 @@
   function has(id) { return list.some(function (x) { return x.id === id; }); }
   function countText(n) { return n === 1 ? T.list_count_one : fmt(T.list_count_many, { n: n }); }
   function listMessage() {
-    var lines = list.map(function (x, i) { return (i + 1) + '. ' + x.n; });
+    var lines = list.map(function (x, i) { return (i + 1) + '. ' + nameOf(x); });
     return T.list_msg_hello + '\n' + lines.join('\n') + '\n\n' + T.list_msg_thanks;
   }
   function syncButtons() {
@@ -223,17 +235,17 @@
       var tx = document.createElement('div');
       tx.className = 'dl-text';
       var st = document.createElement('strong');
-      st.textContent = x.n;
+      st.textContent = nameOf(x);
       tx.appendChild(st);
-      if (x.p) {
+      if (noteOf(x)) {
         var sm = document.createElement('small');
-        sm.textContent = x.p;
+        sm.textContent = noteOf(x);
         tx.appendChild(sm);
       }
       var rm = document.createElement('button');
       rm.type = 'button';
       rm.className = 'icon-btn';
-      rm.setAttribute('aria-label', fmt(T.list_remove_aria, { name: x.n }));
+      rm.setAttribute('aria-label', fmt(T.list_remove_aria, { name: nameOf(x) }));
       rm.innerHTML = '<svg class="i" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>';
       rm.addEventListener('click', function () {
         var idx = list.indexOf(x);

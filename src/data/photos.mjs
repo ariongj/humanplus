@@ -35,6 +35,15 @@ export const PHOTOS = {
     scene: 'reception',
     alt: { sq: 'Recepsioni i Human+ me logon në mur', en: 'The Human+ reception with the logo on the wall' },
   },
+  // About and contact page headers (the reception scene until they have photos of their own).
+  about: {
+    scene: 'reception',
+    alt: { sq: 'Recepsioni i Human+ me logon në mur', en: 'The Human+ reception with the logo on the wall' },
+  },
+  contact: {
+    scene: 'reception',
+    alt: { sq: 'Recepsioni i Human+ me logon në mur', en: 'The Human+ reception with the logo on the wall' },
+  },
   'team-doctor': {
     scene: 'team-doctor',
     alt: { sq: 'Mjeke specialiste me stetoskop', en: 'A specialist doctor with a stethoscope' },

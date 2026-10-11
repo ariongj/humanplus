@@ -1,4 +1,4 @@
-/* Human+ — lab-test catalogue (/analizat/). Loads assets/catalogue.json and renders search, category filters,
+/* Human+ — lab-test catalogue (/analizat/). Loads assets/catalogue-<lang>.json and renders search, category filters,
    expandable details and "Add" buttons for "Lista ime". Uses the helpers site.js shares on window.HP. */
 (function () {
   'use strict';
@@ -53,11 +53,6 @@
       tog.setAttribute('aria-controls', 'd-' + x.id);
       var name = el('span', 'cat-name', x.n);
       tog.appendChild(name);
-      if (x.s) {
-        var alt = el('span', 'cat-alt', x.s);
-        alt.setAttribute('lang', 'sr');
-        tog.appendChild(alt);
-      }
       tog.insertAdjacentHTML('beforeend', ICON_DOWN);
       main.appendChild(tog);
       var chips = el('div', 'cat-chips');
@@ -72,6 +67,9 @@
       add.setAttribute('data-add', x.id);
       add.setAttribute('data-name', x.n);
       add.setAttribute('data-note', x.co || x.sp || '');
+      // The other language's name and note, so the list follows a language switch.
+      if (x.o) add.setAttribute('data-name-alt', x.o);
+      if (x.oc) add.setAttribute('data-note-alt', x.oc);
       add.setAttribute('aria-pressed', 'false');
       add.innerHTML = '<span class="add-off">' + ICON_PLUS + '</span><span class="add-on">' + ICON_CHECK + '</span>';
       $('.add-off', add).appendChild(document.createTextNode(C.add));
@@ -98,7 +96,6 @@
         det.appendChild(el('p', 'cat-desc', x.d));
       }
       var dl = el('dl', 'cat-dl');
-      if (x.s) detailRow(dl, T.sr_name, x.s);
       detailRow(dl, T.sample, x.sp);
       if (x.co && x.co !== x.sp) detailRow(dl, T.collection, x.co);
       detailRow(dl, T.prep, x.p);
@@ -201,7 +198,7 @@
         var digit = /^[0-9]/;
         entries = data.entries.slice().sort(function (a, b) {
           var da = digit.test(a.n), db = digit.test(b.n);
-          return da === db ? a.n.localeCompare(b.n, 'sq') : da ? 1 : -1;
+          return da === db ? a.n.localeCompare(b.n, C.lang === 'en' ? 'en' : 'sq') : da ? 1 : -1;
         });
         render();
       })

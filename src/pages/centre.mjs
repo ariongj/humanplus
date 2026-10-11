@@ -150,7 +150,7 @@ export function aboutPage(ctx) {
   const t = T[lang];
   const u = UI[lang];
   const openDays = Object.values(SITE.hours).filter(Boolean).length;
-  const hero = pageHero(ctx, { trail: [[u.nav_about, 'rreth-nesh']], eyebrow: t.about_eyebrow, title: t.about_h1, lead: t.about_lead, photo: 'reception' });
+  const hero = pageHero(ctx, { trail: [[u.nav_about, 'rreth-nesh']], eyebrow: t.about_eyebrow, title: t.about_h1, lead: t.about_lead, photo: 'about' });
   const story = h`<section class="section section-tight" aria-labelledby="h-story">
     <div class="wrap story-in">
       <div>
@@ -208,7 +208,7 @@ export function contactPage(ctx) {
   const { lang } = ctx;
   const t = T[lang];
   const u = UI[lang];
-  const hero = pageHero(ctx, { trail: [[u.nav_contact, 'kontakt']], eyebrow: t.contact_eyebrow, title: t.contact_h1, lead: t.contact_lead, photo: 'reception' });
+  const hero = pageHero(ctx, { trail: [[u.nav_contact, 'kontakt']], eyebrow: t.contact_eyebrow, title: t.contact_h1, lead: t.contact_lead, photo: 'contact' });
   const cards = h`<section class="section section-tight">
     <div class="wrap contact-grid">
       <article class="info-card">

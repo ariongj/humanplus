@@ -1,13 +1,51 @@
 // /analizat/ — the full lab-test catalogue (src/data/catalogue.json, ~1 000 tests and panels, imported with
-// scripts/import-catalogue.mjs). The page ships the shell; assets/catalogue.js loads the data and renders
-// search, categories, details and the "Add to my list" buttons.
+// scripts/import-catalogue.mjs; English and the Albanian panel components in src/data/catalogue-translations.json).
+// The page ships the shell; assets/catalogue.js loads assets/catalogue-<lang>.json and renders search, categories,
+// details and the "Add to my list" buttons — every visible text in the page's language.
 import fs from 'node:fs';
 import { SITE } from '../data/site.mjs';
 import { UI } from '../data/ui.mjs';
-import { esc, h, icon, brand, dict } from '../lib/html.mjs';
+import { esc, h, icon, brand, dict, fold } from '../lib/html.mjs';
 import { pageHero, testSearch } from '../lib/parts.mjs';
 
 export const CATALOGUE = JSON.parse(fs.readFileSync(new URL('../data/catalogue.json', import.meta.url), 'utf8'));
+const TR_FILE = new URL('../data/catalogue-translations.json', import.meta.url);
+const TR = fs.existsSync(TR_FILE) ? JSON.parse(fs.readFileSync(TR_FILE, 'utf8')) : { names: {}, desc: {}, text: {}, comp: {} };
+
+/**
+ * The catalogue as the browser gets it, in one language: name, description, sample, collection, preparation and
+ * components in that language; `o` / `oc` = name and note in the other language (so "Lista ime" can show the
+ * page language after a switch); `q` = search words in both languages plus the Serbian name and aliases.
+ * Returns { data, missing } — missing = English texts that fell back to Albanian.
+ */
+export function catalogueFor(lang) {
+  let missing = 0;
+  const en = (map, key, sq) => {
+    if (!sq) return null;
+    if (map[key]) return map[key];
+    missing++;
+    return sq;
+  };
+  const note = (x) => x.co || x.sp || '';
+  const entries = CATALOGUE.entries.map((x) => {
+    const comp = TR.comp[x.id];
+    const sq = { n: x.n, d: x.d, sp: x.sp, co: x.co, p: x.p, m: comp?.sq ?? x.m };
+    const eng = {
+      n: en(TR.names, x.id, x.n),
+      d: en(TR.desc, x.id, x.d),
+      sp: en(TR.text, x.sp, x.sp),
+      co: en(TR.text, x.co, x.co),
+      p: en(TR.text, x.p, x.p),
+      m: comp?.en ?? x.m,
+    };
+    const [cur, other] = lang === 'en' ? [eng, sq] : [sq, eng];
+    return {
+      id: x.id, c: x.c, k: x.k, ...cur, s: x.s, o: other.n, oc: note(other),
+      q: lang === 'en' ? fold([eng.n, x.q].join(' ')) : x.q,
+    };
+  });
+  return { data: { checkedAt: CATALOGUE.checkedAt, count: CATALOGUE.count, entries }, missing: lang === 'en' ? missing : 0 };
+}
 const roundDown = (n) => (n >= 1000 ? Math.floor(n / 100) * 100 : Math.floor(n / 10) * 10);
 export const CATALOGUE_ROUND = roundDown(CATALOGUE.count);
 
@@ -17,7 +55,7 @@ const T = dict('catalogue', {
     description: 'Katalogu i analizave në Human+ Prishtinë: mbi {n} analiza laboratorike me përshkrim, mostër dhe përgatitje — hemogram, biokimi, hormone, alergji, mikrobiologji, serologji dhe më shumë. Krijoni listën dhe pyetni për çmimin.',
     eyebrow: 'Laboratori',
     h1: 'Katalogu i *analizave*.',
-    lead: 'Mbi {n} analiza laboratorike me përshkrim, mostër dhe përgatitje. Kërkoni sipas emrit — edhe në serbisht — shtoni analizat në listë dhe na e dërgoni për çmimin dhe terminin.',
+    lead: 'Mbi {n} analiza laboratorike me përshkrim, mostër dhe përgatitje. Kërkoni sipas emrit ose shkurtesës, shtoni analizat në listë dhe na e dërgoni për çmimin dhe terminin.',
     note: 'Katalog informues. Disponueshmërinë në Human+, çmimin dhe përgatitjen e saktë i konfirmon laboratori — na dërgoni listën tuaj.',
     lang_note: '',
     cats: 'Kategoritë',
@@ -36,7 +74,6 @@ const T = dict('catalogue', {
     prep: 'Përgatitja',
     includes: 'Përfshin',
     panel: 'Panel',
-    sr_name: 'Emri në serbisht',
     no_details: 'Për këtë analizë na pyetni për mostrën dhe përgatitjen.',
     loading: 'Duke ngarkuar katalogun…',
     failed: 'Katalogu nuk u ngarkua. Rifreskoni faqen ose na telefononi.',
@@ -57,9 +94,9 @@ const T = dict('catalogue', {
     description: 'The lab test catalogue at Human+ Prishtina: over {n} laboratory tests with description, sample and preparation — blood count, biochemistry, hormones, allergy, microbiology, serology and more. Build your list and ask for the price.',
     eyebrow: 'Laboratory',
     h1: 'Lab test *catalogue*.',
-    lead: 'Over {n} laboratory tests with description, sample and preparation. Search by name — Albanian or Serbian — add tests to your list and send it to us for the price and a time.',
+    lead: 'Over {n} laboratory tests with description, sample and preparation. Search by name or abbreviation, add tests to your list and send it to us for the price and a time.',
     note: 'An information catalogue. The laboratory confirms availability at Human+, the price and the exact preparation — send us your list.',
-    lang_note: 'Test names and details are in Albanian, with the Serbian name where it helps. Ask us in English on WhatsApp.',
+    lang_note: '',
     cats: 'Categories',
     cats_hint: 'Choose a category or search above.',
     all: 'All',
@@ -76,7 +113,6 @@ const T = dict('catalogue', {
     prep: 'Preparation',
     includes: 'Includes',
     panel: 'Panel',
-    sr_name: 'Serbian name',
     no_details: 'For this test, ask us about the sample and preparation.',
     loading: 'Loading the catalogue…',
     failed: 'The catalogue could not be loaded. Refresh the page or call us.',
@@ -159,10 +195,10 @@ export function testsPage(ctx) {
   </section>`;
   // Strings and paths the catalogue script needs.
   const config = {
-    url: `${ctx.base}assets/catalogue.json?v=${ctx.version}`,
+    url: `${ctx.base}assets/catalogue-${lang}.json?v=${ctx.version}`,
     lang,
     cats: Object.fromEntries(cats.map((c) => [c.id, catName(c)])),
-    t: Object.fromEntries(['count_one', 'count_many', 'count_in', 'more', 'details', 'desc', 'sample', 'collection', 'prep', 'includes', 'panel', 'sr_name', 'no_details', 'failed'].map((k) => [k, t[k]])),
+    t: Object.fromEntries(['count_one', 'count_many', 'count_in', 'more', 'details', 'desc', 'sample', 'collection', 'prep', 'includes', 'panel', 'no_details', 'failed'].map((k) => [k, t[k]])),
     add: u.list_add,
     added: u.list_added,
   };

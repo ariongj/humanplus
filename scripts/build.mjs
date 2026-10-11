@@ -16,7 +16,7 @@ import { layout } from '../src/lib/layout.mjs';
 import { homePage } from '../src/pages/home.mjs';
 import { servicesPage, servicePage } from '../src/pages/services.mjs';
 import { panelsPage, prepPage } from '../src/pages/lab.mjs';
-import { testsPage } from '../src/pages/catalogue.mjs';
+import { testsPage, catalogueFor } from '../src/pages/catalogue.mjs';
 import { bookingPage } from '../src/pages/booking.mjs';
 import { aboutPage, contactPage, faqPage, notFoundPage } from '../src/pages/centre.mjs';
 import { sceneFiles, photoFiles, PHOTO_DIR } from '../src/lib/photo.mjs';
@@ -141,7 +141,7 @@ for (const f of photoFiles()) {
 }
 copyDir(path.join(ROOT, 'src/static'), DIST);
 // The stylesheet refers to fonts relatively ("fonts/…"), so it works under any base path.
-const version = crypto.createHash('sha1').update(['src/assets/site.css', 'src/assets/site.js', 'src/assets/catalogue.js', 'src/data/catalogue.json'].map(read).join('')).digest('hex').slice(0, 8);
+const version = crypto.createHash('sha1').update(['src/assets/site.css', 'src/assets/site.js', 'src/assets/catalogue.js', 'src/data/catalogue.json', 'src/data/catalogue-translations.json'].filter((f) => fs.existsSync(path.join(ROOT, f))).map(read).join('')).digest('hex').slice(0, 8);
 // Brand font: when the licensed Pangram files are in src/assets/fonts/pangram/ (e.g. Pangram-Regular.woff2,
 // Pangram-Bold.woff2 …), write their @font-face rules into the stylesheet; otherwise Outfit is used.
 {
@@ -166,8 +166,12 @@ const version = crypto.createHash('sha1').update(['src/assets/site.css', 'src/as
   fs.writeFileSync(cssFile, css);
   if (files.length) console.log(`Pangram: ${files.length} font file(s)`);
 }
-// The full lab catalogue, loaded by assets/catalogue.js on /analizat/.
-fs.copyFileSync(path.join(ROOT, 'src/data/catalogue.json'), path.join(DIST, 'assets/catalogue.json'));
+// The full lab catalogue, one file per language, loaded by assets/catalogue.js on /analizat/ and /en/analizat/.
+for (const lang of LANGS) {
+  const { data, missing } = catalogueFor(lang);
+  write(`assets/catalogue-${lang}.json`, JSON.stringify(data));
+  if (missing) console.warn(`catalogue-${lang}: ${missing} text(s) not translated yet — shown in Albanian (src/data/catalogue-translations.json)`);
+}
 
 let count = 0;
 for (const lang of LANGS) {

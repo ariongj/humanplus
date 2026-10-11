@@ -95,9 +95,17 @@ request by e-mail.
 
 `/analizat/` shows **1 006 lab tests and panels in 20 categories** (haematology, biochemistry, immunochemistry,
 hormones, pregnancy tests, tumour markers, allergology, immunology, serology, microbiology, parasitology, genetics,
-drug levels, functional medicine, histopathology, transfusion medicine). Each entry has its Albanian name, the
-Serbian name (many referrals in Kosovo are written in Serbian, so both are searchable), and – where available – a
-short description, the sample, how it is collected, the preparation and what a panel includes.
+drug levels, functional medicine, histopathology, transfusion medicine). Each entry has its name and – where
+available – a short description, the sample, how it is collected, the preparation and what a panel includes,
+**all in the language of the page**: Albanian on `/analizat/`, English on `/en/analizat/`. The Serbian name is not
+shown, but it stays searchable (many referrals in Kosovo are written in Serbian).
+
+**Languages.** `src/data/catalogue.json` is the Albanian import. The English texts – names, descriptions, sample,
+collection and preparation – and the panel components in both languages (the export had them in Serbian) are in
+`src/data/catalogue-translations.json` (`names` and `desc` by test id, `text` by Albanian phrase, `comp` by id).
+That file is a working translation made for the site: edit it by hand when the lab corrects a term. The build
+writes `assets/catalogue-sq.json` and `assets/catalogue-en.json` and warns about any English text still missing
+(it then shows the Albanian one).
 
 **Source.** The client supplied an export of the public BeoLab catalogue (Serbia, checked 2026-10-10, 1 071 entries).
 `scripts/import-catalogue.mjs` turns it into `src/data/catalogue.json`. The import **leaves out** on purpose:
@@ -114,8 +122,9 @@ price and preparation. To refresh the data from a new export:
 node scripts/import-catalogue.mjs path/to/catalogue.js
 ```
 
-Search matches the start of words in the Albanian and Serbian names and in a panel's components, so "krvna slika",
-"hemogram" and "gjaku komplet" all find the blood count. Results are sorted A–Z; 40 are shown at a time.
+Search matches the start of words in the names in both languages, the Serbian name and the aliases, so "krvna
+slika", "hemogram", "gjaku komplet" and "blood count" all find the blood count. Results are sorted A–Z; 40 are shown
+at a time. *Lista ime* keeps both names of a catalogue test, so the list follows a language switch.
 
 ## Brand
 
@@ -169,7 +178,8 @@ JPEG, WebP, PNG or AVIF, about 1600 px on the long side; optionally a phone copy
 | `sampling` | *inside the centre*, preparation page | the sample room: blood-draw chair and a nurse labelling a tube |
 | `pediatrics` | home page paediatrics, *inside the centre*, paediatrics page | a paediatrician listening to a child with a teddy bear |
 | `consult` | *inside the centre*, services page | a specialist at the desk with a patient |
-| `reception` | *inside the centre*, about and contact pages | the reception with the Human+ logo |
+| `reception` | *inside the centre* | the reception with the Human+ logo |
+| `about`, `contact` | about and contact page headers | the reception with the Human+ logo |
 | `team-doctor`, `team-lab`, `team-nurse` | about page, the team | portraits of the three roles |
 | `sherbim-<slug>` (e.g. `sherbim-urologji`) | that department's page | the specialist's room, drawn with a different doctor per department |
 
@@ -318,7 +328,8 @@ people, until the clinic's own photos are added.
 - **Department texts** – Paediatrics follows the old site; the other nine describe each specialty's usual scope in
   general words. Ask each doctor to read their page.
 - **Lab catalogue** – the 1 006 entries come from the BeoLab public catalogue the client supplied (see
-  [Lab catalogue](#lab-catalogue)); names and descriptions are working Albanian translations. The 61 common tests
+  [Lab catalogue](#lab-catalogue)); names and descriptions are working Albanian translations, and the English
+  ones (`src/data/catalogue-translations.json`) are working translations of those. The 61 common tests
   and the 8 check-up panels are suggestions. The lab should mark what Human+ does in-house, sends out or does not offer.
 - **Preparation guide** – standard lab guidance; ask the lab manager to approve it.
 - **Brand values** – Green `#28cc63` is sampled from the brand book; Deep Green, Soft Grey and Calm Blue are close matches until the official hex codes are confirmed (see [Brand](#brand)). The brand font Pangram needs its licensed web-font files.
