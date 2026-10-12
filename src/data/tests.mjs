@@ -128,6 +128,7 @@ export const TESTS = [
   { id: 'aptt', cat: 'hematologji', sample: 'blood', prep: 'morning', name: { sq: 'aPTT', en: 'aPTT', de: 'aPTT' }, aka: 'ptt koagulimi tromboplastina' },
   { id: 'fibrinogen', cat: 'hematologji', sample: 'blood', prep: 'morning', name: { sq: 'Fibrinogjeni', en: 'Fibrinogen', de: 'Fibrinogen' }, aka: 'koagulimi' },
   { id: 'blood-group', cat: 'hematologji', sample: 'blood', prep: 'none', name: { sq: 'Grupi i gjakut dhe faktori Rh', en: 'Blood group and Rh factor', de: 'Blutgruppe und Rhesusfaktor' }, aka: 'abo rh grupi gjakut' },
+  { id: 'reticulocytes', cat: 'hematologji', sample: 'blood', prep: 'morning', name: { sq: 'Retikulocitet', en: 'Reticulocytes', de: 'Retikulozyten' }, aka: 'retikulocite anemia palca' },
 
   // Biokimi
   { id: 'glucose', cat: 'biokimi', sample: 'blood', prep: 'fasting', name: { sq: 'Glukoza', en: 'Glucose', de: 'Glukose (Blutzucker)' }, aka: 'sheqeri ne gjak glikemia diabet' },
@@ -150,6 +151,9 @@ export const TESTS = [
   { id: 'protein', cat: 'biokimi', sample: 'blood', prep: 'morning', name: { sq: 'Proteinat totale dhe albumina', en: 'Total protein and albumin', de: 'Gesamteiweiß und Albumin' }, aka: 'albumina proteinat' },
   { id: 'electrolytes', cat: 'biokimi', sample: 'blood', prep: 'morning', name: { sq: 'Elektrolitët (Na, K, Cl)', en: 'Electrolytes (Na, K, Cl)', de: 'Elektrolyte (Na, K, Cl)' }, aka: 'natriumi kaliumi kloruri' },
   { id: 'calcium', cat: 'biokimi', sample: 'blood', prep: 'morning', name: { sq: 'Kalciumi', en: 'Calcium', de: 'Calcium' }, aka: 'ca kockat' },
+  { id: 'homa', cat: 'biokimi', sample: 'blood', prep: 'fasting', name: { sq: 'Indeksi HOMA (rezistenca ndaj insulinës)', en: 'HOMA index (insulin resistance)', de: 'HOMA-Index (Insulinresistenz)' }, aka: 'homa rezistenca insulinike insulina diabet' },
+  { id: 'microalbumin', cat: 'biokimi', sample: 'urine', prep: 'urine', name: { sq: 'Mikroalbuminuria (albumina në urinë)', en: 'Microalbumin in urine', de: 'Mikroalbumin im Urin' }, aka: 'mikroalbumin albumina ne urine acr veshkat diabet' },
+  { id: 'phosphate', cat: 'biokimi', sample: 'blood', prep: 'morning', name: { sq: 'Fosfati (fosfori)', en: 'Phosphate', de: 'Phosphat' }, aka: 'fosfori fosfor kockat veshkat' },
 
   // Hormone dhe tiroide
   { id: 'tsh', cat: 'hormone', sample: 'blood', prep: 'morning', name: { sq: 'TSH', en: 'TSH', de: 'TSH' }, aka: 'tiroidja gjendra tiroide' },
@@ -166,6 +170,11 @@ export const TESTS = [
   { id: 'beta-hcg', cat: 'hormone', sample: 'blood', prep: 'none', name: { sq: 'Beta-hCG (testi i shtatzënisë)', en: 'Beta-hCG (pregnancy test)', de: 'Beta-hCG (Schwangerschaftstest)' }, aka: 'shtatzenia hcg testi shtatzenise pregnancy' },
   { id: 'psa-total', cat: 'hormone', sample: 'blood', prep: 'psa', name: { sq: 'PSA totale', en: 'Total PSA', de: 'Gesamt-PSA' }, aka: 'prostata psa' },
   { id: 'psa-free', cat: 'hormone', sample: 'blood', prep: 'psa', name: { sq: 'PSA e lirë', en: 'Free PSA', de: 'Freies PSA' }, aka: 'prostata fpsa' },
+  { id: 'anti-tg', cat: 'hormone', sample: 'blood', prep: 'morning', name: { sq: 'Anti-TG (antitrupat ndaj tireoglobulinës)', en: 'Anti-TG (thyroglobulin antibodies)', de: 'Anti-TG (Thyreoglobulin-Antikörper)' }, aka: 'atg antitireoglobulina hashimoto tiroidja antitrupat' },
+  { id: 'pth', cat: 'hormone', sample: 'blood', prep: 'morning', name: { sq: 'Parathormoni (PTH)', en: 'Parathyroid hormone (PTH)', de: 'Parathormon (PTH)' }, aka: 'parathormoni paratiroidja kalciumi kockat' },
+  { id: 'amh', cat: 'hormone', sample: 'blood', prep: 'none', name: { sq: 'AMH (hormoni anti-Müllerian)', en: 'AMH (anti-Müllerian hormone)', de: 'AMH (Anti-Müller-Hormon)' }, aka: 'amh rezerva ovariale fertiliteti vezoret' },
+  { id: 'dhea-s', cat: 'hormone', sample: 'blood', prep: 'morning', name: { sq: 'DHEA-S', en: 'DHEA-S', de: 'DHEA-S' }, aka: 'dheas androgjenet veshkoret pcos' },
+  { id: 'shbg', cat: 'hormone', sample: 'blood', prep: 'morning', name: { sq: 'SHBG', en: 'SHBG', de: 'SHBG' }, aka: 'shbg globulina testosteroni pcos' },
 
   // Vitamina dhe minerale
   { id: 'vitd', cat: 'vitamina', sample: 'blood', prep: 'none', name: { sq: 'Vitamina D (25-OH)', en: 'Vitamin D (25-OH)', de: 'Vitamin D (25-OH)' }, aka: 'vitamin d 25oh d3' },
@@ -174,11 +183,20 @@ export const TESTS = [
   { id: 'iron', cat: 'vitamina', sample: 'blood', prep: 'fasting', name: { sq: 'Hekuri (Fe)', en: 'Iron (Fe)', de: 'Eisen (Fe)' }, aka: 'fe anemia hekur' },
   { id: 'ferritin', cat: 'vitamina', sample: 'blood', prep: 'morning', name: { sq: 'Feritina', en: 'Ferritin', de: 'Ferritin' }, aka: 'rezervat e hekurit anemia' },
   { id: 'magnesium', cat: 'vitamina', sample: 'blood', prep: 'morning', name: { sq: 'Magnezi', en: 'Magnesium', de: 'Magnesium' }, aka: 'mg' },
+  { id: 'tibc', cat: 'vitamina', sample: 'blood', prep: 'fasting', name: { sq: 'TIBC (kapaciteti i lidhjes së hekurit)', en: 'TIBC (iron-binding capacity)', de: 'TIBC (Eisenbindungskapazität)' }, aka: 'tibc hekuri transferina uibc anemia' },
 
   // Inflamacion dhe imunologji
   { id: 'crp', cat: 'imunologji', sample: 'blood', prep: 'none', name: { sq: 'CRP (proteina C-reaktive)', en: 'CRP (C-reactive protein)', de: 'CRP (C-reaktives Protein)' }, aka: 'crp inflamacioni infeksioni' },
   { id: 'aso', cat: 'imunologji', sample: 'blood', prep: 'none', name: { sq: 'ASO (antistreptolizina O)', en: 'ASO (antistreptolysin O)', de: 'ASL (Antistreptolysin O)' }, aka: 'aso streptokoku fyti' },
   { id: 'rf', cat: 'imunologji', sample: 'blood', prep: 'none', name: { sq: 'Faktori reumatoid (RF)', en: 'Rheumatoid factor (RF)', de: 'Rheumafaktor (RF)' }, aka: 'rf reumatizma nyjet' },
+  { id: 'ana', cat: 'imunologji', sample: 'blood', prep: 'none', name: { sq: 'ANA (antitrupat antinuklearë)', en: 'ANA (antinuclear antibodies)', de: 'ANA (antinukleäre Antikörper)' }, aka: 'ana antinuklear lupus autoimune' },
+  { id: 'anti-dsdna', cat: 'imunologji', sample: 'blood', prep: 'none', name: { sq: 'Anti-dsDNA', en: 'Anti-dsDNA', de: 'Anti-dsDNA' }, aka: 'dsdna lupus autoimune' },
+  { id: 'ena', cat: 'imunologji', sample: 'blood', prep: 'none', name: { sq: 'ENA (profili i antigjeneve nukleare)', en: 'ENA profile (extractable nuclear antigens)', de: 'ENA-Profil (extrahierbare nukleäre Antigene)' }, aka: 'ena ssa ssb sm rnp autoimune' },
+  { id: 'c3', cat: 'imunologji', sample: 'blood', prep: 'none', name: { sq: 'Komplementi C3', en: 'Complement C3', de: 'Komplement C3' }, aka: 'komplementi c3 lupus autoimune' },
+  { id: 'c4', cat: 'imunologji', sample: 'blood', prep: 'none', name: { sq: 'Komplementi C4', en: 'Complement C4', de: 'Komplement C4' }, aka: 'komplementi c4 lupus autoimune' },
+  { id: 'anti-ccp', cat: 'imunologji', sample: 'blood', prep: 'none', name: { sq: 'Anti-CCP', en: 'Anti-CCP', de: 'Anti-CCP' }, aka: 'ccp artriti reumatoid nyjet reumatizma' },
+  { id: 'ttg-iga', cat: 'imunologji', sample: 'blood', prep: 'none', name: { sq: 'Anti-transglutaminaza IgA (tTG-IgA)', en: 'Tissue transglutaminase IgA (tTG-IgA)', de: 'Gewebstransglutaminase-IgA (tTG-IgA)' }, aka: 'ttg transglutaminaza celiakia gluten' },
+  { id: 'iga', cat: 'imunologji', sample: 'blood', prep: 'none', name: { sq: 'IgA totale', en: 'Total IgA', de: 'Gesamt-IgA' }, aka: 'iga imunoglobulina a celiakia' },
 
   // Alergji dhe intolerancë
   { id: 'ige', cat: 'alergji', sample: 'blood', prep: 'none', name: { sq: 'IgE totale', en: 'Total IgE', de: 'Gesamt-IgE' }, aka: 'ige alergjia' },
@@ -192,14 +210,25 @@ export const TESTS = [
   { id: 'nasal-swab', cat: 'mikrobiologji', sample: 'swab', prep: 'swab', name: { sq: 'Brisi i hundës', en: 'Nasal swab', de: 'Nasenabstrich' }, aka: 'bris hunde' },
   { id: 'vaginal-swab', cat: 'mikrobiologji', sample: 'swab', prep: 'vaginal', name: { sq: 'Brisi vaginal dhe cervikal', en: 'Vaginal and cervical swab', de: 'Vaginal- und Zervixabstrich' }, aka: 'bris vaginal cervikal gjinekologjik' },
   { id: 'h-pylori', cat: 'mikrobiologji', sample: 'varies', prep: 'none', name: { sq: 'Helicobacter pylori', en: 'Helicobacter pylori', de: 'Helicobacter pylori' }, aka: 'h pylori helikobakter stomaku gastriti' },
+  { id: 'hbsag', cat: 'mikrobiologji', sample: 'blood', prep: 'none', name: { sq: 'HBsAg (hepatiti B)', en: 'HBsAg (hepatitis B)', de: 'HBsAg (Hepatitis B)' }, aka: 'hbsag hepatiti b hepatit verdhez' },
+  { id: 'anti-hcv', cat: 'mikrobiologji', sample: 'blood', prep: 'none', name: { sq: 'Anti-HCV (hepatiti C)', en: 'Anti-HCV (hepatitis C)', de: 'Anti-HCV (Hepatitis C)' }, aka: 'hcv hepatiti c hepatit' },
+  { id: 'hiv', cat: 'mikrobiologji', sample: 'blood', prep: 'none', name: { sq: 'HIV 1/2 (antigjen dhe antitrupa)', en: 'HIV 1/2 (antigen and antibodies)', de: 'HIV 1/2 (Antigen und Antikörper)' }, aka: 'hiv sida aids' },
+  { id: 'syphilis', cat: 'mikrobiologji', sample: 'blood', prep: 'none', name: { sq: 'Sifilizi (TPHA)', en: 'Syphilis (TPHA)', de: 'Syphilis (TPHA)' }, aka: 'sifilizi tpha treponema vdrl' },
+  { id: 'toxo-igg', cat: 'mikrobiologji', sample: 'blood', prep: 'none', name: { sq: 'Toksoplazma IgG', en: 'Toxoplasma IgG', de: 'Toxoplasma IgG' }, aka: 'toksoplazma toxoplasma shtatzania torch' },
+  { id: 'toxo-igm', cat: 'mikrobiologji', sample: 'blood', prep: 'none', name: { sq: 'Toksoplazma IgM', en: 'Toxoplasma IgM', de: 'Toxoplasma IgM' }, aka: 'toksoplazma toxoplasma shtatzania torch' },
+  { id: 'rubella-igg', cat: 'mikrobiologji', sample: 'blood', prep: 'none', name: { sq: 'Rubeola IgG', en: 'Rubella IgG', de: 'Röteln IgG' }, aka: 'rubeola rubella shtatzania torch' },
+  { id: 'cmv-igg', cat: 'mikrobiologji', sample: 'blood', prep: 'none', name: { sq: 'Citomegalovirusi (CMV) IgG', en: 'Cytomegalovirus (CMV) IgG', de: 'Zytomegalievirus (CMV) IgG' }, aka: 'cmv citomegalovirusi shtatzania torch' },
+  { id: 'cmv-igm', cat: 'mikrobiologji', sample: 'blood', prep: 'none', name: { sq: 'Citomegalovirusi (CMV) IgM', en: 'Cytomegalovirus (CMV) IgM', de: 'Zytomegalievirus (CMV) IgM' }, aka: 'cmv citomegalovirusi shtatzania torch' },
 
   // Urinë dhe feçe
   { id: 'urinalysis', cat: 'urine-fece', sample: 'urine', prep: 'urine', name: { sq: 'Urina komplet', en: 'Urinalysis', de: 'Urinuntersuchung (Urinstatus)' }, aka: 'urina urine analiza e urines' },
   { id: 'stool-parasites', cat: 'urine-fece', sample: 'stool', prep: 'stool', name: { sq: 'Fekaloskopia (parazitët në feçe)', en: 'Stool test for parasites', de: 'Stuhl auf Parasiten' }, aka: 'parazitet krimbat fekaloskopi' },
   { id: 'occult-blood', cat: 'urine-fece', sample: 'stool', prep: 'stool', name: { sq: 'Gjaku okult në feçe', en: 'Faecal occult blood', de: 'Okkultes Blut im Stuhl' }, aka: 'gjak ne fece fob' },
+  { id: 'calprotectin', cat: 'urine-fece', sample: 'stool', prep: 'stool', name: { sq: 'Kalprotektina në feçe', en: 'Faecal calprotectin', de: 'Calprotectin im Stuhl' }, aka: 'kalprotektina zorret inflamacioni crohn kolit' },
 ];
 
 // Check-up panels ("Paketat"). Suggestions to agree with the laboratory; no prices on the site.
+// Shown on /paketat/ in the groups of PANEL_GROUPS below (every panel must be in one).
 export const PANELS = [
   {
     id: 'baze',
@@ -235,7 +264,7 @@ export const PANELS = [
       en: 'Thyroid function and antibodies — for diagnosis or follow-up.',
       de: 'Schilddrüsenfunktion und Antikörper — zur Diagnose oder Verlaufskontrolle.',
     },
-    tests: ['tsh', 'ft4', 'ft3', 'anti-tpo'],
+    tests: ['tsh', 'ft4', 'ft3', 'anti-tpo', 'anti-tg'],
   },
   {
     id: 'grua',
@@ -297,7 +326,166 @@ export const PANELS = [
     },
     tests: ['ige', 'allergy-panel', 'food-intolerance'],
   },
+  {
+    id: 'diabet',
+    icon: 'droplet',
+    name: { sq: 'Diabeti dhe sheqeri', en: 'Diabetes & blood sugar', de: 'Diabetes & Blutzucker' },
+    for: { sq: 'Sheqer i lartë, etje e shtuar ose diabet në familje', en: 'High blood sugar, increased thirst or diabetes in the family', de: 'Erhöhter Blutzucker, vermehrter Durst oder Diabetes in der Familie' },
+    text: {
+      sq: 'Sheqeri sot dhe gjatë tre muajve të fundit, insulina, veshkat dhe yndyrnat — për diagnozë ose ndjekje.',
+      en: 'Blood sugar today and over the last three months, insulin, kidneys and fats — for diagnosis or follow-up.',
+      de: 'Blutzucker heute und über die letzten drei Monate, Insulin, Nieren und Blutfette — zur Diagnose oder Verlaufskontrolle.',
+    },
+    tests: ['glucose', 'hba1c', 'insulin', 'homa', 'cholesterol', 'triglycerides', 'creatinine', 'microalbumin', 'urinalysis'],
+  },
+  {
+    id: 'veshkat',
+    icon: 'bean',
+    name: { sq: 'Veshkat', en: 'Kidney function', de: 'Nierenfunktion' },
+    for: { sq: 'Tension i lartë, diabet, ënjtje ose ndryshime në urinë', en: 'High blood pressure, diabetes, swelling or changes in urine', de: 'Bluthochdruck, Diabetes, Schwellungen oder Veränderungen im Urin' },
+    text: {
+      sq: 'Urea, kreatinina, acidi urik, elektrolitët, kalciumi, fosfati dhe urina me mikroalbuminën.',
+      en: 'Urea, creatinine, uric acid, electrolytes, calcium, phosphate and urine with microalbumin.',
+      de: 'Harnstoff, Kreatinin, Harnsäure, Elektrolyte, Calcium, Phosphat und Urin mit Mikroalbumin.',
+    },
+    tests: ['urea', 'creatinine', 'uric-acid', 'electrolytes', 'calcium', 'phosphate', 'urinalysis', 'microalbumin'],
+  },
+  {
+    id: 'melcia',
+    icon: 'filter',
+    name: { sq: 'Mëlçia', en: 'Liver function', de: 'Leberwerte' },
+    for: { sq: 'Alkool, barna për një kohë të gjatë, mëlçi e yndyrshme ose verdhëz', en: 'Alcohol, long-term medicines, fatty liver or jaundice', de: 'Alkohol, Dauermedikation, Fettleber oder Gelbsucht' },
+    text: {
+      sq: 'Enzimat e mëlçisë, bilirubina, proteinat, koagulimi dhe hepatitet B e C.',
+      en: 'Liver enzymes, bilirubin, proteins, clotting and hepatitis B and C.',
+      de: 'Leberenzyme, Bilirubin, Eiweiß, Gerinnung sowie Hepatitis B und C.',
+    },
+    tests: ['ast', 'alt', 'ggt', 'alp', 'bilirubin', 'protein', 'pt-inr', 'hbsag', 'anti-hcv'],
+  },
+  {
+    id: 'anemi',
+    icon: 'droplets',
+    name: { sq: 'Anemia dhe hekuri', en: 'Anaemia & iron', de: 'Anämie & Eisen' },
+    for: { sq: 'Zbehje, lodhje, marramendje ose menstruacione të rënda', en: 'Paleness, tiredness, dizziness or heavy periods', de: 'Blässe, Müdigkeit, Schwindel oder starke Regelblutungen' },
+    text: {
+      sq: 'Gjaku komplet, retikulocitet, hekuri dhe rezervat e tij, vitamina B12 dhe acidi folik.',
+      en: 'Blood count, reticulocytes, iron and iron stores, vitamin B12 and folic acid.',
+      de: 'Blutbild, Retikulozyten, Eisen und Eisenspeicher, Vitamin B12 und Folsäure.',
+    },
+    tests: ['cbc', 'reticulocytes', 'iron', 'tibc', 'ferritin', 'b12', 'folate'],
+  },
+  {
+    id: 'kockat',
+    icon: 'bone',
+    name: { sq: 'Kockat dhe kalciumi', en: 'Bones & calcium', de: 'Knochen & Calcium' },
+    for: { sq: 'Pas menopauzës, dhimbje kockash ose rrezik për osteoporozë', en: 'After menopause, bone pain or a risk of osteoporosis', de: 'Nach der Menopause, bei Knochenschmerzen oder Osteoporose-Risiko' },
+    text: {
+      sq: 'Kalciumi, fosfati, magnezi, fosfataza alkaline, vitamina D dhe parathormoni.',
+      en: 'Calcium, phosphate, magnesium, alkaline phosphatase, vitamin D and parathyroid hormone.',
+      de: 'Calcium, Phosphat, Magnesium, alkalische Phosphatase, Vitamin D und Parathormon.',
+    },
+    tests: ['calcium', 'phosphate', 'magnesium', 'alp', 'vitd', 'pth'],
+  },
+  {
+    id: 'stomaku',
+    icon: 'salad',
+    name: { sq: 'Stomaku dhe zorrët', en: 'Stomach & bowel', de: 'Magen & Darm' },
+    for: { sq: 'Dhimbje barku, fryrje, diarre ose kapsllëk që zgjat', en: 'Stomach pain, bloating, or diarrhoea or constipation that lasts', de: 'Bauchschmerzen, Blähungen, anhaltender Durchfall oder Verstopfung' },
+    text: {
+      sq: 'Helicobacter pylori, gjaku okult, parazitët, kalprotektina dhe testet për celiakinë.',
+      en: 'Helicobacter pylori, occult blood, parasites, calprotectin and the coeliac tests.',
+      de: 'Helicobacter pylori, okkultes Blut, Parasiten, Calprotectin und die Zöliakie-Tests.',
+    },
+    tests: ['h-pylori', 'occult-blood', 'stool-parasites', 'calprotectin', 'ttg-iga', 'iga', 'cbc'],
+  },
+  {
+    id: 'autoimun',
+    icon: 'shield-check',
+    name: { sq: 'Sëmundjet autoimune', en: 'Autoimmune screening', de: 'Autoimmun-Screening' },
+    for: { sq: 'Dhimbje nyjesh, skuqje, lodhje e zgjatur — sipas mjekut', en: 'Joint pain, rashes, long-lasting tiredness — as your doctor advises', de: 'Gelenkschmerzen, Hautausschlag, anhaltende Müdigkeit — auf ärztliche Empfehlung' },
+    text: {
+      sq: 'Antitrupat antinuklearë (ANA, anti-dsDNA, ENA), komplementi C3 dhe C4 dhe inflamacioni.',
+      en: 'Antinuclear antibodies (ANA, anti-dsDNA, ENA), complement C3 and C4, and inflammation.',
+      de: 'Antinukleäre Antikörper (ANA, Anti-dsDNA, ENA), Komplement C3 und C4 sowie Entzündungswerte.',
+    },
+    tests: ['ana', 'anti-dsdna', 'ena', 'c3', 'c4', 'crp', 'esr', 'cbc'],
+  },
+  {
+    id: 'reumatizem',
+    icon: 'hand',
+    name: { sq: 'Nyjet dhe reumatizma', en: 'Joints & rheumatism', de: 'Gelenke & Rheuma' },
+    for: { sq: 'Nyje të dhimbshme ose të ënjtura, ngurtësi në mëngjes', en: 'Painful or swollen joints, morning stiffness', de: 'Schmerzende oder geschwollene Gelenke, Morgensteifigkeit' },
+    text: {
+      sq: 'Faktori reumatoid, anti-CCP, ASO, acidi urik dhe inflamacioni.',
+      en: 'Rheumatoid factor, anti-CCP, ASO, uric acid and inflammation.',
+      de: 'Rheumafaktor, Anti-CCP, ASL, Harnsäure und Entzündungswerte.',
+    },
+    tests: ['rf', 'anti-ccp', 'aso', 'uric-acid', 'crp', 'esr'],
+  },
+  {
+    id: 'hormonet',
+    icon: 'venus',
+    name: { sq: 'Hormonet e gruas (PCOS)', en: 'Female hormones (PCOS)', de: 'Weibliche Hormone (PCOS)' },
+    for: { sq: 'Cikël i parregullt, akne, rritje e qimeve ose planifikim shtatzënie — sipas gjinekologut', en: 'Irregular cycle, acne, extra hair growth or planning a pregnancy — as your gynaecologist advises', de: 'Unregelmäßiger Zyklus, Akne, vermehrter Haarwuchs oder Kinderwunsch — auf gynäkologische Empfehlung' },
+    text: {
+      sq: 'Hormonet e ciklit, prolaktina, testosteroni, DHEA-S, SHBG, AMH, insulina dhe tiroidja — secila në ditën e duhur të ciklit.',
+      en: 'Cycle hormones, prolactin, testosterone, DHEA-S, SHBG, AMH, insulin and thyroid — each on the right day of the cycle.',
+      de: 'Zyklushormone, Prolaktin, Testosteron, DHEA-S, SHBG, AMH, Insulin und Schilddrüse — jeweils am richtigen Zyklustag.',
+    },
+    tests: ['fsh', 'lh', 'estradiol', 'progesterone', 'prolactin', 'testosterone', 'dhea-s', 'shbg', 'amh', 'insulin', 'tsh'],
+  },
+  {
+    id: 'shtatzani',
+    icon: 'baby',
+    name: { sq: 'Shtatzënia — kontrolli i parë', en: 'Pregnancy — first check', de: 'Schwangerschaft — erste Kontrolle' },
+    for: { sq: 'Në fillim të shtatzënisë, sipas gjinekologut', en: 'Early in pregnancy, as your gynaecologist advises', de: 'Zu Beginn der Schwangerschaft, auf gynäkologische Empfehlung' },
+    text: {
+      sq: 'Gjaku, grupi i gjakut, sheqeri, tiroidja, urina dhe infeksionet që kontrollohen në shtatzëni.',
+      en: 'Blood count, blood group, sugar, thyroid, urine and the infections checked in pregnancy.',
+      de: 'Blutbild, Blutgruppe, Blutzucker, Schilddrüse, Urin und die in der Schwangerschaft geprüften Infektionen.',
+    },
+    tests: ['cbc', 'blood-group', 'glucose', 'tsh', 'urinalysis', 'urine-culture', 'toxo-igg', 'toxo-igm', 'rubella-igg', 'cmv-igg', 'cmv-igm', 'hbsag', 'anti-hcv', 'hiv', 'syphilis'],
+  },
+  {
+    id: 'operacion',
+    icon: 'hospital',
+    name: { sq: 'Para operacionit', en: 'Before surgery', de: 'Vor einer Operation' },
+    for: { sq: 'Para një ndërhyrjeje kirurgjikale ose stomatologjike, sipas kërkesës së mjekut', en: 'Before surgery or a dental procedure, as your doctor requests', de: 'Vor einer Operation oder einem zahnärztlichen Eingriff, nach ärztlicher Anforderung' },
+    text: {
+      sq: 'Gjaku, grupi i gjakut, koagulimi, sheqeri, veshkat, elektrolitët, hepatitet B e C dhe HIV.',
+      en: 'Blood count, blood group, clotting, sugar, kidneys, electrolytes, hepatitis B and C, and HIV.',
+      de: 'Blutbild, Blutgruppe, Gerinnung, Blutzucker, Nieren, Elektrolyte, Hepatitis B und C sowie HIV.',
+    },
+    tests: ['cbc', 'blood-group', 'pt-inr', 'aptt', 'fibrinogen', 'glucose', 'urea', 'creatinine', 'electrolytes', 'hbsag', 'anti-hcv', 'hiv'],
+  },
+  {
+    id: 'infeksione',
+    icon: 'shield-plus',
+    name: { sq: 'Hepatitet, HIV dhe sifilizi', en: 'Hepatitis, HIV & syphilis', de: 'Hepatitis, HIV & Syphilis' },
+    for: { sq: 'Kontroll i rregullt ose pas një rreziku të mundshëm', en: 'A routine check or after a possible risk', de: 'Routinekontrolle oder nach einem möglichen Risiko' },
+    text: {
+      sq: 'Hepatiti B (HBsAg), hepatiti C (anti-HCV), HIV 1/2 dhe sifilizi (TPHA).',
+      en: 'Hepatitis B (HBsAg), hepatitis C (anti-HCV), HIV 1/2 and syphilis (TPHA).',
+      de: 'Hepatitis B (HBsAg), Hepatitis C (Anti-HCV), HIV 1/2 und Syphilis (TPHA).',
+    },
+    tests: ['hbsag', 'anti-hcv', 'hiv', 'syphilis'],
+  },
 ];
+
+// The sections of /paketat/, in order, with the panels in each.
+export const PANEL_GROUPS = [
+  { id: 'te-pergjithshme', name: { sq: 'Kontrolle të përgjithshme', en: 'General check-ups', de: 'Allgemeine Check-ups' }, panels: ['baze', 'femije', 'grua', 'burre', 'vitamina'] },
+  { id: 'organet', name: { sq: 'Sheqeri, zemra dhe organet', en: 'Sugar, heart and organs', de: 'Blutzucker, Herz und Organe' }, panels: ['diabet', 'zemra', 'tiroide', 'veshkat', 'melcia', 'anemi', 'kockat', 'stomaku'] },
+  { id: 'imuniteti', name: { sq: 'Imuniteti, nyjet dhe alergjitë', en: 'Immunity, joints and allergies', de: 'Immunsystem, Gelenke und Allergien' }, panels: ['autoimun', 'reumatizem', 'alergji'] },
+  { id: 'hormonet-shtatzania', name: { sq: 'Hormonet, shtatzënia dhe ndërhyrjet', en: 'Hormones, pregnancy and procedures', de: 'Hormone, Schwangerschaft und Eingriffe' }, panels: ['hormonet', 'shtatzani', 'operacion', 'infeksione'] },
+];
+{
+  const grouped = PANEL_GROUPS.flatMap((g) => g.panels);
+  const ids = PANELS.map((p) => p.id);
+  const lost = ids.filter((id) => !grouped.includes(id));
+  const unknown = grouped.filter((id) => !ids.includes(id));
+  if (lost.length || unknown.length) throw new Error(`PANEL_GROUPS: not grouped ${lost.join(', ') || '-'}; unknown ${unknown.join(', ') || '-'}`);
+}
 
 // The common tests that have their own page in the full catalogue (/analizat/<test>/): test id → catalogue id.
 // Matched by name and checked by hand; a test without an entry here simply has no link.
@@ -312,4 +500,9 @@ export const CATALOGUE_LINK = {
   ferritin: 'k17435', magnesium: 'k17415', crp: 'k17745', aso: 'k17730', rf: 'k17738', ige: 'k17744',
   'urine-culture': 'k17976', 'throat-swab': 'k17975', 'nasal-swab': 'k17993', 'vaginal-swab': 'k17979',
   'h-pylori': 'k17972', urinalysis: 'k18268', 'stool-parasites': 'k18130', 'occult-blood': 'k18001',
+  reticulocytes: 'k17696', homa: 'k21318', microalbumin: 'k17490', phosphate: 'k17408', 'anti-tg': 'k17765', pth: 'k17930',
+  amh: 'k17957', 'dhea-s': 'k17916', shbg: 'k17931', tibc: 'k17432', ana: 'k17727', 'anti-dsdna': 'k17723', ena: 'k17833',
+  c3: 'k17735', c4: 'k17736', 'anti-ccp': 'k17762', 'ttg-iga': 'k17842', iga: 'k17741', hbsag: 'k18198', 'anti-hcv': 'k18204',
+  hiv: 'k18205', syphilis: 'k17767', 'toxo-igg': 'k17750', 'toxo-igm': 'k17751', 'rubella-igg': 'k17746', 'cmv-igg': 'k17733',
+  'cmv-igm': 'k17734', calprotectin: 'k17804',
 };

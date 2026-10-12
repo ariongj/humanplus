@@ -30,7 +30,16 @@
     var ICON_PLUS = '<svg class="i" aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>';
     var ICON_CHECK = '<svg class="i" aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>';
     var ICON_RIGHT = '<svg class="i" aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>';
-    var ICON_DOWN = '<svg class="i cat-chev" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>';
+    // + that turns into − when a row is open (the vertical bar fades out)
+    var ICON_TOGGLE = '<svg class="i cat-plus" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round"><path d="M5 12h14"/><path class="v" d="M12 5v14"/></svg>';
+    // The sample icon comes from the page's icon sprite: tubes for blood, a flask for urine, a tube for stool, swabs
+    var useEl = document.querySelector('use[href*="icons.svg"]');
+    var SPRITE = useEl ? useEl.getAttribute('href').split('#')[0] : '';
+    function sampleIcon(x) {
+      var s = (x.co || '') + ' ' + (x.sp || '');
+      var name = /urin/i.test(s) ? 'flask-round' : /fe[çc]|stool|stuhl/i.test(s) ? 'test-tube' : /bris|swab|abstrich|tampon/i.test(s) ? 'test-tube-diagonal' : 'test-tubes';
+      return SPRITE ? '<svg class="i i-s cat-ico" aria-hidden="true" width="34" height="34"><use href="' + SPRITE + '#' + name + '"/></svg>' : '';
+    }
 
     function el(tag, cls, text) {
       var e = document.createElement(tag);
@@ -52,18 +61,20 @@
       tog.type = 'button';
       tog.setAttribute('aria-expanded', 'false');
       tog.setAttribute('aria-controls', 'd-' + x.id);
-      var name = el('span', 'cat-name', x.n);
-      tog.appendChild(name);
-      tog.insertAdjacentHTML('beforeend', ICON_DOWN);
+      tog.insertAdjacentHTML('beforeend', ICON_TOGGLE + sampleIcon(x));
+      var text = el('span', 'cat-text');
+      text.appendChild(el('span', 'cat-name', x.n));
+      // category (and "Panel") in small text under the name
+      text.appendChild(el('span', 'cat-chips', (C.cats[x.c[0]] || '') + (x.k ? ' · ' + T.panel : '')));
+      tog.appendChild(text);
       main.appendChild(tog);
-      var chips = el('div', 'cat-chips');
-      if (x.k) chips.appendChild(el('span', 'chip chip-violet', T.panel));
-      chips.appendChild(el('span', 'chip', C.cats[x.c[0]] || ''));
-      if (x.co) chips.appendChild(el('span', 'chip chip-brand', x.co));
-      main.appendChild(chips);
       li.appendChild(main);
 
-      var add = el('button', 'add-btn');
+      // right column: the sample ("Marrje gjaku") above the Add button
+      var order = el('div', 'cat-order');
+      if (x.co) order.appendChild(el('span', 'cat-sample', x.co));
+
+      var add = el('button', 'add-btn add-solid');
       add.type = 'button';
       add.setAttribute('data-add', x.id);
       add.setAttribute('data-name', x.n);
@@ -75,7 +86,8 @@
       add.innerHTML = '<span class="add-off">' + ICON_PLUS + '</span><span class="add-on">' + ICON_CHECK + '</span>';
       $('.add-off', add).appendChild(document.createTextNode(C.add));
       $('.add-on', add).appendChild(document.createTextNode(C.added));
-      li.appendChild(add);
+      order.appendChild(add);
+      li.appendChild(order);
 
       var det = el('div', 'cat-detail');
       det.id = 'd-' + x.id;
@@ -173,12 +185,40 @@
       var nw = $('[data-none-wa]');
       if (nw) nw.href = HP.waUrl(nw.getAttribute('data-msg') + ' ' + input.value.trim() + '?');
       if (grid) grid.hidden = !!(cat || ws.length);
-      $$('[data-filters] [data-filter]').forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-filter') === cat ? 'true' : 'false'); });
+      $$('[data-filters] [data-filter]').forEach(function (b) {
+        var on = b.getAttribute('data-filter') === cat;
+        b.setAttribute('aria-pressed', on ? 'true' : 'false');
+        if (on) showChip(b);
+      });
       HP.sync();
       var url = new URL(location.href);
       if (input.value.trim()) url.searchParams.set('q', input.value.trim()); else url.searchParams.delete('q');
       if (cat) url.searchParams.set('kategoria', cat); else url.searchParams.delete('kategoria');
       history.replaceState(null, '', url.pathname + url.search + url.hash);
+    }
+
+    /* the category row: arrows for mouse users, fades only on the sides that hide categories */
+    var fwrap = $('[data-filters-wrap]');
+    var frow = $('[data-filters]');
+    var smooth = !(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+    function edges() {
+      if (!fwrap) return;
+      var max = frow.scrollWidth - frow.clientWidth;
+      fwrap.classList.toggle('can-left', frow.scrollLeft > 2);
+      fwrap.classList.toggle('can-right', frow.scrollLeft < max - 2);
+    }
+    function showChip(b) {
+      if (!frow || frow.scrollWidth <= frow.clientWidth) return;
+      var left = b.offsetLeft - (frow.clientWidth - b.offsetWidth) / 2;
+      frow.scrollTo({ left: Math.max(0, left), behavior: smooth ? 'smooth' : 'auto' });
+    }
+    if (fwrap) {
+      frow.addEventListener('scroll', edges, { passive: true });
+      window.addEventListener('resize', edges);
+      $$('[data-filters-step]', fwrap).forEach(function (b) {
+        b.addEventListener('click', function () { frow.scrollBy({ left: +b.getAttribute('data-filters-step') * frow.clientWidth * 0.7, behavior: smooth ? 'smooth' : 'auto' }); });
+      });
+      edges();
     }
 
     var timer;

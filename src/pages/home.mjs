@@ -40,7 +40,8 @@ const T = dict('home', {
     pan_eyebrow: 'Paketat',
     pan_title: 'Check-up i menduar *për ju*.',
     pan_text: 'Analizat që shkojnë bashkë, të grupuara sipas moshës dhe nevojës. Shtojeni paketën në listë ose pyetni për çmimin në WhatsApp.',
-    pan_all: 'Të gjitha paketat',
+    pan_all: 'Të gjitha paketat ({n})',
+    pan_more: 'Edhe paketa për:',
     ped_eyebrow: 'Pediatri',
     ped_title: 'Shëndeti i fëmijës suaj — *prioriteti ynë*.',
     ped_text: 'Që nga viti 2011 kemi qenë pranë mijëra prindërve dhe fëmijëve. Pediatri dhe laborator në të njëjtin vend: më pak pritje, më pak stres për fëmijën.',
@@ -103,7 +104,8 @@ const T = dict('home', {
     pan_eyebrow: 'Check-ups',
     pan_title: 'Check-ups made *for you*.',
     pan_text: 'Tests that belong together, grouped by age and need. Add a check-up to your list or ask for the price on WhatsApp.',
-    pan_all: 'All check-ups',
+    pan_all: 'All check-ups ({n})',
+    pan_more: 'Also check-ups for:',
     ped_eyebrow: 'Paediatrics',
     ped_title: 'Your child’s health — *our priority*.',
     ped_text: 'Since 2011 we have looked after thousands of parents and children. Paediatrics and laboratory in one place: less waiting, less stress for your child.',
@@ -166,7 +168,8 @@ const T = dict('home', {
     pan_eyebrow: 'Check-ups',
     pan_title: 'Check-ups, *für Sie* zusammengestellt.',
     pan_text: 'Analysen, die zusammengehören, nach Alter und Bedarf gruppiert. Fügen Sie ein Check-up Ihrer Liste hinzu oder fragen Sie auf WhatsApp nach dem Preis.',
-    pan_all: 'Alle Check-ups',
+    pan_all: 'Alle Check-ups ({n})',
+    pan_more: 'Außerdem Check-ups für:',
     ped_eyebrow: 'Kinderheilkunde',
     ped_title: 'Die Gesundheit Ihres Kindes — *unsere Priorität*.',
     ped_text: 'Seit 2011 haben wir Tausende Eltern und Kinder begleitet. Kinderheilkunde und Labor an einem Ort: weniger Warten, weniger Stress für Ihr Kind.',
@@ -307,13 +310,15 @@ export function homePage(ctx) {
     </div>
   </section>`;
 
+  const HOME_PANELS = ['baze', 'femije', 'grua', 'burre'];
   const panels = h`<section class="section" aria-labelledby="h-pan">
     <div class="wrap">
       <div class="split-head">
         ${sectionHead({ eyebrow: t.pan_eyebrow, title: t.pan_title, text: t.pan_text, id: 'h-pan' })}
-        <a class="btn btn-outline" href="${esc(ctx.url('paketat'))}">${esc(t.pan_all)}${icon('arrow-right', { size: 18 })}</a>
+        <a class="btn btn-outline" href="${esc(ctx.url('paketat'))}">${esc(t.pan_all.replace('{n}', PANELS.length))}${icon('arrow-right', { size: 18 })}</a>
       </div>
-      <div class="panel-grid">${PANELS.filter((p) => ['baze', 'femije', 'grua', 'burre'].includes(p.id)).map((p) => panelCard(ctx, p))}</div>
+      <div class="panel-grid">${HOME_PANELS.map((id) => panelCard(ctx, PANELS.find((p) => p.id === id)))}</div>
+      <div class="panel-more"><span>${esc(t.pan_more)}</span><ul>${PANELS.filter((p) => !HOME_PANELS.includes(p.id)).map((p) => h`<li><a class="chip chip-link" href="${esc(ctx.url('paketat'))}#paketa-${p.id}">${esc(L(p.name, lang))}</a></li>`)}</ul></div>
     </div>
   </section>`;
 

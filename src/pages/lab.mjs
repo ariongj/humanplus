@@ -1,6 +1,6 @@
 // /paketat/ (check-ups) and /pergatitja/ (preparation guide). The catalogue /analizat/ is in catalogue.mjs.
 import { SITE } from '../data/site.mjs';
-import { TESTS, CATEGORIES, PANELS, PREP } from '../data/tests.mjs';
+import { TESTS, CATEGORIES, PANELS, PANEL_GROUPS, PREP } from '../data/tests.mjs';
 import { UI } from '../data/ui.mjs';
 import { esc, h, icon, brand, dict, L } from '../lib/html.mjs';
 import { pageHero, sectionHead, testRow, testSearch, panelCard, ctaBand } from '../lib/parts.mjs';
@@ -8,7 +8,8 @@ import { pageHero, sectionHead, testRow, testSearch, panelCard, ctaBand } from '
 const T = dict('lab', {
   sq: {
     panels_title: 'Paketat check-up — analiza të grupuara sipas nevojës',
-    panels_desc: 'Paketat check-up në Human+ Prishtinë: check-up bazë, për fëmijë, tiroidja, shëndeti i gruas dhe i burrit 40+, vitaminat, zemra dhe alergjitë.',
+    panels_desc: 'Paketat check-up në Human+ Prishtinë: check-up bazë dhe për fëmijë, diabeti, zemra, tiroidja, veshkat, mëlçia, anemia, sëmundjet autoimune, hormonet, shtatzënia, para operacionit dhe më shumë.',
+    panels_nav: 'Grupet e paketave',
     panels_eyebrow: 'Paketat',
     panels_h1: 'Check-up i menduar *për ju*.',
     panels_lead: 'Analizat që shkojnë bashkë, të grupuara sipas moshës dhe nevojës. Shtoni një paketë në listë ose pyetni për çmimin — paketën mund ta përshtatim me udhëzimin e mjekut tuaj.',
@@ -42,7 +43,8 @@ const T = dict('lab', {
   },
   en: {
     panels_title: 'Check-ups — tests grouped by need',
-    panels_desc: 'Check-ups at Human+ Prishtina: basic check-up, children, thyroid, women’s health, men’s health 40+, vitamins, heart and allergies.',
+    panels_desc: 'Check-ups at Human+ Prishtina: basic and children’s check-ups, diabetes, heart, thyroid, kidneys, liver, anaemia, autoimmune screening, hormones, pregnancy, before surgery and more.',
+    panels_nav: 'Check-up groups',
     panels_eyebrow: 'Check-ups',
     panels_h1: 'Check-ups made *for you*.',
     panels_lead: 'Tests that belong together, grouped by age and need. Add a check-up to your list or ask for the price — we can adjust it to your doctor’s advice.',
@@ -76,7 +78,8 @@ const T = dict('lab', {
   },
   de: {
     panels_title: 'Check-ups — Analysen nach Bedarf zusammengestellt',
-    panels_desc: 'Check-ups bei Human+ Prishtina: Basis-Check-up, für Kinder, Schilddrüse, Frauengesundheit, Männergesundheit 40+, Vitamine, Herz und Allergien.',
+    panels_desc: 'Check-ups bei Human+ Prishtina: Basis- und Kinder-Check-up, Diabetes, Herz, Schilddrüse, Nieren, Leber, Anämie, Autoimmun-Screening, Hormone, Schwangerschaft, vor einer Operation und mehr.',
+    panels_nav: 'Check-up-Gruppen',
     panels_eyebrow: 'Check-ups',
     panels_h1: 'Check-ups, *für Sie* zusammengestellt.',
     panels_lead: 'Analysen, die zusammengehören, gruppiert nach Alter und Bedarf. Fügen Sie einen Check-up Ihrer Liste hinzu oder fragen Sie nach dem Preis — wir können ihn an die Empfehlung Ihres Arztes anpassen.',
@@ -115,8 +118,15 @@ export function panelsPage(ctx) {
   const t = T[lang];
   const u = UI[lang];
   const hero = pageHero(ctx, { trail: [[u.nav_panels, 'paketat']], eyebrow: t.panels_eyebrow, title: t.panels_h1, lead: t.panels_lead, photo: 'lab' });
+  const byId = new Map(PANELS.map((p) => [p.id, p]));
   const body = h`<section class="section section-tight">
-    <div class="wrap"><h2 class="sr-only">${esc(t.panels_eyebrow)}</h2><div class="panel-grid panel-grid-full">${PANELS.map((p) => panelCard(ctx, p, { full: true }))}</div></div>
+    <div class="wrap">
+      <nav class="panel-nav" aria-label="${esc(t.panels_nav)}"><ul>${PANEL_GROUPS.map((g) => h`<li><a href="#${g.id}">${esc(L(g.name, lang))}<span>${g.panels.length}</span></a></li>`)}</ul></nav>
+      ${PANEL_GROUPS.map((g) => h`<section class="panel-group" id="${g.id}" aria-labelledby="h-${g.id}">
+        <h2 id="h-${g.id}">${esc(L(g.name, lang))}</h2>
+        <div class="panel-grid panel-grid-full">${g.panels.map((id) => panelCard(ctx, byId.get(id), { full: true }))}</div>
+      </section>`)}
+    </div>
   </section>`;
   return {
     id: 'panels',

@@ -68,10 +68,14 @@ const T = dict('catalogue', {
     cats_hint: 'Zgjidhni një kategori ose kërkoni më lart.',
     all: 'Të gjitha',
     filter: 'Filtro sipas kategorisë',
+    filter_prev: 'Kategoritë e mëparshme',
+    filter_next: 'Më shumë kategori',
     count_one: '1 analizë',
     count_many: '{n} analiza',
     count_in: '{n} analiza në “{c}”',
     sorted: 'Renditur sipas alfabetit',
+    col_test: 'Analiza',
+    col_order: 'Mostra dhe lista',
     more: 'Shfaq edhe {n}',
     details: 'Detajet',
     desc: 'Përshkrimi',
@@ -109,10 +113,14 @@ const T = dict('catalogue', {
     cats_hint: 'Choose a category or search above.',
     all: 'All',
     filter: 'Filter by category',
+    filter_prev: 'Previous categories',
+    filter_next: 'More categories',
     count_one: '1 test',
     count_many: '{n} tests',
     count_in: '{n} tests in “{c}”',
     sorted: 'Sorted A–Z',
+    col_test: 'Test',
+    col_order: 'Sample and list',
     more: 'Show {n} more',
     details: 'Details',
     desc: 'Description',
@@ -150,10 +158,14 @@ const T = dict('catalogue', {
     cats_hint: 'Wählen Sie eine Kategorie oder suchen Sie oben.',
     all: 'Alle',
     filter: 'Nach Kategorie filtern',
+    filter_prev: 'Vorherige Kategorien',
+    filter_next: 'Weitere Kategorien',
     count_one: '1 Analyse',
     count_many: '{n} Analysen',
     count_in: '{n} Analysen in „{c}“',
     sorted: 'Sortiert von A–Z',
+    col_test: 'Analyse',
+    col_order: 'Probe und Liste',
     more: '{n} weitere anzeigen',
     details: 'Details',
     desc: 'Beschreibung',
@@ -197,10 +209,15 @@ export function testsPage(ctx) {
     lead: fill(t.lead, lang),
     photo: 'analyzer',
   });
-  const filters = h`<div class="filters" role="group" aria-label="${esc(t.filter)}" data-filters>
+  // One row that scrolls sideways; the arrows (shown only when more categories are hidden that way) move it with a mouse.
+  const filters = h`<div class="filters-wrap" data-filters-wrap>
+  <button type="button" class="filters-arrow filters-prev js-only" data-filters-step="-1" aria-label="${esc(t.filter_prev)}" tabindex="-1">${icon('chevron-left', { size: 20 })}</button>
+  <div class="filters" role="group" aria-label="${esc(t.filter)}" data-filters>
     <button type="button" class="filter" data-filter="" aria-pressed="true">${esc(t.all)} <span>${CATALOGUE.count}</span></button>
     ${cats.map((c) => h`<button type="button" class="filter" data-filter="${c.id}" aria-pressed="false">${esc(catName(c))} <span>${c.count}</span></button>`)}
-  </div>`;
+  </div>
+  <button type="button" class="filters-arrow filters-next js-only" data-filters-step="1" aria-label="${esc(t.filter_next)}" tabindex="-1">${icon('chevron-right', { size: 20 })}</button>
+</div>`;
   const grid = h`<section class="cat-cats" data-cat-grid aria-labelledby="h-cats">
     <div class="cat-cats-head"><h2 id="h-cats">${esc(t.cats)}</h2><p class="muted small">${esc(t.cats_hint)}</p></div>
     <ul class="cat-grid">${cats.map(
@@ -218,7 +235,10 @@ export function testsPage(ctx) {
         ${grid}
         <div class="cat-results">
           <div class="cat-results-head"><p class="catalog-count" aria-live="polite" data-count>${esc(t.loading)}</p><p class="muted small" data-sorted>${esc(t.sorted)}</p></div>
-          <ul class="cat-list" data-cat-list></ul>
+          <div class="cat-table">
+            <div class="cat-head" aria-hidden="true"><span>${esc(t.col_test)}</span><span>${esc(t.col_order)}</span></div>
+            <ul class="cat-list" data-cat-list></ul>
+          </div>
           <button class="btn btn-outline btn-block js-only" type="button" data-more hidden></button>
           <div class="empty" data-none hidden>
             <span class="empty-icon">${icon('search', { size: 28 })}</span>

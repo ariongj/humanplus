@@ -25,7 +25,7 @@ one JavaScript file into `dist/`, which you can upload to any web host.
 | --- | --- |
 | Pages | 19 site pages + 1 006 test pages per language × 3 (sq, en, de), plus a 404 page in each |
 | Lab-test catalogue | 1 006 tests and panels in 20 categories, each with its own page, searchable in Albanian, English, German and Serbian (see [Lab catalogue](#lab-catalogue)) |
-| Check-up panels | 8 |
+| Check-up panels | 20, in four groups |
 | Accessibility | axe-core: **0 violations** on all pages in all three languages, desktop 1440 and phone 390 |
 | Layout | no horizontal scroll at 320, 390 and 1440 px; 44 px touch targets; 16 px form fields |
 | Weight | home page ≈ 29 kB HTML + 14 kB CSS + 8 kB JS (gzip) + one font (27 kB) + 6 illustrated scenes (19 kB, cached across pages); the catalogue data (113 kB gzip) loads only on `/analizat/` |
@@ -41,7 +41,7 @@ links such as `/en/sherbim/pediatri/` keep working.
 | Shërbimet / Services | `/sherbimet/` | the ten departments, specialists and laboratory |
 | Department pages | `/sherbim/<slug>/` | a picture of that department, what it offers, its most requested tests (add to list), book / WhatsApp / call |
 | Analizat / Lab tests | `/analizat/` | the full catalogue: search (Albanian, Serbian, abbreviations), 20 categories, details (description, sample, preparation, components), "Add" to *My list* |
-| Paketat / Check-ups | `/paketat/` | 8 panels (basic, children, thyroid, women, men 40+, vitamins, heart, allergy) — add a whole panel or ask the price |
+| Paketat / Check-ups | `/paketat/` | 20 panels in four groups — general (basic, children, women, men 40+, vitamins); sugar, heart and organs (diabetes, heart, thyroid, kidneys, liver, anaemia, bones, stomach & bowel); immunity, joints and allergies (autoimmune, joints & rheumatism, allergy); hormones, pregnancy and procedures (female hormones / PCOS, pregnancy first check, before surgery, hepatitis / HIV / syphilis) — add a whole panel or ask the price |
 | Përgatitja / Preparation | `/pergatitja/` | fasting, morning tests, cycle-day hormones, PSA, urine, stool, swabs, children, samples from home |
 | Rezervo / Book | `/rezervo/` | booking request: service → day → time → details → WhatsApp, Viber or e-mail |
 | Rreth nesh / About | `/rreth-nesh/` | since 2011, BAKTOLAB, the team (specialists, lab technicians, nurses), inside the centre, how they work |
@@ -147,6 +147,11 @@ available – a short description, the sample, how it is collected, the preparat
 **all in the language of the page**: Albanian on `/analizat/`, English on `/en/analizat/`, German on `/de/analizat/`.
 The Serbian name is not shown, but it stays searchable (many referrals in Kosovo are written in Serbian), and so do
 the English and German names on every page.
+
+**The list** looks like beo-lab.rs: one striped table where each row has + (opens the details), a sample icon (tubes for
+blood, a flask for urine, a tube for stool), the name in green with its category, and the sample ("Marrje gjaku") above a
+green **Shto në listë** button – but no price column, because the site shows no prices. The category row scrolls
+sideways; arrows at its ends move it with a mouse.
 
 **Languages.** `src/data/catalogue.json` is the Albanian import. The English texts – names, descriptions, sample,
 collection and preparation – and the panel components in Albanian and English (the export had them in Serbian) are in
@@ -299,7 +304,7 @@ before launch – stock people must never be presented as Human+ staff (no names
 | `src/data/site.mjs` | **name, address, phones, WhatsApp / Viber number, e-mail, Facebook, opening hours, booking slots** – edit this first |
 | `src/data/services.mjs` | the ten departments: names, texts, what they offer, related tests |
 | `src/data/catalogue.json` | the full lab catalogue behind `/analizat/` (made by `scripts/import-catalogue.mjs`) |
-| `src/data/tests.mjs` | the 61 common tests used on department pages and in the check-up panels (sq, en, de), preparation rules, panels, links to their catalogue pages |
+| `src/data/tests.mjs` | the 89 common tests used on department pages and in the check-up panels (sq, en, de), preparation rules, the panels and their groups (`PANEL_GROUPS`), links to their catalogue pages |
 | `src/data/lab-notes.mjs` | the *Good to know* notes on test pages (sq, en, de, with medical sources) and which tests get them |
 | `src/data/lab-human-plus.json` | (optional) facts Human+ has confirmed per test, e.g. the result time |
 | `src/pages/test.mjs` | the page of each lab test, `/analizat/<test>/` |
@@ -412,8 +417,8 @@ people, until the clinic's own photos are added.
   general words. Ask each doctor to read their page.
 - **Lab catalogue** – the 1 006 entries come from the BeoLab public catalogue the client supplied (see
   [Lab catalogue](#lab-catalogue)); names and descriptions are working Albanian translations, and the English
-  and German ones (`src/data/catalogue-translations.json`) are working translations of those. The 61 common tests
-  and the 8 check-up panels are suggestions. The lab should mark what Human+ does in-house, sends out or does not offer.
+  and German ones (`src/data/catalogue-translations.json`) are working translations of those. The 89 common tests
+  and the 20 check-up panels are suggestions. The lab should mark what Human+ does in-house, sends out or does not offer.
 - **Preparation guide** – standard lab guidance; ask the lab manager to approve it.
 - **German** – all German texts are working translations made for the site (formal *Sie*). Have a German-speaking
   doctor read the test pages, the *Good to know* notes and the preparation guide before launch.
