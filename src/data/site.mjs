@@ -19,6 +19,11 @@ export const SITE = {
   },
   // Google Maps search link (no embed, no cookies). Replace with the clinic's own Maps place link when known.
   mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Qendra+Diagnostike+Human+Plus%2C+Rruga+B+16%2C+Prishtin%C3%AB',
+  mapsDirections: 'https://www.google.com/maps/dir/?api=1&destination=Qendra+Diagnostike+Human+Plus%2C+Rruga+B+16%2C+Prishtin%C3%AB',
+  // Mini map (home and contact pages): Google Maps for the same search, loaded only after the visitor clicks
+  // "Show the map" — no request to Google before that. For the exact pin, replace it with the src of
+  // Google Maps → Share → Embed a map (https://www.google.com/maps/embed?pb=…).
+  mapsEmbed: 'https://maps.google.com/maps?q=Qendra+Diagnostike+Human+Plus%2C+Rruga+B+16%2C+Prishtin%C3%AB&z=16&output=embed',
 
   // Phones as listed on the previous site. `tel` is the dialable form, `display` how it is printed.
   phones: [
@@ -31,6 +36,10 @@ export const SITE = {
   viber: '+38344709072',
   email: 'info@humanplusks.com',
   facebook: 'https://www.facebook.com/QDHumanPlus/',
+  // Instagram and TikTok: paste the clinic's own profile links (e.g. 'https://www.instagram.com/<name>/',
+  // 'https://www.tiktok.com/@<name>'). Empty = the icon is not shown anywhere. Never guess a handle.
+  instagram: '',
+  tiktok: '',
 
   // Opening hours, Kosovo time (Europe/Belgrade). Day 0 = Sunday … 6 = Saturday. `null` = closed.
   timeZone: 'Europe/Belgrade',
@@ -52,6 +61,15 @@ export const SITE = {
   // Empty = WhatsApp / Viber / e-mail links only (works without any account).
   formEndpoint: '',
 };
+
+/** The social profiles that are set, in display order: [{ id, name, url, handle }]. */
+export const SOCIALS = [
+  ['facebook', 'Facebook'],
+  ['instagram', 'Instagram'],
+  ['tiktok', 'TikTok'],
+]
+  .filter(([id]) => SITE[id])
+  .map(([id, name]) => ({ id, name, url: SITE[id], handle: SITE[id].replace(/\/+$/, '').split('/').pop() }));
 
 export const LANGS = ['sq', 'en', 'de'];
 export const DEFAULT_LANG = 'sq';

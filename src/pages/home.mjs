@@ -7,7 +7,7 @@ import { UI } from '../data/ui.mjs';
 import { esc, h, icon, brand, dict, L, accent } from '../lib/html.mjs';
 import { hoursTable, status } from '../lib/layout.mjs';
 import { labBackground } from '../lib/labbg.mjs';
-import { sectionHead, serviceCard, panelCard, testSearch, ctaBand, faqList, shortName, centreGallery } from '../lib/parts.mjs';
+import { sectionHead, serviceCard, panelCard, testSearch, ctaBand, faqList, shortName, centreGallery, miniMap } from '../lib/parts.mjs';
 import { photo } from '../lib/photo.mjs';
 
 const T = dict('home', {
@@ -378,6 +378,7 @@ export function homePage(ctx) {
           <a class="btn btn-wa" href="${esc(ctx.wa())}" target="_blank" rel="noopener">${brand('whatsapp', { size: 18 })}${esc(u.whatsapp)}</a>
         </div>
       </div>
+      ${miniMap(ctx, { cls: 'visit-map' })}
     </div>
   </section>`;
 

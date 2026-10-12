@@ -10,7 +10,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
-import { SITE, LANGS } from '../src/data/site.mjs';
+import { SITE, LANGS, SOCIALS } from '../src/data/site.mjs';
 import { SERVICES } from '../src/data/services.mjs';
 import { layout } from '../src/lib/layout.mjs';
 import { iconSprite, useIconSprite } from '../src/lib/html.mjs';
@@ -22,6 +22,7 @@ import { bookingPage } from '../src/pages/booking.mjs';
 import { aboutPage, contactPage, faqPage, notFoundPage } from '../src/pages/centre.mjs';
 import { sceneFiles, photoFiles, PHOTO_DIR } from '../src/lib/photo.mjs';
 import { TEST_ROUTES } from '../src/pages/test.mjs';
+import { chatData } from '../src/lib/chat.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DIST = path.resolve(ROOT, process.env.OUT_DIR || 'dist');
@@ -98,7 +99,7 @@ function clinicJsonLd(lang) {
       .map(([d, [opens, closes]]) => ({ '@type': 'OpeningHoursSpecification', dayOfWeek: `https://schema.org/${days[d]}`, opens, closes })),
     medicalSpecialty: ['Pediatric', 'Gynecologic', 'PrimaryCare', 'Urologic', 'Endocrine', 'Gastroenterologic', 'Dermatology', 'LaboratoryScience'].map((s) => `https://schema.org/${s}`),
     availableLanguage: LANGS,
-    sameAs: [SITE.facebook],
+    sameAs: SOCIALS.map((s) => s.url),
     contactPoint: SITE.phones.map((p) => ({ '@type': 'ContactPoint', telephone: p.tel, contactType: 'customer service', availableLanguage: LANGS })),
   };
 }
@@ -128,6 +129,7 @@ function makeCtx(lang, p, version) {
     abs: (q, l = lang) => absFor(q, l),
     wa: (text = '') => `https://api.whatsapp.com/send?phone=${SITE.whatsapp}${text ? `&text=${encodeURIComponent(text)}` : ''}`,
     clinicJsonLd: () => clinicJsonLd(lang),
+    chat: CHAT_URL[lang],
     websiteJsonLd: () => websiteJsonLd(lang),
   };
 }
@@ -146,7 +148,7 @@ for (const f of photoFiles()) {
 }
 copyDir(path.join(ROOT, 'src/static'), DIST);
 // The stylesheet refers to fonts relatively ("fonts/…"), so it works under any base path.
-const version = crypto.createHash('sha1').update(['src/assets/site.css', 'src/assets/site.js', 'src/assets/catalogue.js', 'src/data/catalogue.json', 'src/data/catalogue-translations.json'].filter((f) => fs.existsSync(path.join(ROOT, f))).map(read).join('')).digest('hex').slice(0, 8);
+const version = crypto.createHash('sha1').update(['src/assets/site.css', 'src/assets/site.js', 'src/assets/catalogue.js', 'src/assets/chat.js', 'src/assets/map-preview.svg', 'src/data/catalogue.json', 'src/data/catalogue-translations.json'].filter((f) => fs.existsSync(path.join(ROOT, f))).map(read).join('')).digest('hex').slice(0, 8);
 // Brand font: when the licensed Pangram files are in src/assets/fonts/pangram/ (e.g. Pangram-Regular.woff2,
 // Pangram-Bold.woff2 …), write their @font-face rules into the stylesheet; otherwise Outfit is used.
 {
@@ -179,11 +181,21 @@ for (const lang of LANGS) {
   if (missing) console.warn(`catalogue-${lang}: ${missing} text(s) not translated yet — shown in Albanian (src/data/catalogue-translations.json)`);
 }
 
+let SPRITE_URL = '';
+const CHAT_URL = {};
 // Icon sprite: one cached file instead of the same paths inline on every page.
 {
   const sprite = iconSprite();
   write('assets/icons.svg', sprite);
-  useIconSprite(`${BASE}assets/icons.svg?v=${crypto.createHash('sha1').update(sprite).digest('hex').slice(0, 8)}`);
+  SPRITE_URL = `${BASE}assets/icons.svg?v=${crypto.createHash('sha1').update(sprite).digest('hex').slice(0, 8)}`;
+  useIconSprite(SPRITE_URL);
+}
+
+// The site assistant's data, one file per language, loaded by assets/chat.js the first time the chat opens.
+for (const lang of LANGS) {
+  const json = JSON.stringify(chatData(lang, { url: (p) => urlFor(p, lang), sprite: SPRITE_URL, catalogue: `${BASE}assets/catalogue-${lang}.json?v=${version}` }));
+  write(`assets/chat-${lang}.json`, json);
+  CHAT_URL[lang] = `${BASE}assets/chat-${lang}.json?v=${crypto.createHash('sha1').update(json).digest('hex').slice(0, 8)}`;
 }
 
 let count = 0;

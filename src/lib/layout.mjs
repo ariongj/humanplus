@@ -1,8 +1,9 @@
 // Page shell: <head>, top bar, header, footer, phone action bar, WhatsApp button and the lab-list drawer.
-import { SITE, LANGS } from '../data/site.mjs';
+import { SITE, LANGS, SOCIALS } from '../data/site.mjs';
 import { SERVICES } from '../data/services.mjs';
 import { TESTS, PREP } from '../data/tests.mjs';
 import { UI } from '../data/ui.mjs';
+import { CHAT } from '../data/chat.mjs';
 import { LOGO_SQUARE, LOGO_MARK, LOGO_WORDS } from './logo-paths.mjs';
 import { esc, h, icon, brand, L, LANG_NAMES } from './html.mjs';
 
@@ -108,7 +109,7 @@ function infobar(ctx) {
       <a class="infobar-link hide-sm" href="${esc(SITE.mapsUrl)}" target="_blank" rel="noopener">${icon('map-pin', { size: 16 })}<span>${esc(SITE.address.street)}, ${esc(lang === 'sq' ? SITE.address.city : SITE.address.cityEn)}</span></a>
       <span class="infobar-spacer"></span>
       <a class="infobar-link hide-sm" href="mailto:${SITE.email}">${icon('mail', { size: 16 })}<span>${esc(SITE.email)}</span></a>
-      <a class="infobar-icon hide-sm" href="${esc(SITE.facebook)}" target="_blank" rel="noopener" aria-label="${esc(t.facebook)}">${brand('facebook', { size: 16 })}</a>
+      ${SOCIALS.map((s) => h`<a class="infobar-icon hide-sm" href="${esc(s.url)}" target="_blank" rel="noopener" aria-label="${esc(s.name)}">${brand(s.id, { size: 16 })}</a>`)}
     </div>
   </section>`;
 }
@@ -181,7 +182,7 @@ function footer(ctx) {
         <a class="brand brand-light" href="${esc(ctx.url(''))}" aria-label="${esc(`${SITE.fullName} — ${t.home}`)}">${logo({ label: SITE.fullName })}</a>
         <p>${esc(t.footer_about)}</p>
         <div class="footer-social">
-          <a class="icon-btn icon-btn-dark" href="${esc(SITE.facebook)}" target="_blank" rel="noopener" aria-label="${esc(t.facebook)}">${brand('facebook', { size: 18 })}</a>
+          ${SOCIALS.map((s) => h`<a class="icon-btn icon-btn-dark" href="${esc(s.url)}" target="_blank" rel="noopener" aria-label="${esc(s.name)}">${brand(s.id, { size: 18 })}</a>`)}
           <a class="icon-btn icon-btn-dark" href="${esc(ctx.wa())}" target="_blank" rel="noopener" aria-label="${esc(t.whatsapp_label)}">${brand('whatsapp', { size: 18 })}</a>
           <a class="icon-btn icon-btn-dark" href="mailto:${SITE.email}" aria-label="${esc(t.email)}">${icon('mail', { size: 18 })}</a>
         </div>
@@ -268,6 +269,32 @@ function drawer(ctx) {
   <div class="toast" role="status" aria-live="polite" data-toast hidden></div>`;
 }
 
+/**
+ * The site assistant: a button and an empty chat window. assets/chat.js (loaded on the first click) fills it from
+ * assets/chat-<lang>.json. Desktop: a panel above the button, the page stays usable; phones: full screen.
+ */
+function chat(ctx) {
+  const c = CHAT[ctx.lang];
+  return h`<button class="chat-fab js-only" type="button" data-chat-open aria-controls="chat" aria-expanded="false" aria-label="${esc(c.launcher)}" data-chat-src="${ctx.base}assets/chat.js?v=${ctx.version}">
+    ${icon('message-circle-question', { size: 22 })}<span class="chat-fab-label">${esc(c.launcher)}</span>
+  </button>
+  <dialog class="chat" id="chat" aria-labelledby="chat-title" data-chat="${esc(ctx.chat)}">
+    <div class="chat-head">
+      <span class="chat-avatar">${logoMark()}</span>
+      <div class="chat-head-text"><h2 id="chat-title" tabindex="-1">${esc(c.title)}</h2><p>${esc(c.subtitle)}</p></div>
+      <button class="icon-btn" type="button" data-chat-restart aria-label="${esc(c.restart)}">${icon('rotate-ccw', { size: 18 })}</button>
+      <button class="icon-btn" type="button" data-chat-close aria-label="${esc(c.close)}">${icon('x', { size: 22 })}</button>
+    </div>
+    <div class="chat-log" role="log" aria-live="polite" aria-label="${esc(c.title)}" tabindex="0" data-chat-log></div>
+    <form class="chat-form" data-chat-form>
+      <label class="sr-only" for="chat-input">${esc(c.input_label)}</label>
+      <input id="chat-input" name="q" type="text" autocomplete="off" enterkeyhint="send" maxlength="200" placeholder="${esc(c.placeholder)}" />
+      <button class="chat-send" type="submit" aria-label="${esc(c.send)}">${icon('send', { size: 20 })}</button>
+    </form>
+    <p class="chat-note">${icon('siren', { size: 14 })}<span>${esc(c.note)}</span></p>
+  </dialog>`;
+}
+
 /** Strings + test names the browser script needs, for the page language. */
 function clientData(ctx) {
   const { lang } = ctx;
@@ -307,6 +334,7 @@ export function layout(ctx, body) {
     </main>
     ${footer(ctx)}
     ${actionBar(ctx)}
+    ${chat(ctx)}
     ${drawer(ctx)}
     <noscript><p class="noscript">${esc(t.no_js)} <a href="tel:${SITE.phones[0].tel}">${esc(SITE.phones[0].display)}</a>.</p></noscript>
     <script type="application/json" id="hp-data">${JSON.stringify(clientData(ctx)).replace(/</g, '\\u003c')}</script>

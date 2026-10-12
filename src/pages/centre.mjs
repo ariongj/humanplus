@@ -1,10 +1,10 @@
 // /rreth-nesh/, /kontakt/, /pyetje/ and the 404 page.
-import { SITE } from '../data/site.mjs';
+import { SITE, SOCIALS } from '../data/site.mjs';
 import { SERVICES } from '../data/services.mjs';
 import { FAQ } from '../data/faq.mjs';
 import { UI } from '../data/ui.mjs';
 import { esc, h, icon, brand, dict, L } from '../lib/html.mjs';
-import { pageHero, sectionHead, ctaBand, faqList, centreGallery } from '../lib/parts.mjs';
+import { pageHero, sectionHead, ctaBand, faqList, centreGallery, miniMap } from '../lib/parts.mjs';
 import { photo } from '../lib/photo.mjs';
 import { hoursTable, status, logoMark } from '../lib/layout.mjs';
 
@@ -296,7 +296,7 @@ export function contactPage(ctx) {
           <li><a href="${esc(ctx.wa())}" target="_blank" rel="noopener"><strong>${brand('whatsapp', { size: 18 })} WhatsApp</strong><small>${esc(SITE.phones[0].display)}</small></a></li>
           <li><a href="viber://chat?number=${encodeURIComponent(SITE.viber)}"><strong>${brand('viber', { size: 18 })} Viber</strong><small>${esc(SITE.phones[0].display)}</small></a></li>
           <li><a href="mailto:${SITE.email}"><strong>${icon('mail', { size: 18 })} ${esc(SITE.email)}</strong><small>${esc(u.email)}</small></a></li>
-          <li><a href="${esc(SITE.facebook)}" target="_blank" rel="noopener"><strong>${brand('facebook', { size: 18 })} Facebook</strong><small>QDHumanPlus</small></a></li>
+          ${SOCIALS.map((s) => h`<li><a href="${esc(s.url)}" target="_blank" rel="noopener"><strong>${brand(s.id, { size: 18 })} ${esc(s.name)}</strong><small>${esc(s.handle)}</small></a></li>`)}
         </ul>
       </article>
       <article class="info-card">
@@ -306,6 +306,9 @@ export function contactPage(ctx) {
         ${hoursTable(lang)}
       </article>
     </div>
+  </section>`;
+  const map = h`<section class="section section-tight section-map" aria-label="${esc(t.c_address)}">
+    <div class="wrap">${miniMap(ctx, { id: 'harta' })}</div>
   </section>`;
   const form = h`<section class="section section-tint" aria-labelledby="h-form">
     <div class="wrap form-in">
@@ -324,7 +327,7 @@ export function contactPage(ctx) {
       </form>
     </div>
   </section>`;
-  return { id: 'contact', title: `${t.contact_title} · ${SITE.fullName}`, description: t.contact_desc, jsonld: [hero.jsonld], body: hero.html + cards + form };
+  return { id: 'contact', title: `${t.contact_title} · ${SITE.fullName}`, description: t.contact_desc, jsonld: [hero.jsonld], body: hero.html + cards + map + form };
 }
 
 export function faqPage(ctx) {

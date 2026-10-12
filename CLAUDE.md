@@ -28,6 +28,10 @@ the repo.
   text on white uses `--brand` / `--green-lg`; font Pangram (files in `src/assets/fonts/pangram/`, Outfit until then);
   8 px buttons. README → Brand.
   Behaviour: `src/assets/site.js` (vanilla; shares helpers with catalogue.js on `window.HP`).
+- Site assistant (chat): texts and keywords `src/data/chat.mjs`, data `src/lib/chat.mjs` → `assets/chat-<lang>.json`,
+  behaviour `src/assets/chat.js`. It answers only from the site's own data, never interprets results, sends emergencies
+  to 112 / 194, and hands the rest to WhatsApp. Mini map: `miniMap()` in `src/lib/parts.mjs` – Google Maps loads only
+  after a click. Socials: `instagram` / `tiktok` in `site.mjs` (shown only when set; never guess a handle).
 - Photos: slots in `src/data/photos.mjs` (alt texts). The clinic's photo goes in `src/assets/photos/<slot>.jpg|webp`
   (optional `<slot>-sm`); without it the slot shows an illustrated scene from `src/lib/scenes.mjs` (written to
   `assets/scenes/`). README → Photos.

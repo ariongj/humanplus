@@ -215,6 +215,56 @@ const G = dict('gallery', {
 });
 
 /** "Inside the centre": the lab, sample room, paediatrics, specialists and reception — photos or scenes. */
+const MAP = dict('minimap', {
+  sq: {
+    show: 'Shfaq hartën',
+    consent: 'Harta ngarkohet nga Google Maps vetëm kur e hapni. Google mund të vendosë cookies.',
+    open: 'Hap në Google Maps',
+    frame: 'Harta: {name}, {addr}',
+  },
+  en: {
+    show: 'Show the map',
+    consent: 'The map loads from Google Maps only when you open it. Google may set cookies.',
+    open: 'Open in Google Maps',
+    frame: 'Map: {name}, {addr}',
+  },
+  de: {
+    show: 'Karte anzeigen',
+    consent: 'Die Karte wird erst beim Öffnen von Google Maps geladen. Google kann dabei Cookies setzen.',
+    open: 'In Google Maps öffnen',
+    frame: 'Karte: {name}, {addr}',
+  },
+});
+
+/**
+ * Mini map. An illustrated preview with the address; Google Maps (SITE.mapsEmbed) loads only when the visitor
+ * clicks "Show the map" (site.js remembers that choice on this device). Directions and "open" links always work.
+ */
+export function miniMap(ctx, { id = '', cls = '' } = {}) {
+  const { lang } = ctx;
+  const t = MAP[lang];
+  const u = UI[lang];
+  const addr = `${SITE.address.street}, ${lang === 'sq' ? SITE.address.city : SITE.address.cityEn}`;
+  const title = t.frame.replace('{name}', SITE.fullName).replace('{addr}', addr);
+  return h`<figure class="minimap ${cls}"${id && ` id="${id}"`} data-map="${esc(SITE.mapsEmbed)}" data-map-title="${esc(title)}">
+    <div class="minimap-frame" data-map-frame>
+      <img class="minimap-preview" src="${ctx.base}assets/map-preview.svg?v=${ctx.version}" width="960" height="400" alt="" loading="lazy" decoding="async">
+      <p class="minimap-pin"><strong>${esc(SITE.fullName)}</strong><span>${esc(addr)}</span></p>
+      <div class="minimap-consent js-only">
+        <button class="btn btn-primary" type="button" data-map-load>${icon('map', { size: 18 })}${esc(t.show)}</button>
+        <p>${esc(t.consent)}</p>
+      </div>
+    </div>
+    <figcaption class="minimap-bar">
+      <span class="minimap-addr">${icon('map-pin', { size: 18 })}${esc(addr)}</span>
+      <span class="minimap-links">
+        <a href="${esc(SITE.mapsDirections)}" target="_blank" rel="noopener">${icon('route', { size: 16 })}${esc(u.directions)}</a>
+        <a href="${esc(SITE.mapsUrl)}" target="_blank" rel="noopener">${icon('external-link', { size: 16 })}${esc(t.open)}</a>
+      </span>
+    </figcaption>
+  </figure>`;
+}
+
 export function centreGallery(ctx) {
   const g = G[ctx.lang];
   return h`<ul class="gallery">${[

@@ -218,6 +218,7 @@
       if (prev !== String(list.length)) { c.classList.remove('bump'); void c.offsetWidth; c.classList.add('bump'); }
     });
     $$('[data-list-count-sr]').forEach(function (c) { c.textContent = '(' + countText(list.length) + ')'; });
+    document.documentElement.classList.toggle('has-list-bar', list.length > 0 && !!$('[data-list-bar]'));
     $$('[data-list-bar]').forEach(function (bar) {
       bar.hidden = list.length === 0;
       var tx = $('[data-list-bar-text]', bar);
@@ -297,8 +298,63 @@
   window.addEventListener('storage', function (e) { if (e.key === KEY) { list = load(); syncButtons(); renderList(); } });
   syncButtons();
 
-  // Shared with assets/catalogue.js (the full catalogue on /analizat/).
-  window.HP = { sync: syncButtons, waUrl: waUrl, fold: fold, fmt: fmt, toast: toast };
+  /* ---------- mini map: Google Maps loads only after the visitor asks for it ---------- */
+  // Once asked, the choice is remembered on this device and later maps load when they scroll into view.
+  var MAP_KEY = 'hp-map';
+  function loadMap(fig) {
+    if (fig.classList.contains('is-loaded')) return;
+    var src = fig.getAttribute('data-map') || '';
+    if (!/^https:\/\/(www\.google\.com\/maps\/embed|maps\.google\.com\/maps)\?/.test(src)) return;
+    var f = document.createElement('iframe');
+    f.src = src + (src.indexOf('hl=') === -1 ? '&hl=' + D.lang : '');
+    f.title = fig.getAttribute('data-map-title') || '';
+    f.loading = 'lazy';
+    f.referrerPolicy = 'no-referrer-when-downgrade';
+    f.setAttribute('allowfullscreen', '');
+    $('[data-map-frame]', fig).appendChild(f);
+    fig.classList.add('is-loaded');
+  }
+  var maps = $$('[data-map]');
+  maps.forEach(function (fig) {
+    var b = $('[data-map-load]', fig);
+    if (b) b.addEventListener('click', function () { store.set(MAP_KEY, true); maps.forEach(loadMap); });
+  });
+  if (maps.length && store.get(MAP_KEY, false)) {
+    if ('IntersectionObserver' in window) {
+      var mio = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) { if (en.isIntersecting) { loadMap(en.target); mio.unobserve(en.target); } });
+      }, { rootMargin: '200px 0px' });
+      maps.forEach(function (fig) { mio.observe(fig); });
+    } else maps.forEach(loadMap);
+  }
+
+  // Shared with assets/catalogue.js (the full catalogue on /analizat/) and assets/chat.js (the site assistant).
+  window.HP = { sync: syncButtons, waUrl: waUrl, fold: fold, fmt: fmt, toast: toast, status: statusNow };
+
+  /* ---------- site assistant: assets/chat.js loads on the first click (warmed up on hover / focus) ---------- */
+  var chatBtn = $('[data-chat-open]');
+  if (chatBtn) {
+    var chatLoad = null;
+    var loadChat = function () {
+      if (window.HPChat) return Promise.resolve();
+      if (!chatLoad) {
+        chatLoad = new Promise(function (resolve, reject) {
+          var sc = document.createElement('script');
+          sc.src = chatBtn.getAttribute('data-chat-src');
+          sc.onload = resolve;
+          sc.onerror = function () { chatLoad = null; reject(); };
+          document.head.appendChild(sc);
+        });
+      }
+      return chatLoad;
+    };
+    chatBtn.addEventListener('pointerenter', function () { loadChat().catch(function () {}); }, { once: true });
+    chatBtn.addEventListener('focus', function () { loadChat().catch(function () {}); }, { once: true });
+    chatBtn.addEventListener('click', function () {
+      if (window.HPChat && window.HPChat.isOpen()) { window.HPChat.close(); return; }
+      loadChat().then(function () { window.HPChat.open(chatBtn); }, function () { location.href = waUrl(''); });
+    });
+  }
 
   /* ---------- booking request (/rezervo/) ---------- */
   var bk = $('[data-booking]');

@@ -53,14 +53,16 @@ Mjekësi Familjare, Urologji, Endokrinologji, Gastroenterologji, Dermatologji, S
 
 ### On every page
 
-1. **Header** (always first, sticky) – logo, menu, the **SQ / EN** switch, **Lista ime** (with the number of tests)
-   and **Rezervo termin**. On phones: logo, the other language (EN / SQ), the list and the menu button.
+1. **Header** (always first, sticky) – logo, menu, the language menu (**SQ ▾** with EN / DE), **Lista ime** (with
+   the number of tests) and **Rezervo termin**. On phones: logo, the language menu, the list and the menu button.
 2. **Info strip** under the header – live status (*Hapur tani · deri në 19:00* / *Mbyllur tani · hapet të hënën në
-   07:30*, worked out in Kosovo time), phone, address, e-mail and Facebook; one line on phones (status, plus the
-   phone from 480 px).
+   07:30*, worked out in Kosovo time), phone, address, e-mail and the social profiles (Facebook; Instagram and
+   TikTok once their links are set); one line on phones (status, plus the phone from 480 px).
 3. **Footer** – all departments, lab pages, address, three phones, e-mail, opening hours with today marked.
 4. On phones: a **Telefono / WhatsApp / Rezervo** bar at the bottom. On larger screens: a WhatsApp button that appears
    after the first screen.
+5. **Pyetni asistentin** – the site assistant (see [The site assistant](#the-site-assistant)): a round button above
+   the phone bar, a labelled button at the bottom right on larger screens.
 
 Statuses always use text + a dot, never colour alone. Visitors who prefer reduced motion get no animations.
 
@@ -92,6 +94,49 @@ Department pages link here with the service already chosen: `/rezervo/?sherbimi=
 
 Optional: set `formEndpoint` in `src/data/site.mjs` to a form service (e.g. Formspree) to also receive every booking
 request by e-mail.
+
+## The site assistant
+
+A chat window on every page (*Pyetni asistentin* / *Ask our assistant* / *Assistent fragen*) that answers **only
+from what the site already says**: opening hours with the live status, the address with directions and the map,
+phones, WhatsApp, Viber, e-mail and social profiles, how booking works, the preparation guide, the check-up panels,
+the ten departments, the FAQ, and the full lab catalogue – type a test name ("vitamina D", "TSH", "Harnsäure") to get
+its sample and preparation with an **Add to list** button. Price questions get the clinic's answer (reception gives
+prices) plus the list and WhatsApp; anything it does not know goes to reception on WhatsApp with the question
+already typed.
+
+- **No server, no AI service, no tracking.** `src/assets/chat.js` (loaded on the first click) matches keywords in
+  Albanian, English and German against `assets/chat-<lang>.json`, which the build makes from the site data
+  (`src/lib/chat.mjs`). The conversation stays in that browser tab (sessionStorage); nothing is sent until the visitor
+  taps WhatsApp, a phone number or e-mail.
+- **Safety:** it never interprets results ("the doctor who ordered the tests explains them" + book / call), and words
+  like *urgjencë*, *chest pain*, *Notfall* get the emergency numbers first – 112 for all emergencies, 194 for an
+  ambulance ([GOV.UK](https://www.gov.uk/foreign-travel-advice/kosovo/getting-help),
+  [Kosovo Emergency Management Agency](https://ame.rks-gov.net/post/en-us/112/Appeal%20to%20the%20citizens%20of%20Kosovo%20for%20vigilance%20against%20arson)).
+  Every screen says "Not medical advice. In an emergency, call 112."
+- **Editing:** texts and the words it recognises are in `src/data/chat.mjs` (`CHAT` for each language, `INTENTS`,
+  `SERVICE_WORDS` per department, `STOP` for small words); its answers come from `site.mjs`, `services.mjs`,
+  `tests.mjs`, `faq.mjs` and the catalogue, so they change with them.
+- Accessible: a dialog with a labelled log (`role="log"`, announced politely), 44 px buttons, 16 px input, Escape
+  closes it and returns focus; full screen on phones (modal), a panel beside the page from 560 px.
+
+A real AI chat (free questions, any wording) would need a server with an API key, a privacy notice and the
+clinic's agreement on what it may answer – this one is deliberately limited to the site's own facts.
+
+## Mini map
+
+The home page (*Na vizitoni*) and the contact page (`/kontakt/#harta`) show a small map card: an illustrated preview
+with the address, **Shfaq hartën** (*Show the map*), and *Udhëzimet në hartë* / *Hap në Google Maps* links that always
+work. **Google Maps loads only after the click** – no request to Google before that, as the no-cookies rule asks
+(the note under the button says Google may set cookies). The choice is remembered on that device, and later maps load
+when they scroll into view. The map shows the same Google search as the links (`mapsEmbed` in `src/data/site.mjs`);
+for the exact pin, paste the clinic's own *Google Maps → Share → Embed a map* address there.
+
+## Social profiles
+
+`facebook`, `instagram` and `tiktok` in `src/data/site.mjs`. Each one that has a link appears in the info strip, the
+footer, the contact page, the assistant's contact answer and the Google data (`sameAs`); an empty one is not shown.
+**Instagram and TikTok are empty until the clinic sends the links** – the handles are not guessed.
 
 ## Lab catalogue
 
@@ -262,7 +307,7 @@ before launch – stock people must never be presented as Human+ staff (no names
 | `src/data/ui.mjs` | shared interface texts (menu, buttons, status, list, footer) in sq, en and de |
 | `src/pages/*.mjs` | one file per page group, with that page's texts at the top |
 | `src/lib/layout.mjs` | head tags, top bar, header, footer, phone bar, list drawer |
-| `src/lib/parts.mjs` | shared blocks (cards, test rows, search, CTA band, FAQ) |
+| `src/lib/parts.mjs` | shared blocks (cards, test rows, search, CTA band, FAQ, mini map) |
 | `src/lib/labbg.mjs` | the animated laboratory equipment behind the page bands |
 | `src/data/photos.mjs` | photo slots: which scene stands in for each photo and the alt texts (see [Photos](#photos)) |
 | `src/lib/photo.mjs`, `src/lib/scenes.mjs` | a slot's real photo when it is in `src/assets/photos/`, otherwise the illustrated scene (written to `assets/scenes/`) |
@@ -272,6 +317,8 @@ before launch – stock people must never be presented as Human+ staff (no names
 | `src/assets/site.js` | browser behaviour: status, menus, list, search, booking, contact form |
 | `src/assets/fonts/` | Outfit (WOFF2, self-hosted); `pangram/` for the licensed brand font when available |
 | `src/assets/catalogue.js` | the catalogue page: loads `assets/catalogue.json`, search, categories, details, Add buttons |
+| `src/data/chat.mjs`, `src/lib/chat.mjs`, `src/assets/chat.js` | the site assistant: texts and keywords, its data file per language, the chat itself |
+| `src/assets/map-preview.svg` | the illustrated preview of the mini map (not the real streets) |
 | `src/assets/og/og-sq.png`, `og-en.png` | the 1200 × 630 pictures WhatsApp / Facebook show when a link is shared |
 | `src/static/` | favicons and app icons, copied to the site root |
 | `scripts/build.mjs` | builds `dist/`: pages, sitemap, robots, manifest, llms.txt, 404 and `.htaccess` for Hostinger |
@@ -282,7 +329,7 @@ before launch – stock people must never be presented as Human+ staff (no names
 
 ## Editing
 
-- **Phones, e-mail, address, Facebook**: `src/data/site.mjs`. The first phone is the main one (top bar, buttons,
+- **Phones, e-mail, address, Facebook, Instagram, TikTok, map**: `src/data/site.mjs`. The first phone is the main one (top bar, buttons,
   share picture). `whatsapp` is the number booking and list messages go to (digits only, e.g. `38344709072`).
 - **Opening hours**: `hours` in `src/data/site.mjs` (`0` = Sunday … `6` = Saturday, `null` = closed). The status,
   the hours tables, the booking times and the Google data all follow.
@@ -380,6 +427,12 @@ people, until the clinic's own photos are added.
 - **Pictures** – all pictures are illustrated stand-ins until the clinic sends real photos (see [Photos](#photos)).
   The scenes show generic staff and rooms; they do not depict the clinic's actual staff, rooms or equipment.
 
+- **Instagram / TikTok** – empty until the clinic sends its profile links (`instagram`, `tiktok` in
+  `src/data/site.mjs`).
+- **Mini map** – shows the Google search for the clinic; replace `mapsEmbed` with the clinic's own embed link for the
+  exact pin.
+- **Site assistant** – answers from the site's texts only; read its texts (`src/data/chat.mjs`) with the clinic.
+
 ## Before launch
 
 - [ ] Confirm with the clinic that **every listed department is currently licensed** and staffed. Take a department
@@ -413,5 +466,5 @@ people, until the clinic's own photos are added.
 ## Credits
 
 Fonts: brand font Pangram (licensed, added by the client); stand-in [Outfit](https://fonts.google.com/specimen/Outfit) (SIL Open Font License), self-hosted from Fontsource. Icons: [Lucide](https://lucide.dev) (ISC) and
-[Simple Icons](https://simpleicons.org) (CC0) for WhatsApp, Viber and Facebook. Illustrated scenes drawn for this site
+[Simple Icons](https://simpleicons.org) (CC0) for WhatsApp, Viber, Facebook, Instagram and TikTok. Illustrated scenes drawn for this site
 (`src/lib/scenes.mjs`). Logo © Human+ Qendra Diagnostike.
