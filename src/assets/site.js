@@ -134,13 +134,20 @@
     if (b) { renderList(); openDialog($('#lab-list'), b); }
   });
 
-  /* language choice is remembered; the Albanian home page sends returning English visitors to /en/ */
+  /* phones: the language menu in the header closes on Escape and on a click outside it */
+  var pick = $('[data-lang-pick]');
+  if (pick) {
+    document.addEventListener('click', function (e) { if (pick.open && !pick.contains(e.target)) pick.open = false; });
+    pick.addEventListener('keydown', function (e) { if (e.key === 'Escape' && pick.open) { pick.open = false; $('summary', pick).focus(); } });
+  }
+
+  /* language choice is remembered; the Albanian home page sends returning English / German visitors to their language */
   $$('[data-lang]').forEach(function (a) { a.addEventListener('click', function () { store.set('hp-lang', a.getAttribute('data-lang')); }); });
   (function () {
     var pref = store.get('hp-lang', null);
     var sameSite = document.referrer && document.referrer.indexOf(location.origin) === 0;
-    if (D.lang === 'sq' && pref === 'en' && !sameSite && document.body.classList.contains('page-home')) {
-      var alt = $('.lang-alt[data-lang="en"]');
+    if (D.lang === 'sq' && pref && pref !== 'sq' && !sameSite && document.body.classList.contains('page-home')) {
+      var alt = $('.lang-alt[data-lang="' + pref + '"]');
       if (alt) location.replace(alt.href);
     }
   })();
@@ -163,23 +170,22 @@
 
   /* ---------- "Lista ime" — lab test list ---------- */
   // Items are stored as { id, n: name, p: short note }. Curated tests take their name from the page data (so
-  // always in the page language); tests from the full catalogue (/analizat/) carry it on their button in both
-  // languages (data-name / data-name-alt, data-note / data-note-alt), stored as { sq: …, en: … }.
+  // always in the page language); tests from the full catalogue (/analizat/) carry it on their button in every
+  // language (data-names / data-notes = { sq, en, de }), so the list follows a language switch.
   var KEY = 'hp-list';
-  var OTHER = D.lang === 'en' ? 'sq' : 'en';
-  function both(el, attr) {
+  function langs(el, attr) {
     var o = {};
-    o[D.lang] = el.getAttribute(attr) || '';
-    o[OTHER] = el.getAttribute(attr + '-alt') || o[D.lang];
+    try { o = JSON.parse(el.getAttribute(attr + 's') || '{}'); } catch (err) { o = {}; }
+    o[D.lang] = el.getAttribute(attr) || o[D.lang] || '';
     return o;
   }
   function item(id, el) {
     if (D.tests[id]) return { id: id, n: D.tests[id][0], p: D.tests[id][1] };
-    if (el && el.getAttribute('data-name')) return { id: id, n: both(el, 'data-name'), p: both(el, 'data-note') };
+    if (el && el.getAttribute('data-name')) return { id: id, n: langs(el, 'data-name'), p: langs(el, 'data-note') };
     return null;
   }
-  // The text to show for an item in the page language (older lists stored plain strings).
-  function tr(v) { return v && typeof v === 'object' ? v[D.lang] || v[OTHER] || '' : v || ''; }
+  // The text to show for an item in the page language (older lists stored plain strings or { sq, en }).
+  function tr(v) { return v && typeof v === 'object' ? v[D.lang] || v.en || v.sq || '' : v || ''; }
   function nameOf(x) { return D.tests[x.id] ? D.tests[x.id][0] : tr(x.n); }
   function noteOf(x) { return D.tests[x.id] ? D.tests[x.id][1] : tr(x.p); }
   function load() {
@@ -303,7 +309,7 @@
     var now = kosovoNow();
     var chosen = { day: null };
     // Albanian writes weekdays in lower case inside a sentence ("e hënë, 12 tetor").
-    var dateLabel = function (o) { var d = T.days[o.wd]; return (D.lang === 'sq' ? d.toLowerCase() : d) + ', ' + o.d + ' ' + T.months[o.m - 1] + ' ' + o.y; };
+    var dateLabel = function (o) { var d = T.days[o.wd]; return (D.lang === 'sq' ? d.toLowerCase() : d) + ', ' + o.d + (D.lang === 'de' ? '. ' : ' ') + T.months[o.m - 1] + ' ' + o.y; };
 
     // Days: the next open days, starting today (Kosovo time).
     var days = [];

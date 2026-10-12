@@ -2,7 +2,8 @@
  "hero": {
   "alt": {
    "sq": "Mjeke me stetoskop në tryezën e ordinancës",
-   "en": "A doctor with a stethoscope at her desk"
+   "en": "A doctor with a stethoscope at her desk",
+   "de": "Eine Ärztin mit Stethoskop an ihrem Schreibtisch"
   },
   "position": "50% 22%",
   "credit": "Unsplash photo-1758691462878-6edc3d3da1be (Unsplash License)"
@@ -10,7 +11,8 @@
  "lab": {
   "alt": {
    "sq": "Dorë me dorezë mban një epruvetë me gjak mbi mbajtësen e mostrave",
-   "en": "A gloved hand holds a blood sample tube above a sample rack"
+   "en": "A gloved hand holds a blood sample tube above a sample rack",
+   "de": "Eine Hand im Handschuh hält ein Blutröhrchen über einen Probenständer"
   },
   "position": "50% 50%",
   "credit": "Unsplash photo-1639772823849-6efbd173043c (Unsplash License)"
@@ -18,7 +20,8 @@
  "analyzer": {
   "alt": {
    "sq": "Epruveta me kapakë me ngjyra në laborator",
-   "en": "Sample tubes with coloured caps in the laboratory"
+   "en": "Sample tubes with coloured caps in the laboratory",
+   "de": "Probenröhrchen mit farbigen Verschlüssen im Labor"
   },
   "position": "50% 50%",
   "credit": "Unsplash photo-1606206591513-adbfbdd7a177 (Unsplash License)"
@@ -26,7 +29,8 @@
  "sampling": {
   "alt": {
    "sq": "Dorë me dorezë zgjedh një epruvetë me mostër gjaku",
-   "en": "A gloved hand picks a blood sample tube"
+   "en": "A gloved hand picks a blood sample tube",
+   "de": "Eine Hand im Handschuh greift nach einem Blutröhrchen"
   },
   "position": "50% 50%",
   "credit": "Unsplash photo-1697192156499-d85cfe1452c0 (Unsplash License)"
@@ -34,7 +38,8 @@
  "pediatrics": {
   "alt": {
    "sq": "Djalë me nënën e tij gjatë një vizite te mjeku",
-   "en": "A boy with his mother during a visit to the doctor"
+   "en": "A boy with his mother during a visit to the doctor",
+   "de": "Ein Junge mit seiner Mutter beim Arztbesuch"
   },
   "position": "50% 30%",
   "credit": "Unsplash photo-1758691463331-2ac00e6f676f (Unsplash License)"
@@ -42,7 +47,8 @@
  "consult": {
   "alt": {
    "sq": "Mjek me stetoskop bisedon me pacientin",
-   "en": "A doctor with a stethoscope talks with a patient"
+   "en": "A doctor with a stethoscope talks with a patient",
+   "de": "Ein Arzt mit Stethoskop spricht mit einem Patienten"
   },
   "position": "50% 22%",
   "credit": "Unsplash photo-1758691461935-202e2ef6b69f (Unsplash License)"
@@ -50,7 +56,8 @@
  "reception": {
   "alt": {
    "sq": "Mjeku plotëson një formular së bashku me pacientin",
-   "en": "A doctor fills in a form together with a patient"
+   "en": "A doctor fills in a form together with a patient",
+   "de": "Ein Arzt füllt gemeinsam mit einem Patienten ein Formular aus"
   },
   "position": "50% 50%",
   "credit": "Unsplash photo-1758691461990-03b49d969495 (Unsplash License)"
@@ -58,7 +65,8 @@
  "about": {
   "alt": {
    "sq": "Nënë dhe djali i saj gjatë vizitës",
-   "en": "A mother and her son during a visit"
+   "en": "A mother and her son during a visit",
+   "de": "Eine Mutter und ihr Sohn während eines Besuchs"
   },
   "position": "50% 22%",
   "credit": "Unsplash photo-1758691462119-792279713969 (Unsplash License)"
@@ -66,7 +74,8 @@
  "contact": {
   "alt": {
    "sq": "Mjeke me stetoskop në ordinancë",
-   "en": "A doctor with a stethoscope in her office"
+   "en": "A doctor with a stethoscope in her office",
+   "de": "Eine Ärztin mit Stethoskop in ihrem Sprechzimmer"
   },
   "position": "50% 22%",
   "credit": "Unsplash photo-1758691462858-f1286e5daf40 (Unsplash License)"
@@ -74,7 +83,8 @@
  "team-doctor": {
   "alt": {
    "sq": "Mjeke me stetoskop",
-   "en": "A doctor with a stethoscope"
+   "en": "A doctor with a stethoscope",
+   "de": "Eine Ärztin mit Stethoskop"
   },
   "position": "50% 22%",
   "credit": "Unsplash photo-1758691462858-f1286e5daf40 (Unsplash License)"
@@ -82,7 +92,8 @@
  "team-lab": {
   "alt": {
    "sq": "Mikroskop dhe duar me doreza në laborator",
-   "en": "A microscope and gloved hands in the laboratory"
+   "en": "A microscope and gloved hands in the laboratory",
+   "de": "Ein Mikroskop und Hände in Handschuhen im Labor"
   },
   "position": "50% 50%",
   "credit": "Unsplash photo-1639772823907-a716be4bdecc (Unsplash License)"
@@ -90,7 +101,8 @@
  "team-nurse": {
   "alt": {
    "sq": "Duar me doreza vendosin leukoplast pas marrjes së gjakut",
-   "en": "Gloved hands place a plaster after a blood draw"
+   "en": "Gloved hands place a plaster after a blood draw",
+   "de": "Hände in Handschuhen kleben nach der Blutabnahme ein Pflaster auf"
   },
   "position": "50% 50%",
   "credit": "Unsplash photo-1625131135576-97ddbb6f063c (Unsplash License)"
@@ -98,7 +110,8 @@
  "sherbim-pediatri": {
   "alt": {
    "sq": "Djalë me nënën e tij gjatë një vizite te mjeku",
-   "en": "A boy with his mother during a visit to the doctor"
+   "en": "A boy with his mother during a visit to the doctor",
+   "de": "Ein Junge mit seiner Mutter beim Arztbesuch"
   },
   "position": "50% 30%",
   "credit": "Unsplash photo-1758691463331-2ac00e6f676f (Unsplash License)"
@@ -106,7 +119,8 @@
  "sherbim-gjinekologji": {
   "alt": {
    "sq": "Mjeke me stetoskop në tryezën e ordinancës",
-   "en": "A doctor with a stethoscope at her desk"
+   "en": "A doctor with a stethoscope at her desk",
+   "de": "Eine Ärztin mit Stethoskop an ihrem Schreibtisch"
   },
   "position": "50% 22%",
   "credit": "Unsplash photo-1758691462878-6edc3d3da1be (Unsplash License)"
@@ -114,7 +128,8 @@
  "sherbim-laboratori-biokimik-dhe-hematologjik": {
   "alt": {
    "sq": "Duar me doreza punojnë me mostra në laborator",
-   "en": "Gloved hands work with samples in the laboratory"
+   "en": "Gloved hands work with samples in the laboratory",
+   "de": "Hände in Handschuhen arbeiten im Labor mit Proben"
   },
   "position": "50% 50%",
   "credit": "Unsplash photo-1615461066159-fea0960485d5 (Unsplash License)"
@@ -122,7 +137,8 @@
  "sherbim-laboratori-mikrobiologjik": {
   "alt": {
    "sq": "Mikroskop dhe duar me doreza në laborator",
-   "en": "A microscope and gloved hands in the laboratory"
+   "en": "A microscope and gloved hands in the laboratory",
+   "de": "Ein Mikroskop und Hände in Handschuhen im Labor"
   },
   "position": "50% 50%",
   "credit": "Unsplash photo-1639772823907-a716be4bdecc (Unsplash License)"
@@ -130,7 +146,8 @@
  "sherbim-mjekesi-familjare": {
   "alt": {
    "sq": "Pacientes i matet tensioni i gjakut",
-   "en": "A patient has her blood pressure measured"
+   "en": "A patient has her blood pressure measured",
+   "de": "Bei einer Patientin wird der Blutdruck gemessen"
   },
   "position": "50% 35%",
   "credit": "Unsplash photo-1758691462123-8a17ae95d203 (Unsplash License)"
@@ -138,7 +155,8 @@
  "sherbim-urologji": {
   "alt": {
    "sq": "Mjek me syze shkruan në tryezën e ordinancës",
-   "en": "A doctor in glasses writes at his desk"
+   "en": "A doctor in glasses writes at his desk",
+   "de": "Ein Arzt mit Brille schreibt an seinem Schreibtisch"
   },
   "position": "50% 22%",
   "credit": "Unsplash photo-1758691463198-dc663b8a64e4 (Unsplash License)"
@@ -146,7 +164,8 @@
  "sherbim-endokrinologji": {
   "alt": {
    "sq": "Mjeke me stetoskop në ordinancë",
-   "en": "A doctor with a stethoscope in her office"
+   "en": "A doctor with a stethoscope in her office",
+   "de": "Eine Ärztin mit Stethoskop in ihrem Sprechzimmer"
   },
   "position": "50% 22%",
   "credit": "Unsplash photo-1758691462858-f1286e5daf40 (Unsplash License)"
@@ -154,7 +173,8 @@
  "sherbim-gastroenterologji": {
   "alt": {
    "sq": "Mjek me stetoskop bisedon me pacientin",
-   "en": "A doctor with a stethoscope talks with a patient"
+   "en": "A doctor with a stethoscope talks with a patient",
+   "de": "Ein Arzt mit Stethoskop spricht mit einem Patienten"
   },
   "position": "50% 22%",
   "credit": "Unsplash photo-1758691461935-202e2ef6b69f (Unsplash License)"
@@ -162,7 +182,8 @@
  "sherbim-dermatologji": {
   "alt": {
    "sq": "Mjeke me stetoskop në dorë",
-   "en": "A doctor holding a stethoscope"
+   "en": "A doctor holding a stethoscope",
+   "de": "Eine Ärztin mit einem Stethoskop in der Hand"
   },
   "position": "50% 40%",
   "credit": "Unsplash photo-1638202993928-7267aad84c31 (Unsplash License)"
@@ -170,7 +191,8 @@
  "sherbim-suplemente-dhe-nutricion": {
   "alt": {
    "sq": "Grua me një tabletë dhe një gotë ujë",
-   "en": "A woman with a tablet and a glass of water"
+   "en": "A woman with a tablet and a glass of water",
+   "de": "Eine Frau mit einer Tablette und einem Glas Wasser"
   },
   "position": "50% 40%",
   "credit": "Unsplash photo-1674049406313-abb5511e0111 (Unsplash License)"

@@ -12,7 +12,7 @@ export const testName = (id, lang) => L(TEST_BY_ID.get(id)?.name, lang);
 /** Short label for chips: the optional `short` name, else the name without its bracket or "me …" tail. */
 export const shortName = (id, lang) => {
   const x = TEST_BY_ID.get(id);
-  return L(x?.short, lang) || testName(id, lang).replace(/\s*\(.*\)/, '').replace(/\s+(me|with)\s.*$/, '');
+  return L(x?.short, lang) || testName(id, lang).replace(/\s*\(.*\)/, '').replace(/\s+(me|with|mit)\s.*$/, '');
 };
 
 /** Breadcrumb trail + BreadcrumbList JSON-LD. `trail` = [[label, path], …] (the last item is the current page). */
@@ -93,12 +93,10 @@ export function prepChip(ctx, key) {
 
 export function testRow(ctx, x) {
   const name = L(x.name, ctx.lang);
-  const other = L(x.name, ctx.lang === 'sq' ? 'en' : 'sq');
-  const search = fold([x.name.sq, x.name.en, x.aka].join(' '));
+  const search = fold([x.name.sq, x.name.en, x.name.de, x.aka].filter(Boolean).join(" "));
   return h`<li class="test" data-test="${x.id}" data-cat="${x.cat}" data-search="${esc(search)}">
     <div class="test-main">
       <h3 class="test-name">${commonTestPath(x.id) ? h`<a href="${esc(ctx.url(commonTestPath(x.id)))}">${esc(name)}</a>` : esc(name)}</h3>
-      ${other !== name && h`<p class="test-alt" lang="${ctx.lang === 'sq' ? 'en' : 'sq'}">${esc(other)}</p>`}
     </div>
     <div class="test-meta">
       <span class="chip">${icon(x.sample === 'blood' ? 'droplet' : x.sample === 'swab' ? 'syringe' : 'test-tubes', { size: 14 })}${esc(L(SAMPLES[x.sample], ctx.lang))}</span>
@@ -113,11 +111,14 @@ export function panelCard(ctx, p, { full = false } = {}) {
   const T = {
     sq: { tests: 'analiza', add: 'Shto paketën në listë', ask: 'Pyet për çmimin', incl: 'Përfshin', added: 'Paketa është në listë' },
     en: { tests: 'tests', add: 'Add the check-up to my list', ask: 'Ask for the price', incl: 'Includes', added: 'Check-up is on your list' },
+    de: { tests: 'Analysen', add: 'Check-up zur Liste hinzufügen', ask: 'Nach dem Preis fragen', incl: 'Enthält', added: 'Check-up ist auf Ihrer Liste' },
   }[lang];
   const name = L(p.name, lang);
-  const msg = lang === 'sq'
-    ? `Përshëndetje Human+! Dëshiroj informata për paketën "${name}" (${p.tests.map((id) => testName(id, lang)).join(', ')}).`
-    : `Hello Human+! I would like information about the "${name}" check-up (${p.tests.map((id) => testName(id, lang)).join(', ')}).`;
+  const msg = {
+    sq: `Përshëndetje Human+! Dëshiroj informata për paketën "${name}" (${p.tests.map((id) => testName(id, lang)).join(', ')}).`,
+    en: `Hello Human+! I would like information about the "${name}" check-up (${p.tests.map((id) => testName(id, lang)).join(', ')}).`,
+    de: `Hallo Human+! Ich hätte gerne Informationen zum Check-up „${name}“ (${p.tests.map((id) => testName(id, lang)).join(', ')}).`,
+  }[lang];
   return h`<article class="panel reveal" id="paketa-${p.id}">
     <div class="panel-head">
       <span class="tile tile-brand">${icon(p.icon, { size: 24 })}</span>
@@ -141,6 +142,7 @@ export function testSearch(ctx, { id = 'q', big = false, autofocus = false, valu
   const T = {
     sq: { label: 'Kërko një analizë', ph: 'p.sh. vitamina D, TSH, gjaku komplet', go: 'Kërko' },
     en: { label: 'Search for a test', ph: 'e.g. vitamin D, TSH, blood count', go: 'Search' },
+    de: { label: 'Analyse suchen', ph: 'z. B. Vitamin D, TSH, Blutbild', go: 'Suchen' },
   }[ctx.lang];
   return h`<form class="search${big ? ' search-big' : ''}"${landmark && ' role="search"'} action="${esc(ctx.url('analizat'))}" method="get" data-search-form>
     <label class="sr-only" for="${id}">${esc(T.label)}</label>
@@ -197,6 +199,18 @@ const G = dict('gallery', {
     spec_d: 'Gynaecology, urology, endocrinology, gastroenterology, dermatology.',
     rec: 'Reception',
     rec_d: 'Guides you and confirms your appointment.',
+  },
+  de: {
+    lab: 'Labor',
+    lab_d: 'Biochemie, Hämatologie und Mikrobiologie — hier im Zentrum.',
+    sample: 'Probenentnahme',
+    sample_d: 'Blut und andere Proben werden von unserem Personal entnommen.',
+    ped: 'Kinderheilkunde',
+    ped_d: 'Kinderheilkunde und Labor an einem Ort.',
+    spec: 'Fachärzte',
+    spec_d: 'Gynäkologie, Urologie, Endokrinologie, Gastroenterologie, Dermatologie.',
+    rec: 'Rezeption',
+    rec_d: 'Hilft Ihnen weiter und bestätigt Ihren Termin.',
   },
 });
 

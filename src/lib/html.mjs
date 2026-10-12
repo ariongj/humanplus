@@ -62,7 +62,9 @@ export function dict(name, d) {
 }
 
 /** Pick the language from a `{ sq, en }` value (strings pass through). */
-export const L = (v, lang) => (v && typeof v === 'object' && !Array.isArray(v) ? v[lang] ?? v.sq : v);
+export const L = (v, lang) => (v && typeof v === 'object' && !Array.isArray(v) ? v[lang] ?? (lang === 'sq' ? undefined : v.en) ?? v.sq : v);
+/** Native names of the site languages (shown in the language switch). */
+export const LANG_NAMES = { sq: 'Shqip', en: 'English', de: 'Deutsch' };
 
 /** `*word*` → italic serif accent (the brand's display style). Escapes everything else. */
 export const accent = (s) => esc(s).replace(/\*([^*]+)\*/g, '<em class="accent">$1</em>');

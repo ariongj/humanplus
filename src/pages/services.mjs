@@ -51,6 +51,28 @@ const T = dict('services', {
     detail_desc_suffix: 'at Human+ Diagnostic Centre, Prishtina.',
     wa_msg: 'Hello Human+! I have a question about:',
   },
+  de: {
+    title: 'Leistungen — Kinderheilkunde, Gynäkologie, Labor und Fachärzte',
+    description: 'Zehn Leistungen bei Human+ Prishtina: Kinderheilkunde, Gynäkologie, Labor für Biochemie, Hämatologie und Mikrobiologie, Allgemeinmedizin, Urologie, Endokrinologie, Gastroenterologie, Dermatologie, Ernährung.',
+    eyebrow: 'Leistungen',
+    h1: 'Zehn Leistungen, *ein* Zentrum.',
+    lead: 'Fachärzte und Labor arbeiten im selben Gebäude — die Analysen, die Ihr Arzt anordnet, werden direkt vor Ort durchgeführt, und die Ergebnisse besprechen Sie mit demselben Team.',
+    lab_group: 'Labor',
+    doc_group: 'Fachärzte',
+    cta_title: 'Unsicher, welchen *Facharzt* Sie brauchen?',
+    cta_text: 'Rufen Sie an oder schreiben Sie uns — wir helfen Ihnen, den richtigen Arzt oder die passende Analyse zu finden.',
+    what: 'Unser Angebot',
+    tests: 'Häufig angeforderte Analysen',
+    tests_text: 'Fügen Sie sie Ihrer Liste hinzu und senden Sie uns die Liste — wir nennen Ihnen den Preis und sagen Ihnen, wie Sie sich vorbereiten.',
+    tests_all: 'Alle Laboranalysen',
+    others: 'Weitere Leistungen',
+    book_this: 'Termin buchen',
+    ask: 'Auf WhatsApp fragen',
+    aside_title: 'Buchen oder fragen',
+    aside_text: 'Die Rezeption antwortet Ihnen und bestätigt die Uhrzeit.',
+    detail_desc_suffix: 'im Human+ Diagnostikzentrum, Prishtina.',
+    wa_msg: 'Hallo Human+! Ich habe eine Frage zur Leistung:',
+  },
 });
 
 const isLab = (s) => s.slug.startsWith('laboratori');

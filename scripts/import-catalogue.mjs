@@ -28,28 +28,28 @@ const data = /\.json$/i.test(src)
   ? JSON.parse(fs.readFileSync(path.resolve(src), 'utf8'))
   : (await import(pathToFileURL(path.resolve(src)).href)).default;
 
-// Source category → our id, English name and icon. Categories not listed here are skipped.
+// Source category → our id, English name, icon and German name. Categories not listed here are skipped.
 const CATS = {
-  'hematologija-i-hemostaza': ['hematologji', 'Haematology & haemostasis', 'droplet'],
-  biohemija: ['biokimi', 'Biochemistry', 'flask-conical'],
-  imunohemija: ['imunokimi', 'Immunochemistry', 'activity'],
-  'imunohemija-eliza': ['imunokimi-elisa', 'Immunochemistry (ELISA)', 'activity'],
-  'polni-hormoni': ['hormone-seksuale', 'Sex hormones', 'venus'],
-  'testovi-u-trudnoci': ['shtatzeni', 'Pregnancy tests', 'baby'],
-  'tumor-markeri': ['markues-tumorale', 'Tumour markers', 'shield-check'],
-  alergologija: ['alergologji', 'Allergology', 'sparkles'],
-  imunologija: ['imunologji', 'Immunology', 'shield-check'],
-  serologija: ['serologji', 'Serology', 'test-tubes'],
-  'serologija-automatizovana': ['serologji-automatike', 'Automated serology', 'test-tubes'],
-  mikrobiologija: ['mikrobiologji', 'Microbiology', 'microscope'],
-  parazitologija: ['parazitologji', 'Parasitology', 'microscope'],
-  'genetika-pcr': ['gjenetike-pcr', 'Genetics (PCR)', 'activity'],
-  'genetika-ngs': ['gjenetike-ngs', 'Genetics (NGS)', 'activity'],
-  'nasledna-onkogenetika': ['onkogjenetike', 'Hereditary oncogenetics', 'activity'],
-  'funkcionalna-medicina': ['mjekesi-funksionale', 'Functional medicine', 'leaf'],
-  lekovi: ['barna', 'Drug levels', 'pill'],
-  patohistologija: ['patohistologji', 'Histopathology', 'microscope'],
-  transfuziologija: ['transfuziologji', 'Transfusion medicine', 'droplets'],
+  'hematologija-i-hemostaza': ['hematologji', 'Haematology & haemostasis', 'droplet', 'Hämatologie und Hämostaseologie'],
+  biohemija: ['biokimi', 'Biochemistry', 'flask-conical', 'Biochemie'],
+  imunohemija: ['imunokimi', 'Immunochemistry', 'activity', 'Immunchemie'],
+  'imunohemija-eliza': ['imunokimi-elisa', 'Immunochemistry (ELISA)', 'activity', 'Immunchemie (ELISA)'],
+  'polni-hormoni': ['hormone-seksuale', 'Sex hormones', 'venus', 'Sexualhormone'],
+  'testovi-u-trudnoci': ['shtatzeni', 'Pregnancy tests', 'baby', 'Schwangerschaftstests'],
+  'tumor-markeri': ['markues-tumorale', 'Tumour markers', 'shield-check', 'Tumormarker'],
+  alergologija: ['alergologji', 'Allergology', 'sparkles', 'Allergologie'],
+  imunologija: ['imunologji', 'Immunology', 'shield-check', 'Immunologie'],
+  serologija: ['serologji', 'Serology', 'test-tubes', 'Serologie'],
+  'serologija-automatizovana': ['serologji-automatike', 'Automated serology', 'test-tubes', 'Automatisierte Serologie'],
+  mikrobiologija: ['mikrobiologji', 'Microbiology', 'microscope', 'Mikrobiologie'],
+  parazitologija: ['parazitologji', 'Parasitology', 'microscope', 'Parasitologie'],
+  'genetika-pcr': ['gjenetike-pcr', 'Genetics (PCR)', 'activity', 'Genetik (PCR)'],
+  'genetika-ngs': ['gjenetike-ngs', 'Genetics (NGS)', 'activity', 'Genetik (NGS)'],
+  'nasledna-onkogenetika': ['onkogjenetike', 'Hereditary oncogenetics', 'activity', 'Erbliche Onkogenetik'],
+  'funkcionalna-medicina': ['mjekesi-funksionale', 'Functional medicine', 'leaf', 'Funktionelle Medizin'],
+  lekovi: ['barna', 'Drug levels', 'pill', 'Medikamentenspiegel'],
+  patohistologija: ['patohistologji', 'Histopathology', 'microscope', 'Histopathologie'],
+  transfuziologija: ['transfuziologji', 'Transfusion medicine', 'droplets', 'Transfusionsmedizin'],
 };
 const SKIP_CATS = new Set(['promocija', 'usluge', 'paneli']);
 
@@ -164,10 +164,10 @@ for (const x of entries) {
 
 // Category list in a sensible order (most used first), with counts.
 const categories = Object.values(CATS)
-  .map(([id, en, icon]) => {
+  .map(([id, en, icon, de]) => {
     const srcId = Object.keys(CATS).find((k) => CATS[k][0] === id);
     const sq = data.categories.find((c) => c.id === srcId)?.nameSq ?? id;
-    return { id, sq, en, icon, count: entries.filter((x) => x.c.includes(id)).length };
+    return { id, sq, en, de, icon, count: entries.filter((x) => x.c.includes(id)).length };
   })
   .filter((c) => c.count > 0);
 

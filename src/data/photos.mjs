@@ -9,52 +9,52 @@
 export const PHOTOS = {
   hero: {
     scene: 'doctor',
-    alt: { sq: 'Mjeke me stetoskop dhe tablet, me laboratorin pas xhamit', en: 'A doctor with a stethoscope and a tablet, the laboratory behind the glass' },
+    alt: { sq: 'Mjeke me stetoskop dhe tablet, me laboratorin pas xhamit', en: 'A doctor with a stethoscope and a tablet, the laboratory behind the glass', de: 'Eine Ärztin mit Stethoskop und Tablet, hinter der Glasscheibe das Labor' },
   },
   lab: {
     scene: 'lab',
-    alt: { sq: 'Teknik laboratori me maskë dhe doreza mban një epruvetë pranë mikroskopit dhe analizatorit', en: 'A laboratory technician in mask and gloves holds up a sample tube by the microscope and analyser' },
+    alt: { sq: 'Teknik laboratori me maskë dhe doreza mban një epruvetë pranë mikroskopit dhe analizatorit', en: 'A laboratory technician in mask and gloves holds up a sample tube by the microscope and analyser', de: 'Ein Labortechniker mit Maske und Handschuhen hält neben dem Mikroskop und dem Analysegerät ein Probenröhrchen hoch' },
   },
   analyzer: {
     scene: 'analyzer',
-    alt: { sq: 'Analizatori i laboratorit me epruveta, centrifuga dhe pipeta', en: 'The laboratory analyser with sample tubes, a centrifuge and a pipette' },
+    alt: { sq: 'Analizatori i laboratorit me epruveta, centrifuga dhe pipeta', en: 'The laboratory analyser with sample tubes, a centrifuge and a pipette', de: 'Das Analysegerät des Labors mit Probenröhrchen, einer Zentrifuge und einer Pipette' },
   },
   sampling: {
     scene: 'sampling',
-    alt: { sq: 'Dhoma e marrjes së mostrave: karrigia për marrjen e gjakut dhe infermierja që etiketon epruvetën', en: 'The sample room: the blood-draw chair and a nurse labelling a tube' },
+    alt: { sq: 'Dhoma e marrjes së mostrave: karrigia për marrjen e gjakut dhe infermierja që etiketon epruvetën', en: 'The sample room: the blood-draw chair and a nurse labelling a tube', de: 'Der Raum für die Probenentnahme: der Blutentnahmestuhl und eine Pflegerin, die ein Röhrchen beschriftet' },
   },
   pediatrics: {
     scene: 'pediatrics',
-    alt: { sq: 'Pediatri dëgjon me stetoskop një fëmijë që mban një arush', en: 'A paediatrician listens with a stethoscope to a child holding a teddy bear' },
+    alt: { sq: 'Pediatri dëgjon me stetoskop një fëmijë që mban një arush', en: 'A paediatrician listens with a stethoscope to a child holding a teddy bear', de: 'Ein Kinderarzt hört mit dem Stethoskop ein Kind ab, das einen Teddybären hält' },
   },
   consult: {
     scene: 'consult',
-    alt: { sq: 'Konsultë me specialist në ordinancë', en: 'A consultation in a specialist’s room' },
+    alt: { sq: 'Konsultë me specialist në ordinancë', en: 'A consultation in a specialist’s room', de: 'Eine fachärztliche Beratung im Sprechzimmer' },
   },
   reception: {
     scene: 'reception',
-    alt: { sq: 'Recepsioni i Human+ me logon në mur', en: 'The Human+ reception with the logo on the wall' },
+    alt: { sq: 'Recepsioni i Human+ me logon në mur', en: 'The Human+ reception with the logo on the wall', de: 'Die Rezeption von Human+ mit dem Logo an der Wand' },
   },
   // About and contact page headers (the reception scene until they have photos of their own).
   about: {
     scene: 'reception',
-    alt: { sq: 'Recepsioni i Human+ me logon në mur', en: 'The Human+ reception with the logo on the wall' },
+    alt: { sq: 'Recepsioni i Human+ me logon në mur', en: 'The Human+ reception with the logo on the wall', de: 'Die Rezeption von Human+ mit dem Logo an der Wand' },
   },
   contact: {
     scene: 'reception',
-    alt: { sq: 'Recepsioni i Human+ me logon në mur', en: 'The Human+ reception with the logo on the wall' },
+    alt: { sq: 'Recepsioni i Human+ me logon në mur', en: 'The Human+ reception with the logo on the wall', de: 'Die Rezeption von Human+ mit dem Logo an der Wand' },
   },
   'team-doctor': {
     scene: 'team-doctor',
-    alt: { sq: 'Mjeke specialiste me stetoskop', en: 'A specialist doctor with a stethoscope' },
+    alt: { sq: 'Mjeke specialiste me stetoskop', en: 'A specialist doctor with a stethoscope', de: 'Eine Fachärztin mit Stethoskop' },
   },
   'team-lab': {
     scene: 'team-lab',
-    alt: { sq: 'Teknik laboratori me maskë dhe syze mbrojtëse', en: 'A laboratory technician in a mask and safety glasses' },
+    alt: { sq: 'Teknik laboratori me maskë dhe syze mbrojtëse', en: 'A laboratory technician in a mask and safety glasses', de: 'Ein Labortechniker mit Maske und Schutzbrille' },
   },
   'team-nurse': {
     scene: 'team-nurse',
-    alt: { sq: 'Infermiere me uniformë të gjelbër', en: 'A nurse in green scrubs' },
+    alt: { sq: 'Infermiere me uniformë të gjelbër', en: 'A nurse in green scrubs', de: 'Eine Pflegerin in grüner Berufskleidung' },
   },
 };
 

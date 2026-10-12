@@ -213,12 +213,19 @@ main:focus { outline: none; }
 .lang > * { display: inline-grid; place-items: center; min-width: 40px; height: 30px; padding: 0 8px; border-radius: var(--r-btn); text-decoration: none; }
 .lang-cur { background: var(--ink); color: #fff; }
 .lang-alt:hover { background: var(--brand-50); color: var(--brand-700); }
-.lang-header { flex: none; }
-@media (max-width: 879px) {
-  .lang-header { border: 0; padding: 0; }
-  .lang-header .lang-cur { display: none; }
-  .lang-header .lang-alt { min-width: 44px; height: 44px; border: 1.5px solid var(--line-2); font-size: 0.85rem; }
-}
+/* phones and tablets: the current language opens a small menu with the other two */
+.lang-pick { position: relative; flex: none; }
+.lang-pick summary { display: inline-flex; align-items: center; justify-content: center; gap: 4px; min-width: 52px; height: 44px; padding: 0 8px; border: 1.5px solid var(--line-2); border-radius: var(--r-btn); background: var(--surface); font-size: 0.85rem; font-weight: 750; letter-spacing: 0.04em; cursor: pointer; list-style: none; }
+.lang-pick summary::-webkit-details-marker { display: none; }
+.lang-pick summary .i:last-child { transition: transform 0.2s; }
+.lang-globe { display: none; }
+.lang-pick[open] summary { border-color: var(--brand); color: var(--brand); }
+.lang-pick[open] summary .i:last-child { transform: rotate(180deg); }
+.lang-pick ul { position: absolute; right: 0; top: calc(100% + 6px); z-index: 50; min-width: 168px; padding: 6px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg); box-shadow: var(--shadow-lg); }
+.lang-pick a { display: flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 12px; border-radius: var(--r-btn); color: var(--ink); text-decoration: none; font-weight: 650; }
+.lang-pick a span { display: inline-grid; place-items: center; min-width: 30px; height: 24px; border-radius: 6px; background: var(--bg); font-size: 0.75rem; font-weight: 750; letter-spacing: 0.04em; }
+.lang-pick a:hover { background: var(--brand-50); color: var(--brand-700); }
+@media (min-width: 880px) { .lang-pick summary { gap: 6px; padding: 0 10px; } .lang-globe { display: block; } }
 .lang-dark { border-color: rgb(255 255 255 / 0.25); }
 .lang-dark .lang-cur { background: #fff; color: var(--ink); }
 .lang-dark .lang-alt { color: #e3e8e5; }
@@ -249,10 +256,11 @@ main:focus { outline: none; }
 .nav a[aria-current='page'] { color: var(--ink); box-shadow: inset 0 -3px 0 var(--green); }
 .header-actions { display: flex; align-items: center; gap: 8px; margin-left: auto; }
 @media (max-width: 359px) {
-  .header-in { gap: 10px; }
-  .header-actions { gap: 6px; }
-  .site-header .logo { width: 108px; }
-  .list-btn { padding: 0 10px; }
+  .header-in { gap: 8px; }
+  .header-actions { gap: 4px; }
+  .site-header .logo { width: 100px; }
+  .list-btn { gap: 6px; padding: 0 9px; }
+  .lang-pick summary { min-width: 0; gap: 2px; padding: 0 7px; }
 }
 .btn-book { display: none; }
 .list-btn { position: relative; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; min-width: 44px; padding: 0 12px; border-radius: var(--r-btn); border: 1.5px solid var(--line-2); background: var(--surface); font-weight: 700; font-size: 0.9rem; }
@@ -428,6 +436,8 @@ main:focus { outline: none; }
 
 /* service cards */
 .svc-grid { display: grid; gap: 14px; }
+/* German compounds (Nahrungsergänzung, Gewebstransglutaminase…) break with a hyphen instead of widening narrow cards */
+html[lang='de'] body { hyphens: auto; overflow-wrap: break-word; }
 .svc-link { display: flex; flex-direction: column; height: 100%; padding: 22px; background: var(--surface); border: 1px solid var(--line); border-top: 3px solid var(--green); border-radius: var(--r-lg); text-decoration: none; transition: border-color 0.2s, box-shadow 0.25s; }
 .svc-link:hover { border-color: var(--brand-100); border-top-color: var(--green); box-shadow: var(--shadow); }
 .svc-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 18px; }
@@ -494,10 +504,11 @@ main:focus { outline: none; }
 .ped-float > .i { color: var(--brand); transition: transform 0.2s; }
 .ped-float:hover { border-color: var(--brand); border-top-color: #e3a33a; }
 .ped-float:hover > .i { transform: translateX(3px); }
-.ticks { display: grid; gap: 10px; margin-top: 22px; }
-.ticks li { display: flex; gap: 12px; align-items: flex-start; color: var(--ink-2); }
+.ticks { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; margin-top: 22px; }
+.ticks li { display: flex; gap: 12px; align-items: flex-start; min-width: 0; color: var(--ink-2); }
+.ticks li > span { min-width: 0; }
 .ticks .i { color: var(--brand); margin-top: 2px; }
-.ticks-cards { grid-template-columns: 1fr; gap: 10px; }
+.ticks-cards { grid-template-columns: minmax(0, 1fr); gap: 10px; }
 .ticks-cards li { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 16px 18px; color: var(--ink); font-weight: 600; }
 
 /* steps */
@@ -907,7 +918,7 @@ main:focus { outline: none; }
   .fields { grid-template-columns: 1fr 1fr; }
   .test-dl > div { grid-template-columns: 190px 1fr; gap: 18px; }
   .field-full { grid-column: 1 / -1; }
-  .ticks-cards { grid-template-columns: 1fr 1fr; }
+  .ticks-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .test { grid-template-columns: 1fr auto auto; }
   .test-meta { grid-column: 2; order: 0; justify-content: flex-end; }
   .test .add-btn { grid-column: 3; }
@@ -970,7 +981,7 @@ main:focus { outline: none; }
   .story-in { grid-template-columns: 1.1fr 0.9fr; gap: 64px; }
   .form-in { grid-template-columns: 0.8fr 1.2fr; gap: 56px; }
   .footer-grid { grid-template-columns: 1.3fr 1fr 1fr 1.2fr; gap: 40px; }
-  .svc-grid { grid-template-columns: repeat(3, 1fr); }
+  .svc-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .contact-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
@@ -981,8 +992,8 @@ main:focus { outline: none; }
   .menu-btn { display: none; }
   .btn-book { display: inline-flex; }
   .logo { width: 146px; }
-  .svc-grid { grid-template-columns: repeat(4, 1fr); }
-  .page-home .svc-grid { grid-template-columns: repeat(5, 1fr); }
+  .svc-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .page-home .svc-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
   .panel-grid { grid-template-columns: repeat(4, 1fr); }
   .panel-grid-full { grid-template-columns: repeat(3, 1fr); }
   .prep-grid { grid-template-columns: repeat(3, 1fr); }

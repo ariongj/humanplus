@@ -1,6 +1,7 @@
 // Icon paths. Lucide (ISC, https://lucide.dev) — 24×24 stroke icons; Simple Icons (CC0) — brand marks.
 // Generated once from lucide-static and simple-icons; add an icon by copying its inner SVG here.
 export const LUCIDE = {
+ "globe": "<circle cx=\"12\" cy=\"12\" r=\"10\" /><path d=\"M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20\" /><path d=\"M2 12h20\" />",
  "test-tube": "<path d=\"M14.5 2v17.5c0 1.4-1.1 2.5-2.5 2.5c-1.4 0-2.5-1.1-2.5-2.5V2\" /><path d=\"M8.5 2h7\" /><path d=\"M14.5 16h-5\" />",
  "test-tube-diagonal": "<path d=\"M21 7 6.82 21.18a2.83 2.83 0 0 1-3.99-.01a2.83 2.83 0 0 1 0-4L17 3\" /><path d=\"m16 2 6 6\" /><path d=\"M12 16H4\" />",
  "flask-round": "<path d=\"M10 2v6.292a7 7 0 1 0 4 0V2\" /><path d=\"M5 15h14\" /><path d=\"M8.5 2h7\" />",

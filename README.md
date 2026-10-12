@@ -2,7 +2,7 @@
 
 The new website for **Human+ Qendra Diagnostike** (Rruga B, Nr. 16, Prishtinë), a diagnostic centre since 2011 with a
 biochemistry, haematology and microbiology laboratory, paediatrics, gynaecology and specialists under one roof.
-Albanian first, English one click away. The previous site at humanplusks.com was a brochure; this one is built around
+Albanian first, English and German one click away. The previous site at humanplusks.com was a brochure; this one is built around
 what patients actually come to do: **find a test, see how to prepare, ask the price, book a time.** The lab-test catalogue,
 check-up panels, preparation guide and online booking follow the lab sites the client likes (beo-lab.rs), in Human+'s own look.
 
@@ -23,17 +23,17 @@ one JavaScript file into `dist/`, which you can upload to any web host.
 
 | | |
 | --- | --- |
-| Pages | 19 site pages + 1 006 test pages per language × 2 (sq + en), plus 404 |
-| Lab-test catalogue | 1 006 tests and panels in 20 categories, each with its own page, searchable in Albanian, English and Serbian (see [Lab catalogue](#lab-catalogue)) |
+| Pages | 19 site pages + 1 006 test pages per language × 3 (sq, en, de), plus a 404 page in each |
+| Lab-test catalogue | 1 006 tests and panels in 20 categories, each with its own page, searchable in Albanian, English, German and Serbian (see [Lab catalogue](#lab-catalogue)) |
 | Check-up panels | 8 |
-| Accessibility | axe-core: **0 violations** on all pages, desktop 1440 and phone 390 |
+| Accessibility | axe-core: **0 violations** on all pages in all three languages, desktop 1440 and phone 390 |
 | Layout | no horizontal scroll at 320, 390 and 1440 px; 44 px touch targets; 16 px form fields |
 | Weight | home page ≈ 29 kB HTML + 14 kB CSS + 8 kB JS (gzip) + one font (27 kB) + 6 illustrated scenes (19 kB, cached across pages); the catalogue data (113 kB gzip) loads only on `/analizat/` |
 
 ## What is on the site
 
-All pages exist in Albanian (`/…`) and English (`/en/…`) with the **same addresses**, so the old links such as
-`/en/sherbim/pediatri/` keep working.
+All pages exist in Albanian (`/…`), English (`/en/…`) and German (`/de/…`) with the **same addresses**, so the old
+links such as `/en/sherbim/pediatri/` keep working.
 
 | Page | Address | What it does |
 | --- | --- | --- |
@@ -99,18 +99,20 @@ request by e-mail.
 hormones, pregnancy tests, tumour markers, allergology, immunology, serology, microbiology, parasitology, genetics,
 drug levels, functional medicine, histopathology, transfusion medicine). Each entry has its name and – where
 available – a short description, the sample, how it is collected, the preparation and what a panel includes,
-**all in the language of the page**: Albanian on `/analizat/`, English on `/en/analizat/`. The Serbian name is not
-shown, but it stays searchable (many referrals in Kosovo are written in Serbian).
+**all in the language of the page**: Albanian on `/analizat/`, English on `/en/analizat/`, German on `/de/analizat/`.
+The Serbian name is not shown, but it stays searchable (many referrals in Kosovo are written in Serbian), and so do
+the English and German names on every page.
 
 **Languages.** `src/data/catalogue.json` is the Albanian import. The English texts – names, descriptions, sample,
-collection and preparation – and the panel components in both languages (the export had them in Serbian) are in
-`src/data/catalogue-translations.json` (`names` and `desc` by test id, `text` by Albanian phrase, `comp` by id).
+collection and preparation – and the panel components in Albanian and English (the export had them in Serbian) are in
+`src/data/catalogue-translations.json` (`names` and `desc` by test id, `text` by Albanian phrase, `comp` by id); the
+German ones are under `de` in the same file, with the same keys (`comp` there is a list in the English order).
 That file is a working translation made for the site: edit it by hand when the lab corrects a term. The build
-writes `assets/catalogue-sq.json` and `assets/catalogue-en.json` and warns about any English text still missing
-(it then shows the Albanian one).
+writes `assets/catalogue-sq.json`, `-en.json` and `-de.json` and warns about any English or German text still
+missing (it then shows the Albanian one).
 
 **A page for every test.** Each of the 1 006 entries also has its own page, `/analizat/<test>/` (and
-`/en/analizat/<test>/`), for example `/analizat/acid-urik/`: what the test is for, the sample, how it is collected,
+`/en/analizat/<test>/`, `/de/analizat/<test>/`), for example `/analizat/acid-urik/`: what the test is for, the sample, how it is collected,
 the preparation, the result time, what a panel includes (with links to the tests it contains), the panels a test is
 part of, *Good to know* notes with their medical sources, other tests in the same category, and *Add to list*,
 *Ask on WhatsApp* and *Book* buttons. The catalogue rows link to it ("Faqja e plotë e analizës"), and so do the common
@@ -236,12 +238,14 @@ before launch – stock people must never be presented as Human+ staff (no names
 
 ## Languages
 
-- **Shqip** is the main language (`/`), **English** lives under `/en/` with the same page names.
-- The language switch keeps you on the same page. A visitor who chose English is sent to `/en/` when they come back to
-  the home page.
-- Every visible text exists in both languages. The build **stops with an error** if a text key is missing in one of
-  them (`dict()` in `src/lib/html.mjs`).
-- Each page has `hreflang` links (sq, en, x-default) and its own share picture per language.
+- **Shqip** is the main language (`/`), **English** lives under `/en/` and **Deutsch** under `/de/`, with the same page
+  names.
+- The language menu in the header (SQ ▾ with the other two) keeps you on the same page. A visitor who chose English or
+  German is sent to `/en/` or `/de/` when they come back to the home page.
+- Every visible text exists in all three languages. The build **stops with an error** if a text key is missing in one
+  of them (`dict()` in `src/lib/html.mjs`). The languages are listed once, in `LANGS` (`src/data/site.mjs`).
+- German texts use the formal *Sie*; long German compounds hyphenate (`hyphens: auto`) instead of widening cards.
+- Each page has `hreflang` links (sq, en, de, x-default) and its own share picture per language (`src/assets/og/`).
 
 ## Files
 
@@ -250,12 +254,12 @@ before launch – stock people must never be presented as Human+ staff (no names
 | `src/data/site.mjs` | **name, address, phones, WhatsApp / Viber number, e-mail, Facebook, opening hours, booking slots** – edit this first |
 | `src/data/services.mjs` | the ten departments: names, texts, what they offer, related tests |
 | `src/data/catalogue.json` | the full lab catalogue behind `/analizat/` (made by `scripts/import-catalogue.mjs`) |
-| `src/data/tests.mjs` | the 61 common tests used on department pages and in the check-up panels (sq + en), preparation rules, panels, links to their catalogue pages |
-| `src/data/lab-notes.mjs` | the *Good to know* notes on test pages (sq + en, with medical sources) and which tests get them |
+| `src/data/tests.mjs` | the 61 common tests used on department pages and in the check-up panels (sq, en, de), preparation rules, panels, links to their catalogue pages |
+| `src/data/lab-notes.mjs` | the *Good to know* notes on test pages (sq, en, de, with medical sources) and which tests get them |
 | `src/data/lab-human-plus.json` | (optional) facts Human+ has confirmed per test, e.g. the result time |
 | `src/pages/test.mjs` | the page of each lab test, `/analizat/<test>/` |
 | `src/data/faq.mjs` | questions and answers |
-| `src/data/ui.mjs` | shared interface texts (menu, buttons, status, list, footer) in sq + en |
+| `src/data/ui.mjs` | shared interface texts (menu, buttons, status, list, footer) in sq, en and de |
 | `src/pages/*.mjs` | one file per page group, with that page's texts at the top |
 | `src/lib/layout.mjs` | head tags, top bar, header, footer, phone bar, list drawer |
 | `src/lib/parts.mjs` | shared blocks (cards, test rows, search, CTA band, FAQ) |
@@ -309,7 +313,7 @@ npm run build
 npm run preview
 ```
 
-Then open http://localhost:8080 (Albanian) or http://localhost:8080/en/.
+Then open http://localhost:8080 (Albanian), http://localhost:8080/en/ or http://localhost:8080/de/.
 
 ## Publishing
 
@@ -361,9 +365,11 @@ people, until the clinic's own photos are added.
   general words. Ask each doctor to read their page.
 - **Lab catalogue** – the 1 006 entries come from the BeoLab public catalogue the client supplied (see
   [Lab catalogue](#lab-catalogue)); names and descriptions are working Albanian translations, and the English
-  ones (`src/data/catalogue-translations.json`) are working translations of those. The 61 common tests
+  and German ones (`src/data/catalogue-translations.json`) are working translations of those. The 61 common tests
   and the 8 check-up panels are suggestions. The lab should mark what Human+ does in-house, sends out or does not offer.
 - **Preparation guide** – standard lab guidance; ask the lab manager to approve it.
+- **German** – all German texts are working translations made for the site (formal *Sie*). Have a German-speaking
+  doctor read the test pages, the *Good to know* notes and the preparation guide before launch.
 - **Brand values** – Green `#28cc63` is sampled from the brand book; Deep Green, Soft Grey and Calm Blue are close matches until the official hex codes are confirmed (see [Brand](#brand)). The brand font Pangram needs its licensed web-font files.
 - **WhatsApp / Viber** – messages go to +383 44 709 072. Confirm that number uses WhatsApp and Viber, or change
   `whatsapp` / `viber` in `src/data/site.mjs`.
@@ -380,7 +386,7 @@ people, until the clinic's own photos are added.
       off `src/data/services.mjs` until that is confirmed.
 - [ ] Doctors approve their department texts; the lab approves the test list, panels and preparation guide.
 - [ ] **Lab catalogue**: confirm that the client may reuse the BeoLab catalogue texts commercially (the export itself
-      asks for this check), have the lab review the Albanian translations, and mark the tests Human+ does not offer
+      asks for this check), have the lab review the Albanian translations (and a German-speaking doctor the German ones), and mark the tests Human+ does not offer
       (remove them in `scripts/import-catalogue.mjs` or the export, then re-import).
 - [ ] Confirm the WhatsApp / Viber number and send one test booking from a staff phone.
 - [ ] Decide whether reception wants booking requests by e-mail as well (`formEndpoint`).
@@ -394,11 +400,15 @@ people, until the clinic's own photos are added.
 
 `npm test` runs on every push (GitHub Actions). Before a release the site was also checked in Chromium:
 
-- axe-core (WCAG 2.1 A/AA + best practice): 0 violations on 25 pages × 2 widths, including the catalogue with a test added and its details open;
-- no horizontal scroll and no clipped content on all 38 pages at 320, 390 and 1440 px, no console errors;
+- axe-core (WCAG 2.1 A/AA + best practice): 0 violations on 37 pages in Albanian, English and German × 2 widths
+  (also for the photo version under /re/), 27 test pages × 3 languages × 3 widths, and the catalogue with a test
+  added and its details open;
+- no horizontal scroll and no clipped content on all 57 site pages at 320, 390 and 1440 px, nor on the 181 test pages
+  with the longest names (and longest German compounds) at 320 px in each language; no console errors;
 - photo slots: a real JPEG / WebP with a phone copy replaces its scene (srcset, width and height read from the file);
 - opening status at Monday 06:10 / 10:00, Friday 19:30, Saturday 17:00 and Sunday 12:00;
-- catalogue search (Albanian, Serbian, abbreviations), categories, "show more", details, list across pages and tabs (and lists saved by the earlier version), panel add, booking validation, WhatsApp text, `.ics` time zone, contact form.
+- language menu (same page in the other language, on desktop and phone); catalogue search (Albanian, English,
+  German, Serbian, abbreviations), categories, "show more", details, list across pages and tabs (and lists saved by the earlier version), panel add, booking validation, WhatsApp text, `.ics` time zone, contact form.
 
 ## Credits
 

@@ -5,6 +5,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { LANGS } from '../src/data/site.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DIST = path.resolve(ROOT, process.env.OUT_DIR || 'dist');
@@ -45,7 +46,7 @@ for (const f of html) {
   const rel = path.relative(DIST, f);
   const is404 = /(^|\/)404\.html$/.test(rel);
   const lang = (s.match(/<html lang="([^"]+)"/) || [])[1];
-  const expectLang = rel.startsWith('en/') ? 'en' : 'sq';
+  const expectLang = LANGS.find((l) => l !== 'sq' && rel.startsWith(`${l}/`)) ?? 'sq';
   if (lang !== expectLang) err(f, `html lang="${lang}", expected "${expectLang}"`);
   const h1 = (s.match(/<h1[\s>]/g) || []).length;
   if (h1 !== 1) err(f, `${h1} <h1> elements`);
@@ -54,7 +55,7 @@ for (const f of html) {
   const desc = (s.match(/<meta name="description" content="([^"]*)"/) || [])[1] || '';
   if (desc.length < 50 || desc.length > 320) err(f, `description length ${desc.length}`);
   if (!/<link rel="canonical" href="https?:\/\/[^"]+"/.test(s)) err(f, 'missing canonical');
-  if (!is404) for (const hl of ['sq', 'en', 'x-default']) if (!s.includes(`hreflang="${hl}"`)) err(f, `missing hreflang ${hl}`);
+  if (!is404) for (const hl of [...LANGS, 'x-default']) if (!s.includes(`hreflang="${hl}"`)) err(f, `missing hreflang ${hl}`);
   if (!/<meta property="og:image" content="https?:\/\/[^"]+"/.test(s)) err(f, 'missing og:image');
   // duplicate ids
   const seen = new Set();

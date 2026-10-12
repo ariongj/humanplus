@@ -1,10 +1,10 @@
 // Page shell: <head>, top bar, header, footer, phone action bar, WhatsApp button and the lab-list drawer.
-import { SITE } from '../data/site.mjs';
+import { SITE, LANGS } from '../data/site.mjs';
 import { SERVICES } from '../data/services.mjs';
 import { TESTS, PREP } from '../data/tests.mjs';
 import { UI } from '../data/ui.mjs';
 import { LOGO_SQUARE, LOGO_MARK, LOGO_WORDS } from './logo-paths.mjs';
-import { esc, h, icon, brand, L } from './html.mjs';
+import { esc, h, icon, brand, L, LANG_NAMES } from './html.mjs';
 
 export const NAV = [
   ['sherbimet', 'nav_services'],
@@ -60,7 +60,6 @@ function head(ctx) {
   const { lang, page, base, origin } = ctx;
   const self = ctx.abs(ctx.path, lang);
   const sq = ctx.abs(ctx.path, 'sq');
-  const en = ctx.abs(ctx.path, 'en');
   const title = page.title;
   const og = `${origin}${base}assets/og/og-${lang}.png`;
   const jsonld = [].concat(page.jsonld ?? []).filter(Boolean);
@@ -70,14 +69,13 @@ function head(ctx) {
     <title>${esc(title)}</title>
     <meta name="description" content="${esc(page.description)}" />
     <link rel="canonical" href="${esc(self)}" />
-    ${!page.noAlternates && h`<link rel="alternate" hreflang="sq" href="${esc(sq)}" />
-    <link rel="alternate" hreflang="en" href="${esc(en)}" />
+    ${!page.noAlternates && h`${LANGS.map((l) => h`<link rel="alternate" hreflang="${l}" href="${esc(ctx.abs(ctx.path, l))}" />`)}
     <link rel="alternate" hreflang="x-default" href="${esc(sq)}" />`}
     <meta name="robots" content="${ctx.noindex || page.noindex ? 'noindex, follow' : 'index, follow'}" />
     <meta name="theme-color" content="#ffffff" />
     <meta name="format-detection" content="telephone=no" />
     <meta property="og:site_name" content="${esc(SITE.fullName)}" />
-    <meta property="og:locale" content="${lang === 'sq' ? 'sq_AL' : 'en_GB'}" />
+    <meta property="og:locale" content="${{ sq: 'sq_AL', en: 'en_GB', de: 'de_DE' }[lang]}" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="${esc(title)}" />
     <meta property="og:description" content="${esc(page.description)}" />
@@ -115,13 +113,23 @@ function infobar(ctx) {
   </section>`;
 }
 
+/** SQ · EN · DE: the current language, then links to the same page in the others. */
 function langSwitch(ctx, cls = '') {
   const t = UI[ctx.lang];
-  const other = ctx.lang === 'sq' ? 'en' : 'sq';
-  return h`<div class="lang ${cls}" role="group" aria-label="${esc(t.lang_label)}">
-    <span class="lang-cur" aria-current="true">${esc(t.lang_current_short)}</span>
-    <a class="lang-alt" href="${esc(ctx.url(ctx.path, other))}" hreflang="${other}" lang="${other}" data-lang="${other}"><span class="sr-only">${esc(t.lang_other)} — </span>${esc(t.lang_other_short)}</a>
-  </div>`;
+  return h`<div class="lang ${cls}" role="group" aria-label="${esc(t.lang_label)}">${LANGS.map((l) =>
+    l === ctx.lang
+      ? h`<span class="lang-cur" aria-current="true"><span class="sr-only">${esc(LANG_NAMES[l])} — </span>${l.toUpperCase()}</span>`
+      : h`<a class="lang-alt" href="${esc(ctx.url(ctx.path, l))}" hreflang="${l}" lang="${l}" data-lang="${l}"><span class="sr-only">${esc(LANG_NAMES[l])} — </span>${l.toUpperCase()}</a>`,
+  )}</div>`;
+}
+
+/** Header: the current language as a small menu with the other two — the same on every screen (fits beside the logo at 320 px). */
+function langPick(ctx) {
+  const t = UI[ctx.lang];
+  return h`<details class="lang-pick" data-lang-pick>
+    <summary>${icon('globe', { size: 18, cls: 'lang-globe' })}<span class="sr-only">${esc(`${t.lang_label}: ${LANG_NAMES[ctx.lang]}`)} — </span>${ctx.lang.toUpperCase()}${icon('chevron-down', { size: 16 })}</summary>
+    <ul>${LANGS.filter((l) => l !== ctx.lang).map((l) => h`<li><a class="lang-alt" href="${esc(ctx.url(ctx.path, l))}" hreflang="${l}" lang="${l}" data-lang="${l}"><span>${l.toUpperCase()}</span>${esc(LANG_NAMES[l])}</a></li>`)}</ul>
+  </details>`;
 }
 
 function header(ctx) {
@@ -137,7 +145,7 @@ function header(ctx) {
       <a class="brand" href="${esc(ctx.url(''))}" aria-label="${esc(`${SITE.fullName} — ${t.home}`)}">${logo({ label: SITE.fullName })}</a>
       <nav class="nav" aria-label="${esc(t.nav_main)}"><ul>${links}</ul></nav>
       <div class="header-actions">
-        ${langSwitch(ctx, 'lang-header')}
+        ${langPick(ctx)}
         <button class="list-btn js-only" type="button" data-list-open aria-haspopup="dialog" aria-controls="lab-list">
           ${icon('test-tubes', { size: 20 })}<span class="list-btn-label">${esc(t.list)}</span><span class="list-count" data-list-count aria-hidden="true">0</span><span class="sr-only" data-list-count-sr></span>
         </button>

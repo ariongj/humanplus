@@ -19,7 +19,7 @@ the repo.
 - Facts (phones, hours, address, WhatsApp number): `src/data/site.mjs` — the only place to change them.
 - Full lab catalogue `src/data/catalogue.json` (generated: `node scripts/import-catalogue.mjs <export.js>`, never edit by
   hand; never import another lab's prices or result times), English + panel components in
-  `src/data/catalogue-translations.json` (hand-editable), page `src/pages/catalogue.mjs` + `src/assets/catalogue.js`.
+  `src/data/catalogue-translations.json` (hand-editable; German under `de`), page `src/pages/catalogue.mjs` + `src/assets/catalogue.js`.
   Show only the page language (no Serbian on screen; it stays a search alias).
 - Departments `src/data/services.mjs`, common tests and panels `src/data/tests.mjs`, FAQ `src/data/faq.mjs`,
   shared UI text `src/data/ui.mjs`, page texts at the top of each `src/pages/*.mjs`.
@@ -35,10 +35,11 @@ the repo.
 ## Rules (from the owner's past projects)
 
 - **Header first, on every screen size.** The header (logo, menu, language switcher, actions) is the first thing
-  on the page, and the language switcher (SQ / EN) lives inside it. Hours, phone, address and similar info go in a
+  on the page, and the language switcher (SQ ▾ menu with EN / DE) lives inside it. Hours, phone, address and similar info go in a
   strip *below* the header, never above it; on phones keep that strip to one line. A utility bar above the header
   looks like a demo.
-- **Albanian first, English complete.** Every visible string exists in sq and en; `dict()` fails the build otherwise.
+- **Albanian first, English and German complete.** Every visible string exists in sq, en and de (`LANGS` in
+  `src/data/site.mjs`); `dict()` fails the build otherwise. German uses the formal *Sie*.
   Albanian writes weekdays and months in lower case inside a sentence.
 - **Missing facts stay missing.** No invented prices, doctor names, ratings, reviews, certificates, result times,
   guarantees, reply-time promises or equipment. Ask, or answer "ask us". List anything assumed in README →

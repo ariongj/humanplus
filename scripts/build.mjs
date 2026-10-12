@@ -66,7 +66,8 @@ const ROUTES = [
   ...TEST_ROUTES,
 ];
 
-const urlFor = (p, lang) => `${BASE}${lang === 'en' ? 'en/' : ''}${p ? `${p}/` : ''}`;
+// Albanian at the root, every other language under /<lang>/ with the same page names.
+const urlFor = (p, lang) => `${BASE}${lang === 'sq' ? '' : `${lang}/`}${p ? `${p}/` : ''}`;
 const absFor = (p, lang) => `${ORIGIN}${urlFor(p, lang)}`;
 const CLINIC_ID = `${ORIGIN}${BASE}#clinic`;
 
@@ -96,9 +97,9 @@ function clinicJsonLd(lang) {
       .filter(([, v]) => v)
       .map(([d, [opens, closes]]) => ({ '@type': 'OpeningHoursSpecification', dayOfWeek: `https://schema.org/${days[d]}`, opens, closes })),
     medicalSpecialty: ['Pediatric', 'Gynecologic', 'PrimaryCare', 'Urologic', 'Endocrine', 'Gastroenterologic', 'Dermatology', 'LaboratoryScience'].map((s) => `https://schema.org/${s}`),
-    availableLanguage: ['sq', 'en'],
+    availableLanguage: LANGS,
     sameAs: [SITE.facebook],
-    contactPoint: SITE.phones.map((p) => ({ '@type': 'ContactPoint', telephone: p.tel, contactType: 'customer service', availableLanguage: ['sq', 'en'] })),
+    contactPoint: SITE.phones.map((p) => ({ '@type': 'ContactPoint', telephone: p.tel, contactType: 'customer service', availableLanguage: LANGS })),
   };
 }
 
@@ -191,14 +192,14 @@ for (const lang of LANGS) {
     const ctx = makeCtx(lang, p, version);
     const page = render(ctx);
     ctx.page = page;
-    write(path.join(lang === 'en' ? 'en' : '', p, 'index.html'), layout(ctx, page.body));
+    write(path.join(lang === 'sq' ? '' : lang, p, 'index.html'), layout(ctx, page.body));
     count++;
   }
   // 404 pages: /404.html (Albanian, used by GitHub Pages) and /en/404.html.
   const ctx = makeCtx(lang, '', version);
   const page = notFoundPage(ctx);
   ctx.page = page;
-  write(lang === 'en' ? 'en/404.html' : '404.html', layout(ctx, page.body));
+  write(lang === 'sq' ? '404.html' : `${lang}/404.html`, layout(ctx, page.body));
 }
 // Illustrated scenes used by the pages (stand-ins until the clinic's photos are in src/assets/photos/).
 const scenes = sceneFiles();
@@ -213,8 +214,7 @@ ${LANGS.flatMap((lang) =>
     ([p]) => `  <url>
     <loc>${absFor(p, lang)}</loc>
     <lastmod>${today}</lastmod>
-    <xhtml:link rel="alternate" hreflang="sq" href="${absFor(p, 'sq')}"/>
-    <xhtml:link rel="alternate" hreflang="en" href="${absFor(p, 'en')}"/>
+${LANGS.map((l) => `    <xhtml:link rel="alternate" hreflang="${l}" href="${absFor(p, l)}"/>`).join('\n')}
     <xhtml:link rel="alternate" hreflang="x-default" href="${absFor(p, 'sq')}"/>
   </url>`,
   ),
@@ -257,9 +257,9 @@ write(
 - Hours: Mon–Fri ${SITE.hours[1].join('–')}, Sat ${SITE.hours[6].join('–')}, Sun closed
 - Prices are given by reception (phone, WhatsApp, e-mail); they are not published on the site.
 
-## Pages (Albanian · English)
-${ROUTES.filter(([p]) => !p.startsWith('analizat/')).map(([p]) => `- [${p || 'home'}](${absFor(p, 'sq')}) · [en](${absFor(p, 'en')})`).join('\n')}
-- Lab tests: one page per test at ${absFor('analizat', 'sq')}<test>/ (${TEST_ROUTES.length} tests; English under /en/analizat/<test>/)
+## Pages (Albanian · English · German)
+${ROUTES.filter(([p]) => !p.startsWith('analizat/')).map(([p]) => `- [${p || 'home'}](${absFor(p, 'sq')}) · [en](${absFor(p, 'en')}) · [de](${absFor(p, 'de')})`).join('\n')}
+- Lab tests: one page per test at ${absFor('analizat', 'sq')}<test>/ (${TEST_ROUTES.length} tests; English under /en/analizat/<test>/, German under /de/analizat/<test>/)
 `,
 );
 if (NOINDEX) write('.nojekyll', '');
@@ -302,4 +302,4 @@ ErrorDocument 404 ${BASE}404.html
   );
 }
 
-console.log(`Built ${count} pages + 2 × 404 + ${scenes.length} scenes + ${photoFiles().length} photos into ${path.relative(ROOT, DIST)}/ · base ${BASE} · ${ORIGIN}${NOINDEX ? ' · noindex' : ''}${PRODUCTION ? ' · .htaccess' : ''}`);
+console.log(`Built ${count} pages + ${LANGS.length} × 404 + ${scenes.length} scenes + ${photoFiles().length} photos into ${path.relative(ROOT, DIST)}/ · base ${BASE} · ${ORIGIN}${NOINDEX ? ' · noindex' : ''}${PRODUCTION ? ' · .htaccess' : ''}`);

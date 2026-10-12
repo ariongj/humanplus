@@ -16,7 +16,7 @@ export const PHOTO_DIR = path.resolve(ROOT, process.env.PHOTOS_DIR || 'src/asset
 const DIR = PHOTO_DIR;
 const META = fs.existsSync(path.join(DIR, 'photos.json')) ? JSON.parse(fs.readFileSync(path.join(DIR, 'photos.json'), 'utf8')) : {};
 const EXT = ['webp', 'jpg', 'jpeg', 'png', 'avif'];
-const ILLUSTRATION = { sq: 'Ilustrim', en: 'Illustration' };
+const ILLUSTRATION = { sq: 'Ilustrim', en: 'Illustration', de: 'Illustration' };
 
 function find(name) {
   for (const ext of EXT) {

@@ -21,31 +21,36 @@ const TR = fs.existsSync(TR_FILE) ? JSON.parse(fs.readFileSync(TR_FILE, 'utf8'))
  */
 export function catalogueFor(lang) {
   let missing = 0;
-  const en = (map, key, sq) => {
+  // A translation, or the Albanian text (counted, so the build can warn) when it is still missing.
+  const tr = (map, key, sq) => {
     if (!sq) return null;
-    if (map[key]) return map[key];
+    if (map?.[key]) return map[key];
     missing++;
     return sq;
   };
+  const DE = TR.de ?? {};
   const note = (x) => x.co || x.sp || '';
   const entries = CATALOGUE.entries.map((x) => {
     const comp = TR.comp[x.id];
-    const sq = { n: x.n, d: x.d, sp: x.sp, co: x.co, p: x.p, m: comp?.sq ?? x.m };
-    const eng = {
-      n: en(TR.names, x.id, x.n),
-      d: en(TR.desc, x.id, x.d),
-      sp: en(TR.text, x.sp, x.sp),
-      co: en(TR.text, x.co, x.co),
-      p: en(TR.text, x.p, x.p),
-      m: comp?.en ?? x.m,
+    const texts = {
+      sq: { n: x.n, d: x.d, sp: x.sp, co: x.co, p: x.p, m: comp?.sq ?? x.m },
+      en: { n: tr(TR.names, x.id, x.n), d: tr(TR.desc, x.id, x.d), sp: tr(TR.text, x.sp, x.sp), co: tr(TR.text, x.co, x.co), p: tr(TR.text, x.p, x.p), m: comp?.en ?? x.m },
     };
-    const [cur, other] = lang === 'en' ? [eng, sq] : [sq, eng];
+    const before = missing;
+    texts.de = { n: tr(DE.names, x.id, x.n), d: tr(DE.desc, x.id, x.d), sp: tr(DE.text, x.sp, x.sp), co: tr(DE.text, x.co, x.co), p: tr(DE.text, x.p, x.p), m: DE.comp?.[x.id] ?? comp?.en ?? x.m };
+    if (lang !== 'de') missing = before;
+    const cur = texts[lang];
     return {
-      id: x.id, c: x.c, k: x.k, u: x.u, ...cur, s: x.s, o: other.n, oc: note(other), w: x.w ?? [], ml: x.ml ?? [],
-      q: lang === 'en' ? fold([eng.n, x.q].join(' ')) : x.q,
+      id: x.id, c: x.c, k: x.k, u: x.u, ...cur, s: x.s,
+      // The name and note in every language, so "Lista ime" can follow a language switch.
+      o: Object.fromEntries(Object.entries(texts).map(([l, v]) => [l, v.n])),
+      oc: Object.fromEntries(Object.entries(texts).map(([l, v]) => [l, note(v)])),
+      w: x.w ?? [], ml: x.ml ?? [],
+      // Search words: the names in all three languages, the Serbian name and the aliases.
+      q: fold([texts.en.n, texts.de.n, x.q].join(' ')),
     };
   });
-  return { data: { checkedAt: CATALOGUE.checkedAt, count: CATALOGUE.count, entries }, missing: lang === 'en' ? missing : 0 };
+  return { data: { checkedAt: CATALOGUE.checkedAt, count: CATALOGUE.count, entries }, missing: lang === 'sq' ? 0 : missing };
 }
 const roundDown = (n) => (n >= 1000 ? Math.floor(n / 100) * 100 : Math.floor(n / 10) * 10);
 export const CATALOGUE_ROUND = roundDown(CATALOGUE.count);
@@ -133,6 +138,47 @@ const T = dict('catalogue', {
     hint_note: 'Reception gives the prices. The list is kept only in your browser.',
     noscript: 'The catalogue needs JavaScript. Call us or message us on WhatsApp about any test:',
   },
+  de: {
+    title: 'Katalog der Laboranalysen — über {n} Analysen',
+    description: 'Der Analysenkatalog von Human+ Prishtina: über {n} Laboranalysen mit Beschreibung, Probe und Vorbereitung — Blutbild, Biochemie, Hormone, Allergie, Mikrobiologie, Serologie und mehr. Erstellen Sie Ihre Liste und fragen Sie nach dem Preis.',
+    eyebrow: 'Labor',
+    h1: 'Katalog der *Laboranalysen*.',
+    lead: 'Über {n} Laboranalysen mit Beschreibung, Probe und Vorbereitung. Suchen Sie nach Name oder Abkürzung, fügen Sie Analysen Ihrer Liste hinzu und senden Sie sie uns für Preis und Termin.',
+    note: 'Ein Informationskatalog. Verfügbarkeit bei Human+, Preis und genaue Vorbereitung bestätigt das Labor — senden Sie uns Ihre Liste.',
+    lang_note: '',
+    cats: 'Kategorien',
+    cats_hint: 'Wählen Sie eine Kategorie oder suchen Sie oben.',
+    all: 'Alle',
+    filter: 'Nach Kategorie filtern',
+    count_one: '1 Analyse',
+    count_many: '{n} Analysen',
+    count_in: '{n} Analysen in „{c}“',
+    sorted: 'Sortiert von A–Z',
+    more: '{n} weitere anzeigen',
+    details: 'Details',
+    desc: 'Beschreibung',
+    sample: 'Probe',
+    collection: 'Probenentnahme',
+    prep: 'Vorbereitung',
+    includes: 'Enthält',
+    panel: 'Panel',
+    no_details: 'Fragen Sie uns bei dieser Analyse nach Probe und Vorbereitung.',
+    open_page: 'Vollständige Seite zur Analyse',
+    good: 'Gut zu wissen',
+    loading: 'Katalog wird geladen…',
+    failed: 'Der Katalog konnte nicht geladen werden. Laden Sie die Seite neu oder rufen Sie uns an.',
+    none_title: 'Wir haben diese Analyse nicht gefunden',
+    none_text: 'Versuchen Sie einen anderen Namen oder die Abkürzung — oder schreiben Sie uns, und wir sagen Ihnen, ob wir sie durchführen.',
+    none_wa: 'Auf WhatsApp fragen',
+    none_msg: 'Hallo Human+! Bieten Sie diese Analyse an:',
+    reset: 'Suche löschen',
+    hint_title: 'Wie funktioniert die Liste?',
+    hint_1: 'Klicken Sie bei den Analysen, die Sie brauchen, auf „Zur Liste“.',
+    hint_2: 'Öffnen Sie oben auf der Seite „Meine Liste“.',
+    hint_3: 'Senden Sie sie per WhatsApp, Viber oder E-Mail.',
+    hint_note: 'Die Preise nennt Ihnen die Rezeption. Die Liste wird nur in Ihrem Browser gespeichert.',
+    noscript: 'Für den Katalog wird JavaScript benötigt. Zu jeder Analyse erreichen Sie uns telefonisch oder per WhatsApp:',
+  },
 });
 
 // "1 000" in Albanian, "1,000" in English.
@@ -143,7 +189,7 @@ export function testsPage(ctx) {
   const t = T[lang];
   const u = UI[lang];
   const cats = CATALOGUE.categories;
-  const catName = (c) => (lang === 'en' ? c.en : c.sq);
+  const catName = (c) => c[lang] ?? c.en;
   const hero = pageHero(ctx, {
     trail: [[u.nav_tests, 'analizat']],
     eyebrow: t.eyebrow,

@@ -68,9 +68,9 @@
       add.setAttribute('data-add', x.id);
       add.setAttribute('data-name', x.n);
       add.setAttribute('data-note', x.co || x.sp || '');
-      // The other language's name and note, so the list follows a language switch.
-      if (x.o) add.setAttribute('data-name-alt', x.o);
-      if (x.oc) add.setAttribute('data-note-alt', x.oc);
+      // The name and note in every language, so the list follows a language switch.
+      if (x.o) add.setAttribute('data-names', JSON.stringify(x.o));
+      if (x.oc) add.setAttribute('data-notes', JSON.stringify(x.oc));
       add.setAttribute('aria-pressed', 'false');
       add.innerHTML = '<span class="add-off">' + ICON_PLUS + '</span><span class="add-on">' + ICON_CHECK + '</span>';
       $('.add-off', add).appendChild(document.createTextNode(C.add));
@@ -212,7 +212,7 @@
         var digit = /^[0-9]/;
         entries = data.entries.slice().sort(function (a, b) {
           var da = digit.test(a.n), db = digit.test(b.n);
-          return da === db ? a.n.localeCompare(b.n, C.lang === 'en' ? 'en' : 'sq') : da ? 1 : -1;
+          return da === db ? a.n.localeCompare(b.n, C.lang) : da ? 1 : -1;
         });
         render();
       })

@@ -24,7 +24,7 @@ export const SITE = {
   phones: [
     { id: 'vala', label: 'Vala', tel: '+38344709072', display: '+383 44 709 072' },
     { id: 'ipko', label: 'IPKO', tel: '+38348750150', display: '+383 48 750 150' },
-    { id: 'fix', label: { sq: 'Fiks', en: 'Landline' }, tel: '+38338750150', display: '+383 38 750 150' },
+    { id: 'fix', label: { sq: 'Fiks', en: 'Landline', de: 'Festnetz' }, tel: '+38338750150', display: '+383 38 750 150' },
   ],
   // Number used for WhatsApp / Viber booking and lab-list messages (digits only, international, no "+").
   whatsapp: '38344709072',
@@ -53,5 +53,5 @@ export const SITE = {
   formEndpoint: '',
 };
 
-export const LANGS = ['sq', 'en'];
+export const LANGS = ['sq', 'en', 'de'];
 export const DEFAULT_LANG = 'sq';
