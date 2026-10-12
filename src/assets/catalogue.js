@@ -29,6 +29,7 @@
 
     var ICON_PLUS = '<svg class="i" aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>';
     var ICON_CHECK = '<svg class="i" aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>';
+    var ICON_RIGHT = '<svg class="i" aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>';
     var ICON_DOWN = '<svg class="i cat-chev" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>';
 
     function el(tag, cls, text) {
@@ -95,6 +96,13 @@
         det.appendChild(el('p', 'cat-label', T.desc));
         det.appendChild(el('p', 'cat-desc', x.d));
       }
+      var notes = (x.w || []).filter(function (k) { return C.notes && C.notes[k]; });
+      if (notes.length) {
+        var box = el('div', 'cat-notes');
+        box.appendChild(el('p', 'cat-label', T.good));
+        notes.forEach(function (k) { box.appendChild(el('p', null, C.notes[k])); });
+        det.appendChild(box);
+      }
       var dl = el('dl', 'cat-dl');
       detailRow(dl, T.sample, x.sp);
       if (x.co && x.co !== x.sp) detailRow(dl, T.collection, x.co);
@@ -107,6 +115,12 @@
         det.appendChild(ul);
       }
       if (!x.d && !x.p && !x.sp && !(x.m && x.m.length)) det.appendChild(el('p', 'muted', T.no_details));
+      if (x.u) {
+        var a = el('a', 'link cat-page', T.open_page);
+        a.href = C.page + x.u + '/';
+        a.insertAdjacentHTML('beforeend', ICON_RIGHT);
+        det.appendChild(a);
+      }
     }
 
     function words(q) {

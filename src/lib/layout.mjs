@@ -15,8 +15,13 @@ export const NAV = [
   ['kontakt', 'nav_contact'],
 ];
 
+// The logo is drawn once per page (logoSymbol, at the top of <body>) and reused with <use>: three copies
+// (header, menu, footer) would otherwise weigh ~36 kB. Colours come from --logo-sq / --logo-mk and currentColor.
+export const logoSymbol = () =>
+  `<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="hp-logo" viewBox="0 0 216 77"><path fill="var(--logo-sq, #28cc63)" d="${LOGO_SQUARE}"/>${LOGO_MARK.map((d) => `<path fill="var(--logo-mk, #fff)" d="${d}"/>`).join('')}${LOGO_WORDS.map((d) => `<path fill="currentColor" d="${d}"/>`).join('')}</symbol></svg>`;
+
 export function logo({ cls = '', label = SITE.fullName } = {}) {
-  return `<svg class="logo ${cls}" role="img" aria-label="${esc(label)}" viewBox="0 0 216 77" xmlns="http://www.w3.org/2000/svg"><path class="logo-sq" d="${LOGO_SQUARE}"/>${LOGO_MARK.map((d) => `<path class="logo-mk" d="${d}"/>`).join('')}${LOGO_WORDS.map((d) => `<path class="logo-wd" d="${d}"/>`).join('')}</svg>`;
+  return `<svg class="logo ${cls}" role="img" aria-label="${esc(label)}" viewBox="0 0 216 77"><use href="#hp-logo"/></svg>`;
 }
 
 export function logoMark({ cls = '' } = {}) {
@@ -285,6 +290,7 @@ export function layout(ctx, body) {
 <html lang="${lang}" class="no-js">
   ${head(ctx)}
   <body class="page-${esc(ctx.page.id)}">
+    ${logoSymbol()}
     <a class="skip" href="#main">${esc(t.skip)}</a>
     ${header(ctx)}
     ${infobar(ctx)}

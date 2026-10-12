@@ -1,10 +1,14 @@
-// Imports a lab-catalogue export (the BeoLab public-catalogue ES module the client supplied) into
-// src/data/catalogue.json — the data behind /analizat/.
+// Imports a lab-catalogue export (the BeoLab reference catalogue the client supplied — schema 2.0, checked
+// 2026-10-12, beolab-catalogue.js) into src/data/catalogue.json — the data behind /analizat/ and the test pages.
 //
-//   node scripts/import-catalogue.mjs <path-to-catalogue.js>
+//   node scripts/import-catalogue.mjs <path-to-beolab-catalogue.json>
+//
+// Prefer the .json copy of the export: it is read as data. A .js export is imported as a module, which runs it.
 //
 // What is kept: lab tests and test panels with their Albanian name, Serbian name (search alias), category,
-// sample, collection, preparation, short description and components.
+// sample, collection, preparation (with the editorial safety corrections of schema 2.0), short description,
+// components and their links to other tests, the "good to know" note keys (src/data/lab-notes.mjs) and a page
+// address (slug).
 // What is dropped on purpose: prices (another lab's, in RSD), turnaround times, reference ranges, methods,
 // editorial notes, source URLs and SKUs; the source lab's own consultations, promotions and marketing packages;
 // every sentence that refers to the source lab or its website, and sentences that only talk about the source text. Human+ confirms availability, price and
@@ -12,14 +16,17 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { pathToFileURL, fileURLToPath } from 'node:url';
+import { NOTE_FROM } from '../src/data/lab-notes.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const src = process.argv[2];
 if (!src) {
-  console.error('usage: node scripts/import-catalogue.mjs <path-to-catalogue.js>');
+  console.error('usage: node scripts/import-catalogue.mjs <path-to-beolab-catalogue.json>');
   process.exit(1);
 }
-const data = (await import(pathToFileURL(path.resolve(src)).href)).default;
+const data = /\.json$/i.test(src)
+  ? JSON.parse(fs.readFileSync(path.resolve(src), 'utf8'))
+  : (await import(pathToFileURL(path.resolve(src)).href)).default;
 
 // Source category → our id, English name and icon. Categories not listed here are skipped.
 const CATS = {
@@ -58,10 +65,11 @@ const REWRITE = [
   [/,?\s*por përdor në një pjesë edhe termin [^.;]*/g, ''],
   [/të renditura në përshkrim/g, 'të përfshira në panel'],
   [/\bGUT Patološki profil\b/g, 'Profili patologjik GUT'],
+  [/\s*\(sipas etiketës burimore\)/g, ''],
 ];
 // Sentences about the source text itself ("the available description only repeats the name…") or that only
 // restate the test's name carry nothing for a patient: they are dropped too.
-const META = /\b(përshkrimi|teksti) i disponueshëm\b|përsërit vetëm emrin|^(testi|shërbimi) i emërtuar\b|^emri i (shërbimit|analizës)\b|^emërtimi\b/i;
+const META = /\b(përshkrimi|teksti) i disponueshëm\b|përsërit vetëm emrin|^(testi|shërbimi) i emërtuar\b|^emri i (shërbimit|analizës)\b|^emërtimi\b|^burimi drejton te\b/i;
 function clean(text) {
   if (!text) return null;
   let t = String(text);
@@ -96,7 +104,14 @@ for (const e of data.analyses) {
   if (e.categoryIds.some((c) => SKIP_CATS.has(c))) continue;
   const cats = e.categoryIds.filter((c) => CATS[c]).map((c) => CATS[c][0]);
   if (!cats.length) continue;
-  const summary = e.descriptionQuality?.status === 'source_summary' ? clean(e.descriptionSq) : null;
+  // Summaries of the source description (also those with added safety context); name-only "descriptions" are not shown.
+  const summary = ['source_summary', 'source_summary_with_safety_context'].includes(e.descriptionQuality?.status) ? clean(e.descriptionSq) : null;
+  const notes = new Set([
+    ...(e.sharedSafetyNoticeIds ?? []).map((n) => NOTE_FROM.notices[n]),
+    ...(e.medicalSafetyReview?.reviewFlags ?? []).map((f) => NOTE_FROM.flags[f.sharedExplanationId]),
+    ...(NOTE_FROM.tests[e.sourceId] ?? []),
+  ].filter(Boolean));
+  const comps = (e.componentsSq ?? []).map((x, i) => [x, e.componentCatalogueMappings?.[i]]).filter(([x]) => x && !SOURCE.test(x)).slice(0, 60);
   const alias = ALIASES.filter(([re]) => re.test(e.nameSq) || re.test(e.nameSr)).map(([, a]) => a).join(' ');
   entries.push({
     id: `k${e.sourceId}`,
@@ -108,7 +123,10 @@ for (const e of data.analyses) {
     sp: clean(e.specimenSq),
     co: clean(e.collectionSq),
     p: clean(e.preparationSq),
-    m: (e.componentsSq ?? []).filter((x) => x && !SOURCE.test(x)).slice(0, 60),
+    m: comps.map(([x]) => x),
+    // A component that is also a test of its own (same name): its source id, linked once ids are final.
+    ml: comps.map(([, map]) => (map?.matchType === 'exact_normalized_name' && map.sourceIds?.length === 1 ? map.sourceIds[0] : null)),
+    w: [...notes],
     q: fold([e.nameSq, e.nameSr, alias, ...(e.componentsSq ?? [])].join(' ')),
   });
 }
@@ -120,12 +138,29 @@ for (const x of entries) {
   if (!prev) { byName.set(key, x); continue; }
   prev.c = [...new Set([...prev.c, ...x.c])];
   for (const f of ['d', 'sp', 'co', 'p']) prev[f] = prev[f] ?? x[f];
-  if (!prev.m.length) prev.m = x.m;
+  if (!prev.m.length) { prev.m = x.m; prev.ml = x.ml; }
+  prev.w = [...new Set([...prev.w, ...x.w])];
   prev.q = fold([prev.q, x.q].join(' '));
 }
 entries.length = 0;
 entries.push(...byName.values());
 entries.sort((a, b) => a.n.localeCompare(b.n, 'sq'));
+
+// Component links: source id → our id, only when that test is in the catalogue (and not the panel itself).
+const ids = new Set(entries.map((x) => x.id));
+for (const x of entries) {
+  x.ml = x.ml.map((sid) => (sid && ids.has(`k${sid}`) && `k${sid}` !== x.id ? `k${sid}` : null));
+  if (!x.ml.some(Boolean)) x.ml = [];
+}
+
+// Page address for each test: /analizat/<slug>/ (from the Albanian name, unique, the same in both languages).
+const used = new Set();
+for (const x of entries) {
+  let slug = fold(x.n).replace(/ /g, '-').slice(0, 72).replace(/-+$/, '') || x.id;
+  if (used.has(slug)) slug = `${slug}-${x.id.slice(1)}`;
+  used.add(slug);
+  x.u = slug;
+}
 
 // Category list in a sensible order (most used first), with counts.
 const categories = Object.values(CATS)
@@ -145,4 +180,4 @@ if (leaks.length) {
 
 const out = { checkedAt: data.metadata?.checkedAt ?? null, count: entries.length, categories, entries };
 fs.writeFileSync(path.join(ROOT, 'src/data/catalogue.json'), JSON.stringify(out));
-console.log(`catalogue.json: ${entries.length} entries (${entries.filter((x) => x.k).length} panels), ${categories.length} categories, ${entries.filter((x) => x.d).length} with a description, ${entries.filter((x) => x.p).length} with preparation`);
+console.log(`catalogue.json: ${entries.length} entries (${entries.filter((x) => x.k).length} panels), ${categories.length} categories, ${entries.filter((x) => x.d).length} with a description, ${entries.filter((x) => x.p).length} with preparation, ${entries.filter((x) => x.w.length).length} with notes, ${entries.filter((x) => x.ml.length).length} with linked components`);

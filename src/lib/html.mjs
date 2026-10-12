@@ -16,11 +16,20 @@ export const h = (strings, ...values) =>
     return out + part + s;
   });
 
+// Icons come from one cached sprite file (assets/icons.svg, written by the build) through <use>, so a page does
+// not repeat the same paths dozens of times. Until the build sets the sprite's URL, icons are inlined.
+let SPRITE = '';
+export const useIconSprite = (url) => { SPRITE = url; };
+export const iconSprite = () =>
+  `<svg xmlns="http://www.w3.org/2000/svg">${Object.entries(LUCIDE).map(([n, inner]) => `<symbol id="${n}" viewBox="0 0 24 24">${inner}</symbol>`).join('')}${Object.entries(BRANDS).map(([n, d]) => `<symbol id="b-${n}" viewBox="0 0 24 24"><path d="${d}"/></symbol>`).join('')}</svg>`;
+
 /** Lucide stroke icon (decorative unless a label is given). */
 export function icon(name, { size = 20, cls = '', label = '' } = {}) {
   const inner = LUCIDE[name];
   if (!inner) throw new Error(`Unknown icon "${name}" — add it to src/lib/icons.mjs`);
-  const a11y = label ? `role="img" aria-label="${esc(label)}"` : 'aria-hidden="true" focusable="false"';
+  const a11y = label ? `role="img" aria-label="${esc(label)}"` : 'aria-hidden="true"';
+  // Stroke, fill and caps for .i-s come from site.css; the symbol carries the 24×24 viewBox.
+  if (SPRITE) return `<svg class="i i-s${cls ? ` ${cls}` : ''}" ${a11y} width="${size}" height="${size}"><use href="${SPRITE}#${name}"/></svg>`;
   return `<svg class="i ${cls}" ${a11y} width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">${inner}</svg>`;
 }
 
@@ -28,7 +37,8 @@ export function icon(name, { size = 20, cls = '', label = '' } = {}) {
 export function brand(name, { size = 20, cls = '', label = '' } = {}) {
   const d = BRANDS[name];
   if (!d) throw new Error(`Unknown brand icon "${name}"`);
-  const a11y = label ? `role="img" aria-label="${esc(label)}"` : 'aria-hidden="true" focusable="false"';
+  const a11y = label ? `role="img" aria-label="${esc(label)}"` : 'aria-hidden="true"';
+  if (SPRITE) return `<svg class="i${cls ? ` ${cls}` : ''}" ${a11y} width="${size}" height="${size}" fill="currentColor"><use href="${SPRITE}#b-${name}"/></svg>`;
   return `<svg class="i ${cls}" ${a11y} width="${size}" height="${size}" viewBox="0 0 24 24" fill="currentColor"><path d="${d}"/></svg>`;
 }
 

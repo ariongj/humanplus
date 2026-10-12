@@ -279,3 +279,18 @@ export const PANELS = [
     tests: ['ige', 'allergy-panel', 'food-intolerance'],
   },
 ];
+
+// The common tests that have their own page in the full catalogue (/analizat/<test>/): test id → catalogue id.
+// Matched by name and checked by hand; a test without an entry here simply has no link.
+export const CATALOGUE_LINK = {
+  cbc: 'k17689', esr: 'k17695', 'pt-inr': 'k17498', aptt: 'k17694', fibrinogen: 'k17688', 'blood-group': 'k17559',
+  glucose: 'k17411', hba1c: 'k17401', insulin: 'k17925', cholesterol: 'k17393', hdl: 'k17394', ldl: 'k17395',
+  triglycerides: 'k17425', urea: 'k17426', creatinine: 'k17397', 'uric-acid': 'k17376', ast: 'k17379', alt: 'k17378',
+  ggt: 'k17410', alp: 'k17407', bilirubin: 'k17442', amylase: 'k17382', protein: 'k17420', calcium: 'k17389',
+  tsh: 'k17935', ft4: 'k17934', ft3: 'k17940', 'anti-tpo': 'k17766', fsh: 'k17920', lh: 'k17921', estradiol: 'k17918',
+  progesterone: 'k17927', prolactin: 'k17929', testosterone: 'k17936', cortisol: 'k49845', 'beta-hcg': 'k17922',
+  'psa-total': 'k18185', 'psa-free': 'k18186', vitd: 'k17522', b12: 'k17428', folate: 'k17429', iron: 'k17421',
+  ferritin: 'k17435', magnesium: 'k17415', crp: 'k17745', aso: 'k17730', rf: 'k17738', ige: 'k17744',
+  'urine-culture': 'k17976', 'throat-swab': 'k17975', 'nasal-swab': 'k17993', 'vaginal-swab': 'k17979',
+  'h-pylori': 'k17972', urinalysis: 'k18268', 'stool-parasites': 'k18130', 'occult-blood': 'k18001',
+};

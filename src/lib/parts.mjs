@@ -5,6 +5,7 @@ import { UI } from '../data/ui.mjs';
 import { esc, h, icon, brand, L, accent, fold, dict } from './html.mjs';
 import { labBackground } from './labbg.mjs';
 import { photo } from './photo.mjs';
+import { commonTestPath } from './slugs.mjs';
 
 export const TEST_BY_ID = new Map(TESTS.map((x) => [x.id, x]));
 export const testName = (id, lang) => L(TEST_BY_ID.get(id)?.name, lang);
@@ -96,7 +97,7 @@ export function testRow(ctx, x) {
   const search = fold([x.name.sq, x.name.en, x.aka].join(' '));
   return h`<li class="test" data-test="${x.id}" data-cat="${x.cat}" data-search="${esc(search)}">
     <div class="test-main">
-      <h3 class="test-name">${esc(name)}</h3>
+      <h3 class="test-name">${commonTestPath(x.id) ? h`<a href="${esc(ctx.url(commonTestPath(x.id)))}">${esc(name)}</a>` : esc(name)}</h3>
       ${other !== name && h`<p class="test-alt" lang="${ctx.lang === 'sq' ? 'en' : 'sq'}">${esc(other)}</p>`}
     </div>
     <div class="test-meta">
@@ -126,7 +127,7 @@ export function panelCard(ctx, p, { full = false } = {}) {
     <p class="panel-for">${esc(L(p.for, lang))}</p>
     <p class="panel-text">${esc(L(p.text, lang))}</p>
     ${full
-      ? h`<p class="panel-incl">${esc(T.incl)}</p><ul class="panel-tests">${p.tests.map((id) => h`<li>${icon('check', { size: 16 })}${esc(testName(id, lang))}</li>`)}</ul>`
+      ? h`<p class="panel-incl">${esc(T.incl)}</p><ul class="panel-tests">${p.tests.map((id) => h`<li>${icon('check', { size: 16 })}${commonTestPath(id) ? h`<a href="${esc(ctx.url(commonTestPath(id)))}">${esc(testName(id, lang))}</a>` : esc(testName(id, lang))}</li>`)}</ul>`
       : h`<p class="panel-list">${esc(p.tests.map((id) => testName(id, lang)).join(' · '))}</p>`}
     <div class="panel-actions">
       <button class="btn btn-soft btn-sm js-only" type="button" data-add-panel="${p.tests.join(',')}" data-done="${esc(T.added)}">${icon('plus', { size: 16 })}<span>${esc(T.add)}</span></button>

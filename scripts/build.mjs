@@ -13,6 +13,7 @@ import { fileURLToPath } from 'node:url';
 import { SITE, LANGS } from '../src/data/site.mjs';
 import { SERVICES } from '../src/data/services.mjs';
 import { layout } from '../src/lib/layout.mjs';
+import { iconSprite, useIconSprite } from '../src/lib/html.mjs';
 import { homePage } from '../src/pages/home.mjs';
 import { servicesPage, servicePage } from '../src/pages/services.mjs';
 import { panelsPage, prepPage } from '../src/pages/lab.mjs';
@@ -20,6 +21,7 @@ import { testsPage, catalogueFor } from '../src/pages/catalogue.mjs';
 import { bookingPage } from '../src/pages/booking.mjs';
 import { aboutPage, contactPage, faqPage, notFoundPage } from '../src/pages/centre.mjs';
 import { sceneFiles, photoFiles, PHOTO_DIR } from '../src/lib/photo.mjs';
+import { TEST_ROUTES } from '../src/pages/test.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DIST = path.resolve(ROOT, process.env.OUT_DIR || 'dist');
@@ -60,6 +62,8 @@ const ROUTES = [
   ['rreth-nesh', aboutPage],
   ['kontakt', contactPage],
   ['pyetje', faqPage],
+  // One page per test of the lab catalogue: /analizat/<slug>/.
+  ...TEST_ROUTES,
 ];
 
 const urlFor = (p, lang) => `${BASE}${lang === 'en' ? 'en/' : ''}${p ? `${p}/` : ''}`;
@@ -169,8 +173,16 @@ const version = crypto.createHash('sha1').update(['src/assets/site.css', 'src/as
 // The full lab catalogue, one file per language, loaded by assets/catalogue.js on /analizat/ and /en/analizat/.
 for (const lang of LANGS) {
   const { data, missing } = catalogueFor(lang);
-  write(`assets/catalogue-${lang}.json`, JSON.stringify(data));
+  // ml (component links) is only used by the build; the browser does not need it.
+  write(`assets/catalogue-${lang}.json`, JSON.stringify(data, (k, v) => (k === 'ml' ? undefined : v)));
   if (missing) console.warn(`catalogue-${lang}: ${missing} text(s) not translated yet — shown in Albanian (src/data/catalogue-translations.json)`);
+}
+
+// Icon sprite: one cached file instead of the same paths inline on every page.
+{
+  const sprite = iconSprite();
+  write('assets/icons.svg', sprite);
+  useIconSprite(`${BASE}assets/icons.svg?v=${crypto.createHash('sha1').update(sprite).digest('hex').slice(0, 8)}`);
 }
 
 let count = 0;
@@ -246,7 +258,8 @@ write(
 - Prices are given by reception (phone, WhatsApp, e-mail); they are not published on the site.
 
 ## Pages (Albanian · English)
-${ROUTES.map(([p, r]) => `- [${p || 'home'}](${absFor(p, 'sq')}) · [en](${absFor(p, 'en')})`).join('\n')}
+${ROUTES.filter(([p]) => !p.startsWith('analizat/')).map(([p]) => `- [${p || 'home'}](${absFor(p, 'sq')}) · [en](${absFor(p, 'en')})`).join('\n')}
+- Lab tests: one page per test at ${absFor('analizat', 'sq')}<test>/ (${TEST_ROUTES.length} tests; English under /en/analizat/<test>/)
 `,
 );
 if (NOINDEX) write('.nojekyll', '');

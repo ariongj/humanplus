@@ -6,6 +6,7 @@ import fs from 'node:fs';
 import { SITE } from '../data/site.mjs';
 import { UI } from '../data/ui.mjs';
 import { esc, h, icon, brand, dict, fold } from '../lib/html.mjs';
+import { LAB_NOTES } from '../data/lab-notes.mjs';
 import { pageHero, testSearch } from '../lib/parts.mjs';
 
 export const CATALOGUE = JSON.parse(fs.readFileSync(new URL('../data/catalogue.json', import.meta.url), 'utf8'));
@@ -40,7 +41,7 @@ export function catalogueFor(lang) {
     };
     const [cur, other] = lang === 'en' ? [eng, sq] : [sq, eng];
     return {
-      id: x.id, c: x.c, k: x.k, ...cur, s: x.s, o: other.n, oc: note(other),
+      id: x.id, c: x.c, k: x.k, u: x.u, ...cur, s: x.s, o: other.n, oc: note(other), w: x.w ?? [], ml: x.ml ?? [],
       q: lang === 'en' ? fold([eng.n, x.q].join(' ')) : x.q,
     };
   });
@@ -75,6 +76,8 @@ const T = dict('catalogue', {
     includes: 'Përfshin',
     panel: 'Panel',
     no_details: 'Për këtë analizë na pyetni për mostrën dhe përgatitjen.',
+    open_page: 'Faqja e plotë e analizës',
+    good: 'Për t’u ditur',
     loading: 'Duke ngarkuar katalogun…',
     failed: 'Katalogu nuk u ngarkua. Rifreskoni faqen ose na telefononi.',
     none_title: 'Nuk e gjetëm këtë analizë',
@@ -114,6 +117,8 @@ const T = dict('catalogue', {
     includes: 'Includes',
     panel: 'Panel',
     no_details: 'For this test, ask us about the sample and preparation.',
+    open_page: 'Full page for this test',
+    good: 'Good to know',
     loading: 'Loading the catalogue…',
     failed: 'The catalogue could not be loaded. Refresh the page or call us.',
     none_title: 'We could not find this test',
@@ -196,9 +201,11 @@ export function testsPage(ctx) {
   // Strings and paths the catalogue script needs.
   const config = {
     url: `${ctx.base}assets/catalogue-${lang}.json?v=${ctx.version}`,
+    page: ctx.url('analizat'),
+    notes: Object.fromEntries(Object.entries(LAB_NOTES).map(([k, v]) => [k, v[lang]])),
     lang,
     cats: Object.fromEntries(cats.map((c) => [c.id, catName(c)])),
-    t: Object.fromEntries(['count_one', 'count_many', 'count_in', 'more', 'details', 'desc', 'sample', 'collection', 'prep', 'includes', 'panel', 'no_details', 'failed'].map((k) => [k, t[k]])),
+    t: Object.fromEntries(['count_one', 'count_many', 'count_in', 'more', 'details', 'desc', 'sample', 'collection', 'prep', 'includes', 'panel', 'no_details', 'failed', 'open_page', 'good'].map((k) => [k, t[k]])),
     add: u.list_add,
     added: u.list_added,
   };

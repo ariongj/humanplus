@@ -23,8 +23,8 @@ one JavaScript file into `dist/`, which you can upload to any web host.
 
 | | |
 | --- | --- |
-| Pages | 19 per language × 2 (sq + en), plus 404 |
-| Lab-test catalogue | 1 006 tests and panels in 20 categories, searchable in Albanian and Serbian (see [Lab catalogue](#lab-catalogue)) |
+| Pages | 19 site pages + 1 006 test pages per language × 2 (sq + en), plus 404 |
+| Lab-test catalogue | 1 006 tests and panels in 20 categories, each with its own page, searchable in Albanian, English and Serbian (see [Lab catalogue](#lab-catalogue)) |
 | Check-up panels | 8 |
 | Accessibility | axe-core: **0 violations** on all pages, desktop 1440 and phone 390 |
 | Layout | no horizontal scroll at 320, 390 and 1440 px; 44 px touch targets; 16 px form fields |
@@ -109,19 +109,41 @@ That file is a working translation made for the site: edit it by hand when the l
 writes `assets/catalogue-sq.json` and `assets/catalogue-en.json` and warns about any English text still missing
 (it then shows the Albanian one).
 
-**Source.** The client supplied an export of the public BeoLab catalogue (Serbia, checked 2026-10-10, 1 071 entries).
-`scripts/import-catalogue.mjs` turns it into `src/data/catalogue.json`. The import **leaves out** on purpose:
+**A page for every test.** Each of the 1 006 entries also has its own page, `/analizat/<test>/` (and
+`/en/analizat/<test>/`), for example `/analizat/acid-urik/`: what the test is for, the sample, how it is collected,
+the preparation, the result time, what a panel includes (with links to the tests it contains), the panels a test is
+part of, *Good to know* notes with their medical sources, other tests in the same category, and *Add to list*,
+*Ask on WhatsApp* and *Book* buttons. The catalogue rows link to it ("Faqja e plotë e analizës"), and so do the common
+tests on the department and check-up pages (`CATALOGUE_LINK` in `src/data/tests.mjs`).
+
+**Result times and prices are Human+'s own.** The source lists BeoLab's turnaround times and prices; they are not
+used. A test page shows a result time only when the clinic has confirmed it in `src/data/lab-human-plus.json`
+(`{ "k17376": { "time": { "sq": "1 ditë pune", "en": "1 working day" } } }`); until then it says the staff tell you
+when you give the sample.
+
+**Good to know.** The reference data (schema 2.0) comes with an editorial safety review. Its patient-relevant points
+are turned into 19 short notes in plain words – e.g. "do not stop or change your medicines for a test without your
+doctor", "allergy blood tests: you usually do not need to stop antihistamines", "food IgG tests are not recommended
+for diagnosing intolerance", "a PSA test without symptoms is a choice to make with your doctor" – each with its source
+(MedlinePlus, CDC, ACOG, NICE, AAAAI, ASCIA, FDA, Endocrine Society, NCI). Texts and the test → note mapping are in
+`src/data/lab-notes.mjs`; 177 tests carry at least one note. They are working texts for the doctors to approve.
+
+**Source.** The client supplied the BeoLab reference catalogue (Serbia; schema 2.0, re-checked 2026-10-12, 1 071
+entries, with 53 corrected preparation texts, 21 corrected descriptions and the safety review).
+`scripts/import-catalogue.mjs` turns its `beolab-catalogue.json` into `src/data/catalogue.json` (it reads the JSON
+as data; a `.js` export would be run as a module). The import **leaves out** on purpose:
 
 - BeoLab's prices (in RSD) and result times – they are another lab's, not Human+'s;
 - BeoLab's own consultations, promotions and marketing packages;
 - reference ranges, methods, editorial notes, SKUs and source links;
-- every sentence that mentions the source lab, its website, its address or ordering (the import fails if one is left).
+- every sentence that mentions the source lab, its website, its address or ordering (the import fails if one is left),
+  and sentences that only talk about the source text ("the available description only repeats the name…").
 
 The page says plainly that it is an information catalogue and that the Human+ laboratory confirms availability,
 price and preparation. To refresh the data from a new export:
 
 ```bash
-node scripts/import-catalogue.mjs path/to/catalogue.js
+node scripts/import-catalogue.mjs path/to/beolab-catalogue.json
 ```
 
 Search matches the start of words in the names in both languages, the Serbian name and the aliases, so "krvna
@@ -228,7 +250,10 @@ before launch – stock people must never be presented as Human+ staff (no names
 | `src/data/site.mjs` | **name, address, phones, WhatsApp / Viber number, e-mail, Facebook, opening hours, booking slots** – edit this first |
 | `src/data/services.mjs` | the ten departments: names, texts, what they offer, related tests |
 | `src/data/catalogue.json` | the full lab catalogue behind `/analizat/` (made by `scripts/import-catalogue.mjs`) |
-| `src/data/tests.mjs` | the 61 common tests used on department pages and in the check-up panels (sq + en), preparation rules, panels |
+| `src/data/tests.mjs` | the 61 common tests used on department pages and in the check-up panels (sq + en), preparation rules, panels, links to their catalogue pages |
+| `src/data/lab-notes.mjs` | the *Good to know* notes on test pages (sq + en, with medical sources) and which tests get them |
+| `src/data/lab-human-plus.json` | (optional) facts Human+ has confirmed per test, e.g. the result time |
+| `src/pages/test.mjs` | the page of each lab test, `/analizat/<test>/` |
 | `src/data/faq.mjs` | questions and answers |
 | `src/data/ui.mjs` | shared interface texts (menu, buttons, status, list, footer) in sq + en |
 | `src/pages/*.mjs` | one file per page group, with that page's texts at the top |
@@ -343,6 +368,9 @@ people, until the clinic's own photos are added.
 - **WhatsApp / Viber** – messages go to +383 44 709 072. Confirm that number uses WhatsApp and Viber, or change
   `whatsapp` / `viber` in `src/data/site.mjs`.
 - **Map** – a Google Maps search link; replace `mapsUrl` with the clinic's own Maps place link.
+- **Good to know notes and test pages** – the notes (`src/data/lab-notes.mjs`) are plain-word versions of an editorial
+  safety review, not yet approved by the Human+ doctors; the test pages show the reference data until the lab confirms
+  which tests it offers. No result times are shown until Human+ confirms them (`src/data/lab-human-plus.json`).
 - **Pictures** – all pictures are illustrated stand-ins until the clinic sends real photos (see [Photos](#photos)).
   The scenes show generic staff and rooms; they do not depict the clinic's actual staff, rooms or equipment.
 
