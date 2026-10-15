@@ -76,8 +76,22 @@ Statuses always use text + a dot, never colour alone. Visitors who prefer reduce
    terminin për këto analiza: 1. … 2. …"). Also by e-mail, or copied for Viber.
 4. Reception replies with the price and how to prepare. **The site shows no prices** – they come from the clinic.
 
+5. **Printo ose ruaj si PDF** prints the list on one A4 sheet (or saves it as a PDF, also on phones): the logo, the
+   date, every test with its sample and preparation (the advice sentence, not "venous blood"), a note that the lab
+   confirms availability, price and preparation, and the address, phones, e-mail and opening hours – to bring to
+   reception.
+
 The list stays in the visitor's own browser (localStorage), across pages and tabs. Nothing is sent anywhere until they
 press a send button.
+
+## Which check-up suits me?
+
+At the top of `/paketat/` (`#gjej`, linked from the home page): **1** for me / for my child, **2** sex and age (adults),
+**3** what they are interested in (tiredness, sugar, heart, thyroid, kidneys, liver, joints, stomach, allergies, bones,
+cycle and hormones, pregnancy, before surgery, hepatitis / HIV; for children: paleness and tiredness, tummy aches,
+allergies). It suggests up to five of the 20 check-ups with *Add to my list* and *Ask for the price*, and says that it
+is a suggestion, not a diagnosis – the doctor decides. It runs in the browser (`src/assets/finder.js`, rules at the
+top), sends nothing and asks nothing it does not need; texts in `src/lib/finder.mjs`.
 
 ## How the booking request works
 
@@ -324,6 +338,7 @@ before launch – stock people must never be presented as Human+ staff (no names
 | `src/assets/catalogue.js` | the catalogue page: loads `assets/catalogue.json`, search, categories, details, Add buttons |
 | `src/data/chat.mjs`, `src/lib/chat.mjs`, `src/assets/chat.js` | the site assistant: texts and keywords, its data file per language, the chat itself |
 | `src/assets/map-preview.svg` | the illustrated preview of the mini map (not the real streets) |
+| `src/lib/finder.mjs`, `src/assets/finder.js` | “Cila paketë ju përshtatet?” on `/paketat/`: texts and markup, the rules that pick the check-ups |
 | `src/assets/og/og-sq.png`, `og-en.png` | the 1200 × 630 pictures WhatsApp / Facebook show when a link is shared |
 | `src/static/` | favicons and app icons, copied to the site root |
 | `scripts/build.mjs` | builds `dist/`: pages, sitemap, robots, manifest, llms.txt, 404 and `.htaccess` for Hostinger |

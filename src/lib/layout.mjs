@@ -1,7 +1,7 @@
 // Page shell: <head>, top bar, header, footer, phone action bar, WhatsApp button and the lab-list drawer.
 import { SITE, LANGS, SOCIALS } from '../data/site.mjs';
 import { SERVICES } from '../data/services.mjs';
-import { TESTS, PREP } from '../data/tests.mjs';
+import { TESTS, PREP, SAMPLES } from '../data/tests.mjs';
 import { UI } from '../data/ui.mjs';
 import { CHAT } from '../data/chat.mjs';
 import { LOGO_SQUARE, LOGO_MARK, LOGO_WORDS } from './logo-paths.mjs';
@@ -262,6 +262,7 @@ function drawer(ctx) {
       </div>
       <div class="drawer-tools">
         <button class="link-btn" type="button" data-list-copy>${icon('copy', { size: 16 })}<span>${esc(t.list_copy)}</span></button>
+        <button class="link-btn" type="button" data-list-print>${icon('printer', { size: 16 })}<span>${esc(t.list_print)}</span></button>
         <button class="link-btn" type="button" data-list-clear>${icon('trash-2', { size: 16 })}<span>${esc(t.list_clear)}</span></button>
       </div>
     </div>
@@ -299,9 +300,10 @@ function chat(ctx) {
 function clientData(ctx) {
   const { lang } = ctx;
   const t = UI[lang];
-  const keys = ['open_now', 'closed_now', 'open_until', 'opens_at', 'opens_day', 'tomorrow', 'days', 'days_short', 'days_on', 'months', 'list_count_one', 'list_count_many', 'list_add', 'list_added', 'list_bar_open', 'list_remove', 'list_remove_aria', 'list_msg_hello', 'list_msg_thanks', 'list_mail_subject', 'list_copied'];
+  const keys = ['open_now', 'closed_now', 'open_until', 'opens_at', 'opens_day', 'tomorrow', 'days', 'days_short', 'days_on', 'months', 'list_count_one', 'list_count_many', 'list_add', 'list_added', 'list_bar_open', 'list_remove', 'list_remove_aria', 'list_msg_hello', 'list_msg_thanks', 'list_mail_subject', 'list_copied', 'list_title', 'sheet_date', 'sheet_test', 'sheet_sample', 'sheet_prep', 'sheet_note', 'sheet_hours', 'sheet_contact'];
   const strings = Object.fromEntries(keys.map((k) => [k, t[k]]));
-  const tests = Object.fromEntries(TESTS.map((x) => [x.id, [L(x.name, lang), L(PREP[x.prep].short, lang)]]));
+  // [name, preparation, sample] of each common test
+  const tests = Object.fromEntries(TESTS.map((x) => [x.id, [L(x.name, lang), L(PREP[x.prep].short, lang), L(SAMPLES[x.sample], lang)]]));
   return {
     lang,
     t: strings,
@@ -315,6 +317,15 @@ function clientData(ctx) {
     lastSlot: SITE.lastSlotBeforeClose,
     days: SITE.bookingDays,
     form: SITE.formEndpoint,
+    // for the printed list (assets/site.js → printList)
+    cat: `${ctx.base}assets/catalogue-${lang}.json?v=${ctx.version}`,
+    site: {
+      name: SITE.fullName,
+      addr: `${SITE.address.street}, ${SITE.address.postalCode} ${lang === 'sq' ? SITE.address.city : SITE.address.cityEn}`,
+      phones: SITE.phones.map((p) => `${p.display} (${phoneLabel(p, lang)})`).join(' · '),
+      hours: hoursRows(lang).map((r) => `${r.label} ${r.value}`).join(' · '),
+      web: ctx.abs(''),
+    },
   };
 }
 

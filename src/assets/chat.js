@@ -269,7 +269,14 @@
     var m = String(s || '').match(/^.*?[.!?](\s|$)/);
     var out = (m ? m[0] : String(s || '')).trim();
     return out.length > 150 ? out.slice(0, 147).replace(/\s+\S*$/, '') + '…' : out;
-  }
+  }  // the preparation in one sentence; skip an opening sentence that only names the sample ("Gjak venoz.")
+  var SAMPLE_ONLY = /^(?=[^.;:]{0,40}\.$)(?=.*(venoz|venous|venös|serum|plazm|plasma|kapilar|capillary|kapillar))/i;
+  var prepSentence = function (p) {
+    var one = firstSentence(p);
+    var rest = String(p || '').slice(one.length).trim();
+    return SAMPLE_ONLY.test(one) && rest ? firstSentence(rest) : one;
+  };
+
   function testCard(x) {
     var card = el('div', 'chat-test');
     var a = el('a', 'chat-test-name', x.n);
@@ -285,7 +292,7 @@
     if (x.p) {
       var pr = el('p', 'chat-test-meta');
       pr.appendChild(el('strong', '', T.prep_label + ': '));
-      pr.appendChild(document.createTextNode(firstSentence(x.p)));
+      pr.appendChild(document.createTextNode(prepSentence(x.p)));
       card.appendChild(pr);
     }
     var add = el('button', 'add-btn chat-add');

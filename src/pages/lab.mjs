@@ -4,6 +4,7 @@ import { TESTS, CATEGORIES, PANELS, PANEL_GROUPS, PREP } from '../data/tests.mjs
 import { UI } from '../data/ui.mjs';
 import { esc, h, icon, brand, dict, L } from '../lib/html.mjs';
 import { pageHero, sectionHead, testRow, testSearch, panelCard, ctaBand } from '../lib/parts.mjs';
+import { checkupFinder } from '../lib/finder.mjs';
 
 const T = dict('lab', {
   sq: {
@@ -133,7 +134,7 @@ export function panelsPage(ctx) {
     title: `${t.panels_title} · ${SITE.name}`,
     description: t.panels_desc,
     jsonld: [hero.jsonld],
-    body: hero.html + body + ctaBand(ctx, { title: t.panels_cta_title, text: t.panels_cta_text }),
+    body: hero.html + checkupFinder(ctx) + body + ctaBand(ctx, { title: t.panels_cta_title, text: t.panels_cta_text }),
   };
 }
 

@@ -131,7 +131,7 @@
   $$('[data-menu-open]').forEach(function (b) { b.addEventListener('click', function () { openDialog($('#menu'), b); }); });
   document.addEventListener('click', function (e) {
     var b = e.target.closest('[data-list-open]');
-    if (b) { renderList(); openDialog($('#lab-list'), b); }
+    if (b) { renderList(); loadCatInfo(); openDialog($('#lab-list'), b); }
   });
 
   /* phones: the language menu in the header closes on Escape and on a click outside it */
@@ -296,6 +296,87 @@
   var clearBtn = $('[data-list-clear]');
   if (clearBtn) clearBtn.addEventListener('click', function () { list = []; save(); syncButtons(); renderList(); $('#lab-list [data-close]').focus(); });
   window.addEventListener('storage', function (e) { if (e.key === KEY) { list = load(); syncButtons(); renderList(); } });
+
+  /* ---------- the list on paper (or PDF): each test with its sample and preparation, and how to reach us ---------- */
+  // Catalogue tests carry only their name and sample, so their preparation comes from the catalogue file, fetched
+  // when the list opens — the print button can then print at once (some browsers allow print() only on a click).
+  var catInfo = null;
+  var catLoading = null;
+  function loadCatInfo() {
+    if (catInfo || catLoading || !D.cat || !list.some(function (x) { return !D.tests[x.id]; })) return catLoading;
+    catLoading = fetch(D.cat).then(function (r) { return r.ok ? r.json() : { entries: [] }; }).then(function (d) {
+      catInfo = {};
+      d.entries.forEach(function (e) { catInfo[e.id] = e; });
+    }).catch(function () { catInfo = {}; });
+    return catLoading;
+  }
+  var firstSentence = function (s) { var m = String(s || '').match(/^.*?[.!?](\s|$)/); return (m ? m[0] : String(s || '')).trim(); };
+  // the preparation in one sentence; skip an opening sentence that only names the sample ("Gjak venoz.")
+  var SAMPLE_ONLY = /^(?=[^.;:]{0,40}\.$)(?=.*(venoz|venous|venös|serum|plazm|plasma|kapilar|capillary|kapillar))/i;
+  var prepSentence = function (p) {
+    var one = firstSentence(p);
+    var rest = String(p || '').slice(one.length).trim();
+    return SAMPLE_ONLY.test(one) && rest ? firstSentence(rest) : one;
+  };
+  function cell(tr, tag, text, cls) { var c = document.createElement(tag); if (cls) c.className = cls; c.textContent = text; tr.appendChild(c); return c; }
+  function buildSheet() {
+    var old = $('.print-sheet');
+    if (old) old.parentNode.removeChild(old);
+    var sh = document.createElement('section');
+    sh.className = 'print-sheet';
+    var head = document.createElement('div');
+    head.className = 'ps-head';
+    head.innerHTML = '<svg class="logo" viewBox="0 0 216 77" aria-hidden="true"><use href="#hp-logo"/></svg>';
+    var ht = document.createElement('div');
+    cell(ht, 'h1', T.list_title);
+    // the site's own month names: not every browser knows Albanian ones (15 tetor 2026 · 15 October 2026 · 15. Oktober 2026)
+    var today = kosovoNow();
+    cell(ht, 'p', T.sheet_date + ': ' + today.d + (D.lang === 'de' ? '. ' : ' ') + T.months[today.m - 1] + ' ' + today.y, 'ps-date');
+    head.appendChild(ht);
+    sh.appendChild(head);
+    var table = document.createElement('table');
+    table.className = 'ps-table';
+    var hr = document.createElement('tr');
+    ['#', T.sheet_test, T.sheet_sample, T.sheet_prep].forEach(function (h) { cell(hr, 'th', h); });
+    var thead = document.createElement('thead');
+    thead.appendChild(hr);
+    table.appendChild(thead);
+    var tbody = document.createElement('tbody');
+    list.forEach(function (x, i) {
+      var common = D.tests[x.id];
+      var c = catInfo && catInfo[x.id];
+      var tr = document.createElement('tr');
+      cell(tr, 'td', String(i + 1));
+      cell(tr, 'td', nameOf(x), 'ps-name');
+      cell(tr, 'td', common ? common[2] : (c && (c.co || c.sp)) || noteOf(x) || '—');
+      cell(tr, 'td', common ? common[1] : c && c.p ? prepSentence(c.p) : '—');
+      tbody.appendChild(tr);
+    });
+    table.appendChild(tbody);
+    sh.appendChild(table);
+    cell(sh, 'p', T.sheet_note, 'ps-note');
+    var foot = document.createElement('div');
+    foot.className = 'ps-foot';
+    var a = document.createElement('div');
+    cell(a, 'h2', T.sheet_contact);
+    cell(a, 'p', D.site.name + ' · ' + D.site.addr);
+    cell(a, 'p', D.site.phones);
+    cell(a, 'p', D.email + ' · ' + D.site.web);
+    var b = document.createElement('div');
+    cell(b, 'h2', T.sheet_hours);
+    cell(b, 'p', D.site.hours);
+    foot.appendChild(a);
+    foot.appendChild(b);
+    sh.appendChild(foot);
+    document.body.appendChild(sh);
+  }
+  function printList() {
+    var go = function () { buildSheet(); document.documentElement.classList.add('printing-list'); window.print(); };
+    if (catInfo || !loadCatInfo()) go(); else catLoading.then(go);
+  }
+  window.addEventListener('afterprint', function () { document.documentElement.classList.remove('printing-list'); });
+  var printBtn = $('[data-list-print]');
+  if (printBtn) printBtn.addEventListener('click', printList);
   syncButtons();
 
   /* ---------- mini map: Google Maps loads only after the visitor asks for it ---------- */

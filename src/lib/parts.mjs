@@ -106,6 +106,18 @@ export function testRow(ctx, x) {
   </li>`;
 }
 
+/** The WhatsApp text that asks about a check-up panel. */
+export function panelMessage(ctx, p) {
+  const lang = ctx.lang;
+  const name = L(p.name, lang);
+  const tests = p.tests.map((id) => testName(id, lang)).join(', ');
+  return {
+    sq: `Përshëndetje Human+! Dëshiroj informata për paketën "${name}" (${tests}).`,
+    en: `Hello Human+! I would like information about the "${name}" check-up (${tests}).`,
+    de: `Hallo Human+! Ich hätte gerne Informationen zum Check-up „${name}“ (${tests}).`,
+  }[lang];
+}
+
 export function panelCard(ctx, p, { full = false } = {}) {
   const lang = ctx.lang;
   const T = {
@@ -114,11 +126,7 @@ export function panelCard(ctx, p, { full = false } = {}) {
     de: { tests: 'Analysen', add: 'Check-up zur Liste hinzufügen', ask: 'Nach dem Preis fragen', incl: 'Enthält', added: 'Check-up ist auf Ihrer Liste' },
   }[lang];
   const name = L(p.name, lang);
-  const msg = {
-    sq: `Përshëndetje Human+! Dëshiroj informata për paketën "${name}" (${p.tests.map((id) => testName(id, lang)).join(', ')}).`,
-    en: `Hello Human+! I would like information about the "${name}" check-up (${p.tests.map((id) => testName(id, lang)).join(', ')}).`,
-    de: `Hallo Human+! Ich hätte gerne Informationen zum Check-up „${name}“ (${p.tests.map((id) => testName(id, lang)).join(', ')}).`,
-  }[lang];
+  const msg = panelMessage(ctx, p);
   return h`<article class="panel reveal" id="paketa-${p.id}">
     <div class="panel-head">
       <span class="tile tile-brand">${icon(p.icon, { size: 24 })}</span>

@@ -141,6 +141,13 @@ const catName = (id, lang) => {
   return c ? c[lang] ?? c.en : id;
 };
 const firstSentence = (s) => (s.match(/^.*?[.!?](\s|$)/)?.[0] ?? s).trim();
+// The preparation in one sentence. Some texts open with the sample only ("Gjak venoz."): skip that to the advice.
+const SAMPLE_ONLY = /^(?=[^.;:]{0,40}\.$)(?=.*(venoz|venous|venös|serum|plazm|plasma|kapilar|capillary|kapillar))/i;
+const prepSentence = (p) => {
+  const one = firstSentence(p);
+  const rest = p.slice(one.length).trim();
+  return SAMPLE_ONLY.test(one) && rest ? firstSentence(rest) : one;
+};
 const clip = (s, n) => (s.length > n ? `${s.slice(0, n - 1).replace(/\s+\S*$/, '')}…` : s);
 
 export const testPath = (x) => `analizat/${x.u}`;
@@ -160,7 +167,7 @@ export function testPage(ctx, id) {
     <h2>${icon('test-tube', { size: 20 })}${esc(t.fact_title)}</h2>
     <dl class="test-facts">
       <div><dt>${icon('droplet', { size: 16 })}${esc(t.sample)}</dt><dd>${esc(x.sp || x.co || t.unknown)}</dd></div>
-      <div><dt>${icon('clipboard-list', { size: 16 })}${esc(t.prep)}</dt><dd>${esc(x.p ? clip(firstSentence(x.p), 90) : t.unknown)}</dd></div>
+      <div><dt>${icon('clipboard-list', { size: 16 })}${esc(t.prep)}</dt><dd>${esc(x.p ? clip(prepSentence(x.p), 120) : t.unknown)}</dd></div>
       <div><dt>${icon('clock', { size: 16 })}${esc(t.time)}</dt><dd>${esc(confirmed || t.time_ask)}</dd></div>
     </dl>
     <button class="btn btn-primary btn-block add-btn add-btn-lg js-only" type="button" data-add="${x.id}" data-name="${esc(x.n)}" data-names="${esc(JSON.stringify(x.o))}" data-note="${esc(note)}" data-notes="${esc(JSON.stringify(x.oc))}" aria-pressed="false" aria-label="${esc(`${u.list_add}: ${x.n}`)}">

@@ -148,7 +148,7 @@ for (const f of photoFiles()) {
 }
 copyDir(path.join(ROOT, 'src/static'), DIST);
 // The stylesheet refers to fonts relatively ("fonts/…"), so it works under any base path.
-const version = crypto.createHash('sha1').update(['src/assets/site.css', 'src/assets/site.js', 'src/assets/catalogue.js', 'src/assets/chat.js', 'src/assets/map-preview.svg', 'src/data/catalogue.json', 'src/data/catalogue-translations.json'].filter((f) => fs.existsSync(path.join(ROOT, f))).map(read).join('')).digest('hex').slice(0, 8);
+const version = crypto.createHash('sha1').update(['src/assets/site.css', 'src/assets/site.js', 'src/assets/catalogue.js', 'src/assets/chat.js', 'src/assets/finder.js', 'src/assets/map-preview.svg', 'src/data/catalogue.json', 'src/data/catalogue-translations.json'].filter((f) => fs.existsSync(path.join(ROOT, f))).map(read).join('')).digest('hex').slice(0, 8);
 // Brand font: when the licensed Pangram files are in src/assets/fonts/pangram/ (e.g. Pangram-Regular.woff2,
 // Pangram-Bold.woff2 …), write their @font-face rules into the stylesheet; otherwise Outfit is used.
 {

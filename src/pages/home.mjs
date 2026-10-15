@@ -8,6 +8,7 @@ import { esc, h, icon, brand, dict, L, accent } from '../lib/html.mjs';
 import { hoursTable, status } from '../lib/layout.mjs';
 import { labBackground } from '../lib/labbg.mjs';
 import { sectionHead, serviceCard, panelCard, testSearch, ctaBand, faqList, shortName, centreGallery, miniMap } from '../lib/parts.mjs';
+import { finderTeaser } from '../lib/finder.mjs';
 import { photo } from '../lib/photo.mjs';
 
 const T = dict('home', {
@@ -318,6 +319,7 @@ export function homePage(ctx) {
         <a class="btn btn-outline" href="${esc(ctx.url('paketat'))}">${esc(t.pan_all.replace('{n}', PANELS.length))}${icon('arrow-right', { size: 18 })}</a>
       </div>
       <div class="panel-grid">${HOME_PANELS.map((id) => panelCard(ctx, PANELS.find((p) => p.id === id)))}</div>
+      ${finderTeaser(ctx)}
       <div class="panel-more"><span>${esc(t.pan_more)}</span><ul>${PANELS.filter((p) => !HOME_PANELS.includes(p.id)).map((p) => h`<li><a class="chip chip-link" href="${esc(ctx.url('paketat'))}#paketa-${p.id}">${esc(L(p.name, lang))}</a></li>`)}</ul></div>
     </div>
   </section>`;
