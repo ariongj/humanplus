@@ -1,0 +1,28 @@
+# Human+ Qendra Diagnostike
+
+> Diagnostic centre in Prishtina, Kosovo, since 2011: biochemistry, haematology and microbiology laboratory (continuing the BAKTOLAB laboratory), paediatrics, gynaecology, family medicine, endocrinology, supplements and nutrition.
+
+- Address: Rruga B, Nr. 16, 10000 Prishtina, Kosovo
+- Phone: +383 44 709 072 · +383 48 750 150 · +383 38 750 150
+- E-mail: info@humanplusks.com
+- Hours: Mon–Fri 07:30–19:00, Sat 08:00–16:00, Sun closed
+- Prices are given by reception (phone, WhatsApp, e-mail); they are not published on the site.
+
+## Pages (Albanian · English · German)
+- [home](https://ariongj.github.io/humanplus/) · [en](https://ariongj.github.io/humanplus/en/) · [de](https://ariongj.github.io/humanplus/de/)
+- [sherbimet](https://ariongj.github.io/humanplus/sherbimet/) · [en](https://ariongj.github.io/humanplus/en/sherbimet/) · [de](https://ariongj.github.io/humanplus/de/sherbimet/)
+- [sherbim/pediatri](https://ariongj.github.io/humanplus/sherbim/pediatri/) · [en](https://ariongj.github.io/humanplus/en/sherbim/pediatri/) · [de](https://ariongj.github.io/humanplus/de/sherbim/pediatri/)
+- [sherbim/gjinekologji](https://ariongj.github.io/humanplus/sherbim/gjinekologji/) · [en](https://ariongj.github.io/humanplus/en/sherbim/gjinekologji/) · [de](https://ariongj.github.io/humanplus/de/sherbim/gjinekologji/)
+- [sherbim/laboratori-biokimik-dhe-hematologjik](https://ariongj.github.io/humanplus/sherbim/laboratori-biokimik-dhe-hematologjik/) · [en](https://ariongj.github.io/humanplus/en/sherbim/laboratori-biokimik-dhe-hematologjik/) · [de](https://ariongj.github.io/humanplus/de/sherbim/laboratori-biokimik-dhe-hematologjik/)
+- [sherbim/laboratori-mikrobiologjik](https://ariongj.github.io/humanplus/sherbim/laboratori-mikrobiologjik/) · [en](https://ariongj.github.io/humanplus/en/sherbim/laboratori-mikrobiologjik/) · [de](https://ariongj.github.io/humanplus/de/sherbim/laboratori-mikrobiologjik/)
+- [sherbim/mjekesi-familjare](https://ariongj.github.io/humanplus/sherbim/mjekesi-familjare/) · [en](https://ariongj.github.io/humanplus/en/sherbim/mjekesi-familjare/) · [de](https://ariongj.github.io/humanplus/de/sherbim/mjekesi-familjare/)
+- [sherbim/endokrinologji](https://ariongj.github.io/humanplus/sherbim/endokrinologji/) · [en](https://ariongj.github.io/humanplus/en/sherbim/endokrinologji/) · [de](https://ariongj.github.io/humanplus/de/sherbim/endokrinologji/)
+- [sherbim/suplemente-dhe-nutricion](https://ariongj.github.io/humanplus/sherbim/suplemente-dhe-nutricion/) · [en](https://ariongj.github.io/humanplus/en/sherbim/suplemente-dhe-nutricion/) · [de](https://ariongj.github.io/humanplus/de/sherbim/suplemente-dhe-nutricion/)
+- [analizat](https://ariongj.github.io/humanplus/analizat/) · [en](https://ariongj.github.io/humanplus/en/analizat/) · [de](https://ariongj.github.io/humanplus/de/analizat/)
+- [paketat](https://ariongj.github.io/humanplus/paketat/) · [en](https://ariongj.github.io/humanplus/en/paketat/) · [de](https://ariongj.github.io/humanplus/de/paketat/)
+- [pergatitja](https://ariongj.github.io/humanplus/pergatitja/) · [en](https://ariongj.github.io/humanplus/en/pergatitja/) · [de](https://ariongj.github.io/humanplus/de/pergatitja/)
+- [rezervo](https://ariongj.github.io/humanplus/rezervo/) · [en](https://ariongj.github.io/humanplus/en/rezervo/) · [de](https://ariongj.github.io/humanplus/de/rezervo/)
+- [rreth-nesh](https://ariongj.github.io/humanplus/rreth-nesh/) · [en](https://ariongj.github.io/humanplus/en/rreth-nesh/) · [de](https://ariongj.github.io/humanplus/de/rreth-nesh/)
+- [kontakt](https://ariongj.github.io/humanplus/kontakt/) · [en](https://ariongj.github.io/humanplus/en/kontakt/) · [de](https://ariongj.github.io/humanplus/de/kontakt/)
+- [pyetje](https://ariongj.github.io/humanplus/pyetje/) · [en](https://ariongj.github.io/humanplus/en/pyetje/) · [de](https://ariongj.github.io/humanplus/de/pyetje/)
+- Lab tests: one page per test at https://ariongj.github.io/humanplus/analizat/<test>/ (1006 tests; English under /en/analizat/<test>/, German under /de/analizat/<test>/)

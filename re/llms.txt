@@ -1,0 +1,28 @@
+# Human+ Qendra Diagnostike
+
+> Diagnostic centre in Prishtina, Kosovo, since 2011: biochemistry, haematology and microbiology laboratory (continuing the BAKTOLAB laboratory), paediatrics, gynaecology, family medicine, endocrinology, supplements and nutrition.
+
+- Address: Rruga B, Nr. 16, 10000 Prishtina, Kosovo
+- Phone: +383 44 709 072 · +383 48 750 150 · +383 38 750 150
+- E-mail: info@humanplusks.com
+- Hours: Mon–Fri 07:30–19:00, Sat 08:00–16:00, Sun closed
+- Prices are given by reception (phone, WhatsApp, e-mail); they are not published on the site.
+
+## Pages (Albanian · English · German)
+- [home](https://ariongj.github.io/humanplus/re/) · [en](https://ariongj.github.io/humanplus/re/en/) · [de](https://ariongj.github.io/humanplus/re/de/)
+- [sherbimet](https://ariongj.github.io/humanplus/re/sherbimet/) · [en](https://ariongj.github.io/humanplus/re/en/sherbimet/) · [de](https://ariongj.github.io/humanplus/re/de/sherbimet/)
+- [sherbim/pediatri](https://ariongj.github.io/humanplus/re/sherbim/pediatri/) · [en](https://ariongj.github.io/humanplus/re/en/sherbim/pediatri/) · [de](https://ariongj.github.io/humanplus/re/de/sherbim/pediatri/)
+- [sherbim/gjinekologji](https://ariongj.github.io/humanplus/re/sherbim/gjinekologji/) · [en](https://ariongj.github.io/humanplus/re/en/sherbim/gjinekologji/) · [de](https://ariongj.github.io/humanplus/re/de/sherbim/gjinekologji/)
+- [sherbim/laboratori-biokimik-dhe-hematologjik](https://ariongj.github.io/humanplus/re/sherbim/laboratori-biokimik-dhe-hematologjik/) · [en](https://ariongj.github.io/humanplus/re/en/sherbim/laboratori-biokimik-dhe-hematologjik/) · [de](https://ariongj.github.io/humanplus/re/de/sherbim/laboratori-biokimik-dhe-hematologjik/)
+- [sherbim/laboratori-mikrobiologjik](https://ariongj.github.io/humanplus/re/sherbim/laboratori-mikrobiologjik/) · [en](https://ariongj.github.io/humanplus/re/en/sherbim/laboratori-mikrobiologjik/) · [de](https://ariongj.github.io/humanplus/re/de/sherbim/laboratori-mikrobiologjik/)
+- [sherbim/mjekesi-familjare](https://ariongj.github.io/humanplus/re/sherbim/mjekesi-familjare/) · [en](https://ariongj.github.io/humanplus/re/en/sherbim/mjekesi-familjare/) · [de](https://ariongj.github.io/humanplus/re/de/sherbim/mjekesi-familjare/)
+- [sherbim/endokrinologji](https://ariongj.github.io/humanplus/re/sherbim/endokrinologji/) · [en](https://ariongj.github.io/humanplus/re/en/sherbim/endokrinologji/) · [de](https://ariongj.github.io/humanplus/re/de/sherbim/endokrinologji/)
+- [sherbim/suplemente-dhe-nutricion](https://ariongj.github.io/humanplus/re/sherbim/suplemente-dhe-nutricion/) · [en](https://ariongj.github.io/humanplus/re/en/sherbim/suplemente-dhe-nutricion/) · [de](https://ariongj.github.io/humanplus/re/de/sherbim/suplemente-dhe-nutricion/)
+- [analizat](https://ariongj.github.io/humanplus/re/analizat/) · [en](https://ariongj.github.io/humanplus/re/en/analizat/) · [de](https://ariongj.github.io/humanplus/re/de/analizat/)
+- [paketat](https://ariongj.github.io/humanplus/re/paketat/) · [en](https://ariongj.github.io/humanplus/re/en/paketat/) · [de](https://ariongj.github.io/humanplus/re/de/paketat/)
+- [pergatitja](https://ariongj.github.io/humanplus/re/pergatitja/) · [en](https://ariongj.github.io/humanplus/re/en/pergatitja/) · [de](https://ariongj.github.io/humanplus/re/de/pergatitja/)
+- [rezervo](https://ariongj.github.io/humanplus/re/rezervo/) · [en](https://ariongj.github.io/humanplus/re/en/rezervo/) · [de](https://ariongj.github.io/humanplus/re/de/rezervo/)
+- [rreth-nesh](https://ariongj.github.io/humanplus/re/rreth-nesh/) · [en](https://ariongj.github.io/humanplus/re/en/rreth-nesh/) · [de](https://ariongj.github.io/humanplus/re/de/rreth-nesh/)
+- [kontakt](https://ariongj.github.io/humanplus/re/kontakt/) · [en](https://ariongj.github.io/humanplus/re/en/kontakt/) · [de](https://ariongj.github.io/humanplus/re/de/kontakt/)
+- [pyetje](https://ariongj.github.io/humanplus/re/pyetje/) · [en](https://ariongj.github.io/humanplus/re/en/pyetje/) · [de](https://ariongj.github.io/humanplus/re/de/pyetje/)
+- Lab tests: one page per test at https://ariongj.github.io/humanplus/re/analizat/<test>/ (1006 tests; English under /en/analizat/<test>/, German under /de/analizat/<test>/)
