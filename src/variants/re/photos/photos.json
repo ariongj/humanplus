@@ -1,7 +1,7 @@
 {
  "hero": {
   "alt": {
-   "sq": "Mjeke me stetoskop në tryezën e ordinancës",
+   "sq": "Mjeke me stetoskop në tryezën e kabinetit",
    "en": "A doctor with a stethoscope at her desk",
    "de": "Eine Ärztin mit Stethoskop an ihrem Schreibtisch"
   },
@@ -73,7 +73,7 @@
  },
  "contact": {
   "alt": {
-   "sq": "Mjeke me stetoskop në ordinancë",
+   "sq": "Mjeke me stetoskop në kabinet",
    "en": "A doctor with a stethoscope in her office",
    "de": "Eine Ärztin mit Stethoskop in ihrem Sprechzimmer"
   },
@@ -118,7 +118,7 @@
  },
  "sherbim-gjinekologji": {
   "alt": {
-   "sq": "Mjeke me stetoskop në tryezën e ordinancës",
+   "sq": "Mjeke me stetoskop në tryezën e kabinetit",
    "en": "A doctor with a stethoscope at her desk",
    "de": "Eine Ärztin mit Stethoskop an ihrem Schreibtisch"
   },
@@ -154,7 +154,7 @@
  },
  "sherbim-endokrinologji": {
   "alt": {
-   "sq": "Mjeke me stetoskop në ordinancë",
+   "sq": "Mjeke me stetoskop në kabinet",
    "en": "A doctor with a stethoscope in her office",
    "de": "Eine Ärztin mit Stethoskop in ihrem Sprechzimmer"
   },

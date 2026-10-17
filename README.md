@@ -48,8 +48,8 @@ links such as `/en/sherbim/pediatri/` keep working.
 | Kontakt / Contact | `/kontakt/` | address and map link, three phones, WhatsApp, Viber, e-mail, Facebook, hours, message form |
 | Pyetje / FAQ | `/pyetje/` | ten questions (FAQPage data for Google) |
 
-The seven departments: Pediatri, Gjinekologji, Laboratori Biokimik dhe Hematologjik, Laboratori Mikrobiologjik,
-Mjekësi Familjare, Endokrinologji, Suplemente dhe Nutricion. Urology, gastroenterology and dermatology were taken off
+The seven departments: Pediatri, Gjinekologji, Laboratori biokimik dhe hematologjik, Laboratori mikrobiologjik,
+Mjekësi familjare, Endokrinologji, Suplemente dhe nutricion. Urology, gastroenterology and dermatology were taken off
 (October 2026); their old addresses (`/sherbim/urologji/` …, in every language) lead to `/sherbimet/` – a redirect page,
 and a 301 in `.htaccess` on the production server (`RETIRED_SERVICES` in `src/data/services.mjs`).
 
