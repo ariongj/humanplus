@@ -116,7 +116,7 @@ export const LAB_NOTES = {
     src: [['CDC', 'https://www.cdc.gov/tb/hcp/testing-diagnosis/interferon-gamma-release-assay.html']],
   },
   gbs: {
-    sq: 'Në shtatzëni, analiza për streptokokun e grupit B zakonisht bëhet në javët 36–37, me bris vaginal dhe rektal, sipas udhëzimit të gjinekologut.',
+    sq: 'Në shtatzëni, analiza për streptokokun e grupit B zakonisht bëhet në javët 36–37, me strisho vaginale dhe rektale, sipas udhëzimit të gjinekologut.',
     en: 'In pregnancy, group B strep testing is usually done at 36–37 weeks with a vaginal and rectal swab, as your gynaecologist advises.',
     de: 'In der Schwangerschaft wird der Test auf Streptokokken der Gruppe B in der Regel in der 36.–37. Woche mit einem Vaginal- und Rektalabstrich gemacht, nach Empfehlung Ihrer Frauenärztin oder Ihres Frauenarztes.',
     src: [['CDC', 'https://www.cdc.gov/group-b-strep/testing/index.html']],

@@ -62,7 +62,7 @@ export const SERVICES = [
       de: 'Gynäkologische Untersuchungen, Beratung und Laboranalysen für die Gesundheit der Frau in jedem Alter.',
     },
     intro: {
-      sq: 'Shëndeti i gruas kërkon kohë, besim dhe diskrecion. Ju presim për kontrolle të rregullta, për një shqetësim të ri ose për ndjekje sipas udhëzimit të mjekut — me analizat hormonale dhe brisët në të njëjtën qendër.',
+      sq: 'Shëndeti i gruas kërkon kohë, besim dhe diskrecion. Ju presim për kontrolle të rregullta, për një shqetësim të ri ose për ndjekje sipas udhëzimit të mjekut — me analizat hormonale dhe strishot në të njëjtën qendër.',
       en: 'Women’s health needs time, trust and discretion. Come for a regular check-up, a new concern or follow-up as your doctor advises — with hormone tests and swabs at the same centre.',
       de: 'Frauengesundheit braucht Zeit, Vertrauen und Diskretion. Kommen Sie zur regelmäßigen Kontrolle, mit einem neuen Anliegen oder zur Verlaufskontrolle nach Empfehlung Ihres Arztes — Hormonuntersuchungen und Abstriche erfolgen im selben Zentrum.',
     },
@@ -72,7 +72,7 @@ export const SERVICES = [
         'Konsultë për çrregullime të ciklit menstrual',
         'Këshillim për planifikim familjar',
         'Analiza hormonale: FSH, LH, estradiol, progesteron, prolaktinë, beta-hCG',
-        'Bris vaginal dhe cervikal në laboratorin mikrobiologjik',
+        'Strisho vaginale dhe cervikale në laboratorin mikrobiologjik',
       ],
       en: [
         'Regular gynaecological check-up',
@@ -114,7 +114,7 @@ export const SERVICES = [
     },
     items: {
       sq: [
-        'Hematologji: gjaku komplet (hemogrami), sedimentimi, koagulimi, grupi i gjakut',
+        'Hematologji: hemogrami i plotë, sedimentimi, koagulimi, grupi i gjakut',
         'Biokimi: glukoza, HbA1c, profili lipidik, veshkat, mëlçia, elektrolitët',
         'Hormone: tiroidja, hormonet riprodhuese, kortizoli, PSA',
         'Vitamina dhe minerale: D, B12, acidi folik, hekuri, feritina, magnezi',
@@ -147,7 +147,7 @@ export const SERVICES = [
     name: { sq: 'Laboratori mikrobiologjik', en: 'Microbiology Laboratory', de: 'Mikrobiologisches Labor' },
     nameShort: { sq: 'Laboratori mikrobiologjik', en: 'Microbiology lab', de: 'Mikrobiologisches Labor' },
     short: {
-      sq: 'Urinokulturë, koprokulturë, brise dhe antibiogram — për të gjetur shkaktarin e infeksionit.',
+      sq: 'Urinokulturë, koprokulturë, strisho dhe antibiogram — për të gjetur shkaktarin e infeksionit.',
       en: 'Urine and stool cultures, swabs and antibiotic sensitivity tests — to find what causes an infection.',
       de: 'Urin- und Stuhlkulturen, Abstriche und Antibiogramm — um den Erreger einer Infektion zu finden.',
     },
@@ -160,8 +160,8 @@ export const SERVICES = [
       sq: [
         'Urinokulturë me antibiogram',
         'Koprokulturë dhe analizë e feçes për parazitë',
-        'Bris i fytit dhe i hundës',
-        'Bris vaginal dhe cervikal',
+        'Strisho e fytit dhe e hundës',
+        'Strisho vaginale dhe cervikale',
         'Helicobacter pylori',
       ],
       en: [

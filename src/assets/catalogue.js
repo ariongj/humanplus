@@ -37,7 +37,7 @@
     var SPRITE = useEl ? useEl.getAttribute('href').split('#')[0] : '';
     function sampleIcon(x) {
       var s = (x.co || '') + ' ' + (x.sp || '');
-      var name = /urin/i.test(s) ? 'flask-round' : /fe[çc]|stool|stuhl/i.test(s) ? 'test-tube' : /bris|swab|abstrich|tampon/i.test(s) ? 'test-tube-diagonal' : 'test-tubes';
+      var name = /urin/i.test(s) ? 'flask-round' : /fe[çc]|stool|stuhl/i.test(s) ? 'test-tube' : /strisho|bris|swab|abstrich|tampon/i.test(s) ? 'test-tube-diagonal' : 'test-tubes';
       return SPRITE ? '<svg class="i i-s cat-ico" aria-hidden="true" width="34" height="34"><use href="' + SPRITE + '#' + name + '"/></svg>' : '';
     }
 

@@ -184,7 +184,7 @@ export function testPage(ctx, id) {
     lead: x.d ? clip(firstSentence(x.d), 220) : t.lead_fallback.replace('{c}', cat),
     actions: h`<div class="test-chips">
       ${x.c.map((c) => h`<a class="chip chip-link" href="${esc(ctx.url('analizat'))}?kategoria=${esc(c)}">${esc(catName(c, lang))}</a>`)}
-      ${x.co && h`<span class="chip chip-brand">${icon(/urin/i.test(x.co) ? 'test-tubes' : /bris|tampon|swab/i.test(x.co) ? 'syringe' : 'droplet', { size: 14 })}${esc(x.co)}</span>`}
+      ${x.co && h`<span class="chip chip-brand">${icon(/urin/i.test(x.co) ? 'test-tubes' : /strisho|bris|tampon|swab|abstrich/i.test(x.co) ? 'syringe' : 'droplet', { size: 14 })}${esc(x.co)}</span>`}
       ${x.m?.length > 0 && h`<span class="chip chip-violet">${esc(`${x.m.length} ${t.parts}`)}</span>`}
     </div>`,
     aside: facts,

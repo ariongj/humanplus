@@ -19,7 +19,7 @@ export const SAMPLES = {
   blood: { sq: 'Gjak', en: 'Blood', de: 'Blut' },
   urine: { sq: 'Urinë', en: 'Urine', de: 'Urin' },
   stool: { sq: 'Feçe', en: 'Stool', de: 'Stuhl' },
-  swab: { sq: 'Bris', en: 'Swab', de: 'Abstrich' },
+  swab: { sq: 'Strisho', en: 'Swab', de: 'Abstrich' },
   varies: { sq: 'Gjak ose feçe', en: 'Blood or stool', de: 'Blut oder Stuhl' },
 };
 
@@ -110,7 +110,7 @@ export const PREP = {
     },
   },
   vaginal: {
-    short: { sq: 'Udhëzime për brisin', en: 'Swab instructions', de: 'Hinweise zum Abstrich' },
+    short: { sq: 'Udhëzime për strishon', en: 'Swab instructions', de: 'Hinweise zum Abstrich' },
     text: {
       sq: 'Jo gjatë menstruacioneve. 24–48 orë para: pa marrëdhënie seksuale, pa preparate vaginale dhe pa larje vaginale.',
       en: 'Not during your period. For 24–48 hours before: no intercourse, no vaginal medicines and no douching.',
@@ -122,7 +122,7 @@ export const PREP = {
 // id · category · sample · prep · names · aka (extra search words, abbreviations, other spellings).
 export const TESTS = [
   // Hematologji
-  { id: 'cbc', cat: 'hematologji', sample: 'blood', prep: 'morning', name: { sq: 'Gjaku komplet (hemogrami)', en: 'Complete blood count (CBC)', de: 'Großes Blutbild' }, aka: 'hemogram kks gjak komplet leukocite eritrocite trombocite hemoglobina hgb wbc rbc' },
+  { id: 'cbc', cat: 'hematologji', sample: 'blood', prep: 'morning', name: { sq: 'Hemogrami i plotë', en: 'Complete blood count (CBC)', de: 'Großes Blutbild' }, aka: 'hemogram kks gjak komplet leukocite eritrocite trombocite hemoglobina hgb wbc rbc' },
   { id: 'esr', cat: 'hematologji', sample: 'blood', prep: 'morning', name: { sq: 'Sedimentimi (SE)', en: 'Erythrocyte sedimentation rate (ESR)', de: 'Blutsenkung (BSG)' }, aka: 'se sedimentacioni sedimentimi i eritrociteve' },
   { id: 'pt-inr', cat: 'hematologji', sample: 'blood', prep: 'morning', name: { sq: 'Koha e protrombinës (PT/INR)', en: 'Prothrombin time (PT/INR)', de: 'Prothrombinzeit (Quick/INR)' }, aka: 'pt inr koagulimi protrombina' },
   { id: 'aptt', cat: 'hematologji', sample: 'blood', prep: 'morning', name: { sq: 'aPTT', en: 'aPTT', de: 'aPTT' }, aka: 'ptt koagulimi tromboplastina' },
@@ -206,9 +206,9 @@ export const TESTS = [
   // Mikrobiologji
   { id: 'urine-culture', cat: 'mikrobiologji', sample: 'urine', prep: 'culture', name: { sq: 'Urinokultura me antibiogram', en: 'Urine culture with sensitivity', de: 'Urinkultur mit Antibiogramm' }, aka: 'urinokultura antibiogrami infeksion urinar' },
   { id: 'stool-culture', cat: 'mikrobiologji', sample: 'stool', prep: 'culture', name: { sq: 'Koprokultura', en: 'Stool culture', de: 'Stuhlkultur' }, aka: 'koprokultura feces diarrhea' },
-  { id: 'throat-swab', cat: 'mikrobiologji', sample: 'swab', prep: 'swab', name: { sq: 'Brisi i fytit', en: 'Throat swab', de: 'Rachenabstrich' }, aka: 'bris fyti streptokoku angina' },
-  { id: 'nasal-swab', cat: 'mikrobiologji', sample: 'swab', prep: 'swab', name: { sq: 'Brisi i hundës', en: 'Nasal swab', de: 'Nasenabstrich' }, aka: 'bris hunde' },
-  { id: 'vaginal-swab', cat: 'mikrobiologji', sample: 'swab', prep: 'vaginal', name: { sq: 'Brisi vaginal dhe cervikal', en: 'Vaginal and cervical swab', de: 'Vaginal- und Zervixabstrich' }, aka: 'bris vaginal cervikal gjinekologjik' },
+  { id: 'throat-swab', cat: 'mikrobiologji', sample: 'swab', prep: 'swab', name: { sq: 'Strishoja e fytit', en: 'Throat swab', de: 'Rachenabstrich' }, aka: 'bris fyti streptokoku angina' },
+  { id: 'nasal-swab', cat: 'mikrobiologji', sample: 'swab', prep: 'swab', name: { sq: 'Strishoja e hundës', en: 'Nasal swab', de: 'Nasenabstrich' }, aka: 'bris hunde' },
+  { id: 'vaginal-swab', cat: 'mikrobiologji', sample: 'swab', prep: 'vaginal', name: { sq: 'Strishoja vaginale dhe cervikale', en: 'Vaginal and cervical swab', de: 'Vaginal- und Zervixabstrich' }, aka: 'bris vaginal cervikal gjinekologjik' },
   { id: 'h-pylori', cat: 'mikrobiologji', sample: 'varies', prep: 'none', name: { sq: 'Helicobacter pylori', en: 'Helicobacter pylori', de: 'Helicobacter pylori' }, aka: 'h pylori helikobakter stomaku gastriti' },
   { id: 'hbsag', cat: 'mikrobiologji', sample: 'blood', prep: 'none', name: { sq: 'HBsAg (hepatiti B)', en: 'HBsAg (hepatitis B)', de: 'HBsAg (Hepatitis B)' }, aka: 'hbsag hepatiti b hepatit verdhez' },
   { id: 'anti-hcv', cat: 'mikrobiologji', sample: 'blood', prep: 'none', name: { sq: 'Anti-HCV (hepatiti C)', en: 'Anti-HCV (hepatitis C)', de: 'Anti-HCV (Hepatitis C)' }, aka: 'hcv hepatiti c hepatit' },
@@ -221,7 +221,7 @@ export const TESTS = [
   { id: 'cmv-igm', cat: 'mikrobiologji', sample: 'blood', prep: 'none', name: { sq: 'Citomegalovirusi (CMV) IgM', en: 'Cytomegalovirus (CMV) IgM', de: 'Zytomegalievirus (CMV) IgM' }, aka: 'cmv citomegalovirusi shtatzania torch' },
 
   // Urinë dhe feçe
-  { id: 'urinalysis', cat: 'urine-fece', sample: 'urine', prep: 'urine', name: { sq: 'Urina komplet', en: 'Urinalysis', de: 'Urinuntersuchung (Urinstatus)' }, aka: 'urina urine analiza e urines' },
+  { id: 'urinalysis', cat: 'urine-fece', sample: 'urine', prep: 'urine', name: { sq: 'Analiza e plotë e urinës', en: 'Urinalysis', de: 'Urinuntersuchung (Urinstatus)' }, aka: 'urina komplet urine analiza e urines' },
   { id: 'stool-parasites', cat: 'urine-fece', sample: 'stool', prep: 'stool', name: { sq: 'Fekaloskopia (parazitët në feçe)', en: 'Stool test for parasites', de: 'Stuhl auf Parasiten' }, aka: 'parazitet krimbat fekaloskopi' },
   { id: 'occult-blood', cat: 'urine-fece', sample: 'stool', prep: 'stool', name: { sq: 'Gjaku okult në feçe', en: 'Faecal occult blood', de: 'Okkultes Blut im Stuhl' }, aka: 'gjak ne fece fob' },
   { id: 'calprotectin', cat: 'urine-fece', sample: 'stool', prep: 'stool', name: { sq: 'Kalprotektina në feçe', en: 'Faecal calprotectin', de: 'Calprotectin im Stuhl' }, aka: 'kalprotektina zorret inflamacioni crohn kolit' },
@@ -368,7 +368,7 @@ export const PANELS = [
     name: { sq: 'Anemia dhe hekuri', en: 'Anaemia & iron', de: 'Anämie & Eisen' },
     for: { sq: 'Zbehje, lodhje, marramendje ose menstruacione të bollshme', en: 'Paleness, tiredness, dizziness or heavy periods', de: 'Blässe, Müdigkeit, Schwindel oder starke Regelblutungen' },
     text: {
-      sq: 'Gjaku komplet, retikulocitet, hekuri dhe rezervat e tij, vitamina B12 dhe acidi folik.',
+      sq: 'Hemogrami i plotë, retikulocitet, hekuri dhe rezervat e tij, vitamina B12 dhe acidi folik.',
       en: 'Blood count, reticulocytes, iron and iron stores, vitamin B12 and folic acid.',
       de: 'Blutbild, Retikulozyten, Eisen und Eisenspeicher, Vitamin B12 und Folsäure.',
     },
