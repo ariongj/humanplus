@@ -413,6 +413,41 @@ main:focus { outline: none; }
 .quick-arrow { color: var(--muted); transition: transform 0.25s var(--ease), color 0.2s; }
 .quick-card:hover .quick-arrow { color: var(--brand); transform: translate(2px, -2px); }
 
+/* phones: the first screen shows the clinic (photo), the promise and the test search; booking, calls and WhatsApp
+   sit in the action bar at the bottom, so the two hero buttons give way, and the quick links become tiles */
+@media (max-width: 559px) {
+  .hero { padding: 14px 0 76px; }
+  .hero-in { display: flex; flex-direction: column; align-items: stretch; gap: 22px; }
+  .hero-visual { order: -1; }
+  .hero .hero-photo { aspect-ratio: 16 / 9; border-width: 4px; border-radius: 20px; box-shadow: var(--shadow); }
+  .hero-photo img { object-position: 50% 28%; }
+  .hero-card-status { display: none; } /* the strip under the header already says it */
+  .hero-card-since { display: flex; left: 12px; bottom: 12px; padding: 7px 14px 7px 7px; gap: 10px; border-radius: var(--r-btn); box-shadow: var(--shadow); }
+  .hero-card-since .tile { width: 34px; height: 34px; border-radius: 8px; }
+  .hero-card-since strong { font-size: 0.9rem; }
+  .hero-card-since small { font-size: 0.75rem; }
+  .eyebrow-year { display: none; } /* the badge on the photo says it */
+  .hero h1 { margin-top: 10px; font-size: clamp(1.95rem, 1.2rem + 3.6vw, 2.35rem); line-height: 1.08; }
+  .hero .lead { margin-top: 12px; font-size: 1rem; line-height: 1.55; }
+  .hero .search { margin-top: 20px; }
+  .hero .popular { flex-wrap: nowrap; overflow-x: auto; margin: 12px calc(var(--gutter) * -1) 0; padding: 2px var(--gutter) 4px; scrollbar-width: none; -webkit-mask-image: linear-gradient(90deg, #000 85%, transparent); mask-image: linear-gradient(90deg, #000 85%, transparent); }
+  .hero .popular::-webkit-scrollbar { display: none; }
+  .hero .popular > span { flex: none; }
+  .hero .chip-link { min-height: 44px; padding-inline: 14px; font-size: 0.875rem; }
+  .hero .actions { display: none; }
+  .quick { margin-top: -52px; }
+  .quick-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .quick-card { flex-direction: column; align-items: flex-start; gap: 12px; padding: 16px 16px 18px; }
+  .quick-text strong { font-size: 1rem; line-height: 1.25; }
+  .quick-text span { display: none; }
+  .quick-arrow { position: absolute; top: 16px; right: 14px; }
+}
+@media (max-width: 379px) {
+  .eyebrow-org, .hero-card-since small { display: none; }
+  .hero-card-since { left: 10px; bottom: 10px; padding: 5px 12px 5px 5px; gap: 8px; }
+  .hero-card-since .tile { width: 30px; height: 30px; }
+}
+
 /* ---------- sections ---------- */
 .section { padding: 64px 0; }
 .section-tight { padding: 40px 0 56px; }

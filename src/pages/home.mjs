@@ -224,7 +224,7 @@ export function homePage(ctx) {
     ${labBackground('hero')}
     <div class="wrap hero-in">
       <div class="hero-text">
-        <p class="eyebrow">${esc(t.eyebrow)}</p>
+        <p class="eyebrow">${(([org, place, year]) => h`<span><span class="eyebrow-org">${esc(org)} · </span>${esc(place)}<span class="eyebrow-year"> · ${esc(year)}</span></span>`)(t.eyebrow.split(' · '))}</p>
         <h1>${accent(t.h1)}</h1>
         <p class="lead">${esc(t.lead)}</p>
         ${testSearch(ctx, { id: 'hero-q', big: true })}

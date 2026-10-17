@@ -148,9 +148,9 @@ export function panelCard(ctx, p, { full = false } = {}) {
 /** Hero-style search box that submits to /analizat/?q=… (works without JS; JS filters in place). */
 export function testSearch(ctx, { id = 'q', big = false, autofocus = false, value = '', landmark = true } = {}) {
   const T = {
-    sq: { label: 'Kërko një analizë', ph: 'p.sh. vitamina D, TSH, gjaku komplet', go: 'Kërko' },
-    en: { label: 'Search for a test', ph: 'e.g. vitamin D, TSH, blood count', go: 'Search' },
-    de: { label: 'Analyse suchen', ph: 'z. B. Vitamin D, TSH, Blutbild', go: 'Suchen' },
+    sq: { label: 'Kërko një analizë', ph: 'p.sh. vitamina D, TSH', go: 'Kërko' },
+    en: { label: 'Search for a test', ph: 'e.g. vitamin D, TSH', go: 'Search' },
+    de: { label: 'Analyse suchen', ph: 'z. B. Vitamin D, TSH', go: 'Suchen' },
   }[ctx.lang];
   return h`<form class="search${big ? ' search-big' : ''}"${landmark && ' role="search"'} action="${esc(ctx.url('analizat'))}" method="get" data-search-form>
     <label class="sr-only" for="${id}">${esc(T.label)}</label>
