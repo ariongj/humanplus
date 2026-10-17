@@ -213,10 +213,7 @@ export const SERVICE_WORDS = {
   'laboratori-biokimik-dhe-hematologjik': ['biokim', 'hematolog', 'biochem', 'haematolog', 'hamatolog'],
   'laboratori-mikrobiologjik': ['mikrobiolog', 'microbiolog', 'kultur', 'culture', 'antibiogram'],
   'mjekesi-familjare': ['familjar', 'family doctor', 'family medicine', 'general practi', 'hausarzt', 'allgemeinmed'],
-  urologji: ['urolog', 'prostat'],
   endokrinologji: ['endokrin', 'endocrin', 'diabet'],
-  gastroenterologji: ['gastro', 'stomak', 'lukth', 'zorr', 'stomach', 'bowel', 'magen', 'darm', 'reflux', 'refluks'],
-  dermatologji: ['dermatolog', 'lekur', 'skin', 'haut', 'akne', 'acne'],
   'suplemente-dhe-nutricion': ['suplement', 'nutricion', 'dieta', 'supplement', 'nutrition', 'diet', 'ernahr', 'nahrungserg'],
 };
 

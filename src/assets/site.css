@@ -436,6 +436,12 @@ main:focus { outline: none; }
 
 /* service cards */
 .svc-grid { display: grid; gap: 14px; }
+/* home: the eighth card, for visitors who do not know which department they need */
+.svc-help-in { display: flex; flex-direction: column; height: 100%; padding: 22px; border-radius: var(--r-lg); background: var(--deep); color: #e3efe8; }
+.svc-help-in .tile { background: rgb(255 255 255 / 0.1); color: var(--green); }
+.svc.svc-help h3 { margin-top: 14px; font-size: 1.2rem; color: #fff; }
+.svc.svc-help p { margin-top: 8px; color: #d5e3da; font-size: 0.95rem; flex: 1; }
+.svc-help-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
 /* German compounds (Nahrungsergänzung, Gewebstransglutaminase…) break with a hyphen instead of widening narrow cards */
 html[lang='de'] body { hyphens: auto; overflow-wrap: break-word; }
 .svc-link { display: flex; flex-direction: column; height: 100%; padding: 22px; background: var(--surface); border: 1px solid var(--line); border-top: 3px solid var(--green); border-radius: var(--r-lg); text-decoration: none; transition: border-color 0.2s, box-shadow 0.25s; }
@@ -1184,7 +1190,9 @@ html[lang='de'] body { hyphens: auto; overflow-wrap: break-word; }
   .btn-book { display: inline-flex; }
   .logo { width: 146px; }
   .svc-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-  .page-home .svc-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .page-home .svc-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .svc-grid-5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .svc-grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .panel-grid { grid-template-columns: repeat(4, 1fr); }
   .panel-grid-full { grid-template-columns: repeat(3, 1fr); }
   .prep-grid { grid-template-columns: repeat(3, 1fr); }

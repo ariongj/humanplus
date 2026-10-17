@@ -41,7 +41,14 @@ function target(url) {
   return file;
 }
 
-for (const f of html) {
+// Redirect pages (old addresses): only check that they lead to a page that exists.
+const isRedirect = (f) => /<meta http-equiv="refresh"/.test(src.get(f));
+for (const f of html.filter(isRedirect)) {
+  const to = (src.get(f).match(/http-equiv="refresh" content="0; url=([^"]+)"/) || [])[1];
+  if (!to || !fs.existsSync(target(to))) err(f, `redirect to a missing page (${to})`);
+}
+
+for (const f of html.filter((x) => !isRedirect(x))) {
   const s = src.get(f);
   const rel = path.relative(DIST, f);
   const is404 = /(^|\/)404\.html$/.test(rel);
@@ -97,11 +104,11 @@ for (const f of html) {
 const sitemap = fs.readFileSync(path.join(DIST, 'sitemap.xml'), 'utf8');
 const locs = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => new URL(m[1]).pathname);
 for (const p of locs) if (!fs.existsSync(target(p))) errors.push(`sitemap.xml: ${p} has no file`);
-const pages = html.filter((f) => !/404\.html$/.test(f)).length;
+const pages = html.filter((f) => !/404\.html$/.test(f) && !isRedirect(f)).length;
 if (locs.length !== pages) errors.push(`sitemap.xml: ${locs.length} URLs for ${pages} pages`);
 
 if (errors.length) {
   console.error(`✗ ${errors.length} problem(s):\n  ${errors.join('\n  ')}`);
   process.exit(1);
 }
-console.log(`✓ ${html.length} HTML files, ${locs.length} sitemap URLs — links, anchors, images, titles, descriptions, hreflang, ids and JSON-LD OK`);
+console.log(`✓ ${html.length} HTML files (${html.filter(isRedirect).length} redirects), ${locs.length} sitemap URLs — links, anchors, images, titles, descriptions, hreflang, ids and JSON-LD OK`);

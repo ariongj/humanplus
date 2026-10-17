@@ -152,15 +152,6 @@
   "position": "50% 35%",
   "credit": "Unsplash photo-1758691462123-8a17ae95d203 (Unsplash License)"
  },
- "sherbim-urologji": {
-  "alt": {
-   "sq": "Mjek me syze shkruan në tryezën e ordinancës",
-   "en": "A doctor in glasses writes at his desk",
-   "de": "Ein Arzt mit Brille schreibt an seinem Schreibtisch"
-  },
-  "position": "50% 22%",
-  "credit": "Unsplash photo-1758691463198-dc663b8a64e4 (Unsplash License)"
- },
  "sherbim-endokrinologji": {
   "alt": {
    "sq": "Mjeke me stetoskop në ordinancë",
@@ -169,24 +160,6 @@
   },
   "position": "50% 22%",
   "credit": "Unsplash photo-1758691462858-f1286e5daf40 (Unsplash License)"
- },
- "sherbim-gastroenterologji": {
-  "alt": {
-   "sq": "Mjek me stetoskop bisedon me pacientin",
-   "en": "A doctor with a stethoscope talks with a patient",
-   "de": "Ein Arzt mit Stethoskop spricht mit einem Patienten"
-  },
-  "position": "50% 22%",
-  "credit": "Unsplash photo-1758691461935-202e2ef6b69f (Unsplash License)"
- },
- "sherbim-dermatologji": {
-  "alt": {
-   "sq": "Mjeke me stetoskop në dorë",
-   "en": "A doctor holding a stethoscope",
-   "de": "Eine Ärztin mit einem Stethoskop in der Hand"
-  },
-  "position": "50% 40%",
-  "credit": "Unsplash photo-1638202993928-7267aad84c31 (Unsplash License)"
  },
  "sherbim-suplemente-dhe-nutricion": {
   "alt": {

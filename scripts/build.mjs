@@ -11,7 +11,7 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { SITE, LANGS, SOCIALS } from '../src/data/site.mjs';
-import { SERVICES } from '../src/data/services.mjs';
+import { SERVICES, RETIRED_SERVICES } from '../src/data/services.mjs';
 import { layout } from '../src/lib/layout.mjs';
 import { iconSprite, useIconSprite } from '../src/lib/html.mjs';
 import { homePage } from '../src/pages/home.mjs';
@@ -23,6 +23,7 @@ import { aboutPage, contactPage, faqPage, notFoundPage } from '../src/pages/cent
 import { sceneFiles, photoFiles, PHOTO_DIR } from '../src/lib/photo.mjs';
 import { TEST_ROUTES } from '../src/pages/test.mjs';
 import { chatData } from '../src/lib/chat.mjs';
+import { UI } from '../src/data/ui.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DIST = path.resolve(ROOT, process.env.OUT_DIR || 'dist');
@@ -97,7 +98,7 @@ function clinicJsonLd(lang) {
     openingHoursSpecification: Object.entries(SITE.hours)
       .filter(([, v]) => v)
       .map(([d, [opens, closes]]) => ({ '@type': 'OpeningHoursSpecification', dayOfWeek: `https://schema.org/${days[d]}`, opens, closes })),
-    medicalSpecialty: ['Pediatric', 'Gynecologic', 'PrimaryCare', 'Urologic', 'Endocrine', 'Gastroenterologic', 'Dermatology', 'LaboratoryScience'].map((s) => `https://schema.org/${s}`),
+    medicalSpecialty: ['Pediatric', 'Gynecologic', 'PrimaryCare', 'Endocrine', 'LaboratoryScience'].map((s) => `https://schema.org/${s}`),
     availableLanguage: LANGS,
     sameAs: SOCIALS.map((s) => s.url),
     contactPoint: SITE.phones.map((p) => ({ '@type': 'ContactPoint', telephone: p.tel, contactType: 'customer service', availableLanguage: LANGS })),
@@ -213,6 +214,17 @@ for (const lang of LANGS) {
   ctx.page = page;
   write(lang === 'sq' ? '404.html' : `${lang}/404.html`, layout(ctx, page.body));
 }
+// Departments the clinic no longer lists: their old addresses send visitors on to the services page (not in the
+// sitemap, not indexed; the production .htaccess also answers them with a 301).
+for (const lang of LANGS) {
+  const to = urlFor('sherbimet', lang);
+  for (const slug of RETIRED_SERVICES) {
+    write(
+      path.join(lang === 'sq' ? '' : lang, `sherbim/${slug}`, 'index.html'),
+      `<!doctype html>\n<html lang="${lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>${SITE.fullName}</title><meta name="robots" content="noindex"><link rel="canonical" href="${ORIGIN}${to}"><meta http-equiv="refresh" content="0; url=${to}"></head>\n<body><p><a href="${to}">${UI[lang].nav_services} · ${SITE.fullName}</a></p></body></html>\n`,
+    );
+  }
+}
 // Illustrated scenes used by the pages (stand-ins until the clinic's photos are in src/assets/photos/).
 const scenes = sceneFiles();
 for (const [name, svg] of scenes) write(`assets/scenes/${name}`, svg);
@@ -261,7 +273,7 @@ write(
   'llms.txt',
   `# ${SITE.fullName}
 
-> Diagnostic centre in Prishtina, Kosovo, since ${SITE.founded}: biochemistry, haematology and microbiology laboratory (continuing the ${SITE.predecessor} laboratory), paediatrics, gynaecology, family medicine, urology, endocrinology, gastroenterology, dermatology, supplements and nutrition.
+> Diagnostic centre in Prishtina, Kosovo, since ${SITE.founded}: biochemistry, haematology and microbiology laboratory (continuing the ${SITE.predecessor} laboratory), paediatrics, gynaecology, family medicine, endocrinology, supplements and nutrition.
 
 - Address: ${SITE.address.street}, ${SITE.address.postalCode} ${SITE.address.cityEn}, Kosovo
 - Phone: ${SITE.phones.map((p) => p.display).join(' · ')}
@@ -284,6 +296,7 @@ if (PRODUCTION) {
 Options -Indexes
 DirectoryIndex index.html
 ErrorDocument 404 ${BASE}404.html
+${LANGS.flatMap((lang) => RETIRED_SERVICES.map((slug) => `Redirect 301 ${urlFor(`sherbim/${slug}`, lang)} ${urlFor('sherbimet', lang)}`)).join('\n')}
 
 <IfModule mod_rewrite.c>
   RewriteEngine On

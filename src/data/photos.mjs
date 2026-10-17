@@ -67,9 +67,6 @@ export const SERVICE_PHOTOS = {
   'laboratori-biokimik-dhe-hematologjik': PHOTOS.analyzer,
   'laboratori-mikrobiologjik': PHOTOS.lab,
   'mjekesi-familjare': consult({ skin: 'b', hair: 'short', hairColor: '#16110e', glasses: true }),
-  urologji: consult({ skin: 'a', hair: 'short', hairColor: '#5a3520' }, 'ultrasound'),
   endokrinologji: consult({ skin: 'c', hair: 'bun', hairColor: '#16110e' }),
-  gastroenterologji: consult({ skin: 'b', hair: 'short', hairColor: '#9aa3ab', glasses: true }, 'ultrasound'),
-  dermatologji: consult({ skin: 'a', hair: 'bob', hairColor: '#7a3b1e' }),
   'suplemente-dhe-nutricion': consult({ skin: 'b', hair: 'long', hairColor: '#5a3520' }),
 };

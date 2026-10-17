@@ -38,7 +38,7 @@ links such as `/en/sherbim/pediatri/` keep working.
 | Page | Address | What it does |
 | --- | --- | --- |
 | Ballina / Home | `/` | hero with a doctor and the lab, test search and live opening status; quick actions, services, inside the centre (lab, sample room, paediatrics, specialists, reception), lab, check-ups, paediatrics, how it works, hours, FAQ |
-| Shërbimet / Services | `/sherbimet/` | the ten departments, specialists and laboratory |
+| Shërbimet / Services | `/sherbimet/` | the seven departments, specialists and laboratory |
 | Department pages | `/sherbim/<slug>/` | a picture of that department, what it offers, its most requested tests (add to list), book / WhatsApp / call |
 | Analizat / Lab tests | `/analizat/` | the full catalogue: search (Albanian, Serbian, abbreviations), 20 categories, details (description, sample, preparation, components), "Add" to *My list* |
 | Paketat / Check-ups | `/paketat/` | 20 panels in four groups — general (basic, children, women, men 40+, vitamins); sugar, heart and organs (diabetes, heart, thyroid, kidneys, liver, anaemia, bones, stomach & bowel); immunity, joints and allergies (autoimmune, joints & rheumatism, allergy); hormones, pregnancy and procedures (female hormones / PCOS, pregnancy first check, before surgery, hepatitis / HIV / syphilis) — add a whole panel or ask the price |
@@ -48,8 +48,10 @@ links such as `/en/sherbim/pediatri/` keep working.
 | Kontakt / Contact | `/kontakt/` | address and map link, three phones, WhatsApp, Viber, e-mail, Facebook, hours, message form |
 | Pyetje / FAQ | `/pyetje/` | ten questions (FAQPage data for Google) |
 
-The ten departments: Pediatri, Gjinekologji, Laboratori Biokimik dhe Hematologjik, Laboratori Mikrobiologjik,
-Mjekësi Familjare, Urologji, Endokrinologji, Gastroenterologji, Dermatologji, Suplemente dhe Nutricion.
+The seven departments: Pediatri, Gjinekologji, Laboratori Biokimik dhe Hematologjik, Laboratori Mikrobiologjik,
+Mjekësi Familjare, Endokrinologji, Suplemente dhe Nutricion. Urology, gastroenterology and dermatology were taken off
+(October 2026); their old addresses (`/sherbim/urologji/` …, in every language) lead to `/sherbimet/` – a redirect page,
+and a 301 in `.htaccess` on the production server (`RETIRED_SERVICES` in `src/data/services.mjs`).
 
 ### On every page
 
@@ -114,7 +116,7 @@ request by e-mail.
 A chat window on every page (*Pyetni asistentin* / *Ask our assistant* / *Assistent fragen*) that answers **only
 from what the site already says**: opening hours with the live status, the address with directions and the map,
 phones, WhatsApp, Viber, e-mail and social profiles, how booking works, the preparation guide, the check-up panels,
-the ten departments, the FAQ, and the full lab catalogue – type a test name ("vitamina D", "TSH", "Harnsäure") to get
+the seven departments, the FAQ, and the full lab catalogue – type a test name ("vitamina D", "TSH", "Harnsäure") to get
 its sample and preparation with an **Add to list** button. Price questions get the clinic's answer (reception gives
 prices) plus the list and WhatsApp; anything it does not know goes to reception on WhatsApp with the question
 already typed.
@@ -271,7 +273,7 @@ JPEG, WebP, PNG or AVIF, about 1600 px on the long side; optionally a phone copy
 | `reception` | *inside the centre* | the reception with the Human+ logo |
 | `about`, `contact` | about and contact page headers | the reception with the Human+ logo |
 | `team-doctor`, `team-lab`, `team-nurse` | about page, the team | portraits of the three roles |
-| `sherbim-<slug>` (e.g. `sherbim-urologji`) | that department's page | the specialist's room, drawn with a different doctor per department |
+| `sherbim-<slug>` (e.g. `sherbim-pediatri`) | that department's page | the specialist's room, drawn with a different doctor per department |
 
 Use only the clinic's own photos, with the permission of everyone who can be recognised in them (patients only with
 written consent; avoid screens and papers with patient data). Good first set: the building and entrance, reception,
@@ -316,7 +318,7 @@ before launch – stock people must never be presented as Human+ staff (no names
 | File | What it is |
 | --- | --- |
 | `src/data/site.mjs` | **name, address, phones, WhatsApp / Viber number, e-mail, Facebook, opening hours, booking slots** – edit this first |
-| `src/data/services.mjs` | the ten departments: names, texts, what they offer, related tests |
+| `src/data/services.mjs` | the seven departments: names, texts, what they offer, related tests; `RETIRED_SERVICES` (old addresses that redirect) |
 | `src/data/catalogue.json` | the full lab catalogue behind `/analizat/` (made by `scripts/import-catalogue.mjs`) |
 | `src/data/tests.mjs` | the 89 common tests used on department pages and in the check-up panels (sq, en, de), preparation rules, the panels and their groups (`PANEL_GROUPS`), links to their catalogue pages |
 | `src/data/lab-notes.mjs` | the *Good to know* notes on test pages (sq, en, de, with medical sources) and which tests get them |

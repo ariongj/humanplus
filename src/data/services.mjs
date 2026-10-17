@@ -3,6 +3,10 @@
 // Pediatrics text follows the previous site; the other descriptions describe each specialty's usual scope and
 // stay deliberately general — confirm the details with the clinic (README → What is placeholder).
 
+// Departments the clinic no longer lists. Their old addresses (/sherbim/<slug>/ in every language) send visitors to
+// /sherbimet/ (a redirect page, and a 301 in .htaccess on the production server) — see scripts/build.mjs.
+export const RETIRED_SERVICES = ['urologji', 'gastroenterologji', 'dermatologji'];
+
 export const SERVICES = [
   {
     slug: 'pediatri',
@@ -215,43 +219,6 @@ export const SERVICES = [
     tests: ['cbc', 'glucose', 'hba1c', 'cholesterol', 'creatinine', 'tsh', 'urinalysis'],
   },
   {
-    slug: 'urologji',
-    icon: 'droplets',
-    tone: 'sky',
-    name: { sq: 'Urologji', en: 'Urology', de: 'Urologie' },
-    short: {
-      sq: 'Konsultë për veshkat, fshikëzën dhe prostatën — me analiza të urinës dhe PSA në të njëjtën qendër.',
-      en: 'Consultations for the kidneys, bladder and prostate — with urine tests and PSA in the same centre.',
-      de: 'Sprechstunde für Nieren, Blase und Prostata — mit Urinuntersuchungen und PSA im selben Zentrum.',
-    },
-    intro: {
-      sq: 'Shqetësimet urinare janë të zakonshme dhe shpesh trajtohen lehtë kur zbulohen herët. Urologu ju dëgjon, ju ekzaminon dhe, kur duhet, kërkon analizat përkatëse këtu në laborator.',
-      en: 'Urinary problems are common and often easy to treat when found early. The urologist listens, examines you and, where needed, orders the right tests here in our laboratory.',
-      de: 'Harnwegsbeschwerden sind häufig und lassen sich oft gut behandeln, wenn sie früh erkannt werden. Der Urologe hört Ihnen zu, untersucht Sie und veranlasst bei Bedarf die passenden Tests hier in unserem Labor.',
-    },
-    items: {
-      sq: [
-        'Konsultë urologjike',
-        'Probleme me urinimin dhe infeksione urinare',
-        'Kontroll i prostatës dhe PSA',
-        'Shqetësime të veshkave dhe të fshikëzës',
-      ],
-      en: [
-        'Urology consultation',
-        'Urination problems and urinary tract infections',
-        'Prostate check and PSA',
-        'Kidney and bladder concerns',
-      ],
-      de: [
-        'Urologische Sprechstunde',
-        'Probleme beim Wasserlassen und Harnwegsinfektionen',
-        'Prostatauntersuchung und PSA',
-        'Beschwerden an Nieren und Blase',
-      ],
-    },
-    tests: ['psa-total', 'psa-free', 'urinalysis', 'urine-culture', 'creatinine', 'urea'],
-  },
-  {
     slug: 'endokrinologji',
     icon: 'activity',
     tone: 'violet',
@@ -292,86 +259,6 @@ export const SERVICES = [
     tests: ['tsh', 'ft4', 'ft3', 'anti-tpo', 'glucose', 'hba1c', 'insulin', 'cortisol'],
   },
   {
-    slug: 'gastroenterologji',
-    icon: 'apple',
-    tone: 'mint',
-    name: { sq: 'Gastroenterologji', en: 'Gastroenterology', de: 'Gastroenterologie' },
-    short: {
-      sq: 'Stomaku, zorrët dhe mëlçia: konsultë për dhimbje barku, refluks, Helicobacter pylori dhe tretjen.',
-      en: 'Stomach, bowel and liver: consultations for abdominal pain, reflux, Helicobacter pylori and digestion.',
-      de: 'Magen, Darm und Leber: Sprechstunde bei Bauchschmerzen, Reflux, Helicobacter pylori und Verdauungsbeschwerden.',
-    },
-    intro: {
-      sq: 'Dhimbja e barkut, fryrja apo refluksi nuk duhet të bëhen pjesë e përditshmërisë. Gastroenterologu e kërkon shkakun me ju — shpesh duke filluar nga analiza të thjeshta të gjakut dhe të feçes.',
-      en: 'Abdominal pain, bloating or reflux should not become part of everyday life. The gastroenterologist looks for the cause with you — often starting with simple blood and stool tests.',
-      de: 'Bauchschmerzen, Blähungen oder Reflux sollten nicht zum Alltag gehören. Der Gastroenterologe sucht gemeinsam mit Ihnen nach der Ursache — oft beginnend mit einfachen Blut- und Stuhluntersuchungen.',
-    },
-    items: {
-      sq: [
-        'Dhimbje barku, fryrje dhe probleme të tretjes',
-        'Refluksi dhe gastriti',
-        'Helicobacter pylori',
-        'Funksioni i mëlçisë — AST, ALT, GGT',
-        'Intoleranca ushqimore',
-      ],
-      en: [
-        'Abdominal pain, bloating and digestive problems',
-        'Reflux and gastritis',
-        'Helicobacter pylori',
-        'Liver function — AST, ALT, GGT',
-        'Food intolerance',
-      ],
-      de: [
-        'Bauchschmerzen, Blähungen und Verdauungsprobleme',
-        'Reflux und Gastritis',
-        'Helicobacter pylori',
-        'Leberfunktion — AST, ALT, GGT',
-        'Nahrungsmittelunverträglichkeit',
-      ],
-    },
-    tests: ['h-pylori', 'ast', 'alt', 'ggt', 'bilirubin', 'amylase', 'occult-blood', 'food-intolerance'],
-  },
-  {
-    slug: 'dermatologji',
-    icon: 'scan-face',
-    tone: 'rose',
-    name: { sq: 'Dermatologji', en: 'Dermatology', de: 'Dermatologie' },
-    short: {
-      sq: 'Lëkura, flokët dhe thonjtë: konsultë për akne, ekzemë, alergji të lëkurës dhe nishane.',
-      en: 'Skin, hair and nails: consultations for acne, eczema, skin allergies and moles.',
-      de: 'Haut, Haare und Nägel: Sprechstunde bei Akne, Ekzemen, Hautallergien und Muttermalen.',
-    },
-    intro: {
-      sq: 'Lëkura shpesh tregon atë që ndodh brenda trupit. Dermatologu ju ndihmon me trajtim dhe, kur duhet, me analiza — për shembull hekurin, vitaminën D ose tiroiden te rënia e flokëve.',
-      en: 'The skin often shows what happens inside the body. The dermatologist helps with treatment and, where needed, with tests — for example iron, vitamin D or thyroid for hair loss.',
-      de: 'Die Haut zeigt oft, was im Inneren des Körpers vor sich geht. Der Dermatologe hilft mit einer Behandlung und bei Bedarf mit Laboruntersuchungen — zum Beispiel Eisen, Vitamin D oder Schilddrüsenwerte bei Haarausfall.',
-    },
-    items: {
-      sq: [
-        'Akne',
-        'Ekzema dhe dermatiti',
-        'Alergji të lëkurës dhe urtikaria',
-        'Kontroll i nishaneve',
-        'Rënia e flokëve dhe problemet e thonjve',
-      ],
-      en: [
-        'Acne',
-        'Eczema and dermatitis',
-        'Skin allergies and hives',
-        'Mole check',
-        'Hair loss and nail problems',
-      ],
-      de: [
-        'Akne',
-        'Ekzeme und Dermatitis',
-        'Hautallergien und Nesselsucht',
-        'Kontrolle von Muttermalen',
-        'Haarausfall und Nagelprobleme',
-      ],
-    },
-    tests: ['ferritin', 'vitd', 'tsh', 'ige', 'allergy-panel'],
-  },
-  {
     slug: 'suplemente-dhe-nutricion',
     icon: 'leaf',
     tone: 'sun',
@@ -379,7 +266,7 @@ export const SERVICES = [
     short: {
       sq: 'Këshillim për ushqyerjen dhe suplementet ushqimore — bazuar në analizat tuaja.',
       en: 'Advice on nutrition and food supplements — based on your test results.',
-      de: 'Beratung zu Ernährung und Nahrungsergänzungsmitteln — auf Grundlage Ihrer Laborergebnisse.',
+      de: 'Beratung zu Ernährung und Nahrungsergänzung — auf Grundlage Ihrer Laborergebnisse.',
     },
     intro: {
       sq: 'Suplementi i duhur fillon nga analiza e duhur. Shikojmë së bashku vlerat tuaja dhe ju këshillojmë për ushqyerjen dhe suplementet ushqimore që kanë kuptim për ju.',

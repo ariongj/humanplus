@@ -32,7 +32,9 @@ const T = dict('home', {
     q4_t: 'Përgatitja',
     q4_d: 'Esëll apo jo? Si merret mostra?',
     svc_eyebrow: 'Shërbimet',
-    svc_title: 'Një qendër, *dhjetë* shërbime.',
+    svc_help: 'Nuk e dini ku të filloni?',
+    svc_help_text: 'Na shkruani çfarë ju shqetëson — ju drejtojmë te mjeku ose te analiza e duhur.',
+    svc_title: 'Një qendër, *shtatë* shërbime.',
     svc_text: 'Nga kontrolli i parë i fëmijës deri te analizat hormonale dhe kulturat mikrobiologjike — mjekët dhe laboratori punojnë së bashku, në të njëjtën ndërtesë.',
     lab_eyebrow: 'Laboratori',
     lab_title: 'Laboratori ynë, *vazhdimësi* e BAKTOLAB.',
@@ -96,7 +98,9 @@ const T = dict('home', {
     q4_t: 'Preparation',
     q4_d: 'Fasting or not? How is the sample taken?',
     svc_eyebrow: 'Services',
-    svc_title: 'One centre, *ten* services.',
+    svc_help: 'Not sure where to start?',
+    svc_help_text: 'Tell us what is bothering you — we point you to the right doctor or test.',
+    svc_title: 'One centre, *seven* services.',
     svc_text: 'From a child’s first check-up to hormone tests and microbiology cultures — doctors and laboratory work together, in the same building.',
     lab_eyebrow: 'Laboratory',
     lab_title: 'Our laboratory, *continuing* BAKTOLAB.',
@@ -160,7 +164,9 @@ const T = dict('home', {
     q4_t: 'Vorbereitung',
     q4_d: 'Nüchtern oder nicht? Wie wird die Probe entnommen?',
     svc_eyebrow: 'Leistungen',
-    svc_title: 'Ein Zentrum, *zehn* Leistungen.',
+    svc_help: 'Unsicher, wo Sie anfangen sollen?',
+    svc_help_text: 'Schreiben Sie uns, was Sie beschäftigt — wir zeigen Ihnen den richtigen Arzt oder die passende Analyse.',
+    svc_title: 'Ein Zentrum, *sieben* Leistungen.',
     svc_text: 'Von der ersten Untersuchung Ihres Kindes bis zu Hormonanalysen und mikrobiologischen Kulturen — Ärzte und Labor arbeiten zusammen, im selben Gebäude.',
     lab_eyebrow: 'Labor',
     lab_title: 'Unser Labor, die *Fortführung* von BAKTOLAB.',
@@ -274,7 +280,17 @@ export function homePage(ctx) {
         ${sectionHead({ eyebrow: t.svc_eyebrow, title: t.svc_title, text: t.svc_text, id: 'h-svc' })}
         <a class="btn btn-outline" href="${esc(ctx.url('sherbimet'))}">${esc(u.all_services)}${icon('arrow-right', { size: 18 })}</a>
       </div>
-      <ul class="svc-grid">${SERVICES.map((s, i) => serviceCard(ctx, s, i))}</ul>
+      <ul class="svc-grid">${SERVICES.map((s, i) => serviceCard(ctx, s, i))}
+        <li class="svc svc-help reveal"><div class="svc-help-in">
+          <span class="tile">${icon('message-circle-question', { size: 22 })}</span>
+          <h3>${esc(t.svc_help)}</h3>
+          <p>${esc(t.svc_help_text)}</p>
+          <div class="svc-help-actions">
+            <a class="btn btn-wa btn-sm" href="${esc(ctx.wa())}" target="_blank" rel="noopener">${brand('whatsapp', { size: 16 })}WhatsApp</a>
+            <a class="btn btn-light btn-sm" href="${esc(ctx.url('rezervo'))}">${icon('calendar-check', { size: 16 })}${esc(u.book_short)}</a>
+          </div>
+        </div></li>
+      </ul>
     </div>
   </section>`;
 

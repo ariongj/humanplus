@@ -171,6 +171,32 @@ const categories = Object.values(CATS)
   })
   .filter((c) => c.count > 0);
 
+// Corrections to the Albanian texts (src/data/catalogue-fixes.json, hand-editable), applied after the page addresses
+// are made so a corrected name keeps its URL: { "<id>": { "n": [[old, new]], "d": [[old, new]] },
+// "text": { "<whole sample / collection / preparation text>": "<corrected text>" } }. The old name stays searchable.
+{
+  const file = path.join(ROOT, 'src/data/catalogue-fixes.json');
+  const FIX = fs.existsSync(file) ? JSON.parse(fs.readFileSync(file, 'utf8')) : {};
+  const TEXT = FIX.text ?? {};
+  let applied = 0;
+  for (const x of entries) {
+    const f = FIX[x.id];
+    if (f) {
+      for (const field of ['n', 'd']) {
+        for (const [from, to] of f[field] ?? []) {
+          if (!x[field] || !x[field].includes(from)) throw new Error(`catalogue-fixes: "${from}" is not in ${x.id}.${field}`);
+          x[field] = x[field].split(from).join(to);
+          applied++;
+        }
+      }
+      if (f.n) x.q = fold([x.q, x.n].join(' '));
+    }
+    for (const field of ['sp', 'co', 'p']) if (x[field] && TEXT[x[field]]) { x[field] = TEXT[x[field]]; applied++; }
+  }
+  if (applied) console.log(`catalogue-fixes: ${applied} correction(s)`);
+  entries.sort((a, b) => a.n.localeCompare(b.n, 'sq'));
+}
+
 // Nothing about the source may remain in what is shown.
 const leaks = entries.filter((x) => SOURCE.test([x.n, x.d, x.sp, x.co, x.p, ...x.m].filter(Boolean).join(' ')) && /beo.?lab|beograd|resavsk|\bfaq|rsd|\bdin\b/i.test([x.d, x.sp, x.co, x.p].filter(Boolean).join(' ')));
 if (leaks.length) {

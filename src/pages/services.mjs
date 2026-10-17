@@ -8,9 +8,9 @@ import { pageHero, sectionHead, serviceCard, testRow, ctaBand, TEST_BY_ID } from
 const T = dict('services', {
   sq: {
     title: 'Shërbimet — pediatri, gjinekologji, laborator dhe specialistë',
-    description: 'Dhjetë shërbime në Human+ Prishtinë: pediatri, gjinekologji, laborator biokimik, hematologjik dhe mikrobiologjik, mjekësi familjare, urologji, endokrinologji, gastroenterologji, dermatologji, nutricion.',
+    description: 'Shtatë shërbime në Human+ Prishtinë: pediatri, gjinekologji, laborator biokimik, hematologjik dhe mikrobiologjik, mjekësi familjare, endokrinologji, suplemente dhe nutricion.',
     eyebrow: 'Shërbimet',
-    h1: 'Dhjetë shërbime, *një* qendër.',
+    h1: 'Shtatë shërbime, *një* qendër.',
     lead: 'Mjekët specialistë dhe laboratori punojnë në të njëjtën ndërtesë — analizat që kërkon mjeku i bëni aty për aty, dhe rezultatet i shqyrtoni me të njëjtin ekip.',
     lab_group: 'Laboratori',
     doc_group: 'Mjekët specialistë',
@@ -31,9 +31,9 @@ const T = dict('services', {
   },
   en: {
     title: 'Services — paediatrics, gynaecology, laboratory and specialists',
-    description: 'Ten services at Human+ Prishtina: paediatrics, gynaecology, biochemistry, haematology and microbiology laboratory, family medicine, urology, endocrinology, gastroenterology, dermatology, nutrition.',
+    description: 'Seven services at Human+ Prishtina: paediatrics, gynaecology, biochemistry, haematology and microbiology laboratory, family medicine, endocrinology, supplements and nutrition.',
     eyebrow: 'Services',
-    h1: 'Ten services, *one* centre.',
+    h1: 'Seven services, *one* centre.',
     lead: 'Specialists and the laboratory work in the same building — the tests your doctor asks for are done on the spot, and you go through the results with the same team.',
     lab_group: 'Laboratory',
     doc_group: 'Specialists',
@@ -53,9 +53,9 @@ const T = dict('services', {
   },
   de: {
     title: 'Leistungen — Kinderheilkunde, Gynäkologie, Labor und Fachärzte',
-    description: 'Zehn Leistungen bei Human+ Prishtina: Kinderheilkunde, Gynäkologie, Labor für Biochemie, Hämatologie und Mikrobiologie, Allgemeinmedizin, Urologie, Endokrinologie, Gastroenterologie, Dermatologie, Ernährung.',
+    description: 'Sieben Leistungen bei Human+ Prishtina: Kinderheilkunde, Gynäkologie, Labor für Biochemie, Hämatologie und Mikrobiologie, Allgemeinmedizin, Endokrinologie, Nahrungsergänzung und Ernährung.',
     eyebrow: 'Leistungen',
-    h1: 'Zehn Leistungen, *ein* Zentrum.',
+    h1: 'Sieben Leistungen, *ein* Zentrum.',
     lead: 'Fachärzte und Labor arbeiten im selben Gebäude — die Analysen, die Ihr Arzt anordnet, werden direkt vor Ort durchgeführt, und die Ergebnisse besprechen Sie mit demselben Team.',
     lab_group: 'Labor',
     doc_group: 'Fachärzte',
@@ -81,10 +81,11 @@ export function servicesPage(ctx) {
   const { lang } = ctx;
   const t = T[lang];
   const hero = pageHero(ctx, { trail: [[UI[lang].nav_services, 'sherbimet']], eyebrow: t.eyebrow, title: t.h1, lead: t.lead, photo: 'consult' });
+  // the grid takes as many columns as the group has cards (up to five), so no row is left half empty
   const group = (title, list, offset) => h`<section class="section section-tight" aria-label="${esc(title)}">
     <div class="wrap">
       <h2 class="group-title">${esc(title)}</h2>
-      <ul class="svc-grid">${list.map((s, i) => serviceCard(ctx, s, offset + i))}</ul>
+      <ul class="svc-grid svc-grid-${Math.min(list.length, 5)}">${list.map((s, i) => serviceCard(ctx, s, offset + i))}</ul>
     </div>
   </section>`;
   const docs = SERVICES.filter((s) => !isLab(s));
