@@ -19,7 +19,8 @@ the repo.
 - Facts (phones, hours, address, WhatsApp number): `src/data/site.mjs` — the only place to change them.
 - Full lab catalogue `src/data/catalogue.json` (generated: `node scripts/import-catalogue.mjs <export.js>`, never edit by
   hand; never import another lab's prices or result times), English + panel components in
-  `src/data/catalogue-translations.json` (hand-editable; German under `de`), page `src/pages/catalogue.mjs` + `src/assets/catalogue.js`.
+  `src/data/catalogue-translations.json` (hand-editable; German under `de`), Albanian corrections in
+  `src/data/catalogue-fixes.json` (applied by the importer, URLs stay), page `src/pages/catalogue.mjs` + `src/assets/catalogue.js`.
   Show only the page language (no Serbian on screen; it stays a search alias).
 - Departments `src/data/services.mjs`, common tests and panels `src/data/tests.mjs`, FAQ `src/data/faq.mjs`,
   shared UI text `src/data/ui.mjs`, page texts at the top of each `src/pages/*.mjs`.

@@ -14,7 +14,7 @@ export const SERVICES = [
     tone: 'sun',
     name: { sq: 'Pediatri', en: 'Paediatrics', de: 'Kinderheilkunde' },
     short: {
-      sq: 'Kontrolla rutinë, ndjekje e rritjes dhe zhvillimit, diagnostikim dhe trajtim i sëmundjeve te fëmijët.',
+      sq: 'Kontrolle rutinë, ndjekje e rritjes dhe zhvillimit, diagnostikim dhe trajtim i sëmundjeve te fëmijët.',
       en: 'Routine check-ups, growth and development monitoring, diagnosis and treatment of illness in children.',
       de: 'Routineuntersuchungen, Kontrolle von Wachstum und Entwicklung, Diagnose und Behandlung von Erkrankungen bei Kindern.',
     },
@@ -25,7 +25,7 @@ export const SERVICES = [
     },
     items: {
       sq: [
-        'Kontrolla rutinë dhe ndjekje e rritjes — pesha, gjatësia, zhvillimi motorik dhe kognitiv',
+        'Kontrolle rutinë dhe ndjekje e rritjes — pesha, gjatësia, zhvillimi motorik dhe kognitiv',
         'Kujdes për të porsalindurit dhe foshnjat',
         'Diagnostikim dhe trajtim i sëmundjeve akute dhe kronike, përfshirë alergjitë',
         'Vlerësim kur keni shqetësime për zhvillimin e fëmijës',
@@ -38,7 +38,7 @@ export const SERVICES = [
         'Diagnosis and treatment of acute and chronic illness, including allergies',
         'Assessment when you are worried about your child’s development',
         'Infection prevention and nutrition advice',
-        'Tests for children: blood work, allergies, food intolerance, vitamin D and B12',
+        'Tests for children: blood count, allergies, food intolerance, vitamin D and B12',
       ],
       de: [
         'Routineuntersuchungen und Wachstumskontrolle — Gewicht, Größe, motorische und kognitive Entwicklung',
@@ -46,7 +46,7 @@ export const SERVICES = [
         'Diagnose und Behandlung akuter und chronischer Erkrankungen, einschließlich Allergien',
         'Abklärung, wenn Sie sich um die Entwicklung Ihres Kindes sorgen',
         'Infektionsvorbeugung und Ernährungsberatung',
-        'Laboruntersuchungen für Kinder: Blutwerte, Allergien, Nahrungsmittelunverträglichkeit, Vitamin D und B12',
+        'Laboranalysen für Kinder: Blutwerte, Allergien, Nahrungsmittelunverträglichkeit, Vitamin D und B12',
       ],
     },
     tests: ['cbc', 'crp', 'ferritin', 'vitd', 'b12', 'ige', 'allergy-panel', 'food-intolerance', 'urinalysis', 'stool-parasites'],
@@ -57,13 +57,13 @@ export const SERVICES = [
     tone: 'rose',
     name: { sq: 'Gjinekologji', en: 'Gynaecology', de: 'Gynäkologie' },
     short: {
-      sq: 'Kontrolla gjinekologjike, këshillim dhe analiza për shëndetin e gruas në çdo moshë.',
+      sq: 'Kontrolle gjinekologjike, këshillim dhe analiza për shëndetin e gruas në çdo moshë.',
       en: 'Gynaecological check-ups, advice and tests for women’s health at every age.',
-      de: 'Gynäkologische Untersuchungen, Beratung und Labortests für die Gesundheit der Frau in jedem Alter.',
+      de: 'Gynäkologische Untersuchungen, Beratung und Laboranalysen für die Gesundheit der Frau in jedem Alter.',
     },
     intro: {
-      sq: 'Shëndeti i gruas kërkon kohë, besim dhe diskrecion. Ju presim për kontrolla të rregullta, për një shqetësim të ri ose për ndjekje sipas udhëzimit të mjekut — me analizat hormonale dhe brisët në të njëjtën qendër.',
-      en: 'Women’s health needs time, trust and discretion. Come for a regular check-up, a new concern or follow-up as your doctor advises — with hormone tests and swabs in the same centre.',
+      sq: 'Shëndeti i gruas kërkon kohë, besim dhe diskrecion. Ju presim për kontrolle të rregullta, për një shqetësim të ri ose për ndjekje sipas udhëzimit të mjekut — me analizat hormonale dhe brisët në të njëjtën qendër.',
+      en: 'Women’s health needs time, trust and discretion. Come for a regular check-up, a new concern or follow-up as your doctor advises — with hormone tests and swabs at the same centre.',
       de: 'Frauengesundheit braucht Zeit, Vertrauen und Diskretion. Kommen Sie zur regelmäßigen Kontrolle, mit einem neuen Anliegen oder zur Verlaufskontrolle nach Empfehlung Ihres Arztes — Hormonuntersuchungen und Abstriche erfolgen im selben Zentrum.',
     },
     items: {
@@ -72,7 +72,7 @@ export const SERVICES = [
         'Konsultë për çrregullime të ciklit menstrual',
         'Këshillim për planifikim familjar',
         'Analiza hormonale: FSH, LH, estradiol, progesteron, prolaktinë, beta-hCG',
-        'Brisi vaginal dhe cervikal në laboratorin mikrobiologjik',
+        'Bris vaginal dhe cervikal në laboratorin mikrobiologjik',
       ],
       en: [
         'Regular gynaecological check-up',
@@ -92,7 +92,7 @@ export const SERVICES = [
     note: {
       sq: 'Për një shërbim të caktuar (p.sh. ekografi) na telefononi për ta konfirmuar para vizitës.',
       en: 'For a specific service (e.g. an ultrasound scan) please call to confirm before your visit.',
-      de: 'Für eine bestimmte Leistung (z. B. eine Ultraschalluntersuchung) rufen Sie bitte vor Ihrem Besuch an, um sie zu bestätigen.',
+      de: 'Für eine bestimmte Leistung (z. B. eine Ultraschalluntersuchung) rufen Sie bitte vor Ihrem Besuch an, um sich die Verfügbarkeit bestätigen zu lassen.',
     },
     tests: ['beta-hcg', 'fsh', 'lh', 'estradiol', 'progesterone', 'prolactin', 'tsh', 'ferritin', 'vaginal-swab', 'urine-culture'],
   },
@@ -100,17 +100,17 @@ export const SERVICES = [
     slug: 'laboratori-biokimik-dhe-hematologjik',
     icon: 'test-tubes',
     tone: 'brand',
-    name: { sq: 'Laboratori Biokimik dhe Hematologjik', en: 'Biochemistry & Haematology Laboratory', de: 'Biochemisches und hämatologisches Labor' },
+    name: { sq: 'Laboratori biokimik dhe hematologjik', en: 'Biochemistry & Haematology Laboratory', de: 'Biochemisches und hämatologisches Labor' },
     nameShort: { sq: 'Laboratori biokimik', en: 'Biochemistry lab', de: 'Biochemisches Labor' },
     short: {
-      sq: 'Analiza të gjakut dhe urinës: hemogram, glukozë, yndyrna, veshkat dhe mëlçia, hormone, vitamina.',
+      sq: 'Analiza të gjakut dhe urinës: hemogram, glukozë, yndyrna, funksion i veshkave dhe i mëlçisë, hormone, vitamina.',
       en: 'Blood and urine tests: blood count, glucose, lipids, kidneys and liver, hormones, vitamins.',
       de: 'Blut- und Urinuntersuchungen: Blutbild, Blutzucker, Blutfette, Nieren und Leber, Hormone, Vitamine.',
     },
     intro: {
       sq: 'Laboratori ynë është vazhdimësi e punës së Laboratorit BAKTOLAB. Kryejmë analiza biokimike dhe hematologjike për pacientë të të gjitha moshave — mostrat merren këtu në qendër dhe rezultatet i shqyrton mjeku juaj.',
       en: 'Our laboratory continues the work of the BAKTOLAB laboratory. We run biochemistry and haematology tests for patients of every age — samples are taken here at the centre and your doctor reviews the results.',
-      de: 'Unser Labor setzt die Arbeit des Labors BAKTOLAB fort. Wir führen biochemische und hämatologische Untersuchungen für Patienten jeden Alters durch — die Proben werden hier im Zentrum entnommen, und Ihr Arzt beurteilt die Ergebnisse.',
+      de: 'Unser Labor setzt die Arbeit des Labors BAKTOLAB fort. Wir führen biochemische und hämatologische Analysen für Patienten jeden Alters durch — die Proben werden hier im Zentrum entnommen, und Ihr Arzt beurteilt die Ergebnisse.',
     },
     items: {
       sq: [
@@ -144,15 +144,15 @@ export const SERVICES = [
     slug: 'laboratori-mikrobiologjik',
     icon: 'microscope',
     tone: 'brand',
-    name: { sq: 'Laboratori Mikrobiologjik', en: 'Microbiology Laboratory', de: 'Mikrobiologisches Labor' },
+    name: { sq: 'Laboratori mikrobiologjik', en: 'Microbiology Laboratory', de: 'Mikrobiologisches Labor' },
     nameShort: { sq: 'Laboratori mikrobiologjik', en: 'Microbiology lab', de: 'Mikrobiologisches Labor' },
     short: {
       sq: 'Urinokulturë, koprokulturë, brise dhe antibiogram — për të gjetur shkaktarin e infeksionit.',
-      en: 'Urine and stool cultures, swabs and antibiotic sensitivity — to find what causes an infection.',
+      en: 'Urine and stool cultures, swabs and antibiotic sensitivity tests — to find what causes an infection.',
       de: 'Urin- und Stuhlkulturen, Abstriche und Antibiogramm — um den Erreger einer Infektion zu finden.',
     },
     intro: {
-      sq: 'Kur ka dyshim për infeksion, kultura tregon cili mikrob e shkakton dhe antibiogrami se cili antibiotik vepron. Kështu mjeku zgjedh trajtimin e duhur — pa provuar në verbëri.',
+      sq: 'Kur ka dyshim për infeksion, kultura tregon cili mikrob e shkakton dhe antibiogrami se cili antibiotik vepron. Kështu mjeku zgjedh trajtimin e duhur — pa provuar kuturu.',
       en: 'When an infection is suspected, a culture shows which microbe causes it and the sensitivity test which antibiotic works. Your doctor can then choose the right treatment instead of guessing.',
       de: 'Besteht der Verdacht auf eine Infektion, zeigt eine Kultur, welcher Keim sie verursacht, und das Antibiogramm, welches Antibiotikum wirkt. So kann Ihr Arzt die richtige Behandlung wählen, statt zu raten.',
     },
@@ -160,8 +160,8 @@ export const SERVICES = [
       sq: [
         'Urinokulturë me antibiogram',
         'Koprokulturë dhe analizë e feçes për parazitë',
-        'Brisi i fytit dhe i hundës',
-        'Brisi vaginal dhe cervikal',
+        'Bris i fytit dhe i hundës',
+        'Bris vaginal dhe cervikal',
         'Helicobacter pylori',
       ],
       en: [
@@ -185,10 +185,10 @@ export const SERVICES = [
     slug: 'mjekesi-familjare',
     icon: 'stethoscope',
     tone: 'mint',
-    name: { sq: 'Mjekësi Familjare', en: 'Family Medicine', de: 'Allgemeinmedizin' },
+    name: { sq: 'Mjekësi familjare', en: 'Family Medicine', de: 'Allgemeinmedizin' },
     short: {
       sq: 'Vizita e parë për të rriturit: kontroll i përgjithshëm, ndjekje e sëmundjeve kronike dhe drejtim te specialisti.',
-      en: 'The first visit for adults: general check-up, follow-up of long-term conditions and referral to a specialist.',
+      en: 'The first port of call for adults: general check-up, follow-up of long-term conditions and referral to a specialist.',
       de: 'Erste Anlaufstelle für Erwachsene: allgemeine Untersuchung, Verlaufskontrolle chronischer Erkrankungen und Überweisung zum Facharzt.',
     },
     intro: {
@@ -226,7 +226,7 @@ export const SERVICES = [
     short: {
       sq: 'Tiroidja, diabeti dhe hormonet — diagnozë dhe ndjekje me analiza laboratorike në vend.',
       en: 'Thyroid, diabetes and hormones — diagnosis and follow-up with lab tests on site.',
-      de: 'Schilddrüse, Diabetes und Hormone — Diagnose und Verlaufskontrolle mit Laboruntersuchungen vor Ort.',
+      de: 'Schilddrüse, Diabetes und Hormone — Diagnose und Verlaufskontrolle mit Laboranalysen vor Ort.',
     },
     intro: {
       sq: 'Hormonet ndikojnë në energjinë, peshën, gjumin dhe humorin. Endokrinologu i lexon analizat së bashku me simptomat dhe ndërton një plan ndjekjeje që e kuptoni.',
@@ -262,7 +262,7 @@ export const SERVICES = [
     slug: 'suplemente-dhe-nutricion',
     icon: 'leaf',
     tone: 'sun',
-    name: { sq: 'Suplemente dhe Nutricion', en: 'Supplements & Nutrition', de: 'Nahrungsergänzung und Ernährung' },
+    name: { sq: 'Suplemente dhe nutricion', en: 'Supplements & Nutrition', de: 'Nahrungsergänzung und Ernährung' },
     short: {
       sq: 'Këshillim për ushqyerjen dhe suplementet ushqimore — bazuar në analizat tuaja.',
       en: 'Advice on nutrition and food supplements — based on your test results.',
@@ -271,7 +271,7 @@ export const SERVICES = [
     intro: {
       sq: 'Suplementi i duhur fillon nga analiza e duhur. Shikojmë së bashku vlerat tuaja dhe ju këshillojmë për ushqyerjen dhe suplementet ushqimore që kanë kuptim për ju.',
       en: 'The right supplement starts with the right test. We look at your values together and advise you on nutrition and the food supplements that make sense for you.',
-      de: 'Die richtige Nahrungsergänzung beginnt mit der richtigen Untersuchung. Wir sehen uns Ihre Werte gemeinsam an und beraten Sie zur Ernährung und zu den Nahrungsergänzungsmitteln, die für Sie sinnvoll sind.',
+      de: 'Die richtige Nahrungsergänzung beginnt mit der richtigen Analyse. Wir sehen uns Ihre Werte gemeinsam an und beraten Sie zur Ernährung und zu den Nahrungsergänzungsmitteln, die für Sie sinnvoll sind.',
     },
     items: {
       sq: [

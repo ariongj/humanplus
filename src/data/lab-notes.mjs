@@ -10,11 +10,11 @@ export const LAB_NOTES = {
   medication: {
     sq: 'Mos i ndërprisni dhe mos i ndryshoni barnat për shkak të një analize pa udhëzimin e mjekut. Na tregoni për barnat dhe suplementet që merrni.',
     en: 'Do not stop or change your medicines for a test unless your doctor tells you to. Tell us which medicines and supplements you take.',
-    de: 'Setzen Sie Ihre Medikamente wegen einer Untersuchung nicht ab und ändern Sie sie nicht, es sei denn, Ihre Ärztin oder Ihr Arzt weist Sie dazu an. Sagen Sie uns, welche Medikamente und Nahrungsergänzungsmittel Sie einnehmen.',
+    de: 'Setzen Sie Ihre Medikamente wegen einer Analyse nicht ab und ändern Sie sie nicht, es sei denn, Ihre Ärztin oder Ihr Arzt weist Sie dazu an. Sagen Sie uns, welche Medikamente und Nahrungsergänzungsmittel Sie einnehmen.',
     src: [MEDLINE],
   },
   'ige-antihistamine': {
-    sq: 'Për analizat e alergjisë nga gjaku (IgE) zakonisht nuk ka nevojë të ndërpritet ilaçi kundër alergjisë. Pyetni mjekun nëse nuk jeni të sigurt.',
+    sq: 'Për analizat e alergjisë nga gjaku (IgE) zakonisht nuk ka nevojë të ndërpritet bari kundër alergjisë. Pyetni mjekun nëse nuk jeni të sigurt.',
     en: 'For allergy blood tests (IgE) you usually do not need to stop your allergy medicine. Ask your doctor if you are unsure.',
     de: 'Für Allergietests aus dem Blut (IgE) müssen Sie Ihr Allergiemedikament in der Regel nicht absetzen. Fragen Sie Ihre Ärztin oder Ihren Arzt, wenn Sie unsicher sind.',
     src: [['ASCIA', 'https://www.allergy.org.au/patients/fast-facts/allergy-testing'], MEDLINE],
@@ -22,11 +22,11 @@ export const LAB_NOTES = {
   'individual-prep': {
     sq: 'Agjërimi ose kufizimi i lëngjeve për këtë analizë nuk vlen njësoj për të gjithë — përshtatet sipas gjendjes suaj shëndetësore. Pyetni para se të filloni.',
     en: 'Fasting or limiting fluids for this test is not the same for everyone — it depends on your health. Ask us before you start.',
-    de: 'Das Fasten oder eine Einschränkung der Flüssigkeitszufuhr für diese Untersuchung ist nicht für alle gleich — es hängt von Ihrem Gesundheitszustand ab. Fragen Sie uns, bevor Sie damit beginnen.',
+    de: 'Das Fasten oder eine Einschränkung der Flüssigkeitszufuhr für diese Analyse ist nicht für alle gleich — es hängt von Ihrem Gesundheitszustand ab. Fragen Sie uns, bevor Sie damit beginnen.',
     src: [MEDLINE],
   },
   'hormone-dosing': {
-    sq: 'Analizat shtesë hormonale nuk rekomandohen për të caktuar dozën e terapisë hormonale të përgatitur individualisht në menopauzë. Për përdorimet e tjera vendos mjeku.',
+    sq: 'Analizat hormonale shtesë nuk rekomandohen për të caktuar dozën e terapisë hormonale të përgatitur individualisht në menopauzë. Për përdorimet e tjera vendos mjeku.',
     en: 'Extra hormone tests are not recommended for setting the dose of individually compounded menopausal hormone therapy. For other uses, your doctor decides.',
     de: 'Zusätzliche Hormonuntersuchungen werden nicht empfohlen, um die Dosis einer individuell hergestellten Hormontherapie in den Wechseljahren festzulegen. Über andere Anwendungen entscheidet Ihre Ärztin oder Ihr Arzt.',
     src: [['ACOG', 'https://www.acog.org/clinical/clinical-guidance/clinical-consensus/articles/2023/11/compounded-bioidentical-menopausal-hormone-therapy']],
@@ -38,20 +38,20 @@ export const LAB_NOTES = {
     src: [['Endocrine Society', 'https://www.endocrine.org/patient-engagement/endocrine-library/adrenal-fatigue']],
   },
   'food-igg': {
-    sq: 'Testet IgG për ushqimet nuk rekomandohen për diagnozën e alergjisë ose të intolerancës ushqimore, dhe rezultati nuk duhet të vendosë një dietë eliminimi. Flisni me mjekun.',
+    sq: 'Testet IgG për ushqimet nuk rekomandohen për diagnozën e alergjisë ose të intolerancës ushqimore, dhe një dietë eliminimi nuk duhet të bazohet në rezultatin e tyre. Flisni me mjekun.',
     en: 'Food IgG tests are not recommended for diagnosing a food allergy or intolerance, and the result should not decide an elimination diet. Talk to your doctor.',
     de: 'IgG-Tests auf Nahrungsmittel werden nicht zur Diagnose einer Nahrungsmittelallergie oder -unverträglichkeit empfohlen, und das Ergebnis sollte nicht über eine Eliminationsdiät entscheiden. Sprechen Sie mit Ihrer Ärztin oder Ihrem Arzt.',
     src: [['AAAAI', 'https://www.aaaai.org/tools-for-the-public/conditions-library/allergies/igg-food-test']],
   },
   functional: {
     sq: 'Vlera klinike e këtij testi për përdorime të gjera “funksionale” nuk është vërtetuar. Një rezultat jashtë normës nuk është vetvetiu diagnozë — e interpreton mjeku.',
-    en: 'The clinical value of this test for broad “functional” uses is not established. An unusual result is not a diagnosis by itself — your doctor interprets it.',
+    en: 'The clinical value of this test for broad “functional” uses is not established. A result outside the normal range is not a diagnosis by itself — your doctor interprets it.',
     de: 'Die klinische Aussagekraft dieses Tests für breite „funktionelle“ Anwendungen ist nicht belegt. Ein auffälliges Ergebnis ist für sich allein keine Diagnose — Ihre Ärztin oder Ihr Arzt beurteilt es.',
     src: [MEDLINE],
   },
   'hsv-igm': {
     sq: 'Antitrupat IgM për herpesin (HSV) nuk rekomandohen: nuk dallojnë me siguri llojin e virusit, as një infeksion të ri nga një rikthim.',
-    en: 'IgM antibody tests for herpes (HSV) are not recommended: they cannot reliably tell the virus type, or a new infection from a recurrence.',
+    en: 'IgM antibody tests for herpes (HSV) are not recommended: they cannot reliably identify the virus type or tell a new infection from a recurrence.',
     de: 'IgM-Antikörpertests auf Herpes (HSV) werden nicht empfohlen: Mit ihnen lässt sich weder der Virustyp zuverlässig bestimmen noch eine Neuinfektion sicher von einem erneuten Ausbruch unterscheiden.',
     src: [CDC_HERPES],
   },
@@ -63,7 +63,7 @@ export const LAB_NOTES = {
   },
   'rubella-igm': {
     sq: 'IgM për rubeolën bëhet kur dyshohet infeksion ose pas një ekspozimi, jo si analizë rutinë në shtatzëni.',
-    en: 'Rubella IgM is for a suspected infection or after an exposure, not a routine test in pregnancy.',
+    en: 'Rubella IgM is tested when an infection is suspected or after an exposure, not as a routine test in pregnancy.',
     de: 'Röteln-IgM wird bei Verdacht auf eine Infektion oder nach einem Kontakt mit dem Erreger bestimmt, nicht als Routineuntersuchung in der Schwangerschaft.',
     src: [['CDC', 'https://www.cdc.gov/rubella/php/laboratories/serology-testing.html']],
   },
@@ -74,13 +74,13 @@ export const LAB_NOTES = {
     src: [['FDA', 'https://www.accessdata.fda.gov/cdrh_docs/reviews/k103358.pdf']],
   },
   nipt: {
-    sq: 'Depistimi i ADN-së fetale për mikrodelecione, sëmundje të një gjeni ose kromozomet seksuale nuk rekomandohet rutinë; zgjidhet pas këshillimit gjenetik.',
-    en: 'Fetal DNA screening for microdeletions, single-gene conditions or the sex chromosomes is not recommended routinely; it is chosen after genetic counselling.',
+    sq: 'Depistimi i ADN-së fetale për mikrodelecione, sëmundje të një gjeni ose kromozomet seksuale nuk rekomandohet rutinisht; zgjidhet pas këshillimit gjenetik.',
+    en: 'Fetal DNA screening for microdeletions, single-gene conditions or the sex chromosomes is not routinely recommended; it is chosen after genetic counselling.',
     de: 'Ein Screening der fetalen DNA auf Mikrodeletionen, durch ein einzelnes Gen bedingte Erkrankungen oder die Geschlechtschromosomen wird nicht routinemäßig empfohlen; die Entscheidung dafür fällt nach einer genetischen Beratung.',
     src: [['ACOG', 'https://www.acog.org/clinical/clinical-guidance/practice-advisory/articles/2026/01/screening-for-fetal-chromosomal-abnormalities']],
   },
   tick: {
-    sq: 'Gjetja e një mikrobi te rriqra nuk vërteton se jeni infektuar, dhe një rezultat negativ nuk ju siguron. Nëse keni simptoma, shkoni te mjeku.',
+    sq: 'Gjetja e një mikrobi te rriqra nuk vërteton se jeni infektuar, dhe një rezultat negativ nuk është garanci. Nëse keni simptoma, shkoni te mjeku.',
     en: 'Finding a germ in the tick does not prove that you are infected, and a negative result is no guarantee. If you have symptoms, see your doctor.',
     de: 'Wird in der Zecke ein Erreger gefunden, beweist das nicht, dass Sie sich angesteckt haben, und ein negatives Ergebnis ist keine Garantie. Wenn Sie Symptome haben, wenden Sie sich an Ihre Ärztin oder Ihren Arzt.',
     src: [['CDC', 'https://www.cdc.gov/ticks/after-a-tick-bite/']],
@@ -88,13 +88,13 @@ export const LAB_NOTES = {
   'drug-allergy': {
     sq: 'Alergjia ndaj një bari (p.sh. ndaj qetësuesve të dhimbjes NSAID) nuk vërtetohet dhe nuk përjashtohet me një analizë të vetme gjaku; e vlerëson mjeku ose alergologu.',
     en: 'A drug allergy (for example to NSAID painkillers) cannot be confirmed or ruled out by one blood test; your doctor or an allergist assesses it.',
-    de: 'Eine Arzneimittelallergie (zum Beispiel gegen NSAR-Schmerzmittel) lässt sich mit einer einzelnen Blutuntersuchung weder bestätigen noch ausschließen; beurteilt wird sie von Ihrer Ärztin, Ihrem Arzt oder in der Allergologie.',
+    de: 'Eine Arzneimittelallergie (zum Beispiel gegen NSAR-Schmerzmittel) lässt sich mit einer einzelnen Blutuntersuchung weder bestätigen noch ausschließen; beurteilt wird sie von Ihrer Ärztin, Ihrem Arzt oder einer Allergologin bzw. einem Allergologen.',
     src: [['AAAAI', 'https://www.aaaai.org/tools-for-the-public/conditions-library/allergies/allergic-to-aspirin']],
   },
   'acute-illness': {
     sq: 'Nëse jeni të sëmurë, pyetni mjekun nëse analiza duhet shtyrë — ndonjëherë vetë sëmundja është arsyeja e analizës.',
     en: 'If you are unwell, ask your doctor whether to postpone the test — sometimes the illness itself is the reason for it.',
-    de: 'Wenn Sie krank sind, fragen Sie Ihre Ärztin oder Ihren Arzt, ob die Untersuchung verschoben werden sollte — manchmal ist gerade die Erkrankung der Grund für die Untersuchung.',
+    de: 'Wenn Sie krank sind, fragen Sie Ihre Ärztin oder Ihren Arzt, ob die Analyse verschoben werden sollte — manchmal ist gerade die Erkrankung der Grund für die Analyse.',
     src: [['NICE', 'https://www.nice.org.uk/guidance/NG145/chapter/recommendations']],
   },
   psa: {
@@ -110,13 +110,13 @@ export const LAB_NOTES = {
     src: [['PubMed Central', 'https://pmc.ncbi.nlm.nih.gov/articles/PMC8511827/']],
   },
   igra: {
-    sq: 'Një rezultat negativ i IGRA-s nuk e përjashton plotësisht tuberkulozin dhe vetëm ai nuk e bën terapinë imunosupresive pa rrezik; vendos mjeku.',
+    sq: 'Një rezultat negativ i IGRA-s nuk e përjashton plotësisht tuberkulozin dhe vetvetiu nuk e bën terapinë imunosupresive pa rrezik; vendos mjeku.',
     en: 'A negative IGRA does not fully rule out tuberculosis and does not on its own make immunosuppressive treatment risk-free; your doctor decides.',
     de: 'Ein negatives IGRA-Ergebnis schließt eine Tuberkulose nicht vollständig aus und macht eine immunsuppressive Behandlung für sich allein nicht risikofrei; die Entscheidung trifft Ihre Ärztin oder Ihr Arzt.',
     src: [['CDC', 'https://www.cdc.gov/tb/hcp/testing-diagnosis/interferon-gamma-release-assay.html']],
   },
   gbs: {
-    sq: 'Në shtatzëni, analiza për streptokokun e grupit B zakonisht bëhet në javët 36–37, me tampon vaginal dhe rektal, sipas udhëzimit të gjinekologut.',
+    sq: 'Në shtatzëni, analiza për streptokokun e grupit B zakonisht bëhet në javët 36–37, me bris vaginal dhe rektal, sipas udhëzimit të gjinekologut.',
     en: 'In pregnancy, group B strep testing is usually done at 36–37 weeks with a vaginal and rectal swab, as your gynaecologist advises.',
     de: 'In der Schwangerschaft wird der Test auf Streptokokken der Gruppe B in der Regel in der 36.–37. Woche mit einem Vaginal- und Rektalabstrich gemacht, nach Empfehlung Ihrer Frauenärztin oder Ihres Frauenarztes.',
     src: [['CDC', 'https://www.cdc.gov/group-b-strep/testing/index.html']],

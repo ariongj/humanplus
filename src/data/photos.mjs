@@ -9,11 +9,11 @@
 export const PHOTOS = {
   hero: {
     scene: 'doctor',
-    alt: { sq: 'Mjeke me stetoskop dhe tablet, me laboratorin pas xhamit', en: 'A doctor with a stethoscope and a tablet, the laboratory behind the glass', de: 'Eine Ärztin mit Stethoskop und Tablet, hinter der Glasscheibe das Labor' },
+    alt: { sq: 'Mjeke me stetoskop dhe tablet, me laboratorin pas xhamit', en: 'A doctor with a stethoscope and a tablet, with the laboratory behind the glass', de: 'Eine Ärztin mit Stethoskop und Tablet, hinter der Glasscheibe das Labor' },
   },
   lab: {
     scene: 'lab',
-    alt: { sq: 'Teknik laboratori me maskë dhe doreza mban një epruvetë pranë mikroskopit dhe analizatorit', en: 'A laboratory technician in mask and gloves holds up a sample tube by the microscope and analyser', de: 'Ein Labortechniker mit Maske und Handschuhen hält neben dem Mikroskop und dem Analysegerät ein Probenröhrchen hoch' },
+    alt: { sq: 'Teknik laboratori me maskë dhe doreza mban një epruvetë pranë mikroskopit dhe analizatorit', en: 'A laboratory technician in a mask and gloves holds up a sample tube by the microscope and analyser', de: 'Ein Labortechniker mit Maske und Handschuhen hält neben dem Mikroskop und dem Analysegerät ein Probenröhrchen hoch' },
   },
   analyzer: {
     scene: 'analyzer',
@@ -25,11 +25,11 @@ export const PHOTOS = {
   },
   pediatrics: {
     scene: 'pediatrics',
-    alt: { sq: 'Pediatri dëgjon me stetoskop një fëmijë që mban një arush', en: 'A paediatrician listens with a stethoscope to a child holding a teddy bear', de: 'Ein Kinderarzt hört mit dem Stethoskop ein Kind ab, das einen Teddybären hält' },
+    alt: { sq: 'Pediatër dëgjon me stetoskop një fëmijë që mban një arush', en: 'A paediatrician listens with a stethoscope to a child holding a teddy bear', de: 'Ein Kinderarzt hört mit dem Stethoskop ein Kind ab, das einen Teddybären hält' },
   },
   consult: {
     scene: 'consult',
-    alt: { sq: 'Konsultë me specialist në ordinancë', en: 'A consultation in a specialist’s room', de: 'Eine fachärztliche Beratung im Sprechzimmer' },
+    alt: { sq: 'Konsultë me specialist në kabinet', en: 'A consultation in a specialist’s room', de: 'Eine fachärztliche Beratung im Sprechzimmer' },
   },
   reception: {
     scene: 'reception',

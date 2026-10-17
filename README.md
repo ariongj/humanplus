@@ -177,6 +177,12 @@ That file is a working translation made for the site: edit it by hand when the l
 writes `assets/catalogue-sq.json`, `-en.json` and `-de.json` and warns about any English or German text still
 missing (it then shows the Albanian one).
 
+**Albanian corrections.** The Albanian names, descriptions and sample / preparation texts come from the import; spelling
+and wording fixes to them go in `src/data/catalogue-fixes.json` (hand-editable): `{"<id>": {"n": [[old, new]], "d":
+[[old, new]]}, "text": {"<whole old text>": "<whole new text>"}}`. The importer applies them after it makes the
+addresses, so `/analizat/<test>/` stays the same, keeps the old name searchable, and stops if an `old` no longer
+matches. When a `text` entry changes, rename its key in `catalogue-translations.json` too.
+
 **A page for every test.** Each of the 1 006 entries also has its own page, `/analizat/<test>/` (and
 `/en/analizat/<test>/`, `/de/analizat/<test>/`), for example `/analizat/acid-urik/`: what the test is for, the sample, how it is collected,
 the preparation, the result time, what a panel includes (with links to the tests it contains), the panels a test is
@@ -320,6 +326,7 @@ before launch – stock people must never be presented as Human+ staff (no names
 | `src/data/site.mjs` | **name, address, phones, WhatsApp / Viber number, e-mail, Facebook, opening hours, booking slots** – edit this first |
 | `src/data/services.mjs` | the seven departments: names, texts, what they offer, related tests; `RETIRED_SERVICES` (old addresses that redirect) |
 | `src/data/catalogue.json` | the full lab catalogue behind `/analizat/` (made by `scripts/import-catalogue.mjs`) |
+| `src/data/catalogue-fixes.json` | corrections to the Albanian catalogue texts, applied by the importer (hand-editable) |
 | `src/data/tests.mjs` | the 89 common tests used on department pages and in the check-up panels (sq, en, de), preparation rules, the panels and their groups (`PANEL_GROUPS`), links to their catalogue pages |
 | `src/data/lab-notes.mjs` | the *Good to know* notes on test pages (sq, en, de, with medical sources) and which tests get them |
 | `src/data/lab-human-plus.json` | (optional) facts Human+ has confirmed per test, e.g. the result time |

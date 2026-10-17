@@ -56,24 +56,24 @@ export const PREP = {
   rest: {
     short: { sq: 'Mëngjes, i qetë', en: 'Morning, rested', de: 'Morgens, ausgeruht' },
     text: {
-      sq: 'Në mëngjes (07:30–09:00), pas 15–30 minutash pushim, pa stres dhe pa aktivitet fizik para analizës.',
+      sq: 'Në mëngjes (07:30–09:00), pas 15–30 minutash pushimi, pa stres dhe pa aktivitet fizik para analizës.',
       en: 'In the morning (07:30–09:00), after 15–30 minutes of rest, without stress or exercise beforehand.',
       de: 'Am Morgen (07:30–09:00), nach 15–30 Minuten Ruhe, ohne Stress und ohne körperliche Anstrengung vorher.',
     },
   },
   cycle: {
-    short: { sq: 'Sipas ditës së ciklit', en: 'On a cycle day', de: 'An einem Zyklustag' },
+    short: { sq: 'Sipas ditës së ciklit', en: 'Timed to your cycle', de: 'Nach Zyklustag' },
     text: {
       sq: 'Sipas udhëzimit të mjekut — zakonisht dita 2–5 e ciklit për FSH, LH dhe estradiol, rreth dita 21 për progesteronin.',
-      en: 'As your doctor advises — usually day 2–5 of the cycle for FSH, LH and oestradiol, around day 21 for progesterone.',
+      en: 'As your doctor advises — usually days 2–5 of the cycle for FSH, LH and oestradiol, around day 21 for progesterone.',
       de: 'Nach Anweisung Ihres Arztes — meist am 2.–5. Zyklustag für FSH, LH und Östradiol, um den 21. Tag für Progesteron.',
     },
   },
   psa: {
     short: { sq: '48 orë përgatitje', en: '48 h preparation', de: '48 Std. Vorbereitung' },
     text: {
-      sq: '48 orë para analizës: pa marrëdhënie seksuale, pa çiklizëm ose ngarkesë të fortë dhe pa kontroll rektal.',
-      en: 'For 48 hours before the test: no sexual intercourse, no cycling or hard exercise and no rectal examination.',
+      sq: '48 orë para analizës: pa marrëdhënie seksuale, pa çiklizëm ose ngarkesë fizike të fortë dhe pa kontroll rektal.',
+      en: 'For 48 hours before the test: no sexual intercourse, no cycling or strenuous exercise and no rectal examination.',
       de: 'In den 48 Stunden vor dem Test: kein Geschlechtsverkehr, kein Radfahren, keine starke körperliche Belastung und keine rektale Untersuchung.',
     },
   },
@@ -81,7 +81,7 @@ export const PREP = {
     short: { sq: 'Urina e parë e mëngjesit', en: 'First morning urine', de: 'Erster Morgenurin' },
     text: {
       sq: 'Urina e parë e mëngjesit: lani zonën, hidhni rrjedhën e parë dhe mblidhni rrjedhën e mesme në enë sterile.',
-      en: 'First urine of the morning: wash, let the first stream go and collect the midstream in a sterile container.',
+      en: 'First urine of the morning: wash the area, let the first part of the stream go and collect the midstream urine in a sterile container.',
       de: 'Erster Urin am Morgen: Waschen Sie sich, lassen Sie den ersten Strahl ab und fangen Sie den Mittelstrahl in einem sterilen Gefäß auf.',
     },
   },
@@ -89,7 +89,7 @@ export const PREP = {
     short: { sq: 'Para antibiotikut', en: 'Before antibiotics', de: 'Vor Antibiotika' },
     text: {
       sq: 'Mostra merret para fillimit të antibiotikut. Nëse tashmë jeni duke marrë antibiotik, pyesni mjekun kur ta jepni.',
-      en: 'The sample is taken before starting antibiotics. If you are already taking one, ask your doctor when to give it.',
+      en: 'The sample is taken before starting antibiotics. If you are already taking one, ask your doctor when to give the sample.',
       de: 'Die Probe wird vor Beginn einer Antibiotikatherapie abgenommen. Wenn Sie bereits ein Antibiotikum einnehmen, fragen Sie Ihren Arzt, wann Sie die Probe abgeben sollen.',
     },
   },
@@ -200,7 +200,7 @@ export const TESTS = [
 
   // Alergji dhe intolerancë
   { id: 'ige', cat: 'alergji', sample: 'blood', prep: 'none', name: { sq: 'IgE totale', en: 'Total IgE', de: 'Gesamt-IgE' }, aka: 'ige alergjia' },
-  { id: 'allergy-panel', cat: 'alergji', sample: 'blood', prep: 'none', name: { sq: 'Panel alergjish (inhalatorë dhe ushqimorë)', en: 'Allergy panel (inhaled and food)', de: 'Allergiepanel (Inhalations- und Nahrungsmittelallergene)' }, aka: 'alergjite polen pluhur ushqim' },
+  { id: 'allergy-panel', cat: 'alergji', sample: 'blood', prep: 'none', name: { sq: 'Panel alergjish (inhalatorë dhe ushqimorë)', en: 'Allergy panel (inhalant and food)', de: 'Allergiepanel (Inhalations- und Nahrungsmittelallergene)' }, aka: 'alergjite polen pluhur ushqim' },
   { id: 'food-intolerance', cat: 'alergji', sample: 'blood', prep: 'none', name: { sq: 'Intoleranca ushqimore', en: 'Food intolerance', de: 'Nahrungsmittelunverträglichkeit' }, aka: 'intoleranca ushqimet laktoza gluteni' },
 
   // Mikrobiologji
@@ -214,9 +214,9 @@ export const TESTS = [
   { id: 'anti-hcv', cat: 'mikrobiologji', sample: 'blood', prep: 'none', name: { sq: 'Anti-HCV (hepatiti C)', en: 'Anti-HCV (hepatitis C)', de: 'Anti-HCV (Hepatitis C)' }, aka: 'hcv hepatiti c hepatit' },
   { id: 'hiv', cat: 'mikrobiologji', sample: 'blood', prep: 'none', name: { sq: 'HIV 1/2 (antigjen dhe antitrupa)', en: 'HIV 1/2 (antigen and antibodies)', de: 'HIV 1/2 (Antigen und Antikörper)' }, aka: 'hiv sida aids' },
   { id: 'syphilis', cat: 'mikrobiologji', sample: 'blood', prep: 'none', name: { sq: 'Sifilizi (TPHA)', en: 'Syphilis (TPHA)', de: 'Syphilis (TPHA)' }, aka: 'sifilizi tpha treponema vdrl' },
-  { id: 'toxo-igg', cat: 'mikrobiologji', sample: 'blood', prep: 'none', name: { sq: 'Toksoplazma IgG', en: 'Toxoplasma IgG', de: 'Toxoplasma IgG' }, aka: 'toksoplazma toxoplasma shtatzania torch' },
-  { id: 'toxo-igm', cat: 'mikrobiologji', sample: 'blood', prep: 'none', name: { sq: 'Toksoplazma IgM', en: 'Toxoplasma IgM', de: 'Toxoplasma IgM' }, aka: 'toksoplazma toxoplasma shtatzania torch' },
-  { id: 'rubella-igg', cat: 'mikrobiologji', sample: 'blood', prep: 'none', name: { sq: 'Rubeola IgG', en: 'Rubella IgG', de: 'Röteln IgG' }, aka: 'rubeola rubella shtatzania torch' },
+  { id: 'toxo-igg', cat: 'mikrobiologji', sample: 'blood', prep: 'none', name: { sq: 'Toksoplazma IgG', en: 'Toxoplasma-IgG', de: 'Toxoplasma-IgG' }, aka: 'toksoplazma toxoplasma shtatzania torch' },
+  { id: 'toxo-igm', cat: 'mikrobiologji', sample: 'blood', prep: 'none', name: { sq: 'Toksoplazma IgM', en: 'Toxoplasma-IgM', de: 'Toxoplasma-IgM' }, aka: 'toksoplazma toxoplasma shtatzania torch' },
+  { id: 'rubella-igg', cat: 'mikrobiologji', sample: 'blood', prep: 'none', name: { sq: 'Rubeola IgG', en: 'Rubella IgG', de: 'Röteln-IgG' }, aka: 'rubeola rubella shtatzania torch' },
   { id: 'cmv-igg', cat: 'mikrobiologji', sample: 'blood', prep: 'none', name: { sq: 'Citomegalovirusi (CMV) IgG', en: 'Cytomegalovirus (CMV) IgG', de: 'Zytomegalievirus (CMV) IgG' }, aka: 'cmv citomegalovirusi shtatzania torch' },
   { id: 'cmv-igm', cat: 'mikrobiologji', sample: 'blood', prep: 'none', name: { sq: 'Citomegalovirusi (CMV) IgM', en: 'Cytomegalovirus (CMV) IgM', de: 'Zytomegalievirus (CMV) IgM' }, aka: 'cmv citomegalovirusi shtatzania torch' },
 
@@ -248,8 +248,8 @@ export const PANELS = [
     name: { sq: 'Check-up për fëmijë', en: 'Children’s check-up', de: 'Check-up für Kinder' },
     for: { sq: 'Për fëmijët, para shkollës ose sipas pediatrit', en: 'For children, before school or as the paediatrician advises', de: 'Für Kinder, vor der Einschulung oder auf Empfehlung des Kinderarztes' },
     text: {
-      sq: 'Gjaku, rezervat e hekurit, vitamina D, urina dhe parazitët — pa shumë marrje gjaku.',
-      en: 'Blood count, iron stores, vitamin D, urine and parasites — with as few draws as possible.',
+      sq: 'Gjaku, rezervat e hekurit, vitamina D, urina dhe parazitët — me sa më pak marrje gjaku.',
+      en: 'Blood count, iron stores, vitamin D, urine and parasites — with as few blood draws as possible.',
       de: 'Blutbild, Eisenspeicher, Vitamin D, Urin und Parasiten — mit so wenigen Blutabnahmen wie möglich.',
     },
     tests: ['cbc', 'ferritin', 'vitd', 'glucose', 'urinalysis', 'stool-parasites'],
@@ -285,7 +285,7 @@ export const PANELS = [
     for: { sq: 'Për burrat mbi 40 vjeç', en: 'For men over 40', de: 'Für Männer über 40' },
     text: {
       sq: 'Sheqeri, yndyrnat, veshkat, mëlçia dhe PSA — kontrolli vjetor pas të 40-ave.',
-      en: 'Sugar, fats, kidneys, liver and PSA — the yearly check after 40.',
+      en: 'Sugar, fats, kidneys, liver and PSA — the yearly check-up after 40.',
       de: 'Blutzucker, Blutfette, Nieren, Leber und PSA — die jährliche Kontrolle ab 40.',
     },
     tests: ['cbc', 'glucose', 'hba1c', 'cholesterol', 'hdl', 'ldl', 'triglycerides', 'creatinine', 'uric-acid', 'alt', 'ggt', 'psa-total'],
@@ -309,7 +309,7 @@ export const PANELS = [
     for: { sq: 'Tension i lartë, peshë e tepërt, histori familjare', en: 'High blood pressure, excess weight, family history', de: 'Bluthochdruck, Übergewicht, familiäre Vorbelastung' },
     text: {
       sq: 'Sheqeri afatgjatë, profili i plotë lipidik dhe inflamacioni.',
-      en: 'Long-term sugar, the full lipid profile and inflammation.',
+      en: 'Long-term blood sugar, the full lipid profile and inflammation.',
       de: 'Langzeitblutzucker, das vollständige Lipidprofil und Entzündungswerte.',
     },
     tests: ['glucose', 'hba1c', 'cholesterol', 'hdl', 'ldl', 'triglycerides', 'crp'],
@@ -318,7 +318,7 @@ export const PANELS = [
     id: 'alergji',
     icon: 'sparkles',
     name: { sq: 'Alergji dhe intolerancë', en: 'Allergy & intolerance', de: 'Allergie & Unverträglichkeit' },
-    for: { sq: 'Kollë sezonale, skuqje, probleme me ushqimin', en: 'Seasonal cough, rashes, trouble with food', de: 'Saisonaler Husten, Hautausschlag, Beschwerden mit Lebensmitteln' },
+    for: { sq: 'Kollë sezonale, skuqje, probleme me ushqimin', en: 'Seasonal cough, rashes, trouble with food', de: 'Saisonaler Husten, Hautausschlag, Beschwerden nach bestimmten Lebensmitteln' },
     text: {
       sq: 'IgE totale, panel alergjish dhe intolerancë ushqimore — për fëmijë dhe të rritur.',
       en: 'Total IgE, an allergy panel and food intolerance — for children and adults.',
@@ -345,7 +345,7 @@ export const PANELS = [
     for: { sq: 'Tension i lartë, diabet, ënjtje ose ndryshime në urinë', en: 'High blood pressure, diabetes, swelling or changes in urine', de: 'Bluthochdruck, Diabetes, Schwellungen oder Veränderungen im Urin' },
     text: {
       sq: 'Urea, kreatinina, acidi urik, elektrolitët, kalciumi, fosfati dhe urina me mikroalbuminën.',
-      en: 'Urea, creatinine, uric acid, electrolytes, calcium, phosphate and urine with microalbumin.',
+      en: 'Urea, creatinine, uric acid, electrolytes, calcium, phosphate and urinalysis with microalbumin.',
       de: 'Harnstoff, Kreatinin, Harnsäure, Elektrolyte, Calcium, Phosphat und Urin mit Mikroalbumin.',
     },
     tests: ['urea', 'creatinine', 'uric-acid', 'electrolytes', 'calcium', 'phosphate', 'urinalysis', 'microalbumin'],
@@ -354,7 +354,7 @@ export const PANELS = [
     id: 'melcia',
     icon: 'filter',
     name: { sq: 'Mëlçia', en: 'Liver function', de: 'Leberwerte' },
-    for: { sq: 'Alkool, barna për një kohë të gjatë, mëlçi e yndyrshme ose verdhëz', en: 'Alcohol, long-term medicines, fatty liver or jaundice', de: 'Alkohol, Dauermedikation, Fettleber oder Gelbsucht' },
+    for: { sq: 'Alkool, përdorim i gjatë i barnave, mëlçi e yndyrshme ose verdhëz', en: 'Alcohol, long-term medication, fatty liver or jaundice', de: 'Alkohol, Dauermedikation, Fettleber oder Gelbsucht' },
     text: {
       sq: 'Enzimat e mëlçisë, bilirubina, proteinat, koagulimi dhe hepatitet B e C.',
       en: 'Liver enzymes, bilirubin, proteins, clotting and hepatitis B and C.',
@@ -366,7 +366,7 @@ export const PANELS = [
     id: 'anemi',
     icon: 'droplets',
     name: { sq: 'Anemia dhe hekuri', en: 'Anaemia & iron', de: 'Anämie & Eisen' },
-    for: { sq: 'Zbehje, lodhje, marramendje ose menstruacione të rënda', en: 'Paleness, tiredness, dizziness or heavy periods', de: 'Blässe, Müdigkeit, Schwindel oder starke Regelblutungen' },
+    for: { sq: 'Zbehje, lodhje, marramendje ose menstruacione të bollshme', en: 'Paleness, tiredness, dizziness or heavy periods', de: 'Blässe, Müdigkeit, Schwindel oder starke Regelblutungen' },
     text: {
       sq: 'Gjaku komplet, retikulocitet, hekuri dhe rezervat e tij, vitamina B12 dhe acidi folik.',
       en: 'Blood count, reticulocytes, iron and iron stores, vitamin B12 and folic acid.',
@@ -390,10 +390,10 @@ export const PANELS = [
     id: 'stomaku',
     icon: 'salad',
     name: { sq: 'Stomaku dhe zorrët', en: 'Stomach & bowel', de: 'Magen & Darm' },
-    for: { sq: 'Dhimbje barku, fryrje, diarre ose kapsllëk që zgjat', en: 'Stomach pain, bloating, or diarrhoea or constipation that lasts', de: 'Bauchschmerzen, Blähungen, anhaltender Durchfall oder Verstopfung' },
+    for: { sq: 'Dhimbje barku, fryrje, diarre ose kapsllëk që zgjat', en: 'Stomach pain, bloating, or persistent diarrhoea or constipation', de: 'Bauchschmerzen, Blähungen, anhaltender Durchfall oder Verstopfung' },
     text: {
       sq: 'Helicobacter pylori, gjaku okult, parazitët, kalprotektina dhe testet për celiakinë.',
-      en: 'Helicobacter pylori, occult blood, parasites, calprotectin and the coeliac tests.',
+      en: 'Helicobacter pylori, occult blood, parasites, calprotectin and tests for coeliac disease.',
       de: 'Helicobacter pylori, okkultes Blut, Parasiten, Calprotectin und die Zöliakie-Tests.',
     },
     tests: ['h-pylori', 'occult-blood', 'stool-parasites', 'calprotectin', 'ttg-iga', 'iga', 'cbc'],
@@ -413,7 +413,7 @@ export const PANELS = [
   {
     id: 'reumatizem',
     icon: 'hand',
-    name: { sq: 'Nyjet dhe reumatizma', en: 'Joints & rheumatism', de: 'Gelenke & Rheuma' },
+    name: { sq: 'Nyjet dhe reumatizmi', en: 'Joints & rheumatism', de: 'Gelenke & Rheuma' },
     for: { sq: 'Nyje të dhimbshme ose të ënjtura, ngurtësi në mëngjes', en: 'Painful or swollen joints, morning stiffness', de: 'Schmerzende oder geschwollene Gelenke, Morgensteifigkeit' },
     text: {
       sq: 'Faktori reumatoid, anti-CCP, ASO, acidi urik dhe inflamacioni.',
@@ -426,7 +426,7 @@ export const PANELS = [
     id: 'hormonet',
     icon: 'venus',
     name: { sq: 'Hormonet e gruas (PCOS)', en: 'Female hormones (PCOS)', de: 'Weibliche Hormone (PCOS)' },
-    for: { sq: 'Cikël i parregullt, akne, rritje e qimeve ose planifikim shtatzënie — sipas gjinekologut', en: 'Irregular cycle, acne, extra hair growth or planning a pregnancy — as your gynaecologist advises', de: 'Unregelmäßiger Zyklus, Akne, vermehrter Haarwuchs oder Kinderwunsch — auf gynäkologische Empfehlung' },
+    for: { sq: 'Cikël i parregullt, akne, rritje e tepërt e qimeve ose planifikim shtatzënie — sipas gjinekologut', en: 'Irregular cycle, acne, excess hair growth or planning a pregnancy — as your gynaecologist advises', de: 'Unregelmäßiger Zyklus, Akne, vermehrter Haarwuchs oder Kinderwunsch — auf gynäkologische Empfehlung' },
     text: {
       sq: 'Hormonet e ciklit, prolaktina, testosteroni, DHEA-S, SHBG, AMH, insulina dhe tiroidja — secila në ditën e duhur të ciklit.',
       en: 'Cycle hormones, prolactin, testosterone, DHEA-S, SHBG, AMH, insulin and thyroid — each on the right day of the cycle.',
@@ -437,12 +437,12 @@ export const PANELS = [
   {
     id: 'shtatzani',
     icon: 'baby',
-    name: { sq: 'Shtatzënia — kontrolli i parë', en: 'Pregnancy — first check', de: 'Schwangerschaft — erste Kontrolle' },
+    name: { sq: 'Shtatzënia — kontrolli i parë', en: 'Pregnancy — first check-up', de: 'Schwangerschaft — erste Kontrolle' },
     for: { sq: 'Në fillim të shtatzënisë, sipas gjinekologut', en: 'Early in pregnancy, as your gynaecologist advises', de: 'Zu Beginn der Schwangerschaft, auf gynäkologische Empfehlung' },
     text: {
       sq: 'Gjaku, grupi i gjakut, sheqeri, tiroidja, urina dhe infeksionet që kontrollohen në shtatzëni.',
       en: 'Blood count, blood group, sugar, thyroid, urine and the infections checked in pregnancy.',
-      de: 'Blutbild, Blutgruppe, Blutzucker, Schilddrüse, Urin und die in der Schwangerschaft geprüften Infektionen.',
+      de: 'Blutbild, Blutgruppe, Blutzucker, Schilddrüse, Urin und die in der Schwangerschaft üblichen Tests auf Infektionen.',
     },
     tests: ['cbc', 'blood-group', 'glucose', 'tsh', 'urinalysis', 'urine-culture', 'toxo-igg', 'toxo-igm', 'rubella-igg', 'cmv-igg', 'cmv-igm', 'hbsag', 'anti-hcv', 'hiv', 'syphilis'],
   },
@@ -450,7 +450,7 @@ export const PANELS = [
     id: 'operacion',
     icon: 'hospital',
     name: { sq: 'Para operacionit', en: 'Before surgery', de: 'Vor einer Operation' },
-    for: { sq: 'Para një ndërhyrjeje kirurgjikale ose stomatologjike, sipas kërkesës së mjekut', en: 'Before surgery or a dental procedure, as your doctor requests', de: 'Vor einer Operation oder einem zahnärztlichen Eingriff, nach ärztlicher Anforderung' },
+    for: { sq: 'Para një ndërhyrjeje kirurgjikale ose stomatologjike, sipas kërkesës së mjekut', en: 'Before surgery or a dental procedure, as your doctor requests', de: 'Vor einer Operation oder einem zahnärztlichen Eingriff, auf ärztliche Anordnung' },
     text: {
       sq: 'Gjaku, grupi i gjakut, koagulimi, sheqeri, veshkat, elektrolitët, hepatitet B e C dhe HIV.',
       en: 'Blood count, blood group, clotting, sugar, kidneys, electrolytes, hepatitis B and C, and HIV.',
@@ -462,7 +462,7 @@ export const PANELS = [
     id: 'infeksione',
     icon: 'shield-plus',
     name: { sq: 'Hepatitet, HIV dhe sifilizi', en: 'Hepatitis, HIV & syphilis', de: 'Hepatitis, HIV & Syphilis' },
-    for: { sq: 'Kontroll i rregullt ose pas një rreziku të mundshëm', en: 'A routine check or after a possible risk', de: 'Routinekontrolle oder nach einem möglichen Risiko' },
+    for: { sq: 'Kontroll i rregullt ose pas një rreziku të mundshëm', en: 'A routine check or after possible exposure', de: 'Routinekontrolle oder nach einem möglichen Risiko' },
     text: {
       sq: 'Hepatiti B (HBsAg), hepatiti C (anti-HCV), HIV 1/2 dhe sifilizi (TPHA).',
       en: 'Hepatitis B (HBsAg), hepatitis C (anti-HCV), HIV 1/2 and syphilis (TPHA).',

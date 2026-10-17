@@ -122,7 +122,7 @@ export function panelCard(ctx, p, { full = false } = {}) {
   const lang = ctx.lang;
   const T = {
     sq: { tests: 'analiza', add: 'Shto paketën në listë', ask: 'Pyet për çmimin', incl: 'Përfshin', added: 'Paketa është në listë' },
-    en: { tests: 'tests', add: 'Add the check-up to my list', ask: 'Ask for the price', incl: 'Includes', added: 'Check-up is on your list' },
+    en: { tests: 'tests', add: 'Add the check-up to my list', ask: 'Ask for the price', incl: 'Includes', added: 'The check-up is on your list' },
     de: { tests: 'Analysen', add: 'Check-up zur Liste hinzufügen', ask: 'Nach dem Preis fragen', incl: 'Enthält', added: 'Check-up ist auf Ihrer Liste' },
   }[lang];
   const name = L(p.name, lang);
@@ -238,7 +238,7 @@ const MAP = dict('minimap', {
   },
   de: {
     show: 'Karte anzeigen',
-    consent: 'Die Karte wird erst beim Öffnen von Google Maps geladen. Google kann dabei Cookies setzen.',
+    consent: 'Die Karte wird erst von Google Maps geladen, wenn Sie sie öffnen. Google kann dabei Cookies setzen.',
     open: 'In Google Maps öffnen',
     frame: 'Karte: {name}, {addr}',
   },

@@ -1,0 +1,4294 @@
+{
+ "_note": "Corrections to the Albanian catalogue texts, applied by scripts/import-catalogue.mjs (hand-editable).",
+ "text": {
+  "Agjërim 8–12 orë sipas mjekut. Raportohen barnat dhe suplementet; aktiviteti fizik mund të ndikojë nivelin.": "Agjërim 8–12 orë sipas mjekut. Raportohen barnat dhe suplementet; aktiviteti fizik mund të ndikojë në nivel.",
+  "Feçe të freskëta jo të formuara, rreth një lugë kafeje në enë feçesh, pa urinë/ujë tualeti; në çdo orë, sa më herët pas simptomave. Dorëzim sa më shpejt; kur nevojitet ruajtje, 2–8°C deri 2 ditë ose −20°C për më gjatë.": "Feçe të freskëta jo të formuara, rreth një lugë kafeje në enë feçesh, pa urinë/ujë tualeti; në çdo orë, sa më herët pas simptomave. Dorëzim sa më shpejt; kur nevojitet ruajtje, 2–8°C deri në 2 ditë ose −20°C për më gjatë.",
+  "Genitalet lahen me sapun e shpëlahen mirë, pa fshirje me peshqir: te gratë nga lart-poshtë, te burrat nga hapja uretrale jashtë. Mblidhen 10–20 mL nga rrjedha e parë e urinës së parë të mëngjesit; alternativisht nuk urinohet 1–2 orë përpara. Ena sterile mbyllet e dorëzohet shpejt.": "Genitalet lahen me sapun e shpëlahen mirë, pa fshirje me peshqir: te gratë nga lart-poshtë, te burrat nga hapja uretrale drejt jashtë. Mblidhen 10–20 mL nga rrjedha e parë e urinës së parë të mëngjesit; alternativisht nuk urinohet 1–2 orë përpara. Ena sterile mbyllet e dorëzohet shpejt.",
+  "Gjak i plotë. Rekomandohet pa suplemente mineralesh ≥5 ditë dhe shmangie të ekspozimeve të mundshme ndaj metaleve para analizës. Termini dhe terapia/suplementet diskutohen me personelin.": "Gjak i plotë. Rekomandohet të mos merren suplemente mineralesh ≥5 ditë dhe të shmangen ekspozimet e mundshme ndaj metaleve para analizës. Termini dhe terapia/suplementet diskutohen me personelin.",
+  "Gjak venoz, pa përgatitje të veçantë, preferohet jo menjëherë pas ushqimit. pa rezervim.": "Gjak venoz, pa përgatitje të veçantë, preferohet jo menjëherë pas ushqimit. Pa rezervim.",
+  "Gjak venoz; Në rast skuqjeje, ekspozimi ose shtatzënie, koha dhe kombinimi i testeve përcaktohen nga mjeku.": "Gjak venoz; në rast skuqjeje, ekspozimi ose shtatzënie, koha dhe kombinimi i testeve përcaktohen nga mjeku.",
+  "Gjaku merret në mëngjes esëll. Rekomandohen të paktën 30 minuta shtrirë para marrjes, pushim dhe shmangie stresi. Mjeku njoftohet për ushqyerjen dhe përdorimin e ACE-inhibitorëve, diuretikëve, beta-bllokuesve ose barnave të tjera që mund të ndikojnë reninën.": "Gjaku merret në mëngjes esëll. Rekomandohen të paktën 30 minuta shtrirë para marrjes, pushim dhe shmangie stresi. Mjeku njoftohet për ushqyerjen dhe përdorimin e ACE-inhibitorëve, diuretikëve, beta-bllokuesve ose barnave të tjera që mund të ndikojnë në reninë.",
+  "Koha e marrjes së gjakut caktohet sipas llojit, dozës dhe mënyrës së dhënies së heparinës. terapia nuk ndërpritet vetë.": "Koha e marrjes së gjakut caktohet sipas llojit, dozës dhe mënyrës së dhënies së heparinës. Terapia nuk ndërpritet vetë.",
+  "Koha e mostrës caktohet nga mjeku sipas simptomave, ekspozimit dhe qëllimit të testimit; nuk paraqitet një javë e shtatzënisë si indikacion i vetvetishëm.": "Koha e mostrës caktohet nga mjeku sipas simptomave, ekspozimit dhe qëllimit të testimit; asnjë javë e caktuar e shtatzënisë nuk është në vetvete indikacion për testin.",
+  "Komplet shtëpiak me 11 mostra në ditët e caktuara, zakonisht duke filluar ditën 3; etiketim dhe ngrirje menjëherë. Dorëzohen të ngrira sa më shpejt, idealisht mëngjesin pas mostrës së fundit; pranohen çdo ditë. Për 30 minuta para: pa ushqim, pije përveç ujit, larje dhëmbësh ose çamçakëz. Mbrëmjen para shmangen alkooli, aktiviteti intensiv dhe stresi. barnat/suplementet nuk ndryshohen pa konsultë. Shmanget cikli me ndërhyrje, udhëtime ose stres të planifikuar; lexohet udhëzimi.": "Komplet shtëpiak me 11 mostra në ditët e caktuara, zakonisht duke filluar ditën 3; etiketim dhe ngrirje menjëherë. Dorëzohen të ngrira sa më shpejt, idealisht mëngjesin pas mostrës së fundit; pranohen çdo ditë. Për 30 minuta para: pa ushqim, pije përveç ujit, larje dhëmbësh ose çamçakëz. Mbrëmjen paraprake shmangen alkooli, aktiviteti intensiv dhe stresi. Barnat/suplementet nuk ndryshohen pa konsultë. Shmanget cikli me ndërhyrje, udhëtime ose stres të planifikuar; lexohet udhëzimi.",
+  "Kompleti shtëpiak: 07:00–09:00, 11:00–13:00, 15:00–17:00, 22:00–00:00; DHEA nga mostra e parë. CAR shtesë: edhe 06:00 sapo zgjohet dhe 30 minuta më pas. Për 30 minuta para mostrës: pa ushqim/pije, duhan ose larje dhëmbësh; gjatë ditës pa çamçakëz, kafe, alkool ose kozmetikë buzësh. Përdoren doreza për kartat e tharjes. Raportohen barnat/suplementet e 3 muajve; nuk ndërpritet terapia pa mjekun. Epruvetat mbyllen, etiketohen, futen në qese/ngrihen menjëherë; dorëzohen të ngrira, mundësisht mëngjesin pas mostrës së natës.": "Kompleti shtëpiak: 07:00–09:00, 11:00–13:00, 15:00–17:00, 22:00–00:00; DHEA nga mostra e parë. CAR shtesë: edhe në 06:00, sapo zgjohet dhe 30 minuta më pas. Për 30 minuta para mostrës: pa ushqim/pije, duhan ose larje dhëmbësh; gjatë ditës pa çamçakëz, kafe, alkool ose kozmetikë buzësh. Përdoren doreza për kartat e tharjes. Raportohen barnat/suplementet e 3 muajve; nuk ndërpritet terapia pa mjekun. Epruvetat mbyllen, etiketohen, futen në qese/ngrihen menjëherë; dorëzohen të ngrira, mundësisht mëngjesin pas mostrës së natës.",
+  "Kur hetohet një reaksion i rëndë alergjik, burimi kërkon marrjen 15 minuta deri 3 orë pas reaksionit. Nuk kërkohet përgatitje tjetër e posaçme.": "Kur hetohet një reaksion i rëndë alergjik, burimi kërkon marrjen 15 minuta deri në 3 orë pas reaksionit. Nuk kërkohet përgatitje tjetër e posaçme.",
+  "Lafsha tërhiqet butë dhe tamponi steril kalohet mbi glans e pjesën e brendshme të saj.": "Lafsha tërhiqet butë dhe tamponi steril kalohet mbi glansin dhe pjesën e brendshme të saj.",
+  "Marrje në çdo orë, nga profesionist përmes spekulumit steril. Verifikohet paraprakisht pika e marrjes; laboratori nuk merr tamponë te shtatzënat, por pranon mostra të marra nga gjinekologu dhe të dorëzuara personalisht ose nga ordinanca.": "Marrje në çdo orë, nga një profesionist përmes spekulumit steril. Verifikohet paraprakisht pika e marrjes; laboratori nuk merr tamponë te shtatzënat, por pranon mostra të marra nga gjinekologu dhe të dorëzuara personalisht ose nga ordinanca.",
+  "Mblidhet urina për 24 orë; nuk kërkohet përgatitje të posaçme.": "Mblidhet urina për 24 orë; nuk kërkohet përgatitje e posaçme.",
+  "Me kompletin shtëpiak mblidhen tri mostra: 07:00–09:00, 15:00–17:00 dhe 02:30–03:30. Çdo tub mbyllet, etiketohet, futet në qese dhe ngrihet menjëherë; transportohen të ngrira sa më shpejt, idealisht mëngjesin pas mostrës së natës. Natën shmanget drita e fortë; rekomandohet dritë e kuqe e zbehtë. Për ≥30 minuta përpara shmangen ushqimi, pijet, duhani dhe larja e dhëmbëve. Testi shtyhet gjatë infeksionit akut ose kur ritmi i gjumit është ndryshuar.": "Me kompletin shtëpiak mblidhen tri mostra: 07:00–09:00, 15:00–17:00 dhe 02:30–03:30. Çdo epruvetë mbyllet, etiketohet, futet në qese dhe ngrihet menjëherë; transportohen të ngrira sa më shpejt, idealisht mëngjesin pas mostrës së natës. Natën shmanget drita e fortë; rekomandohet dritë e kuqe e zbehtë. Për ≥30 minuta përpara shmangen ushqimi, pijet, duhani dhe larja e dhëmbëve. Testi shtyhet gjatë infeksionit akut ose kur ritmi i gjumit është ndryshuar.",
+  "Me lugën e enës fekale merret sasi sa një lajthi nga disa zona, veçanërisht pjesët mukoze/të lëngshme. Shmanget kontakti me urinë/ujë tualeti. Dorëzohet shpejt; deri atëherë ruhet në frigorifer jo më shumë se 2 orë. Burimi nuk rekomandon testim gjatë antimykotikëve; kontrolli pas trajtimit bëhet ≥10–15 ditë pas përfundimit.": "Me lugën e enës fekale merret sasi sa një lajthi nga disa zona, veçanërisht pjesët mukoze/të lëngshme. Shmanget kontakti me urinë/ujë tualeti. Dorëzohet shpejt; deri atëherë ruhet në frigorifer jo më shumë se 2 orë. Burimi nuk rekomandon testim gjatë terapisë me antimikotikë; kontrolli pas trajtimit bëhet ≥10–15 ditë pas përfundimit.",
+  "Merren 16 mostra pështyme në ditët/oraret e kompletit, zakonisht duke filluar ditën e tretë të ciklit; secila etiketohet, mbyllet, vendoset në qese dhe ngrin menjëherë. Dorëzohen të ngrira sa më shpejt, idealisht mëngjesin pas mostrës së fundit. Për 30 minuta para çdo mostre shmangen ushqimi, pijet përveç ujit, larja e dhëmbëve dhe çamçakëzi. barnat/suplementet nuk ndryshohen pa konsultë. Nuk rekomandohet nisja në cikël me ndërhyrje, udhëtime ose stres të planifikuar. Lexohet udhëzimi i plotë para fillimit.": "Merren 16 mostra pështyme në ditët/oraret e kompletit, zakonisht duke filluar ditën e tretë të ciklit; secila etiketohet, mbyllet, vendoset në qese dhe ngrin menjëherë. Dorëzohen të ngrira sa më shpejt, idealisht mëngjesin pas mostrës së fundit. Për 30 minuta para çdo mostre shmangen ushqimi, pijet përveç ujit, larja e dhëmbëve dhe çamçakëzi. Barnat/suplementet nuk ndryshohen pa konsultë. Nuk rekomandohet nisja në cikël me ndërhyrje, udhëtime ose stres të planifikuar. Lexohet udhëzimi i plotë para fillimit.",
+  "Merret nga profesionisti me tampon steril të hollë, rreth 2 cm brenda uretrës. pranohet edhe mostër nga urologu e dorëzuar nga pacienti/ordinanca.": "Merret nga profesionisti me tampon steril të hollë, rreth 2 cm brenda uretrës. Pranohet edhe mostër nga urologu e dorëzuar nga pacienti/ordinanca.",
+  "Nuk kërkohet përgatitje e posaçme; preferohet që mostra të mos merret menjëherë pas ushqimit. Antihistaminikët nuk ndikojnë në këtë analizë gjaku; disa imunosupresorë mund të ndikojnë prodhimin e IgE, ndaj burimi rekomandon konsultim me mjekun.": "Nuk kërkohet përgatitje e posaçme; preferohet që mostra të mos merret menjëherë pas ushqimit. Antihistaminikët nuk ndikojnë në këtë analizë gjaku; disa imunosupresantë mund të ndikojnë në prodhimin e IgE, ndaj burimi rekomandon konsultim me mjekun.",
+  "Nuk kërkohet përgatitje e posaçme; preferohet të mos merret gjaku menjëherë pas vaktit. disa imunosupresantë mund të ndryshojnë IgE dhe kërkojnë konsultim me mjekun.": "Nuk kërkohet përgatitje e posaçme; preferohet të mos merret gjaku menjëherë pas vaktit. Disa imunosupresantë mund të ndryshojnë IgE dhe kërkojnë konsultim me mjekun.",
+  "Nuk kërkohet përgatitje e veçantë. laboratori këshillon konsultë paraprake.": "Nuk kërkohet përgatitje e veçantë. Laboratori këshillon konsultë paraprake.",
+  "Nuk kërkohet përgatitje e veçantë. rekomandohet këshillim për zgjedhjen dhe kufijtë e testit.": "Nuk kërkohet përgatitje e veçantë. Rekomandohet këshillim për zgjedhjen dhe kufijtë e testit.",
+  "Pa fara lini, susam, sojë/fitoestrogjene 48 orë; maksimum 1,5 L lëngje 24 orë para. Para dozës hormonale të mëngjesit, përveç udhëzimit tjetër; përmendet edhe 8–12 orë pas dozës së fundit. për ovulacion ditët 19–25 sipas mjekut; peri-/menopauzë çdo ditë. Nuk rekomandohet gjatë hormoneve sintetike.": "Pa fara lini, susam, sojë/fitoestrogjene 48 orë; maksimum 1,5 L lëngje 24 orë para. Para dozës hormonale të mëngjesit, përveç udhëzimit tjetër; përmendet edhe 8–12 orë pas dozës së fundit. Për ovulacion ditët 19–25 sipas mjekut; peri-/menopauzë çdo ditë. Nuk rekomandohet gjatë hormoneve sintetike.",
+  "Pa përgatitje të veçantë. Duhet treguar nëse janë përdorur sprej nazalë ose barna që ndikojnë mukozën e hundës.": "Pa përgatitje të veçantë. Duhet treguar nëse janë përdorur sprej nazalë ose barna që ndikojnë në mukozën e hundës.",
+  "Pa përgatitje të veçantë. këshillohet konsultë paraprake me laboratorin.": "Pa përgatitje të veçantë. Këshillohet konsultë paraprake me laboratorin.",
+  "Pa përgatitje të veçantë. rekomandohet këshillim për zgjedhjen e testit.": "Pa përgatitje të veçantë. Rekomandohet këshillim për zgjedhjen e testit.",
+  "Pa përgatitje të veçantë; preferohet jo menjëherë pas ushqimit. Antihistaminikët nuk ndikojnë sipas përshkrimit; për imunosupresivët këshillohet konsultë mjekësore.": "Pa përgatitje të veçantë; preferohet jo menjëherë pas ushqimit. Antihistaminikët nuk ndikojnë sipas përshkrimit; për imunosupresantët këshillohet konsultë mjekësore.",
+  "Pa përgatitje të veçantë; preferohet jo menjëherë pas ushqimit. Antihistaminikët nuk ndikojnë; për imunosupresivët këshillohet konsultë mjekësore.": "Pa përgatitje të veçantë; preferohet jo menjëherë pas ushqimit. Antihistaminikët nuk ndikojnë; për imunosupresantët këshillohet konsultë mjekësore.",
+  "Pa përgatitje të veçantë; preferohet jo menjëherë pas ushqimit. Antihistaminikët nuk ndikojnë; për imunosupresivët rekomandohet konsultë me mjekun.": "Pa përgatitje të veçantë; preferohet jo menjëherë pas ushqimit. Antihistaminikët nuk ndikojnë; për imunosupresantët rekomandohet konsultë me mjekun.",
+  "Pa përgatitje të veçantë; preferohet marrja jo menjëherë pas ushqimit. Për ndjekje rekomandohen e njëjta laborator dhe njësi të njëjta matjeje.": "Pa përgatitje të veçantë; preferohet marrja jo menjëherë pas ushqimit. Për ndjekje rekomandohen i njëjti laborator dhe të njëjtat njësi matjeje.",
+  "Pa përgatitje të veçantë; preferohet të mos merret menjëherë pas vaktit. Për vlerësimin e rrezikut te fëmijët rekomandohet matjen para fillimit të terapisë me insulinë.": "Pa përgatitje të veçantë; preferohet të mos merret menjëherë pas vaktit. Për vlerësimin e rrezikut te fëmijët rekomandohet matja para fillimit të terapisë me insulinë.",
+  "Pa urinim të paktën 2 orë dhe pa marrëdhënie seksuale 24 orë para mostrës. shmangen ovulat vaginale para marrjes.": "Pa urinim të paktën 2 orë dhe pa marrëdhënie seksuale 24 orë para mostrës. Shmangen ovulat vaginale para marrjes.",
+  "Pa vaginaleta dy net përpara; pas përfundimit të terapisë priten 72 orë për kontroll. Pa shpëlarje vaginale mbrëmjen paraprake dhe pa marrëdhënie seksuale 24 orë. Preferohet rreth ditës 10 të ciklit, të paktën 5 ditë pas mbarimit të menstruacioneve; gjatë tyre vetëm sipas mjekut. Mëngjesin përkatës lahet zona me sapun të butë/ujë të ngrohtë dhe vishen të brendshme të pastra. Mes dy marrjeve priten ≥6 javë dhe raportohet testi i fundit. Verifikohet pika e marrjes; shtatzënat sjellin mostër nga gjinekologu. Gjatë marrjes relaksohen muskujt e legenit.": "Pa ovula vaginale dy net përpara; pas përfundimit të terapisë priten 72 orë për kontroll. Pa shpëlarje vaginale mbrëmjen paraprake dhe pa marrëdhënie seksuale 24 orë. Preferohet rreth ditës 10 të ciklit, të paktën 5 ditë pas mbarimit të menstruacioneve; gjatë tyre vetëm sipas mjekut. Mëngjesin përkatës lahet zona me sapun të butë/ujë të ngrohtë dhe vishen të brendshme të pastra. Mes dy marrjeve priten ≥6 javë dhe raportohet testi i fundit. Verifikohet pika e marrjes; shtatzënat sjellin mostër nga gjinekologu. Gjatë marrjes relaksohen muskujt e legenit.",
+  "Para testimit shmangen stresi, aktiviteti fizik intensiv, alkooli dhe kafeina. Burimi vëren se diuretikët, antihipertensivët dhe antipsikotikët mund të ndikojnë rezultatin; nuk përcakton një interval ndërprerjeje.": "Para testimit shmangen stresi, aktiviteti fizik intensiv, alkooli dhe kafeina. Burimi vëren se diuretikët, antihipertensivët dhe antipsikotikët mund të ndikojnë në rezultat; nuk përcakton një interval ndërprerjeje.",
+  "Para urinimit të parë të mëngjesit ose të paktën 2 orë pas urinimit. Personel i trajnuar fut tampon steril të hollë rreth 2 cm dhe e rrotullon. mostra e marrë nga urologu mund të dorëzohet në laborator.": "Para urinimit të parë të mëngjesit ose të paktën 2 orë pas urinimit. Personel i trajnuar fut tampon steril të hollë rreth 2 cm dhe e rrotullon. Mostra e marrë nga urologu mund të dorëzohet në laborator.",
+  "Personat që përdorin frenues ACE duhet të ndjekin udhëzimin e mjekut për menaxhimin e terapisë para testit; përmendet ndërprerje të përkohshme pa specifikuar kohëzgjatjen.": "Personat që përdorin frenues ACE duhet të ndjekin udhëzimin e mjekut për menaxhimin e terapisë para testit; përmendet një ndërprerje e përkohshme pa specifikuar kohëzgjatjen.",
+  "Preferohet mëngjesi para larjes ose shpëlarjes së syrit. Personeli merr tampon steril nga konjuktiva; nëse është e thatë mund të laget me solucion fiziologjik steril.": "Preferohet mëngjesi para larjes ose shpëlarjes së syrit. Personeli merr tampon steril nga konjunktiva; nëse është e thatë mund të laget me solucion fiziologjik steril.",
+  "Përdoret kompleti GI Effects dhe ndiqen udhëzimet për mbledhjen, ruajtjen dhe dorëzimin e feçeve pa kontaminim me urinë ose ujë. ndërprerjet e terapisë nuk zbatohen vetë.": "Përdoret kompleti GI Effects dhe ndiqen udhëzimet për mbledhjen, ruajtjen dhe dorëzimin e feçeve pa kontaminim me urinë ose ujë. Ndërprerjet e terapisë nuk zbatohen vetë.",
+  "Përdoret kompleti shtëpiak: urinë në disa orare, e tharë 24 orë në temperaturë dhome, dhe 5–6 mostra pështyme të ngrira deri në dorëzim. Shmangen alkooli e stërvitja intensive një ditë më parë; kreatina, bananet e bishtajoret 48 orë më parë. pa alkool e kafeinë ditën e mbledhjes. Pa ushqim, larje dhëmbësh ose duhan 30 minuta para pështymës. Respektohen oraret dhe dita e ciklit sipas udhëzimit; pa cikël ose te burrat çdo ditë. Ndryshimet e terapisë hormonale/suplementeve diskutohen me mjekun.": "Përdoret kompleti shtëpiak: urinë në disa orare, e tharë 24 orë në temperaturë dhome, dhe 5–6 mostra pështyme të ngrira deri në dorëzim. Shmangen alkooli e stërvitja intensive një ditë më parë; kreatina, bananet e bishtajoret 48 orë më parë. Pa alkool e kafeinë ditën e mbledhjes. Pa ushqim, larje dhëmbësh ose duhan 30 minuta para pështymës. Respektohen oraret dhe dita e ciklit sipas udhëzimit; pa cikël ose te burrat çdo ditë. Ndryshimet e terapisë hormonale/suplementeve diskutohen me mjekun.",
+  "Përdoret urina e parë e mëngjesit në enën e laboratorit, para ushqimit ose pijeve, sipas protokollit të kompletit. Nëse përdoret mycophenolate, përshtatshmëria e testit vendoset me mjekun që e ka përshkruar; bari nuk ndërpritet për këtë test pa vendimin e tij. Kufizimet e lëngjeve, suplementet dhe koha e dorëzimit konfirmohen paraprakisht.": "Përdoret urina e parë e mëngjesit në enën e laboratorit, para ushqimit ose pijeve, sipas protokollit të kompletit. Nëse përdoret mikofenolat, përshtatshmëria e testit vendoset me mjekun që e ka përshkruar; bari nuk ndërpritet për këtë test pa vendimin e tij. Kufizimet e lëngjeve, suplementet dhe koha e dorëzimit konfirmohen paraprakisht.",
+  "Rriqra e hequr vendoset në shishe sterile me pak solucion fiziologjik, aq sa të mbulohet, dhe ruhet në frigorifer pa ngrirje deri në transport. Teksti përmend gjithashtu gjakun dhe likvorin për situata të tjera klinike, megjithëse ky produkt është për rriqrën.": "Rriqra e hequr vendoset në shishe sterile me pak solucion fiziologjik, aq sa të mbulohet, dhe ruhet në frigorifer pa ngrirje deri në transport. Teksti përmend gjithashtu gjakun dhe likuorin për situata të tjera klinike, megjithëse ky produkt është për rriqrën.",
+  "Rriqra e hequr; teksti diskuton edhe gjakun/likvorin për kontekste të tjera.": "Rriqra e hequr; teksti diskuton edhe gjakun/likuorin për kontekste të tjera.",
+  "Rrjedha e mesme e urinës së parë të mëngjesit pas agjërimit gjatë natës, në kompletin e posaçëm. Pa suplemente vitaminash/mineralesh ≥48 orë, përveç udhëzimit tjetër mjekësor; pa çokollatë, banane/arra 24 orë dhe kafe 12 orë; lëngje maksimumi 1.5 L ditën paraprake. Valproati, paracetamoli dhe berberina HCl mund të ndikojnë; menaxhimi i tyre diskutohet me mjekun. Ndiqet udhëzimi dhe këshillohet konsultë paraprake.": "Rrjedha e mesme e urinës së parë të mëngjesit pas agjërimit gjatë natës, në kompletin e posaçëm. Pa suplemente vitaminash/mineralesh ≥48 orë, përveç udhëzimit tjetër mjekësor; pa çokollatë, banane/arra 24 orë dhe kafe 12 orë; lëngje maksimumi 1,5 L ditën paraprake. Valproati, paracetamoli dhe berberina HCl mund të ndikojnë; menaxhimi i tyre diskutohet me mjekun. Ndiqet udhëzimi dhe këshillohet konsultë paraprake.",
+  "Sasi sa një lugë kafeje në enë feçesh, pa urinë/ujë tualeti, në çdo orë. Në pritje ruhet në 2–8°C. Feçet e lëngshme dërgohen brenda 30 minutash, gjysmë të lëngshme brenda 1 ore, të formuara po atë ditë. mostra e dytë/tretë kur e mëparshmja është negative dhe simptomat vazhdojnë.": "Sasi sa një lugë kafeje në enë feçesh, pa urinë/ujë tualeti, në çdo orë. Në pritje ruhet në 2–8°C. Feçet e lëngshme dërgohen brenda 30 minutash, gjysmë të lëngshme brenda 1 ore, të formuara po atë ditë. Mostra e dytë/tretë kur e mëparshmja është negative dhe simptomat vazhdojnë.",
+  "Serum nga gjak venoz ose kapilar; pa përgatitje të veçantë, preferohet jo menjëherë pas ushqimit. Antihistaminikët nuk ndikojnë; për imunosupresivët kërkohet konsultë me mjekun.": "Serum nga gjak venoz ose kapilar; pa përgatitje të veçantë, preferohet jo menjëherë pas ushqimit. Antihistaminikët nuk ndikojnë; për imunosupresantët kërkohet konsultë me mjekun.",
+  "Serum nga gjak venoz ose kapilar; pa përgatitje të veçantë, preferohet jo menjëherë pas ushqimit. Antihistaminikët nuk ndikojnë; për imunosupresivët këshillohet konsultë me mjekun.": "Serum nga gjak venoz ose kapilar; pa përgatitje të veçantë, preferohet jo menjëherë pas ushqimit. Antihistaminikët nuk ndikojnë; për imunosupresantët këshillohet konsultë me mjekun.",
+  "Serum nga gjak venoz ose kapilar; pa përgatitje të veçantë, preferohet jo menjëherë pas ushqimit. Antihistaminikët nuk ndikojnë; përdorimi i imunosupresivëve diskutohet me mjekun.": "Serum nga gjak venoz ose kapilar; pa përgatitje të veçantë, preferohet jo menjëherë pas ushqimit. Antihistaminikët nuk ndikojnë; përdorimi i imunosupresantëve diskutohet me mjekun.",
+  "Serum nga gjaku venoz; pa përgatitje të veçantë, preferohet jo menjëherë pas ushqimit. Për konfirmim përmendet mungesën e menstruacioneve, rreth 12–14 ditë pas ovulacionit.": "Serum nga gjaku venoz; pa përgatitje të veçantë, preferohet jo menjëherë pas ushqimit. Për konfirmim përmendet mungesa e menstruacioneve, rreth 12–14 ditë pas ovulacionit.",
+  "Së pari bëhet ekografia nga gjinekologu; gjaku preferohet të merret po atë ditë, por pranohet brenda 48 orëve pas saj. Sille fotokopjen e ekografisë. Pa përgatitje të veçantë; preferohet jo menjëherë pas ushqimit. Nuk kërkohet takim.": "Së pari bëhet ekografia nga gjinekologu; gjaku preferohet të merret po atë ditë, por pranohet brenda 48 orëve pas saj. Sillet fotokopja e ekografisë. Pa përgatitje të veçantë; preferohet jo menjëherë pas ushqimit. Nuk kërkohet takim.",
+  "Tampon cervikal te gratë; tampon uretral dhe/ose spermë te burrat; ose rrjedha e parë e urinës së parë të mëngjesit te të dy gjinitë.": "Tampon cervikal te gratë; tampon uretral dhe/ose spermë te burrat; ose rrjedha e parë e urinës së parë të mëngjesit te të dyja gjinitë.",
+  "Tampon cervikal te gratë; uretral dhe/ose spermë te burrat; ose rrjedha e parë e urinës së parë të mëngjesit te të dy gjinitë.": "Tampon cervikal te gratë; uretral dhe/ose spermë te burrat; ose rrjedha e parë e urinës së parë të mëngjesit te të dyja gjinitë.",
+  "Tampon konjuktival i syrit të majtë": "Tampon konjunktival i syrit të majtë",
+  "Tampon nazofaringeal; pa përgatitje të veçantë. Duhet njoftuar personeli për spreje nazale ose barna që ndikojnë mukozën.": "Tampon nazofaringeal; pa përgatitje të veçantë. Duhet njoftuar personeli për spreje nazale ose barna që ndikojnë në mukozë.",
+  "Tampon nga konjuktiva": "Tampon nga konjunktiva",
+  "Tampon nga konjuktiva e syrit të djathtë.": "Tampon nga konjunktiva e syrit të djathtë.",
+  "Tampon nga konjuktiva, nga personel i trajnuar; nëse është e thatë mund të njomet me solucion fiziologjik steril. Preferohet mëngjesi para larjes/shpëlarjes së syrit.": "Tampon nga konjunktiva, nga personel i trajnuar; nëse është e thatë mund të njomet me solucion fiziologjik steril. Preferohet mëngjesi para larjes/shpëlarjes së syrit.",
+  "Tampon steril në të dy zgavrat nazale, rreth 1–2 cm thellë dhe rrotullim 10–15 sekonda. Transport brenda 2 orësh; nëse vonohet, në terren transporti në temperaturë dhome deri 24 orë. Pa përgatitje tjetër; ≥12 orë pas antiseptikut lokal ose shpëlarjes me solucion fiziologjik.": "Tampon steril në të dy zgavrat nazale, rreth 1–2 cm thellë dhe rrotullim 10–15 sekonda. Transport brenda 2 orësh; nëse vonohet, në mjedis transporti në temperaturë dhome deri në 24 orë. Pa përgatitje tjetër; ≥12 orë pas antiseptikut lokal ose shpëlarjes me solucion fiziologjik.",
+  "Tampon vaginal, cervikal ose rektal; Ditën para pa ovula vaginale, shpëlarje vaginale ose marrëdhënie seksuale.": "Tampon vaginal, cervikal ose rektal; ditën para pa ovula vaginale, shpëlarje vaginale ose marrëdhënie seksuale.",
+  "Tamponi steril merret nga konjuktiva nga personel i trajnuar, me lagie fiziologjike nëse është e thatë. Preferohet mëngjesi para larjes/shpëlarjes së syrit.": "Tamponi steril merret nga konjunktiva nga personel i trajnuar, me lagie fiziologjike nëse është e thatë. Preferohet mëngjesi para larjes/shpëlarjes së syrit.",
+  "Testi bëhet me kompletin e frymëmarrjes dhe me dietën, agjërimin e oraret e përcaktuara në protokoll. Para fillimit konfirmohen me mjekun dhe laboratorin antibiotikët, antimikrobikët, laksativët dhe barnat për aciditetin; Barnat nuk ndërpriten vetë.": "Testi bëhet me kompletin e frymëmarrjes dhe me dietën, agjërimin e oraret e përcaktuara në protokoll. Para fillimit konfirmohen me mjekun dhe laboratorin antibiotikët, antimikrobikët, laksativët dhe barnat për aciditetin; barnat nuk ndërpriten vetë.",
+  "Tri ditë dietë me të tre grupet ushqimore. Menuja burimore: mëngjes 0.5 L qumësht, 1 vezë, simite me 3–5 g gjalpë/margarinë; në 10:00, 200 mL qumësht+200 mL ujë+40 g griz; drekë 200 g viç i grirë me 15–20 g gjalpë, 150–200 g pure patatesh, bukë/pije sipas dëshirës; pasdite si mëngjesi pa vezë; darkë si mëngjesi me 1–2 vezë. Mblidhen nga tri vende të feçes 3–5 g ose 3–5 mL në enë sterile, pa tejmbushje; pa kontakt me tualetin, ujë ose urinë.": "Tri ditë dietë me të tre grupet ushqimore. Menuja burimore: mëngjes 0,5 L qumësht, 1 vezë, simite me 3–5 g gjalpë/margarinë; në 10:00, 200 mL qumësht + 200 mL ujë + 40 g griz; drekë 200 g mish viçi i grirë me 15–20 g gjalpë, 150–200 g pure patatesh, bukë/pije sipas dëshirës; pasdite si mëngjesi pa vezë; darkë si mëngjesi me 1–2 vezë. Mblidhen nga tri vende të feçes 3–5 g ose 3–5 mL në enë sterile, pa tejmbushje; pa kontakt me tualetin, ujë ose urinë.",
+  "Urina e parë e mëngjesit në enë sterile, ≥6 orë pas urinimit të fundit, para ushqimit/pijeve. Pakësohen lëngjet pas 18:00, zbrazet fshikëza para gjumit; mostra mbyllet, etiketohet dhe dorëzohet. Në gjak të dukshëm shtyhet testimi. Nuk nevojitet agjërim i posaçëm ose ndërprerje rutine; barnat nuk ndryshohen pa mjekun. Pas cefaleksinës priten ≥4 ditë nga doza e fundit. Menjëherë përpara shmangen, kur mundet, kozmetika/locionet në duar, kimikatet/detergjentët e fortë dhe kontakti me ambalazhe plastike që mund të përmbajnë ftalate/bisfenole.": "Urina e parë e mëngjesit në enë sterile, ≥6 orë pas urinimit të fundit, para ushqimit/pijeve. Pakësohen lëngjet pas 18:00, zbrazet fshikëza para gjumit; mostra mbyllet, etiketohet dhe dorëzohet. Nëse ka gjak të dukshëm, testimi shtyhet. Nuk nevojitet agjërim i posaçëm ose ndërprerje rutine; barnat nuk ndryshohen pa mjekun. Pas cefaleksinës priten ≥4 ditë nga doza e fundit. Menjëherë përpara shmangen, kur mundet, kozmetika/locionet në duar, kimikatet/detergjentët e fortë dhe kontakti me ambalazhe plastike që mund të përmbajnë ftalate/bisfenole.",
+  "Urina e parë në enë sterile, ≥6 orë pas urinimit të fundit, para ushqimit/pijeve. Pakësohen lëngjet pas 18:00 dhe zbrazet fshikëza para gjumit. Shtyhet kur urina ka gjak. Mos ndërpriten barna pa mjekun; pas cefaleksinës priten ≥4 ditë. Suplementet dhe lidhësit e toksinave shmangen ≥3 ditë, përveç udhëzimit ndryshe. Peshku/frutat e detit shmangen ≥1 javë; pas kontrastit me gadolinium priten ≥96 orë. Agjërimi rreth 12 orë është opsional. Para mbledhjes shmangen kozmetika në duar, kimikatet/detergjentet e forta dhe kontakti me plastikë. Ena mbyllet, etiketohet dhe dorëzohet.": "Urina e parë në enë sterile, ≥6 orë pas urinimit të fundit, para ushqimit/pijeve. Pakësohen lëngjet pas 18:00 dhe zbrazet fshikëza para gjumit. Shtyhet kur urina ka gjak. Barnat nuk ndërpriten pa mjekun; pas cefaleksinës priten ≥4 ditë. Suplementet dhe lidhësit e toksinave shmangen ≥3 ditë, përveç udhëzimit ndryshe. Peshku/frutat e detit shmangen ≥1 javë; pas kontrastit me gadolinium priten ≥96 orë. Agjërimi rreth 12 orë është opsional. Para mbledhjes shmangen kozmetika në duar, kimikatet/detergjentët e fortë dhe kontakti me plastikë. Ena mbyllet, etiketohet dhe dorëzohet.",
+  "Urina e parë pas zgjimit, në frigorifer dhe dorëzim sa më shpejt. Pa fara lini/susami 48 orë; lëngje ≤1.5 L në 24 orët paraprake. Cikël i rregullt: ditët 19–25 nga dita e parë e menstruacioneve; peri/menopauzë: çdo ditë, por jo gjatë gjakderdhjes menstruale. Në terapi hormonale mostra merret para dozës së radhës, zakonisht 8–12 orë pas dozës së fundit, sipas mjekut. Nuk rekomandohet për hormone sintetike, të cilat nuk detektohen.": "Urina e parë pas zgjimit, në frigorifer dhe dorëzim sa më shpejt. Pa fara lini/susami 48 orë; lëngje ≤1,5 L në 24 orët paraprake. Cikël i rregullt: ditët 19–25 nga dita e parë e menstruacioneve; peri/menopauzë: çdo ditë, por jo gjatë gjakderdhjes menstruale. Në terapi hormonale mostra merret para dozës së radhës, zakonisht 8–12 orë pas dozës së fundit, sipas mjekut. Nuk rekomandohet për hormone sintetike, të cilat nuk detektohen.",
+  "Urinë e mëngjesit në tubat e kompletit dhe gjak kapilar po atë ditë. Ruhet dieta e zakonshme; shmangen sforcimi 48–72 orë, dietat ekstreme 3–5 ditë, ëmbëlsuesit artificialë/MSG 24–48 orë, ushqimet e pasura me fenole/flavonoide (p.sh. kafe, çaj, çokollatë, fruta pylli, qepë, rrush, mollë me lëkurë), bananet, ananasi, kivi dhe arrat për 48 orë; prodhimet e detit 3–5 ditë ose më gjatë në konsum të rregullt. Agjërim të paktën 8 orë, optimalisht 10–12. Barnat/suplementet diskutohen me mjekun, zakonisht 2–5 ditë përpara; antibiotikët, antimykotikët, probiotikët, enzimat tretëse dhe bllokuesit e acidit mund të ndikojnë. Ndiqet udhëzimi i plotë i kompletit.": "Urinë e mëngjesit në epruvetat e kompletit dhe gjak kapilar po atë ditë. Ruhet dieta e zakonshme; shmangen sforcimi 48–72 orë, dietat ekstreme 3–5 ditë, ëmbëltuesit artificialë/MSG 24–48 orë, ushqimet e pasura me fenole/flavonoide (p.sh. kafe, çaj, çokollatë, fruta pylli, qepë, rrush, mollë me lëkurë), bananet, ananasi, kivi dhe arrat për 48 orë; prodhimet e detit 3–5 ditë ose më gjatë në konsum të rregullt. Agjërim të paktën 8 orë, optimalisht 10–12. Barnat/suplementet diskutohen me mjekun, zakonisht 2–5 ditë përpara; antibiotikët, antimikotikët, probiotikët, enzimat tretëse dhe bllokuesit e acidit mund të ndikojnë. Ndiqet udhëzimi i plotë i kompletit.",
+  "Urinë në tubat e kompletit, dërguar brenda 1 ore; gjaku dhe tamponi bukal merren në laborator. Agjërim 8–12 orë, dietë e zakonshme, pa dieta ekstreme ose sforcim të madh. Barnat/suplementet mund të ndikojnë, sidomos antibiotikët, antimykotikët, probiotikët, enzimat tretëse dhe bllokuesit e acidit. Para tamponit: 30 minuta pa ushqim, pije, çamçakëz ose larje dhëmbësh. Lexohet udhëzimi i kompletit.": "Urinë në epruvetat e kompletit, dërguar brenda 1 ore; gjaku dhe tamponi bukal merren në laborator. Agjërim 8–12 orë, dietë e zakonshme, pa dieta ekstreme ose sforcim të madh. Barnat/suplementet mund të ndikojnë, sidomos antibiotikët, antimikotikët, probiotikët, enzimat tretëse dhe bllokuesit e acidit. Para tamponit: 30 minuta pa ushqim, pije, çamçakëz ose larje dhëmbësh. Lexohet udhëzimi i kompletit.",
+  "Urinë; Bris; Lëng seminal (shënuar në emrin e analizës)": "Urinë; bris; lëng seminal (shënuar në emrin e analizës)",
+  "Zona pastrohet nga lart poshtë me garzë/solucion fiziologjik dhe merret tampon i mukozës me rrotullim të lehtë. Transport sa më shpejt, brenda 2 orëve në temperaturë dhome.": "Zona pastrohet nga lart-poshtë me garzë/solucion fiziologjik dhe merret tampon i mukozës me rrotullim të lehtë. Transport sa më shpejt, brenda 2 orëve në temperaturë dhome."
+ },
+ "k17449": {
+  "n": [
+   [
+    "25-dihidroksi Vitaminë D3",
+    "25-dihidroksivitaminë D3"
+   ]
+  ]
+ },
+ "k17917": {
+  "n": [
+   [
+    "17-ketosteroidi",
+    "17-ketosteroidet"
+   ]
+  ]
+ },
+ "k17928": {
+  "n": [
+   [
+    "OH Progesteron",
+    "OH progesteron"
+   ]
+  ]
+ },
+ "k17964": {
+  "n": [
+   [
+    "OH-Kortikosteroidi-urinë",
+    "OH-kortikosteroidet – urinë"
+   ]
+  ]
+ },
+ "k17445": {
+  "n": [
+   [
+    "ACE , Enzima konvertuese",
+    "ACE, enzima konvertuese"
+   ]
+  ],
+  "d": [
+   [
+    "enzim i përfshirë në rregullimin e presionit të gjakut, prodhimi i të cilit",
+    "enzimë e përfshirë në rregullimin e presionit të gjakut, prodhimi i së cilës"
+   ]
+  ]
+ },
+ "k17518": {
+  "n": [
+   [
+    "acetilsalicilik (Aspirin) – niveli",
+    "acetilsalicilik (aspirinë) – niveli"
+   ]
+  ]
+ },
+ "k17536": {
+  "n": [
+   [
+    "askorbik (Vitaminë C)C431",
+    "askorbik (vitaminë C) C431"
+   ]
+  ]
+ },
+ "k18244": {
+  "n": [
+   [
+    "EFTIL)- niveli",
+    "EFTIL) – niveli"
+   ]
+  ]
+ },
+ "k17912": {
+  "n": [
+   [
+    ")-urinë",
+    ") – urinë"
+   ]
+  ]
+ },
+ "k17715": {
+  "n": [
+   [
+    "vWF) -antigjen",
+    "vWF) – antigjen"
+   ]
+  ]
+ },
+ "k17681": {
+  "n": [
+   [
+    "deaminaza -punktat",
+    "deaminaza – punktat"
+   ]
+  ]
+ },
+ "k17943": {
+  "n": [
+   [
+    "ADH (Vazopresin)",
+    "ADH (vazopresin)"
+   ]
+  ]
+ },
+ "k21191": {
+  "n": [
+   [
+    "E204)-alergji",
+    "E204) – alergji"
+   ]
+  ]
+ },
+ "k17417": {
+  "n": [
+   [
+    "orëshe (mikroalbuminurija)",
+    "orëshe (mikroalbuminuri)"
+   ]
+  ]
+ },
+ "k17490": {
+  "n": [
+   [
+    "mëngjesit (mikroalbuminurija)",
+    "mëngjesit (mikroalbuminuri)"
+   ]
+  ]
+ },
+ "k17938": {
+  "n": [
+   [
+    "Androstendion",
+    "Androstenedion"
+   ]
+  ]
+ },
+ "k17372": {
+  "n": [
+   [
+    "inhalatorë -panel",
+    "inhalatorë – panel"
+   ]
+  ],
+  "d": [
+   [
+    "Pozitiviteti mund",
+    "Rezultati pozitiv mund"
+   ]
+  ]
+ },
+ "k19247": {
+  "n": [
+   [
+    "Alergjenë mleka (f2",
+    "Alergjenë të qumështit (f2"
+   ]
+  ]
+ },
+ "k17373": {
+  "n": [
+   [
+    "ushqimorë -panel",
+    "ushqimorë – panel"
+   ]
+  ],
+  "d": [
+   [
+    "Pozitiviteti tregon",
+    "Rezultati pozitiv tregon"
+   ],
+   [
+    "negativiteti nuk",
+    "rezultati negativ nuk"
+   ]
+  ]
+ },
+ "k17561": {
+  "n": [
+   [
+    "ushqimorë-panel",
+    "ushqimorë – panel"
+   ]
+  ]
+ },
+ "k17382": {
+  "n": [
+   [
+    "Alfa Amilazë",
+    "Alfa-amilazë"
+   ]
+  ],
+  "d": [
+   [
+    "dhe ndonjëherë atij kronik",
+    "dhe ndonjëherë pankreatitit kronik"
+   ]
+  ]
+ },
+ "k17383": {
+  "n": [
+   [
+    "Alfa Amilazë",
+    "Alfa-amilazë"
+   ]
+  ]
+ },
+ "k17666": {
+  "n": [
+   [
+    "Alfa-Galaktozidaza (M.Fabry",
+    "Alfa-galaktozidaza (sëmundja Fabry"
+   ]
+  ]
+ },
+ "k17306": {
+  "n": [
+   [
+    "laktalbumin-alergji",
+    "laktalbumin – alergji"
+   ]
+  ]
+ },
+ "k21189": {
+  "n": [
+   [
+    "Alfacet (cefahlor)- alergji",
+    "Alfacet (cefaklor) – alergji"
+   ]
+  ]
+ },
+ "k17726": {
+  "n": [
+   [
+    "AMA – Antitrupa antimitokondrialë",
+    "AMA – antitrupa antimitokondrialë"
+   ]
+  ]
+ },
+ "k17321": {
+  "n": [
+   [
+    "W1 -alergji",
+    "W1 – alergji"
+   ]
+  ]
+ },
+ "k17322": {
+  "n": [
+   [
+    "W3 -alergji",
+    "W3 – alergji"
+   ]
+  ]
+ },
+ "k21317": {
+  "n": [
+   [
+    "AMH -CMIA metodë (Anti Mulerian hormon)",
+    "AMH – metoda CMIA (hormoni anti-Müllerian)"
+   ]
+  ]
+ },
+ "k17612": {
+  "n": [
+   [
+    "Amonijak",
+    "Amoniak"
+   ]
+  ]
+ },
+ "k17727": {
+  "n": [
+   [
+    "ANA – Antitrupa antinuklearë",
+    "ANA – antitrupa antinuklearë"
+   ]
+  ]
+ },
+ "k17541": {
+  "n": [
+   [
+    "ANA HEP-2 (Antinuklearë antitrupa HEP-2",
+    "ANA HEp-2 (antitrupa antinuklearë HEp-2"
+   ]
+  ],
+  "d": [
+   [
+    "pozitiviteti mund",
+    "rezultati pozitiv mund"
+   ]
+  ]
+ },
+ "k53778": {
+  "n": [
+   [
+    "feçeve- GUT",
+    "feçeve – GUT"
+   ]
+  ]
+ },
+ "k17884": {
+  "n": [
+   [
+    "Anti – Adenovirus IgA",
+    "Anti-adenovirus IgA"
+   ]
+  ]
+ },
+ "k17827": {
+  "n": [
+   [
+    "Anti – Adenovirus IgG",
+    "Anti-adenovirus IgG"
+   ]
+  ]
+ },
+ "k17885": {
+  "n": [
+   [
+    "Anti – Adenovirus IgM",
+    "Anti-adenovirus IgM"
+   ]
+  ]
+ },
+ "k17821": {
+  "n": [
+   [
+    "Anti – Borrelia burgdorferi IgG",
+    "Anti-Borrelia burgdorferi IgG"
+   ]
+  ],
+  "d": [
+   [
+    "pozitiviteti fillestar",
+    "rezultati pozitiv fillestar"
+   ]
+  ]
+ },
+ "k17882": {
+  "n": [
+   [
+    "Anti – Borrelia burgdorferi IgM",
+    "Anti-Borrelia burgdorferi IgM"
+   ]
+  ],
+  "d": [
+   [
+    "bëhet i dallueshëm",
+    "bëhet i zbulueshëm"
+   ]
+  ]
+ },
+ "k18013": {
+  "n": [
+   [
+    "Anti – Candida albicans IgG",
+    "Anti-Candida albicans IgG"
+   ]
+  ]
+ },
+ "k17890": {
+  "n": [
+   [
+    "Anti – Candida albicans IgM",
+    "Anti-Candida albicans IgM"
+   ]
+  ]
+ },
+ "k17786": {
+  "n": [
+   [
+    "Anti – Chlamydia pneumoniae IgG",
+    "Anti-Chlamydia pneumoniae IgG"
+   ]
+  ]
+ },
+ "k17870": {
+  "n": [
+   [
+    "Anti – Chlamydia pneumoniae IgM",
+    "Anti-Chlamydia pneumoniae IgM"
+   ]
+  ]
+ },
+ "k17732": {
+  "n": [
+   [
+    "Anti – Chlamydia trachomatis IgG",
+    "Anti-Chlamydia trachomatis IgG"
+   ]
+  ]
+ },
+ "k17859": {
+  "n": [
+   [
+    "Anti – Chlamydia trachomatis IgM",
+    "Anti-Chlamydia trachomatis IgM"
+   ]
+  ]
+ },
+ "k17733": {
+  "n": [
+   [
+    "Anti – Citomegalovirus (CMV) IgG",
+    "Anti-citomegalovirus (CMV) IgG"
+   ]
+  ]
+ },
+ "k17734": {
+  "n": [
+   [
+    "Anti – Citomegalovirus (CMV) IgM",
+    "Anti-citomegalovirus (CMV) IgM"
+   ]
+  ]
+ },
+ "k17860": {
+  "n": [
+   [
+    "Anti – Coxsackie virus IgG",
+    "Anti-Coxsackie virus IgG"
+   ]
+  ]
+ },
+ "k17861": {
+  "n": [
+   [
+    "Anti – Coxsackie virus IgM",
+    "Anti-Coxsackie virus IgM"
+   ]
+  ]
+ },
+ "k17753": {
+  "n": [
+   [
+    "Anti – Epstein Barr virus (EBV) VCA IgG",
+    "Anti-Epstein-Barr virus (EBV) VCA IgG"
+   ]
+  ]
+ },
+ "k17754": {
+  "n": [
+   [
+    "Anti – Epstein Barr virus (EBV) VCA IgM",
+    "Anti-Epstein-Barr virus (EBV) VCA IgM"
+   ]
+  ]
+ },
+ "k18197": {
+  "n": [
+   [
+    "Anti – HAV",
+    "Anti-HAV"
+   ]
+  ]
+ },
+ "k18199": {
+  "n": [
+   [
+    "Anti – HBs",
+    "Anti-HBs"
+   ]
+  ]
+ },
+ "k18204": {
+  "n": [
+   [
+    "Anti – HCV",
+    "Anti-HCV"
+   ]
+  ],
+  "d": [
+   [
+    "skriningun",
+    "depistimin"
+   ],
+   [
+    "të dallueshëm",
+    "të zbulueshëm"
+   ]
+  ]
+ },
+ "k17862": {
+  "n": [
+   [
+    "Anti – Helicobacter pylori IgA",
+    "Anti-Helicobacter pylori IgA"
+   ]
+  ]
+ },
+ "k17740": {
+  "n": [
+   [
+    "Anti – Helicobacter pylori IgG",
+    "Anti-Helicobacter pylori IgG"
+   ]
+  ]
+ },
+ "k17837": {
+  "n": [
+   [
+    "Anti – HSV-1 IgG",
+    "Anti-HSV-1 IgG"
+   ]
+  ]
+ },
+ "k17839": {
+  "n": [
+   [
+    "Anti – HSV-1 IgM",
+    "Anti-HSV-1 IgM"
+   ]
+  ]
+ },
+ "k17838": {
+  "n": [
+   [
+    "Anti – HSV-2 IgG",
+    "Anti-HSV-2 IgG"
+   ]
+  ],
+  "d": [
+   [
+    "sidomos pozitiviteti i ulët",
+    "sidomos ato dobët pozitive"
+   ]
+  ]
+ },
+ "k17840": {
+  "n": [
+   [
+    "Anti – HSV-2 IgM",
+    "Anti-HSV-2 IgM"
+   ]
+  ]
+ },
+ "k17822": {
+  "n": [
+   [
+    "Anti – Morbilli virus IgG",
+    "Anti-morbilli virus IgG"
+   ]
+  ]
+ },
+ "k17883": {
+  "n": [
+   [
+    "Anti – Morbilli virus IgM",
+    "Anti-morbilli virus IgM"
+   ]
+  ]
+ },
+ "k17820": {
+  "n": [
+   [
+    "Anti – Mumps virus",
+    "Anti-mumps virus"
+   ]
+  ]
+ },
+ "k17789": {
+  "n": [
+   [
+    "Anti – Mycoplasma pneumoniae IgG",
+    "Anti-Mycoplasma pneumoniae IgG"
+   ]
+  ]
+ },
+ "k17790": {
+  "n": [
+   [
+    "Anti – Mycoplasma pneumoniae IgM",
+    "Anti-Mycoplasma pneumoniae IgM"
+   ]
+  ]
+ },
+ "k17787": {
+  "n": [
+   [
+    "Anti – Parvovirus B19 IgG",
+    "Anti-parvovirus B19 IgG"
+   ]
+  ]
+ },
+ "k17788": {
+  "n": [
+   [
+    "Anti – Parvovirus B19 IgM",
+    "Anti-parvovirus B19 IgM"
+   ]
+  ]
+ },
+ "k17746": {
+  "n": [
+   [
+    "Anti – Rubella virus IgG",
+    "Anti-rubella virus IgG"
+   ]
+  ]
+ },
+ "k17747": {
+  "n": [
+   [
+    "Anti – Rubella virus IgM",
+    "Anti-rubella virus IgM"
+   ]
+  ],
+  "d": [
+   [
+    "infeksion i afërt",
+    "infeksion i kohëve të fundit"
+   ],
+   [
+    "Pozitiviteti mund",
+    "Rezultati pozitiv mund"
+   ]
+  ]
+ },
+ "k17750": {
+  "n": [
+   [
+    "Anti – Toxoplasma gondii IgG",
+    "Anti-Toxoplasma gondii IgG"
+   ]
+  ],
+  "d": [
+   [
+    "infeksionin e afërt",
+    "infeksionin e kohëve të fundit"
+   ]
+  ]
+ },
+ "k17751": {
+  "n": [
+   [
+    "Anti – Toxoplasma gondii IgM",
+    "Anti-Toxoplasma gondii IgM"
+   ]
+  ],
+  "d": [
+   [
+    "relativisht të afërt",
+    "relativisht të afërt në kohë"
+   ]
+  ]
+ },
+ "k17793": {
+  "n": [
+   [
+    "Anti – Varicella zoster (VZV) IgG",
+    "Anti-varicella zoster (VZV) IgG"
+   ]
+  ]
+ },
+ "k17794": {
+  "n": [
+   [
+    "Anti – Varicella zoster (VZV) IgM",
+    "Anti-varicella zoster (VZV) IgM"
+   ]
+  ]
+ },
+ "k17818": {
+  "n": [
+   [
+    "Anti adrenalë antitrupa",
+    "Antitrupa antiadrenalë"
+   ]
+  ]
+ },
+ "k17762": {
+  "n": [
+   [
+    "Anti CCP",
+    "Anti-CCP"
+   ]
+  ]
+ },
+ "k17783": {
+  "n": [
+   [
+    "Anti Histon IgG",
+    "Anti-histon IgG"
+   ]
+  ]
+ },
+ "k17759": {
+  "n": [
+   [
+    "Anti Jo",
+    "Anti-Jo"
+   ]
+  ]
+ },
+ "k17957": {
+  "n": [
+   [
+    "Anti Mullerian hormon (AMH",
+    "Hormoni anti-Müllerian (AMH"
+   ]
+  ],
+  "d": [
+   [
+    "qelizave granuloza",
+    "qelizave granuloze"
+   ]
+  ]
+ },
+ "k17780": {
+  "n": [
+   [
+    "Anti RNP 70",
+    "Anti-RNP 70"
+   ]
+  ]
+ },
+ "k17758": {
+  "n": [
+   [
+    "Anti RNP/Sm",
+    "Anti-RNP/Sm"
+   ]
+  ]
+ },
+ "k17760": {
+  "n": [
+   [
+    "Anti Scl",
+    "Anti-Scl"
+   ]
+  ]
+ },
+ "k17755": {
+  "n": [
+   [
+    "Anti Sm",
+    "Anti-Sm"
+   ]
+  ]
+ },
+ "k17765": {
+  "n": [
+   [
+    "Anti TG",
+    "Anti-TG"
+   ]
+  ],
+  "d": [
+   [
+    "negativiteti nuk përjashton",
+    "rezultati negativ nuk e përjashton"
+   ]
+  ]
+ },
+ "k17766": {
+  "n": [
+   [
+    "Anti TPO",
+    "Anti-TPO"
+   ]
+  ],
+  "d": [
+   [
+    "negativiteti nuk përjashton",
+    "rezultati negativ nuk e përjashton"
+   ]
+  ]
+ },
+ "k17713": {
+  "n": [
+   [
+    "Anti X-a (HEPARIN)",
+    "Anti-Xa (heparinë)"
+   ]
+  ]
+ },
+ "k77300": {
+  "n": [
+   [
+    "Anti-anexin -V IgG",
+    "Anti-aneksin V IgG"
+   ]
+  ]
+ },
+ "k77314": {
+  "n": [
+   [
+    "Anti-anexin -V IgM",
+    "Anti-aneksin V IgM"
+   ],
+   [
+    "në serum,",
+    "në serum"
+   ]
+  ]
+ },
+ "k17756": {
+  "n": [
+   [
+    "A (RO) antitrupa",
+    "A (Ro) antitrupa"
+   ]
+  ]
+ },
+ "k17757": {
+  "n": [
+   [
+    "B (LA) antitrupa",
+    "B (La) antitrupa"
+   ]
+  ]
+ },
+ "k17781": {
+  "n": [
+   [
+    "antineuronalë (HU,YO,RI)",
+    "antineuronalë (Hu, Yo, Ri)"
+   ]
+  ]
+ },
+ "k17802": {
+  "n": [
+   [
+    "antitrombocitarë -totale(IgM,IgA,IgG",
+    "antitrombocitarë – totalë (IgM, IgA, IgG"
+   ]
+  ]
+ },
+ "k17724": {
+  "n": [
+   [
+    "ASMA )",
+    "ASMA)"
+   ]
+  ]
+ },
+ "k17615": {
+  "n": [
+   [
+    "ndaj Adalimumab",
+    "ndaj adalimumabit"
+   ]
+  ]
+ },
+ "k17819": {
+  "n": [
+   [
+    "ndaj Aquaporin 4",
+    "ndaj akuaporinës 4"
+   ]
+  ]
+ },
+ "k17844": {
+  "n": [
+   [
+    "beta2-glikoprotein IgG",
+    "beta2-glikoproteinës IgG"
+   ]
+  ],
+  "d": [
+   [
+    "Përdoret te tromboza të vetme",
+    "Përdoret te trombozat e vetme"
+   ]
+  ]
+ },
+ "k17845": {
+  "n": [
+   [
+    "beta2-glikoprotein IgM",
+    "beta2-glikoproteinës IgM"
+   ]
+  ]
+ },
+ "k17824": {
+  "n": [
+   [
+    "ndaj Eritropoietinë",
+    "ndaj eritropoietinës"
+   ]
+  ]
+ },
+ "k17846": {
+  "n": [
+   [
+    "ndaj gliadinë IgA",
+    "ndaj gliadinës IgA"
+   ]
+  ],
+  "d": [
+   [
+    "Përshkrimi e përdor te diarreja",
+    "Përshkrimi përmend përdorimin te diarreja"
+   ]
+  ]
+ },
+ "k17774": {
+  "n": [
+   [
+    "ndaj gliadinë IgG",
+    "ndaj gliadinës IgG"
+   ]
+  ]
+ },
+ "k17812": {
+  "n": [
+   [
+    "MOG), në",
+    "MOG) në"
+   ]
+  ]
+ },
+ "k17635": {
+  "n": [
+   [
+    "ndaj Infliksimab(Infliximab)",
+    "ndaj infliksimabit"
+   ]
+  ]
+ },
+ "k17835": {
+  "n": [
+   [
+    "ndaj proteina ribozomale",
+    "ndaj proteinës ribozomale"
+   ],
+   [
+    "P-IgG",
+    "P – IgG"
+   ]
+  ]
+ },
+ "k17673": {
+  "n": [
+   [
+    "ndaj Steroid-21-Hidroksilazu në",
+    "ndaj steroid-21-hidroksilazës në"
+   ]
+  ]
+ },
+ "k21329": {
+  "n": [
+   [
+    "Hu,Yo,Ri,Amphiphisin,Ma2",
+    "Hu, Yo, Ri, amfifizinë, Ma2"
+   ]
+  ]
+ },
+ "k21304": {
+  "n": [
+   [
+    "E -gjenotipizim",
+    "E – gjenotipizim"
+   ]
+  ]
+ },
+ "k18228": {
+  "n": [
+   [
+    "Arsen në urinë-mostër",
+    "Arsen në urinë – mostër"
+   ]
+  ]
+ },
+ "k17653": {
+  "n": [
+   [
+    "Articain-alergji",
+    "Articain – alergji"
+   ]
+  ]
+ },
+ "k17320": {
+  "n": [
+   [
+    "F18 -alergji",
+    "F18 – alergji"
+   ]
+  ]
+ },
+ "k17302": {
+  "n": [
+   [
+    "f256 -alergji",
+    "f256 – alergji"
+   ]
+  ]
+ },
+ "k21183": {
+  "n": [
+   [
+    "f202-alergji",
+    "f202 – alergji"
+   ]
+  ]
+ },
+ "k86967": {
+  "n": [
+   [
+    "Aspergillus Fumig M3-alergji",
+    "Aspergillus fumigatus M3 – alergji"
+   ]
+  ]
+ },
+ "k17858": {
+  "n": [
+   [
+    "Aspergillus galactomannan Ag",
+    "Aspergillus galaktomanan Ag"
+   ]
+  ]
+ },
+ "k18008": {
+  "n": [
+   [
+    "trakeal – bakteriologjik, anaerob",
+    "trakeal – bakteriologji, anaerob"
+   ]
+  ]
+ },
+ "k17285": {
+  "n": [
+   [
+    "Aspirin (Acid acetilsalicilik",
+    "Aspirinë (acid acetilsalicilik"
+   ]
+  ]
+ },
+ "k17319": {
+  "n": [
+   [
+    "Bajame-alergji",
+    "Bajame – alergji"
+   ]
+  ]
+ },
+ "k17497": {
+  "n": [
+   [
+    "Bence-Jones proteina",
+    "Proteina Bence-Jones"
+   ]
+  ]
+ },
+ "k17519": {
+  "n": [
+   [
+    "Benzodiazepini – niveli",
+    "Benzodiazepinat – niveli"
+   ]
+  ]
+ },
+ "k17647": {
+  "n": [
+   [
+    "Beta Carotin (B-Carotin)",
+    "Beta-karoten (B-karoten)"
+   ]
+  ]
+ },
+ "k18171": {
+  "n": [
+   [
+    "Beta-Crosslaps",
+    "Beta-CrossLaps"
+   ]
+  ]
+ },
+ "k17307": {
+  "n": [
+   [
+    "laktoglobulin-alergji",
+    "laktoglobulin – alergji"
+   ]
+  ]
+ },
+ "k17464": {
+  "n": [
+   [
+    "Beta2 mikroglobulinë -urinë",
+    "Beta 2 mikroglobulinë – urinë"
+   ]
+  ]
+ },
+ "k18137": {
+  "n": [
+   [
+    "Bilë – bakteriologjik,anaerob",
+    "Bilë – bakteriologji, anaerob"
+   ]
+  ]
+ },
+ "k17328": {
+  "n": [
+   [
+    "F315 -alergji",
+    "F315 – alergji"
+   ]
+  ]
+ },
+ "k17329": {
+  "n": [
+   [
+    "F12 -alergji",
+    "F12 – alergji"
+   ]
+  ]
+ },
+ "k17267": {
+  "n": [
+   [
+    "I1- alergji",
+    "I1 – alergji"
+   ]
+  ]
+ },
+ "k17893": {
+  "n": [
+   [
+    "pertussis Toksinë – IgG",
+    "pertussis toksinë – IgG"
+   ]
+  ]
+ },
+ "k17814": {
+  "n": [
+   [
+    "Western Blot IgG",
+    "Western blot IgG"
+   ]
+  ]
+ },
+ "k17880": {
+  "n": [
+   [
+    "Western Blot IgM",
+    "Western blot IgM"
+   ]
+  ]
+ },
+ "k21228": {
+  "n": [
+   [
+    "njohur, familjar, NGS",
+    "njohur, anëtar i familjes, NGS"
+   ]
+  ]
+ },
+ "k18087": {
+  "n": [
+   [
+    "Bris epifaringeal – bakteriologji",
+    "Bris nazofaringeal – bakteriologji"
+   ]
+  ]
+ },
+ "k18080": {
+  "n": [
+   [
+    "cervikal – preparat direkt ndaj N. gonorrhoeae",
+    "cervikal – preparat direkt për N. gonorrhoeae"
+   ]
+  ]
+ },
+ "k18059": {
+  "n": [
+   [
+    "uretral – preparat direkt ndaj N. gonorrhoeae",
+    "uretral – preparat direkt për N. gonorrhoeae"
+   ]
+  ]
+ },
+ "k18056": {
+  "n": [
+   [
+    "uretral – preparat direkt ndaj Trichomonas vag",
+    "uretral – preparat direkt për Trichomonas vag"
+   ]
+  ],
+  "d": [
+   [
+    "Trichomonas vaginalis. nuk jep",
+    "Trichomonas vaginalis, por nuk jep"
+   ]
+  ]
+ },
+ "k18069": {
+  "n": [
+   [
+    "vaginal-preparat direkt ndaj Trichomonas vag.",
+    "vaginal – preparat direkt për Trichomonas vag."
+   ]
+  ]
+ },
+ "k18159": {
+  "n": [
+   [
+    "fytit – bakteriologjik, anaerob",
+    "fytit – bakteriologji, anaerob"
+   ]
+  ]
+ },
+ "k18107": {
+  "n": [
+   [
+    "glansit – mikologjik",
+    "glansit – mikologji"
+   ]
+  ]
+ },
+ "k18009": {
+  "n": [
+   [
+    "gjuhës – mikologjik",
+    "gjuhës – mikologji"
+   ]
+  ]
+ },
+ "k18165": {
+  "n": [
+   [
+    "plagës – bakteriologjik, aerob",
+    "plagës – bakteriologji, aerob"
+   ]
+  ]
+ },
+ "k18105": {
+  "n": [
+   [
+    "prepucit – mikologjik",
+    "prepucit – mikologji"
+   ]
+  ]
+ },
+ "k18109": {
+  "n": [
+   [
+    "vulvës – mikologjik",
+    "vulvës – mikologji"
+   ]
+  ]
+ },
+ "k18106": {
+  "n": [
+   [
+    "buzëve – mikologjik",
+    "buzëve – mikologji"
+   ]
+  ]
+ },
+ "k18066": {
+  "n": [
+   [
+    "buzëve bakteriologji",
+    "buzëve – bakteriologji"
+   ]
+  ]
+ },
+ "k18127": {
+  "n": [
+   [
+    "mitrës – bakteriologjik, aerob",
+    "mitrës – bakteriologji, aerob"
+   ]
+  ]
+ },
+ "k18139": {
+  "n": [
+   [
+    "mitrës – bakteriologjik,anaerob",
+    "mitrës – bakteriologji, anaerob"
+   ]
+  ]
+ },
+ "k18161": {
+  "n": [
+   [
+    "uretral – bakteriologjik, anaerob",
+    "uretral – bakteriologji, anaerob"
+   ]
+  ]
+ },
+ "k17362": {
+  "n": [
+   [
+    "Buburrec i6 -alergji",
+    "Kacabu i6 – alergji"
+   ]
+  ]
+ },
+ "k17771": {
+  "n": [
+   [
+    "ANCA (Anti PR3",
+    "ANCA (anti-PR3"
+   ]
+  ],
+  "d": [
+   [
+    "përdorim të rastësishëm ndihmës",
+    "përdorim ndihmës të herëpashershëm"
+   ]
+  ]
+ },
+ "k17926": {
+  "n": [
+   [
+    "C-Peptid",
+    "C-peptid"
+   ]
+  ]
+ },
+ "k17798": {
+  "n": [
+   [
+    "C1 Inhibitor (i",
+    "C1 inhibitor (i"
+   ]
+  ]
+ },
+ "k54951": {
+  "n": [
+   [
+    "shtesë )",
+    "shtesë)"
+   ]
+  ]
+ },
+ "k17611": {
+  "n": [
+   [
+    "CD4+ ( T Limfociti )",
+    "CD4+ (limfocite T)"
+   ]
+  ]
+ },
+ "k21190": {
+  "n": [
+   [
+    "Cefadroksil (valdocef)- alergji",
+    "Cefadroksil (Valdocef) – alergji"
+   ]
+  ]
+ },
+ "k88467": {
+  "n": [
+   [
+    "Cefalosporini c6",
+    "Cefalosporina c6"
+   ]
+  ],
+  "d": [
+   [
+    "Pozitiviteti pa simptoma",
+    "Rezultati pozitiv pa simptoma"
+   ]
+  ]
+ },
+ "k17849": {
+  "n": [
+   [
+    "50 – total komplement",
+    "50 – komplement total"
+   ]
+  ]
+ },
+ "k17295": {
+  "n": [
+   [
+    "w15-alergji",
+    "w15 – alergji"
+   ]
+  ]
+ },
+ "k48357": {
+  "n": [
+   [
+    "trachomatis PCR (bris,urinë,lëng seminal",
+    "trachomatis PCR (bris, urinë, lëng seminal"
+   ]
+  ],
+  "d": [
+   [
+    "skrining të grupeve",
+    "depistim të grupeve"
+   ],
+   [
+    "komplikacionesh",
+    "komplikimesh"
+   ]
+  ]
+ },
+ "k21332": {
+  "n": [
+   [
+    "CIklosporin – niveli",
+    "Ciklosporin – niveli"
+   ]
+  ]
+ },
+ "k17286": {
+  "n": [
+   [
+    "HSA- alergji",
+    "HSA – alergji"
+   ]
+  ]
+ },
+ "k17748": {
+  "n": [
+   [
+    "T.solium",
+    "T. solium"
+   ]
+  ]
+ },
+ "k17583": {
+  "n": [
+   [
+    "Cistin -urinë",
+    "Cistin – urinë"
+   ]
+  ]
+ },
+ "k17399": {
+  "n": [
+   [
+    "CK – Kreatin kinaza",
+    "CK – kreatinkinaza"
+   ]
+  ]
+ },
+ "k17864": {
+  "n": [
+   [
+    "CMV – IgG antitrupa aviditet",
+    "CMV – aviditeti i antitrupave IgG"
+   ]
+  ]
+ },
+ "k79138": {
+  "n": [
+   [
+    "Covid 19, influenza A, influenza B imunokromatografik test",
+    "COVID-19, influenca A, influenca B – test imunokromatografik"
+   ]
+  ],
+  "d": [
+   [
+    "përmendet konfirmimin me PCR",
+    "përmendet konfirmimi me PCR"
+   ]
+  ]
+ },
+ "k45161": {
+  "n": [
+   [
+    "Coxiella burnetti (ethe Q) IgG",
+    "Coxiella burnetii (ethe Q) IgG"
+   ]
+  ]
+ },
+ "k45163": {
+  "n": [
+   [
+    "Coxiella burnetti (ethe Q) IgM",
+    "Coxiella burnetii (ethe Q) IgM"
+   ]
+  ]
+ },
+ "k18277": {
+  "n": [
+   [
+    "Cytomegalovirus në lëngun",
+    "Citomegalovirus në lëngun"
+   ]
+  ]
+ },
+ "k18278": {
+  "n": [
+   [
+    "Cytomegalovirus në urinë",
+    "Citomegalovirus në urinë"
+   ]
+  ]
+ },
+ "k46112": {
+  "n": [
+   [
+    "Detoksigenomic profil",
+    "Profili DetoxiGenomic"
+   ]
+  ]
+ },
+ "k54960": {
+  "n": [
+   [
+    "Direct Exam Parasites (GI",
+    "Ekzaminim direkt për parazitë (GI"
+   ]
+  ],
+  "d": [
+   [
+    "negativiteti i një mostre",
+    "rezultati negativ i një mostre"
+   ]
+  ]
+ },
+ "k17386": {
+  "n": [
+   [
+    "Direkt Bilirubin",
+    "Bilirubinë direkte"
+   ]
+  ]
+ },
+ "k25572": {
+  "n": [
+   [
+    "DPYD mungesë",
+    "Mungesë e DPYD"
+   ]
+  ]
+ },
+ "k17360": {
+  "n": [
+   [
+    "O201 -alergji",
+    "O201 – alergji"
+   ]
+  ]
+ },
+ "k82032": {
+  "n": [
+   [
+    "Mapping (hormone nga urina-cikli i plotë",
+    "Mapping (hormone nga urina – cikli i plotë"
+   ]
+  ]
+ },
+ "k82046": {
+  "n": [
+   [
+    "urina- cikli",
+    "urina – cikli"
+   ]
+  ]
+ },
+ "k82042": {
+  "n": [
+   [
+    "PLUS (Kortizol në",
+    "PLUS (kortizol në"
+   ],
+   [
+    "dhe hormone nga urina-cikli i plotë",
+    "dhe hormone nga urina – cikli i plotë"
+   ]
+  ]
+ },
+ "k82026": {
+  "n": [
+   [
+    "Plus (Kortizol në",
+    "Plus (kortizol në"
+   ]
+  ]
+ },
+ "k17262": {
+  "n": [
+   [
+    "F1-alergji",
+    "F1 – alergji"
+   ]
+  ]
+ },
+ "k17313": {
+  "n": [
+   [
+    "F75 -alergji",
+    "F75 – alergji"
+   ]
+  ]
+ },
+ "k21197": {
+  "n": [
+   [
+    "EGFR-MDRD",
+    "eGFR-MDRD"
+   ]
+  ],
+  "d": [
+   [
+    "histori familjare renale",
+    "histori familjare të sëmundjeve renale"
+   ]
+  ]
+ },
+ "k17400": {
+  "n": [
+   [
+    "Elektroforeza hemoglobinës",
+    "Elektroforeza e hemoglobinës"
+   ]
+  ]
+ },
+ "k17582": {
+  "n": [
+   [
+    "Elektroforeza proteinave në",
+    "Elektroforeza e proteinave në"
+   ]
+  ]
+ },
+ "k17402": {
+  "n": [
+   [
+    "Elektroforeza proteinave të",
+    "Elektroforeza e proteinave të"
+   ]
+  ]
+ },
+ "k17332": {
+  "n": [
+   [
+    "B -m81- alergji",
+    "B m81 – alergji"
+   ]
+  ]
+ },
+ "k18000": {
+  "n": [
+   [
+    "hundë -bris",
+    "hundë – bris"
+   ]
+  ]
+ },
+ "k17341": {
+  "n": [
+   [
+    "ex1-alergji",
+    "ex1 – alergji"
+   ]
+  ]
+ },
+ "k17729": {
+  "n": [
+   [
+    "Epstein Barr – antitrupa",
+    "Epstein-Barr – antitrupa"
+   ],
+   [
+    "Paul Bunnell",
+    "Paul-Bunnell"
+   ]
+  ]
+ },
+ "k17865": {
+  "n": [
+   [
+    "Epstein Barr – IgG antitrupa aviditet",
+    "Epstein-Barr – aviditeti i antitrupave IgG"
+   ]
+  ]
+ },
+ "k17901": {
+  "n": [
+   [
+    "Epstein barr EBNA",
+    "Epstein-Barr EBNA"
+   ]
+  ]
+ },
+ "k21273": {
+  "n": [
+   [
+    "Epstein Barr në gjak ( PCR)- sasior",
+    "Epstein-Barr në gjak (PCR) – sasior"
+   ]
+  ]
+ },
+ "k18279": {
+  "n": [
+   [
+    "Epstein Barr në gjak (PCR",
+    "Epstein-Barr në gjak (PCR"
+   ]
+  ]
+ },
+ "k56854": {
+  "n": [
+   [
+    "Estrogjen esencial nga",
+    "Estrogjene esenciale nga"
+   ]
+  ]
+ },
+ "k17494": {
+  "n": [
+   [
+    "Etanol(Alkohol)",
+    "Etanol (alkool)"
+   ]
+  ]
+ },
+ "k17605": {
+  "n": [
+   [
+    "Etanol(Alkohol)",
+    "Etanol (alkool)"
+   ],
+   [
+    ")-urinë",
+    ") – urinë"
+   ]
+  ]
+ },
+ "k18258": {
+  "n": [
+   [
+    "Everolimus-niveli",
+    "Everolimus – niveli"
+   ]
+  ]
+ },
+ "k21295": {
+  "n": [
+   [
+    "FXIII/Faktor XIII",
+    "FXIII/faktori XIII"
+   ]
+  ]
+ },
+ "k21283": {
+  "n": [
+   [
+    "II; Faktor V",
+    "II; faktori V"
+   ],
+   [
+    "1;Faktor XIII",
+    "1; faktori XIII"
+   ]
+  ]
+ },
+ "k21287": {
+  "n": [
+   [
+    "F2/Factor II",
+    "F2/faktori II"
+   ]
+  ]
+ },
+ "k21286": {
+  "n": [
+   [
+    "F5/Factor V",
+    "F5/faktori V"
+   ]
+  ]
+ },
+ "k21225": {
+  "n": [
+   [
+    "Farmakogjenetikë antiepileptikë NGS",
+    "Farmakogjenetika e antiepileptikëve, NGS"
+   ]
+  ]
+ },
+ "k21227": {
+  "n": [
+   [
+    "Farmakogjenetikë antipsikotikë NGS",
+    "Farmakogjenetika e antipsikotikëve, NGS"
+   ]
+  ]
+ },
+ "k18164": {
+  "n": [
+   [
+    "Feçe -ciste",
+    "Feçe – ciste"
+   ],
+   [
+    "Cryptosporidium,Giardia",
+    "Cryptosporidium, Giardia"
+   ]
+  ]
+ },
+ "k17817": {
+  "n": [
+   [
+    "difficile Toksina A",
+    "difficile toksina A"
+   ],
+   [
+    "dhe Toksina B",
+    "dhe toksina B"
+   ]
+  ]
+ },
+ "k17972": {
+  "n": [
+   [
+    "Feçe – Helicobacter pylori antigen",
+    "Feçe – antigjen i Helicobacter pylori"
+   ]
+  ],
+  "d": [
+   [
+    "ulcerën",
+    "ulçerën"
+   ]
+  ]
+ },
+ "k17973": {
+  "n": [
+   [
+    "Feçe – Identifikimi i",
+    "Feçe – identifikimi i"
+   ]
+  ]
+ },
+ "k18026": {
+  "n": [
+   [
+    "Feçe – mikologjik sasior",
+    "Feçe – mikologji sasiore"
+   ]
+  ]
+ },
+ "k18130": {
+  "n": [
+   [
+    "Feçe – paraziti – Identifikimi i",
+    "Feçe – parazitë – identifikimi i"
+   ]
+  ]
+ },
+ "k18005": {
+  "n": [
+   [
+    "Feçe – Rotavirus dhe Adenovirus antigen",
+    "Feçe – antigjen i rotavirusit dhe adenovirusit"
+   ]
+  ],
+  "d": [
+   [
+    "Rekomandohet marrja herët",
+    "Rekomandohet marrja e mostrës herët"
+   ]
+  ]
+ },
+ "k85411": {
+  "n": [
+   [
+    "e Rotavirus/Adenovirus/Norovirus/Astrovirus – test",
+    "e rotavirusit/adenovirusit/norovirusit/astrovirusit – test"
+   ]
+  ],
+  "d": [
+   [
+    "negativiteti nuk",
+    "rezultati negativ nuk"
+   ]
+  ]
+ },
+ "k18218": {
+  "n": [
+   [
+    "Fibromax",
+    "FibroMax"
+   ]
+  ]
+ },
+ "k18217": {
+  "n": [
+   [
+    "Fibrotest",
+    "FibroTest"
+   ]
+  ]
+ },
+ "k17363": {
+  "n": [
+   [
+    "t15 -alergji",
+    "t15 – alergji"
+   ]
+  ]
+ },
+ "k17937": {
+  "n": [
+   [
+    "Free (i lirë) Testosteron",
+    "Testosteron i lirë"
+   ]
+  ]
+ },
+ "k17914": {
+  "n": [
+   [
+    "Free Kortizol -urinë",
+    "Kortizol i lirë – urinë"
+   ]
+  ]
+ },
+ "k17352": {
+  "n": [
+   [
+    "mix- alergji",
+    "mix – alergji"
+   ]
+  ]
+ },
+ "k17704": {
+  "n": [
+   [
+    "Glukozë -6",
+    "Glukozë-6"
+   ]
+  ]
+ },
+ "k17334": {
+  "n": [
+   [
+    "I75 -alergji",
+    "I75 – alergji"
+   ]
+  ]
+ },
+ "k17350": {
+  "n": [
+   [
+    "f4-alergji",
+    "f4 – alergji"
+   ]
+  ]
+ },
+ "k18266": {
+  "n": [
+   [
+    "Haloperidol-niveli",
+    "Haloperidol – niveli"
+   ]
+  ]
+ },
+ "k17299": {
+  "n": [
+   [
+    "E84 -alergji",
+    "E84 – alergji"
+   ]
+  ]
+ },
+ "k17900": {
+  "n": [
+   [
+    "HANTAVIRUS antitrupa",
+    "Hantavirus antitrupa"
+   ]
+  ]
+ },
+ "k17792": {
+  "n": [
+   [
+    "HCV -antitrupa totalë Western Blot",
+    "HCV – antitrupa totalë, Western blot"
+   ]
+  ]
+ },
+ "k64794": {
+  "n": [
+   [
+    "i1,i3,i75",
+    "i1, i3, i75"
+   ],
+   [
+    "i213,i216,i209,i211)-alergji",
+    "i213, i216, i209, i211) – alergji"
+   ]
+  ],
+  "d": [
+   [
+    "grerëzës dhe stršljen (hornet)",
+    "grerëzës dhe grerëzës së madhe"
+   ]
+  ]
+ },
+ "k17601": {
+  "n": [
+   [
+    "Histamin -EDTA",
+    "Histamin – EDTA"
+   ]
+  ],
+  "d": [
+   [
+    "gjaku. pretendimi",
+    "gjaku. Pretendimi"
+   ]
+  ]
+ },
+ "k17851": {
+  "n": [
+   [
+    "Hitotriozidaza-aktiviteti",
+    "Kitotriozidaza – aktiviteti"
+   ]
+  ]
+ },
+ "k17294": {
+  "n": [
+   [
+    "W20 -alergji",
+    "W20 – alergji"
+   ]
+  ]
+ },
+ "k17857": {
+  "n": [
+   [
+    "2 – antitrupa totalë Western Blot",
+    "2 – antitrupa totalë, Western blot"
+   ]
+  ]
+ },
+ "k18205": {
+  "n": [
+   [
+    "Combo antigen, antitrupa",
+    "Combo antigjen, antitrupa"
+   ]
+  ]
+ },
+ "k18295": {
+  "n": [
+   [
+    "HLA B-27 antigen",
+    "HLA-B27 antigjen"
+   ]
+  ]
+ },
+ "k46349": {
+  "n": [
+   [
+    "Holotranskobalamin (aktivni Vitaminë B12)",
+    "Holotranskobalamin (vitaminë B12 aktive)"
+   ]
+  ]
+ },
+ "k21318": {
+  "n": [
+   [
+    "HOMA index",
+    "Indeksi HOMA"
+   ]
+  ]
+ },
+ "k17923": {
+  "n": [
+   [
+    "HGH, Somatotropin)",
+    "HGH, somatotropin)"
+   ]
+  ]
+ },
+ "k17816": {
+  "n": [
+   [
+    "Hs CRP",
+    "hs-CRP"
+   ]
+  ]
+ },
+ "k17896": {
+  "n": [
+   [
+    "1 – IgG antitrupa aviditet",
+    "1 – aviditeti i antitrupave IgG"
+   ]
+  ]
+ },
+ "k17627": {
+  "n": [
+   [
+    "HVA (Acid homovanilik )-mostër",
+    "HVA (acid homovanilik) – mostër"
+   ]
+  ]
+ },
+ "k17779": {
+  "n": [
+   [
+    "antitrupa (Tyrozin phosphat)",
+    "antitrupa (tirozin-fosfatazë)"
+   ]
+  ]
+ },
+ "k17741": {
+  "n": [
+   [
+    "IgA – Imunoglobulinë A",
+    "IgA – imunoglobulinë A"
+   ]
+  ]
+ },
+ "k17744": {
+  "n": [
+   [
+    "IgE – Imunoglobulinë E",
+    "IgE – imunoglobulinë E"
+   ]
+  ]
+ },
+ "k17924": {
+  "n": [
+   [
+    "1 (Somatomedin C",
+    "1 (somatomedin C"
+   ]
+  ]
+ },
+ "k17742": {
+  "n": [
+   [
+    "IgG – Imunoglobulinë G",
+    "IgG – imunoglobulinë G"
+   ]
+  ]
+ },
+ "k17805": {
+  "n": [
+   [
+    "IgG nënklasë",
+    "IgG – nënklasat"
+   ]
+  ]
+ },
+ "k17743": {
+  "n": [
+   [
+    "IgM – Imunoglobulinë M",
+    "IgM – imunoglobulinë M"
+   ]
+  ]
+ },
+ "k17404": {
+  "n": [
+   [
+    "Imunoelektroforeza proteinave në serum",
+    "Imunoelektroforeza e proteinave në serum"
+   ]
+  ],
+  "d": [
+   [
+    "veshkave, veçanërisht mielomës",
+    "veshkave dhe veçanërisht të mielomës"
+   ]
+  ]
+ },
+ "k17403": {
+  "n": [
+   [
+    "Imunoelektroforeza proteinave në urinë",
+    "Imunoelektroforeza e proteinave në urinë"
+   ]
+  ]
+ },
+ "k21319": {
+  "n": [
+   [
+    "Index f",
+    "Indeksi f"
+   ]
+  ]
+ },
+ "k17387": {
+  "n": [
+   [
+    "Indirekt bilirubin",
+    "Bilirubinë indirekte"
+   ]
+  ]
+ },
+ "k17634": {
+  "n": [
+   [
+    "Infliximab)-niveli",
+    "Infliximab) – niveli"
+   ]
+  ]
+ },
+ "k17828": {
+  "n": [
+   [
+    "Influenza A – IgG",
+    "Influenca A – IgG"
+   ]
+  ]
+ },
+ "k17886": {
+  "n": [
+   [
+    "Influenza A – IgM",
+    "Influenca A – IgM"
+   ]
+  ]
+ },
+ "k17887": {
+  "n": [
+   [
+    "Influenza B – IgG",
+    "Influenca B – IgG"
+   ]
+  ]
+ },
+ "k17907": {
+  "n": [
+   [
+    "Influenza B – IgM",
+    "Influenca B – IgM"
+   ]
+  ]
+ },
+ "k59603": {
+  "n": [
+   [
+    "Inhalatorë dhe ushqimorë alergjenë-panel",
+    "Alergjenë inhalatorë dhe ushqimorë – panel"
+   ]
+  ]
+ },
+ "k17370": {
+  "n": [
+   [
+    "antitrupa -alergji",
+    "antitrupa – alergji"
+   ]
+  ]
+ },
+ "k58875": {
+  "n": [
+   [
+    "PCR-bazë panel",
+    "PCR – panel bazë"
+   ]
+  ]
+ },
+ "k33400": {
+  "n": [
+   [
+    "Izoenzima alkalne fosfatazës",
+    "Izoenzimat e fosfatazës alkaline"
+   ]
+  ]
+ },
+ "k21274": {
+  "n": [
+   [
+    "Izolim ADN",
+    "Izolim i ADN-së"
+   ]
+  ]
+ },
+ "k17304": {
+  "n": [
+   [
+    "f221-alergji",
+    "f221 – alergji"
+   ]
+  ]
+ },
+ "k17266": {
+  "n": [
+   [
+    "f93-alergji",
+    "f93 – alergji"
+   ]
+  ]
+ },
+ "k17390": {
+  "n": [
+   [
+    "Kalcium-urinë",
+    "Kalcium – urinë"
+   ]
+  ]
+ },
+ "k17309": {
+  "n": [
+   [
+    "F24 -alergji",
+    "F24 – alergji"
+   ]
+  ]
+ },
+ "k18213": {
+  "n": [
+   [
+    "Kateholamini në plazmë",
+    "Katekolamina në plazmë"
+   ]
+  ]
+ },
+ "k18212": {
+  "n": [
+   [
+    "Kateholamini në urinë",
+    "Katekolamina në urinë"
+   ]
+  ]
+ },
+ "k17365": {
+  "n": [
+   [
+    "E6 -alergji",
+    "E6 – alergji"
+   ]
+  ]
+ },
+ "k17308": {
+  "n": [
+   [
+    "Kazeinë-alergji",
+    "Kazeinë – alergji"
+   ]
+  ]
+ },
+ "k17324": {
+  "n": [
+   [
+    "shampinjon)- alergji",
+    "shampinjon) – alergji"
+   ]
+  ]
+ },
+ "k17279": {
+  "n": [
+   [
+    "f13 -alergji",
+    "f13 – alergji"
+   ]
+  ]
+ },
+ "k18259": {
+  "n": [
+   [
+    "Clobazam)-niveli",
+    "Clobazam) – niveli"
+   ]
+  ]
+ },
+ "k17444": {
+  "n": [
+   [
+    "Klorure -urinë",
+    "Klorure – urinë"
+   ]
+  ]
+ },
+ "k18263": {
+  "n": [
+   [
+    "Leponex)-niveli",
+    "Leponex) – niveli"
+   ]
+  ]
+ },
+ "k17606": {
+  "n": [
+   [
+    "Kobalt -serum",
+    "Kobalt – serum"
+   ]
+  ]
+ },
+ "k18255": {
+  "n": [
+   [
+    "Kobalt -urinë",
+    "Kobalt – urinë"
+   ]
+  ]
+ },
+ "k54954": {
+  "n": [
+   [
+    "preparat Yeast (GI",
+    "preparat për maja (GI"
+   ]
+  ]
+ },
+ "k17375": {
+  "n": [
+   [
+    "F36 -alergji",
+    "F36 – alergji"
+   ]
+  ]
+ },
+ "k17664": {
+  "n": [
+   [
+    "pështyma -mbrëmje",
+    "pështyma – mbrëmje"
+   ]
+  ]
+ },
+ "k17663": {
+  "n": [
+   [
+    "pështyma -mëngjes",
+    "pështyma – mëngjes"
+   ]
+  ]
+ },
+ "k17264": {
+  "n": [
+   [
+    "f17-alergji",
+    "f17 – alergji"
+   ]
+  ]
+ },
+ "k17297": {
+  "n": [
+   [
+    "T4-alergji",
+    "T4 – alergji"
+   ]
+  ]
+ },
+ "k17284": {
+  "n": [
+   [
+    "Latex K82",
+    "Lateks K82"
+   ]
+  ]
+ },
+ "k17895": {
+  "n": [
+   [
+    "Leischmania – totale antitrupa",
+    "Leishmania – antitrupa totalë"
+   ]
+  ]
+ },
+ "k17314": {
+  "n": [
+   [
+    "E82 -alergji",
+    "E82 – alergji"
+   ]
+  ]
+ },
+ "k17617": {
+  "n": [
+   [
+    "sinovial -Glukozë",
+    "sinovial – glukozë"
+   ]
+  ]
+ },
+ "k17618": {
+  "n": [
+   [
+    "sinovial -proteina",
+    "sinovial – proteina"
+   ]
+  ]
+ },
+ "k17619": {
+  "n": [
+   [
+    "sinovial -RF",
+    "sinovial – RF"
+   ]
+  ]
+ },
+ "k43570": {
+  "n": [
+   [
+    "majmunit (Monkey pox) – PCR",
+    "majmunit (mpox) – PCR"
+   ]
+  ]
+ },
+ "k17338": {
+  "n": [
+   [
+    "polen -alergji",
+    "polen – alergji"
+   ]
+  ]
+ },
+ "k18030": {
+  "n": [
+   [
+    "mikologji.aerob",
+    "mikologji, aerob"
+   ]
+  ]
+ },
+ "k18141": {
+  "n": [
+   [
+    "Lohie – bakteriologjik,anaerob",
+    "Lohie – bakteriologji, anaerob"
+   ]
+  ]
+ },
+ "k17770": {
+  "n": [
+   [
+    "SLA -Solubile Liver Antigen autoantitrupa",
+    "SLA – autoantitrupa ndaj antigjenit të tretshëm të mëlçisë"
+   ]
+  ]
+ },
+ "k17323": {
+  "n": [
+   [
+    "W8 -alergji",
+    "W8 – alergji"
+   ]
+  ]
+ },
+ "k17283": {
+  "n": [
+   [
+    "f44 -alergji",
+    "f44 – alergji"
+   ]
+  ]
+ },
+ "k17344": {
+  "n": [
+   [
+    "E1 -alergji",
+    "E1 – alergji"
+   ]
+  ]
+ },
+ "k17259": {
+  "n": [
+   [
+    "D1 (Dermatofagoides Pteronyssinus)-alergji",
+    "D1 (Dermatophagoides pteronyssinus) – alergji"
+   ]
+  ]
+ },
+ "k21184": {
+  "n": [
+   [
+    "Dermatophagoides Farinae)-alergji",
+    "Dermatophagoides farinae) – alergji"
+   ]
+  ]
+ },
+ "k18145": {
+  "n": [
+   [
+    "biopsie – bakteriologjik, anaerob",
+    "biopsie – bakteriologji, anaerob"
+   ]
+  ]
+ },
+ "k18077": {
+  "n": [
+   [
+    "biopsie – bakteriologjik,aerob",
+    "biopsie – bakteriologji, aerob"
+   ]
+  ]
+ },
+ "k18235": {
+  "n": [
+   [
+    "Merkur në urinë-mostër",
+    "Merkur në urinë – mostër"
+   ]
+  ]
+ },
+ "k17633": {
+  "n": [
+   [
+    "Metahefrin Free në",
+    "Metanefrinë e lirë në"
+   ]
+  ]
+ },
+ "k38638": {
+  "n": [
+   [
+    "Metanefrin -panel",
+    "Metanefrina – panel"
+   ]
+  ]
+ },
+ "k18215": {
+  "n": [
+   [
+    "Metanefrini -panel",
+    "Metanefrina – panel"
+   ],
+   [
+    "urina (Metanefrin,Normetanefrin,3 Metoksi-tiramin)",
+    "urina (metanefrinë, normetanefrinë, 3-metoksitiraminë)"
+   ]
+  ]
+ },
+ "k17257": {
+  "n": [
+   [
+    "T3- alergji",
+    "T3 – alergji"
+   ]
+  ]
+ },
+ "k21221": {
+  "n": [
+   [
+    "Mieloid panel (MDS",
+    "Panel mieloid (MDS"
+   ],
+   [
+    "CMML itd.), NGS",
+    "CMML etj.), NGS"
+   ]
+  ]
+ },
+ "k17339": {
+  "n": [
+   [
+    "F4 -alergji",
+    "F4 – alergji"
+   ]
+  ]
+ },
+ "k17782": {
+  "n": [
+   [
+    "Miozit -bazë profil",
+    "Miozit – profil bazë"
+   ]
+  ]
+ },
+ "k17852": {
+  "n": [
+   [
+    "Miozit i zgjeruar profil",
+    "Miozit – profil i zgjeruar"
+   ]
+  ]
+ },
+ "k17312": {
+  "n": [
+   [
+    "f26-alergji",
+    "f26 – alergji"
+   ]
+  ]
+ },
+ "k17273": {
+  "n": [
+   [
+    "viçi,derri,pule",
+    "viçi, derri, pule"
+   ],
+   [
+    "fx73-alergji",
+    "fx73 – alergji"
+   ]
+  ]
+ },
+ "k17311": {
+  "n": [
+   [
+    "f27-alergji",
+    "f27 – alergji"
+   ]
+  ]
+ },
+ "k18267": {
+  "n": [
+   [
+    "Lysodren)-niveli",
+    "Lysodren) – niveli"
+   ]
+  ]
+ },
+ "k17258": {
+  "n": [
+   [
+    "Mix Marimanga të",
+    "Mix marimangash të"
+   ],
+   [
+    "pluhurit,pluhur hx2-alergji",
+    "pluhurit dhe pluhur shtëpie hx2 – alergji"
+   ]
+  ]
+ },
+ "k17260": {
+  "n": [
+   [
+    "mx1-alergji",
+    "mx1 – alergji"
+   ]
+  ]
+ },
+ "k18173": {
+  "n": [
+   [
+    "N-Telopeptid (NTX",
+    "N-telopeptid (NTX"
+   ]
+  ]
+ },
+ "k51133": {
+  "n": [
+   [
+    "Nikotinamid (Vitaminë B3",
+    "Nikotinamid (vitaminë B3"
+   ]
+  ]
+ },
+ "k18254": {
+  "n": [
+   [
+    "Okskarbazepin(Oxcarbazepin) -niveli",
+    "Okskarbazepin (Oxcarbazepin) – niveli"
+   ]
+  ]
+ },
+ "k21219": {
+  "n": [
+   [
+    "fuzione, hot spot mutacione, gene",
+    "fuzione, mutacione hotspot, gene"
+   ]
+  ]
+ },
+ "k17772": {
+  "n": [
+   [
+    "ANCA (Anti MPO",
+    "ANCA (anti-MPO"
+   ]
+  ]
+ },
+ "k21275": {
+  "n": [
+   [
+    "RAS,N",
+    "RAS, N"
+   ],
+   [
+    "RAS,BRAF",
+    "RAS, BRAF"
+   ]
+  ]
+ },
+ "k21212": {
+  "n": [
+   [
+    "gjenike, kancerin",
+    "gjenike për kancerin"
+   ]
+  ]
+ },
+ "k34961": {
+  "n": [
+   [
+    "vezoreve i",
+    "vezoreve, i"
+   ],
+   [
+    "27 gjeneve NGS",
+    "27 gjene, NGS"
+   ]
+  ]
+ },
+ "k34963": {
+  "n": [
+   [
+    "trurit NGS",
+    "trurit, NGS"
+   ]
+  ]
+ },
+ "k34957": {
+  "n": [
+   [
+    "trashë i",
+    "trashë, i"
+   ]
+  ]
+ },
+ "k79046": {
+  "n": [
+   [
+    "vegjetarian -intolerancë",
+    "vegjetarian – intolerancë"
+   ]
+  ]
+ },
+ "k21272": {
+  "n": [
+   [
+    "Pap Liquid – Sure Path BD",
+    "Pap në bazë të lëngshme – BD SurePath"
+   ]
+  ],
+  "d": [
+   [
+    "Papanicolau",
+    "Papanicolaou"
+   ]
+  ]
+ },
+ "k21271": {
+  "n": [
+   [
+    "Pap Liquid – Sure Path BD",
+    "Pap në bazë të lëngshme – BD SurePath"
+   ]
+  ]
+ },
+ "k18162": {
+  "n": [
+   [
+    "antitrupa -aviditet",
+    "antitrupa – aviditet"
+   ]
+  ]
+ },
+ "k17256": {
+  "n": [
+   [
+    "w6 -alergji",
+    "w6 – alergji"
+   ]
+  ]
+ },
+ "k51567": {
+  "n": [
+   [
+    "Peptidurija",
+    "Peptiduri"
+   ]
+  ]
+ },
+ "k39292": {
+  "n": [
+   [
+    "Përcaktim anti – Echinococcus granulosus IgG antitrupa – Western",
+    "Përcaktim i antitrupave IgG anti-Echinococcus granulosus – Western"
+   ]
+  ]
+ },
+ "k17566": {
+  "n": [
+   [
+    "në urinë (Panel me 10",
+    "në urinë (panel me 10"
+   ]
+  ],
+  "d": [
+   [
+    "drogërave",
+    "drogave"
+   ]
+  ]
+ },
+ "k17565": {
+  "n": [
+   [
+    "në urinë (Panel me 5",
+    "në urinë (panel me 5"
+   ]
+  ]
+ },
+ "k76915": {
+  "n": [
+   [
+    "kortizolit pas zgjimit",
+    "kortizolit ndaj zgjimit"
+   ],
+   [
+    "CAR/OKB) – analizë",
+    "CAR) – analizë"
+   ]
+  ]
+ },
+ "k17255": {
+  "n": [
+   [
+    "Alatop) -alergjenë",
+    "Alatop) – alergjenë"
+   ]
+  ]
+ },
+ "k17337": {
+  "n": [
+   [
+    "T11 -alergji",
+    "T11 – alergji"
+   ]
+  ]
+ },
+ "k17296": {
+  "n": [
+   [
+    "T14-alergji",
+    "T14 – alergji"
+   ]
+  ]
+ },
+ "k17836": {
+  "n": [
+   [
+    "PlGF -Placental like growth factor",
+    "PlGF – faktori i rritjes placentare"
+   ]
+  ]
+ },
+ "k17358": {
+  "n": [
+   [
+    "h2 -alergji",
+    "h2 – alergji"
+   ]
+  ]
+ },
+ "k17359": {
+  "n": [
+   [
+    "h3 -alergji",
+    "h3 – alergji"
+   ]
+  ]
+ },
+ "k17567": {
+  "n": [
+   [
+    "Gx3 -alergji",
+    "Gx3 – alergji"
+   ]
+  ]
+ },
+ "k17340": {
+  "n": [
+   [
+    "GX4-alergji",
+    "GX4 – alergji"
+   ]
+  ]
+ },
+ "k17706": {
+  "n": [
+   [
+    "Porfobilinogen-urinë",
+    "Porfobilinogen – urinë"
+   ]
+  ]
+ },
+ "k17430": {
+  "n": [
+   [
+    "Prealbumin (transthyretin)",
+    "Prealbumin (transtiretin)"
+   ]
+  ]
+ },
+ "k18175": {
+  "n": [
+   [
+    "Prokolagen-I-N terminalni propeptid (PINP",
+    "Propeptidi N-terminal i prokolagjenit të tipit I (PINP"
+   ]
+  ]
+ },
+ "k17700": {
+  "n": [
+   [
+    "PROTEIN C",
+    "Proteina C"
+   ]
+  ]
+ },
+ "k17714": {
+  "n": [
+   [
+    "Protein S (free-antigen)",
+    "Proteina S (antigjen i lirë)"
+   ]
+  ]
+ },
+ "k18187": {
+  "n": [
+   [
+    "Protein S-100",
+    "Proteina S-100"
+   ]
+  ]
+ },
+ "k17420": {
+  "n": [
+   [
+    "Proteina total",
+    "Proteina totale"
+   ]
+  ]
+ },
+ "k17343": {
+  "n": [
+   [
+    "ex71- alergji",
+    "ex71 – alergji"
+   ]
+  ]
+ },
+ "k17687": {
+  "n": [
+   [
+    "Qeliza Lupus",
+    "Qeliza lupusi (LE)"
+   ]
+  ]
+ },
+ "k17366": {
+  "n": [
+   [
+    "E5 -alergji",
+    "E5 – alergji"
+   ]
+  ]
+ },
+ "k18308": {
+  "n": [
+   [
+    "QF – PCR",
+    "QF-PCR"
+   ]
+  ]
+ },
+ "k17300": {
+  "n": [
+   [
+    "E3 -alergji",
+    "E3 – alergji"
+   ]
+  ]
+ },
+ "k17607": {
+  "n": [
+   [
+    "Quadriple test",
+    "Quadruple test"
+   ]
+  ]
+ },
+ "k17346": {
+  "n": [
+   [
+    "Rf231-alergji",
+    "Rf231 – alergji"
+   ]
+  ]
+ },
+ "k17263": {
+  "n": [
+   [
+    "lope -alergji",
+    "lope – alergji"
+   ]
+  ]
+ },
+ "k80160": {
+  "n": [
+   [
+    "Revers T3",
+    "Reverse T3"
+   ]
+  ]
+ },
+ "k20368": {
+  "n": [
+   [
+    "Roma indeks",
+    "Indeksi ROMA"
+   ]
+  ]
+ },
+ "k17811": {
+  "n": [
+   [
+    "Rubella – IgG antitrupa aviditet",
+    "Rubella – aviditeti i antitrupave IgG"
+   ]
+  ]
+ },
+ "k29210": {
+  "n": [
+   [
+    "SARS CoV",
+    "SARS-CoV"
+   ],
+   [
+    "Ag (antigen), test",
+    "Ag (antigjen), test"
+   ]
+  ]
+ },
+ "k29740": {
+  "n": [
+   [
+    "IgG Antitrupa ndaj proteina Spike („spike“)",
+    "IgG antitrupa ndaj proteinës spike"
+   ]
+  ]
+ },
+ "k22539": {
+  "n": [
+   [
+    "IgM (Covid19 IgM",
+    "IgM (COVID-19 IgM"
+   ]
+  ]
+ },
+ "k18188": {
+  "n": [
+   [
+    "SCC – karcinomë skuamoqelizore Ag",
+    "SCC – antigjeni i karcinomës skuamoqelizore"
+   ]
+  ]
+ },
+ "k18092": {
+  "n": [
+   [
+    "mikologji,aerob",
+    "mikologji, aerob"
+   ]
+  ]
+ },
+ "k18043": {
+  "n": [
+   [
+    "Sekret – bakteriologjik, anaerob",
+    "Sekret – bakteriologji, anaerob"
+   ]
+  ]
+ },
+ "k17996": {
+  "n": [
+   [
+    "shprehur – Ureapl.u. dhe Mycop.h.",
+    "shprehur – U. urealyticum dhe M. hominis"
+   ]
+  ]
+ },
+ "k21226": {
+  "n": [
+   [
+    "SLC2A1 Gen (GLUT1) analizë,NGS",
+    "Analiza e gjenit SLC2A1 (GLUT1), NGS"
+   ]
+  ]
+ },
+ "k53550": {
+  "n": [
+   [
+    "SMA-atrofi muskulore spinale (ADVENTIA) test",
+    "SMA – test për atrofinë muskulore spinale (ADVENTIA)"
+   ]
+  ]
+ },
+ "k18050": {
+  "n": [
+   [
+    "Sperma – Ureplasma urealyticum",
+    "Sperma – Ureaplasma urealyticum"
+   ]
+  ]
+ },
+ "k18146": {
+  "n": [
+   [
+    "Spermokulturë – bakteriologjik, anaerob",
+    "Spermokulturë – bakteriologji, anaerob"
+   ]
+  ]
+ },
+ "k17998": {
+  "n": [
+   [
+    "Sputum – Lowenstein kulturë + BK preparat",
+    "Sputum – kulturë Löwenstein + preparat BK"
+   ]
+  ]
+ },
+ "k36707": {
+  "n": [
+   [
+    "gonorrhoeae PCR (bris,urinë,lëng seminal",
+    "gonorrhoeae PCR (bris, urinë, lëng seminal"
+   ]
+  ]
+ },
+ "k36708": {
+  "n": [
+   [
+    "urealyticum PCR (bris,urinë,lëng seminal",
+    "urealyticum PCR (bris, urinë, lëng seminal"
+   ]
+  ]
+ },
+ "k36714": {
+  "n": [
+   [
+    "STD1- Mycoplasma genitalium PCR ( bris/urinë/lëng seminal)",
+    "STD 1 – Mycoplasma genitalium PCR (bris/urinë/lëng seminal)"
+   ]
+  ]
+ },
+ "k36715": {
+  "n": [
+   [
+    "STD1- Mycoplasma hominis PCR ( bris/urinë/lëng seminal)",
+    "STD 1 – Mycoplasma hominis PCR (bris/urinë/lëng seminal)"
+   ]
+  ]
+ },
+ "k36717": {
+  "n": [
+   [
+    "STD1- Treponema",
+    "STD 1 – Treponema"
+   ],
+   [
+    "pallidum PCR ( bris",
+    "pallidum PCR (bris"
+   ]
+  ]
+ },
+ "k36716": {
+  "n": [
+   [
+    "STD1- Trichomonas",
+    "STD 1 – Trichomonas"
+   ],
+   [
+    "vaginalis PCR ( bris",
+    "vaginalis PCR (bris"
+   ]
+  ]
+ },
+ "k36713": {
+  "n": [
+   [
+    "STD1- Ureaplasma",
+    "STD 1 – Ureaplasma"
+   ],
+   [
+    "parvum PCR ( bris",
+    "parvum PCR (bris"
+   ]
+  ]
+ },
+ "k36719": {
+  "n": [
+   [
+    "STD7- M.genitalium, M.hominis, N.gonorrhoeae, T. vaginalis,U.parvum, U.urealyticum,C.trachomatis, PCR ( bris/urinë/lëng seminal)",
+    "STD 7 – M. genitalium, M. hominis, N. gonorrhoeae, T. vaginalis, U. parvum, U. urealyticum, C. trachomatis, PCR (bris/urinë/lëng seminal)"
+   ]
+  ]
+ },
+ "k36720": {
+  "n": [
+   [
+    "STD8 – M.genitalium, M.hominis, N.gonorrhoeae, T. vaginalis, U.parvum, U.urealyticum, C.trachomatis, T.pallidumPCR ( bris/urinë/lëng seminal)",
+    "STD 8 – M. genitalium, M. hominis, N. gonorrhoeae, T. vaginalis, U. parvum, U. urealyticum, C. trachomatis, T. pallidum, PCR (bris/urinë/lëng seminal)"
+   ]
+  ],
+  "d": [
+   [
+    "brise gjenitale",
+    "tamponë gjenitalë"
+   ]
+  ]
+ },
+ "k17298": {
+  "n": [
+   [
+    "t12-alergji",
+    "t12 – alergji"
+   ]
+  ]
+ },
+ "k17672": {
+  "n": [
+   [
+    "i zgjatur",
+    "i zgjeruar"
+   ]
+  ]
+ },
+ "k18251": {
+  "n": [
+   [
+    "Topamax)-niveli",
+    "Topamax) – niveli"
+   ]
+  ]
+ },
+ "k17442": {
+  "n": [
+   [
+    "Total Bilirubin",
+    "Bilirubinë totale"
+   ]
+  ]
+ },
+ "k17702": {
+  "n": [
+   [
+    "Total porfirini-urinë",
+    "Porfirina totale – urinë"
+   ]
+  ]
+ },
+ "k17768": {
+  "n": [
+   [
+    "gondii – IgG antitrupa aviditet",
+    "gondii – aviditeti i antitrupave IgG"
+   ]
+  ],
+  "d": [
+   [
+    "infeksionit të afërt",
+    "infeksionit të kohëve të fundit"
+   ]
+  ]
+ },
+ "k18193": {
+  "n": [
+   [
+    "TPA-antigjen",
+    "TPA – antigjen"
+   ]
+  ]
+ },
+ "k17767": {
+  "n": [
+   [
+    "anti – Treponema",
+    "anti-Treponema"
+   ]
+  ]
+ },
+ "k17847": {
+  "n": [
+   [
+    "IgG antitrupa Western Blot",
+    "IgG antitrupa, Western blot"
+   ]
+  ]
+ },
+ "k17815": {
+  "n": [
+   [
+    "IgM antitrupa Western Blot",
+    "IgM antitrupa, Western blot"
+   ]
+  ]
+ },
+ "k17863": {
+  "n": [
+   [
+    "pallidum (Sifiliz)- antitrupa",
+    "pallidum (sifiliz) – antitrupa"
+   ]
+  ]
+ },
+ "k17752": {
+  "n": [
+   [
+    "Trichinela spiralis",
+    "Trichinella spiralis"
+   ]
+  ]
+ },
+ "k17425": {
+  "n": [
+   [
+    "Trigliceridi",
+    "Trigliceride"
+   ]
+  ]
+ },
+ "k17576": {
+  "n": [
+   [
+    "numërimit-manualisht",
+    "numërimit – manualisht"
+   ]
+  ]
+ },
+ "k18191": {
+  "n": [
+   [
+    "PK (izoenzim M2 piruvat kinaza) nga",
+    "PK (izoenzima M2 e piruvatkinazës) nga"
+   ]
+  ]
+ },
+ "k18192": {
+  "n": [
+   [
+    "PK (izoenzim M2 piruvatkinaza) nga",
+    "PK (izoenzima M2 e piruvatkinazës) nga"
+   ]
+  ]
+ },
+ "k17364": {
+  "n": [
+   [
+    "G12 -alergji",
+    "G12 – alergji"
+   ]
+  ]
+ },
+ "k17477": {
+  "n": [
+   [
+    "Ubichinon 50 (Coenzym Q10",
+    "Ubikinon 50 (koenzima Q10"
+   ]
+  ]
+ },
+ "k17348": {
+  "n": [
+   [
+    "Ulliri Rf342-alergji",
+    "Ulli Rf342 – alergji"
+   ]
+  ]
+ },
+ "k17505": {
+  "n": [
+   [
+    "Urea-urinë",
+    "Urea – urinë"
+   ]
+  ]
+ },
+ "k18121": {
+  "n": [
+   [
+    "dhe Ureplasma u",
+    "dhe Ureaplasma u"
+   ]
+  ]
+ },
+ "k17999": {
+  "n": [
+   [
+    "Urinokulturë – Lowenstein kulturë",
+    "Urinokulturë – kulturë Löwenstein"
+   ]
+  ]
+ },
+ "k18055": {
+  "n": [
+   [
+    "zoster – IgG antitrupa aviditet",
+    "zoster – aviditeti i antitrupave IgG"
+   ]
+  ]
+ },
+ "k17989": {
+  "n": [
+   [
+    "VDRL – plazma reagin – Syphilis",
+    "VDRL – reagin plazmatik – sifiliz"
+   ]
+  ],
+  "d": [
+   [
+    "mund të japë negativitet dhe gjendje të tjera pozitivitet të rremë",
+    "mund të japë rezultat negativ, ndërsa gjendje të tjera mund të japin rezultat pozitiv të rremë"
+   ]
+  ]
+ },
+ "k17345": {
+  "n": [
+   [
+    "Vezë Mix Rf245-alergji",
+    "Vezë mix Rf245 – alergji"
+   ]
+  ]
+ },
+ "k17336": {
+  "n": [
+   [
+    "t8-alergji",
+    "t8 – alergji"
+   ]
+  ]
+ },
+ "k17953": {
+  "n": [
+   [
+    "VIP -peptid",
+    "VIP – peptid"
+   ]
+  ]
+ },
+ "k72588": {
+  "n": [
+   [
+    "PCR- nga",
+    "PCR – nga"
+   ]
+  ],
+  "d": [
+   [
+    "mundshëm. rezultati",
+    "mundshëm. Rezultati"
+   ]
+  ]
+ },
+ "k17450": {
+  "n": [
+   [
+    "A (Retinol)",
+    "A (retinol)"
+   ]
+  ]
+ },
+ "k17453": {
+  "n": [
+   [
+    "B6 (PIRIDOXAL)",
+    "B6 (piridoksal)"
+   ]
+  ]
+ },
+ "k17522": {
+  "n": [
+   [
+    "Vitaminë D total",
+    "Vitaminë D totale"
+   ]
+  ]
+ },
+ "k17473": {
+  "n": [
+   [
+    "H (Biotin)",
+    "H (biotin)"
+   ]
+  ]
+ },
+ "k17969": {
+  "n": [
+   [
+    "VMA (Acid vanilmandelik) -mostër",
+    "VMA (acid vanilmandelik) – mostër"
+   ]
+  ]
+ },
+ "k21308": {
+  "n": [
+   [
+    "Von Willebrand-ov faktor-panel",
+    "Faktori von Willebrand – panel"
+   ],
+   [
+    "RCo,RCo",
+    "RCo, RCo"
+   ]
+  ]
+ },
+ "k17500": {
+  "n": [
+   [
+    "Von-Willebrand faktor antigen",
+    "Faktori von Willebrand – antigjen"
+   ]
+  ]
+ },
+ "k17903": {
+  "n": [
+   [
+    "WEST NILE VIRUS IgG",
+    "West Nile virus IgG"
+   ]
+  ]
+ },
+ "k17902": {
+  "n": [
+   [
+    "WEST NILE VIRUS IgM",
+    "West Nile virus IgM"
+   ]
+  ]
+ },
+ "k17668": {
+  "n": [
+   [
+    "lirë Kappa dhe Lambda në",
+    "lirë kappa dhe lambda në"
+   ]
+  ]
+ },
+ "k21328": {
+  "n": [
+   [
+    "totalë Kappa dhe Lambda në",
+    "totalë kappa dhe lambda në"
+   ]
+  ]
+ },
+ "k76911": {
+  "n": [
+   [
+    "Zonulin peptidi (Zonulin",
+    "Zonulin – peptidet (Zonulin"
+   ],
+   [
+    "Peptide- GI",
+    "Peptide – GI"
+   ],
+   [
+    "Effects analizë",
+    "Effects, analizë"
+   ]
+  ]
+ },
+ "k18198": {
+  "n": [
+   [
+    "HBs antigen",
+    "HBs antigjen"
+   ]
+  ]
+ },
+ "k17905": {
+  "n": [
+   [
+    "Pemphigoid antitrupa (IgA,IgG)",
+    "Pemfigoid antitrupa (IgA, IgG)"
+   ]
+  ]
+ },
+ "k17906": {
+  "n": [
+   [
+    "Pemphigus antitrupa (IgA,IgG)",
+    "Pemfigus antitrupa (IgA, IgG)"
+   ]
+  ]
+ },
+ "k17394": {
+  "n": [
+   [
+    "HDL Kolesterol",
+    "Kolesterol HDL"
+   ]
+  ]
+ },
+ "k17395": {
+  "n": [
+   [
+    "LDL Kolesterol",
+    "Kolesterol LDL"
+   ]
+  ]
+ },
+ "k17369": {
+  "n": [
+   [
+    "Hemomycin (Azitromycin) – alergji",
+    "Hemomycin (azitromicinë) – alergji"
+   ]
+  ]
+ },
+ "k21322": {
+  "n": [
+   [
+    "17-Hidroksipregnenolon",
+    "17-hidroksipregnenolon"
+   ]
+  ]
+ },
+ "k17487": {
+  "n": [
+   [
+    "Kapaciteti total antioksidant (TAC",
+    "Kapaciteti antioksidant total (TAC"
+   ]
+  ]
+ },
+ "k17585": {
+  "d": [
+   [
+    "cirrozë",
+    "cirozë"
+   ]
+  ]
+ },
+ "k17380": {
+  "d": [
+   [
+    "proteinën kryesore të gjakut të sintetizuar në mëlçi",
+    "proteinën kryesore të gjakut, që sintetizohet në mëlçi"
+   ]
+  ]
+ },
+ "k17465": {
+  "d": [
+   [
+    "enzim i metabolizmit",
+    "enzimë e metabolizmit"
+   ]
+  ]
+ },
+ "k17381": {
+  "d": [
+   [
+    "vlerësimin e familjarëve të afërt me mungesë të dokumentuar",
+    "vlerësimin e të afërmve të personave me mungesë të dokumentuar"
+   ]
+  ]
+ },
+ "k17378": {
+  "d": [
+   [
+    "ALT është enzim që",
+    "ALT është enzimë që"
+   ]
+  ]
+ },
+ "k17269": {
+  "d": [
+   [
+    "Pozitiviteti mund",
+    "Rezultati pozitiv mund"
+   ],
+   [
+    "negativiteti nuk",
+    "rezultati negativ nuk"
+   ]
+  ]
+ },
+ "k17723": {
+  "d": [
+   [
+    "ADN-së me dy fije, të përdorur në vlerësimin",
+    "ADN-së me dy fije dhe përdoret në vlerësimin"
+   ]
+  ]
+ },
+ "k17784": {
+  "d": [
+   [
+    "pozitiviteti kërkon",
+    "rezultati pozitiv kërkon"
+   ]
+  ]
+ },
+ "k17763": {
+  "d": [
+   [
+    "komplikacioneve",
+    "komplikimeve"
+   ]
+  ]
+ },
+ "k17728": {
+  "d": [
+   [
+    "mund të ndikojnë lëvizjen dhe fekondimin",
+    "mund të ndikojnë në lëvizjen e spermatozoideve dhe në fekondim"
+   ]
+  ]
+ },
+ "k17776": {
+  "d": [
+   [
+    "negativiteti nuk",
+    "rezultati negativ nuk"
+   ]
+  ]
+ },
+ "k17385": {
+  "d": [
+   [
+    "ndryshimeve të jetesës",
+    "ndryshimeve të stilit të jetesës"
+   ]
+  ]
+ },
+ "k17694": {
+  "d": [
+   [
+    "XII ose të inhibitorëve të koagulimit",
+    "XII ose të pranisë së inhibitorëve të koagulimit"
+   ]
+  ]
+ },
+ "k18079": {
+  "d": [
+   [
+    "Hyrja emërton testimin e tamponit cervikal për Ureaplasma urealyticum. nuk shpjegon",
+    "Ky zë i katalogut i referohet testimit të tamponit cervikal për Ureaplasma urealyticum, por nuk shpjegon"
+   ]
+  ]
+ },
+ "k18062": {
+  "d": [
+   [
+    "dhimbjen në lëkurë ose palosje",
+    "dhimbjen në lëkurë ose në palosjet e lëkurës"
+   ]
+  ]
+ },
+ "k17994": {
+  "d": [
+   [
+    "konjuktivës",
+    "konjunktivës"
+   ]
+  ]
+ },
+ "k18148": {
+  "d": [
+   [
+    "konjuktivës",
+    "konjunktivës"
+   ]
+  ]
+ },
+ "k18149": {
+  "d": [
+   [
+    "konjuktivës",
+    "konjunktivës"
+   ]
+  ]
+ },
+ "k18057": {
+  "d": [
+   [
+    "tampon uretral. nuk përcakton",
+    "tampon uretral, por nuk përcakton"
+   ]
+  ]
+ },
+ "k18178": {
+  "d": [
+   [
+    "matjet serike janë",
+    "matjet e përsëritura janë"
+   ]
+  ]
+ },
+ "k18179": {
+  "d": [
+   [
+    "matjet serike kanë",
+    "matjet e përsëritura kanë"
+   ]
+  ]
+ },
+ "k18182": {
+  "d": [
+   [
+    "jo-malinje",
+    "jomalinje"
+   ]
+  ]
+ },
+ "k17431": {
+  "d": [
+   [
+    "izoenzim i kreatin-kinazës i lidhur",
+    "izoenzimë e kreatin-kinazës e lidhur"
+   ]
+  ]
+ },
+ "k17292": {
+  "d": [
+   [
+    "histaminës. vlerësimi",
+    "histaminës. Vlerësimi"
+   ]
+  ]
+ },
+ "k17832": {
+  "d": [
+   [
+    "jo invaziv",
+    "joinvaziv"
+   ]
+  ]
+ },
+ "k17526": {
+  "d": [
+   [
+    "Pozitiviteti pa simptoma",
+    "Rezultati pozitiv pa simptoma"
+   ]
+  ]
+ },
+ "k17406": {
+  "d": [
+   [
+    "si enzim që",
+    "si enzimë që"
+   ]
+  ]
+ },
+ "k17407": {
+  "d": [
+   [
+    "enzim i pranishëm",
+    "enzimë e pranishme"
+   ]
+  ]
+ },
+ "k17940": {
+  "d": [
+   [
+    "funksionit tiroide",
+    "funksionit të tiroides"
+   ]
+  ]
+ },
+ "k17268": {
+  "d": [
+   [
+    "ndërsa negativiteti nuk",
+    "ndërsa rezultati negativ nuk"
+   ]
+  ]
+ },
+ "k18195": {
+  "d": [
+   [
+    "përdoret si ndihmës për",
+    "përdoret si tregues ndihmës për"
+   ]
+  ]
+ },
+ "k17421": {
+  "d": [
+   [
+    "hekuri i vetëm nuk jep",
+    "vetëm hekuri nuk jep"
+   ]
+  ]
+ },
+ "k17418": {
+  "d": [
+   [
+    "që ndikojnë sidomos muskujt",
+    "që ndikojnë sidomos në muskujt"
+   ]
+  ]
+ },
+ "k17804": {
+  "d": [
+   [
+    "si zorra e irrituar",
+    "si sindroma e zorrës së irrituar"
+   ]
+  ]
+ },
+ "k17921": {
+  "d": [
+   [
+    "me ulje të spermatozoideve ose libidos",
+    "me ulje të numrit të spermatozoideve ose të libidos"
+   ]
+  ]
+ },
+ "k17698": {
+  "d": [
+   [
+    "zgjatjes së kohës së pjesshme të koagulimit",
+    "zgjatjes së kohës së tromboplastinës së pjesshme"
+   ]
+  ]
+ },
+ "k17310": {
+  "d": [
+   [
+    "Pozitiviteti tregon",
+    "Rezultati pozitiv tregon"
+   ],
+   [
+    "ndërsa negativiteti nuk",
+    "ndërsa rezultati negativ nuk"
+   ]
+  ]
+ },
+ "k17305": {
+  "d": [
+   [
+    "Pozitiviteti mund",
+    "Rezultati pozitiv mund"
+   ],
+   [
+    "ndërsa negativiteti nuk",
+    "ndërsa rezultati negativ nuk"
+   ]
+  ]
+ },
+ "k55606": {
+  "d": [
+   [
+    "gjenetike. interpretimi bazohet te",
+    "gjenetike. Interpretimi bazohet në"
+   ]
+  ]
+ },
+ "k21209": {
+  "d": [
+   [
+    "Rekomandohet në përshkrim kur",
+    "Sipas përshkrimit, rekomandohet kur"
+   ]
+  ]
+ },
+ "k34962": {
+  "d": [
+   [
+    "informim gjenetik",
+    "këshillim gjenetik"
+   ]
+  ]
+ },
+ "k21371": {
+  "d": [
+   [
+    "jo normale",
+    "jonormale"
+   ]
+  ]
+ },
+ "k17941": {
+  "d": [
+   [
+    "skriningut",
+    "depistimit"
+   ]
+  ]
+ },
+ "k17290": {
+  "d": [
+   [
+    "Pozitiviteti pa simptoma",
+    "Rezultati pozitiv pa simptoma"
+   ]
+  ]
+ },
+ "k17355": {
+  "d": [
+   [
+    "ose episodit anafilaktik",
+    "ose episodi anafilaktik"
+   ]
+  ]
+ },
+ "k17564": {
+  "d": [
+   [
+    "pozitiviteti pa simptoma",
+    "rezultati pozitiv pa simptoma"
+   ],
+   [
+    "ndërsa negativiteti nuk",
+    "ndërsa rezultati negativ nuk"
+   ]
+  ]
+ },
+ "k17342": {
+  "d": [
+   [
+    "Pozitiviteti duhet",
+    "Rezultati pozitiv duhet"
+   ],
+   [
+    "negativiteti gjithashtu",
+    "rezultati negativ gjithashtu"
+   ]
+  ]
+ },
+ "k17738": {
+  "d": [
+   [
+    "shërben si ndihmës në",
+    "shërben si tregues ndihmës në"
+   ]
+  ]
+ },
+ "k18003": {
+  "d": [
+   [
+    "antibiogramë",
+    "antibiogram"
+   ]
+  ]
+ },
+ "k17995": {
+  "d": [
+   [
+    "Skriningu",
+    "Depistimi"
+   ]
+  ]
+ },
+ "k18189": {
+  "d": [
+   [
+    "nga indi tiroide",
+    "nga indi i tiroides"
+   ]
+  ]
+ },
+ "k17424": {
+  "d": [
+   [
+    "Transferina",
+    "Transferrina"
+   ]
+  ]
+ },
+ "k17939": {
+  "d": [
+   [
+    "Skrining prenatal",
+    "Depistim prenatal"
+   ]
+  ]
+ },
+ "k17911": {
+  "d": [
+   [
+    "matjet serike",
+    "matjet në seri"
+   ]
+  ]
+ },
+ "k18312": {
+  "d": [
+   [
+    "Skrining prenatal jo-invaziv",
+    "Depistim prenatal joinvaziv"
+   ],
+   [
+    "anomalitë e mbuluara",
+    "anomalitë e përfshira"
+   ]
+  ]
+ },
+ "k18310": {
+  "d": [
+   [
+    "për skrining të trisomive",
+    "për depistim të trisomive"
+   ]
+  ]
+ },
+ "k18311": {
+  "d": [
+   [
+    "skriningun",
+    "depistimin"
+   ]
+  ]
+ },
+ "k18313": {
+  "d": [
+   [
+    "Skrining prenatal joinvaziv",
+    "Depistim prenatal joinvaziv"
+   ]
+  ]
+ },
+ "k17451": {
+  "d": [
+   [
+    "që mund të ndikojë sistemin nervor",
+    "që mund të ndikojë në sistemin nervor"
+   ]
+  ]
+ },
+ "k17428": {
+  "d": [
+   [
+    "anemisë makrocitare dhe neuropative",
+    "anemisë makrocitare dhe neuropatisë"
+   ]
+  ]
+ },
+ "k18238": {
+  "d": [
+   [
+    "cirrozë",
+    "cirozë"
+   ]
+  ]
+ }
+}
