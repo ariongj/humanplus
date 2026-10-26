@@ -19,6 +19,11 @@
   var store = {
     get: function (k, d) { try { var v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch (e) { return d; } },
     set: function (k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) { /* private mode */ } },
+    del: function (k) { try { localStorage.removeItem(k); } catch (e) { /* private mode */ } },
+    has: function (k) { try { return localStorage.getItem(k) !== null; } catch (e) { return false; } },
+    // false when the browser refuses storage (blocked site data, some private modes): the features then work for
+    // this page view only
+    ok: function () { try { localStorage.setItem('hp-test', '1'); localStorage.removeItem('hp-test'); return true; } catch (e) { return false; } },
   };
   var waUrl = function (text) { return 'https://api.whatsapp.com/send?phone=' + D.wa + (text ? '&text=' + encodeURIComponent(text) : ''); };
 
@@ -380,8 +385,16 @@
   syncButtons();
 
   /* ---------- mini map: Google Maps loads only after the visitor asks for it ---------- */
-  // Once asked, the choice is remembered on this device and later maps load when they scroll into view.
+  // The choice is kept on this device for 6 months ({ t: time of the click }); until then later maps load when they
+  // scroll into view. "Remove the map" on the map, or the privacy page, withdraws it — in every open tab.
   var MAP_KEY = 'hp-map';
+  var MAP_DAYS = 183;
+  function mapAllowed() {
+    var v = store.get(MAP_KEY, null);
+    if (v && typeof v === 'object' && typeof v.t === 'number' && Date.now() - v.t < MAP_DAYS * 864e5 && v.t <= Date.now()) return true;
+    if (v !== null) store.del(MAP_KEY); // expired, or the older choice without a date: ask again
+    return false;
+  }
   function loadMap(fig) {
     if (fig.classList.contains('is-loaded')) return;
     var src = fig.getAttribute('data-map') || '';
@@ -394,19 +407,76 @@
     f.setAttribute('allowfullscreen', '');
     $('[data-map-frame]', fig).appendChild(f);
     fig.classList.add('is-loaded');
+    var off = $('[data-map-off]', fig);
+    if (off) off.hidden = false;
+  }
+  function unloadMap(fig) {
+    var f = $('[data-map-frame] iframe', fig);
+    if (f) f.remove();
+    fig.classList.remove('is-loaded');
+    var off = $('[data-map-off]', fig);
+    if (off) off.hidden = true;
   }
   var maps = $$('[data-map]');
-  maps.forEach(function (fig) {
-    var b = $('[data-map-load]', fig);
-    if (b) b.addEventListener('click', function () { store.set(MAP_KEY, true); maps.forEach(loadMap); });
-  });
-  if (maps.length && store.get(MAP_KEY, false)) {
+  var mio = null;
+  function autoLoadMaps() {
+    if (!maps.length || !mapAllowed()) return;
     if ('IntersectionObserver' in window) {
-      var mio = new IntersectionObserver(function (entries) {
-        entries.forEach(function (en) { if (en.isIntersecting) { loadMap(en.target); mio.unobserve(en.target); } });
+      mio = mio || new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) { if (en.isIntersecting && mapAllowed()) { loadMap(en.target); mio.unobserve(en.target); } });
       }, { rootMargin: '200px 0px' });
       maps.forEach(function (fig) { mio.observe(fig); });
     } else maps.forEach(loadMap);
+  }
+  function withdrawMap() {
+    store.del(MAP_KEY);
+    if (mio) maps.forEach(function (fig) { mio.unobserve(fig); });
+    maps.forEach(unloadMap);
+  }
+  maps.forEach(function (fig) {
+    var b = $('[data-map-load]', fig);
+    if (b) b.addEventListener('click', function () { store.set(MAP_KEY, { t: Date.now() }); maps.forEach(loadMap); });
+    var off = $('[data-map-off]', fig);
+    if (off) off.addEventListener('click', function () {
+      withdrawMap();
+      var again = $('[data-map-load]', fig);
+      if (again) again.focus();
+    });
+  });
+  autoLoadMaps();
+  // Another tab withdrew the choice (or it was deleted on the privacy page there): take the maps down here too.
+  window.addEventListener('storage', function (e) { if ((e.key === MAP_KEY || e.key === null) && !mapAllowed()) withdrawMap(); });
+
+  /* ---------- privacy page: what is kept on this device, and deleting it ---------- */
+  var priv = $('[data-privacy]');
+  if (priv) {
+    var chatKeys = function () { var k = []; try { for (var i = 0; i < sessionStorage.length; i++) if (/^hp-chat-/.test(sessionStorage.key(i))) k.push(sessionStorage.key(i)); } catch (e) { /* blocked */ } return k; };
+    var isSet = function (key) { return key === 'hp-chat-' ? chatKeys().length > 0 : key === MAP_KEY ? mapAllowed() : store.has(key); };
+    var clear = function (key) {
+      if (key === 'hp-chat-') chatKeys().forEach(function (k) { try { sessionStorage.removeItem(k); } catch (e) { /* blocked */ } });
+      else if (key === MAP_KEY) withdrawMap();
+      else store.del(key);
+      if (key === KEY) { list = []; syncButtons(); renderList(); }
+    };
+    var ok = store.ok(); // once: the test write would otherwise echo between two open privacy tabs
+    var paint = function () {
+      $$('[data-store]', priv).forEach(function (row) {
+        var on = ok && isSet(row.getAttribute('data-store'));
+        var st = $('[data-store-state]', row);
+        st.textContent = (on ? '\u25CF ' : '\u25CB ') + (ok ? (on ? T.priv_saved : T.priv_none) : T.priv_blocked);
+      });
+    };
+    $$('[data-store]', priv).forEach(function (row) {
+      $('[data-store-del]', row).addEventListener('click', function () { clear(row.getAttribute('data-store')); paint(); toast(T.priv_cleared); });
+    });
+    var allBtn = $('[data-store-all]');
+    if (allBtn) allBtn.addEventListener('click', function () {
+      $$('[data-store]', priv).forEach(function (row) { clear(row.getAttribute('data-store')); });
+      paint();
+      toast(T.priv_cleared);
+    });
+    window.addEventListener('storage', function (e) { if (e.key !== 'hp-test') paint(); });
+    paint();
   }
 
   // Shared with assets/catalogue.js (the full catalogue on /analizat/) and assets/chat.js (the site assistant).

@@ -82,10 +82,14 @@ export function photo(ctx, slot, { fallback, cls = '', eager = false, sizes = '(
     const srcset = sm?.size && img.size ? ` srcset="${esc(src(sm.file))}?v=${sm.v} ${sm.size.w}w, ${esc(src(img.file))}?v=${img.v} ${img.size.w}w" sizes="${esc(sizes)}"` : '';
     const dims = img.size ? ` width="${img.size.w}" height="${img.size.h}"` : '';
     const pos = meta.position && /^[\d.]+% [\d.]+%$/.test(meta.position) ? ` style="object-position: ${meta.position}"` : '';
+    // The first eager image is the page's main (largest) image: the <head> preloads it (layout.mjs), so the browser
+    // finds it before the stylesheet has loaded. Same srcset / sizes as the <img>, so it is never fetched twice.
+    if (eager && ctx.preload && !ctx.preload.length) ctx.preload.push({ href: `${src(img.file)}?v=${img.v}`, srcset: srcset && `${src(sm.file)}?v=${sm.v} ${sm.size.w}w, ${src(img.file)}?v=${img.v} ${img.size.w}w`, sizes: srcset && sizes });
     return `<div class="photo is-photo ${cls}"><img src="${esc(src(img.file))}?v=${img.v}"${srcset}${dims}${pos} alt="${esc(alt)}" ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async"></div>`;
   }
   const label = alt && `${ILLUSTRATION[ctx.lang]}: ${alt}`;
   const file = sceneFile(def);
+  if (eager && ctx.preload && !ctx.preload.length) ctx.preload.push({ href: `${ctx.base}assets/scenes/${file.name}?v=${file.v}` });
   return `<div class="photo is-scene ${cls}"><img src="${ctx.base}assets/scenes/${file.name}?v=${file.v}" width="${file.w}" height="${file.h}" alt="${esc(label)}" ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async"></div>`;
 }
 

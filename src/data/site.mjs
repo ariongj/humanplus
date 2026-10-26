@@ -60,6 +60,9 @@ export const SITE = {
   // Optional: a form service URL (e.g. Formspree) to receive booking / contact requests by e-mail as well.
   // Empty = WhatsApp / Viber / e-mail links only (works without any account).
   formEndpoint: '',
+  // Who hosts the production site (e.g. the company behind the hosting plan), named on the privacy page.
+  // Empty: the page says "the site's hosting provider". Preview builds on github.io name GitHub Pages.
+  hosting: '',
 };
 
 /** The social profiles that are set, in display order: [{ id, name, url, handle }]. */

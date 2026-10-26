@@ -56,6 +56,10 @@ the repo.
 - **Accessibility:** axe 0 violations, contrast ≥ 4.5:1, 44 px touch targets, 16 px form fields, skip link,
   focus-visible, reduced motion, statuses as text + symbol (never colour alone).
 - Self-hosted WOFF2 fonts, no cookies, no analytics unless the client asks (then opt-in consent).
+- **CSP on every page** (`src/lib/security.mjs`): no inline `<script>` or `on…=` handlers (only `BOOT_JS`, by hash);
+  a new outside service goes into `security.mjs` **and** the privacy page (`src/pages/privacy.mjs`), which must always
+  match the real data flows. HSTS stays short until HTTPS on the domain is verified; no `includeSubDomains` / `preload`
+  without the owner. README → Security, Privacy.
 - WhatsApp messages via `api.whatsapp.com/send` with a prefilled text; never send test messages to the clinic.
 - Keep old URLs working (`/sherbim/<slug>/`, `/en/sherbim/<slug>/`).
 

@@ -6,6 +6,7 @@ import { UI } from '../data/ui.mjs';
 import { CHAT } from '../data/chat.mjs';
 import { LOGO_SQUARE, LOGO_MARK, LOGO_WORDS } from './logo-paths.mjs';
 import { esc, h, icon, brand, L, LANG_NAMES } from './html.mjs';
+import { BOOT_JS, csp, REFERRER_POLICY } from './security.mjs';
 
 export const NAV = [
   ['sherbimet', 'nav_services'],
@@ -67,6 +68,8 @@ function head(ctx) {
   return h`<head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta http-equiv="Content-Security-Policy" content="${esc(csp())}" />
+    <meta name="referrer" content="${REFERRER_POLICY}" />
     <title>${esc(title)}</title>
     <meta name="description" content="${esc(page.description)}" />
     <link rel="canonical" href="${esc(self)}" />
@@ -91,8 +94,9 @@ function head(ctx) {
     <link rel="apple-touch-icon" href="${base}apple-touch-icon.png" />
     <link rel="manifest" href="${base}manifest.webmanifest" />
     <link rel="preload" href="${base}assets/fonts/outfit-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+    ${(ctx.preload ?? []).map((p) => h`<link rel="preload" as="image" ${p.srcset ? `imagesrcset="${esc(p.srcset)}" imagesizes="${esc(p.sizes)}"` : `href="${esc(p.href)}"`} fetchpriority="high" />`)}
     <link rel="stylesheet" href="${base}assets/site.css?v=${ctx.version}" />
-    <script>document.documentElement.className=document.documentElement.className.replace('no-js','js')</script>
+    <script>${BOOT_JS}</script>
     ${jsonld.map((j) => `<script type="application/ld+json">${JSON.stringify(j).replace(/</g, '\\u003c')}</script>`)}
   </head>`;
 }
@@ -204,6 +208,7 @@ function footer(ctx) {
           <li><a href="${esc(ctx.url('rezervo'))}">${esc(t.book)}</a></li>
           <li><a href="${esc(ctx.url('pyetje'))}">${esc(t.nav_faq)}</a></li>
           <li><a href="${esc(ctx.url('kontakt'))}">${esc(t.nav_contact)}</a></li>
+          <li><a href="${esc(ctx.url('privatesia'))}">${esc(t.nav_privacy)}</a></li>
         </ul>
       </nav>
       <div class="footer-col">
@@ -300,7 +305,7 @@ function chat(ctx) {
 function clientData(ctx) {
   const { lang } = ctx;
   const t = UI[lang];
-  const keys = ['open_now', 'closed_now', 'open_until', 'opens_at', 'opens_day', 'tomorrow', 'days', 'days_short', 'days_on', 'months', 'list_count_one', 'list_count_many', 'list_add', 'list_added', 'list_bar_open', 'list_remove', 'list_remove_aria', 'list_msg_hello', 'list_msg_thanks', 'list_mail_subject', 'list_copied', 'list_title', 'sheet_date', 'sheet_test', 'sheet_sample', 'sheet_prep', 'sheet_note', 'sheet_hours', 'sheet_contact'];
+  const keys = ['open_now', 'closed_now', 'open_until', 'opens_at', 'opens_day', 'tomorrow', 'days', 'days_short', 'days_on', 'months', 'list_count_one', 'list_count_many', 'list_add', 'list_added', 'list_bar_open', 'list_remove', 'list_remove_aria', 'list_msg_hello', 'list_msg_thanks', 'list_mail_subject', 'list_copied', 'list_title', 'sheet_date', 'sheet_test', 'sheet_sample', 'sheet_prep', 'sheet_note', 'sheet_hours', 'sheet_contact', 'priv_saved', 'priv_none', 'priv_blocked', 'priv_cleared'];
   const strings = Object.fromEntries(keys.map((k) => [k, t[k]]));
   // [name, preparation, sample] of each common test
   const tests = Object.fromEntries(TESTS.map((x) => [x.id, [L(x.name, lang), L(PREP[x.prep].short, lang), L(SAMPLES[x.sample], lang)]]));

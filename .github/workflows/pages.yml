@@ -50,15 +50,22 @@ jobs:
             echo "No photos in src/variants/re/photos/ yet: the /re/ version is not built."
           fi
 
+      # Each publish is a new commit on top of the live one, so the previous deployment stays in the gh-pages
+      # history as the rollback point (README → Publishing → Rollback). Only changed files add to the branch.
       - name: Publish to the gh-pages branch
         if: github.ref_name == github.event.repository.default_branch
         working-directory: dist
         env:
           TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          REMOTE="https://x-access-token:${TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
           git init -q -b gh-pages
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git fetch -q --depth=1 "$REMOTE" gh-pages; then
+            git reset -q --soft FETCH_HEAD
+            echo "Previous deployment (rollback point): $(git rev-parse --short FETCH_HEAD)"
+          fi
           git add -A
-          git commit -q -m "Publish ${GITHUB_SHA::7}"
-          git push -q -f "https://x-access-token:${TOKEN}@github.com/${GITHUB_REPOSITORY}.git" gh-pages
+          git commit -q --allow-empty -m "Publish ${GITHUB_SHA::7}"
+          git push -q "$REMOTE" HEAD:gh-pages

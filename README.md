@@ -144,9 +144,32 @@ clinic's agreement on what it may answer – this one is deliberately limited to
 The home page (*Na vizitoni*) and the contact page (`/kontakt/#harta`) show a small map card: an illustrated preview
 with the address, **Shfaq hartën** (*Show the map*), and *Udhëzimet në hartë* / *Hap në Google Maps* links that always
 work. **Google Maps loads only after the click** – no request to Google before that, as the no-cookies rule asks
-(the note under the button says Google may set cookies). The choice is remembered on that device, and later maps load
-when they scroll into view. The map shows the same Google search as the links (`mapsEmbed` in `src/data/site.mjs`);
+(the note under the button says Google may set cookies and that the choice is kept for 6 months). The choice is
+remembered on that device for 6 months (`hp-map` = `{ t: time of the click }`; older or undated values ask again), and
+later maps load when they scroll into view. **Hiq hartën** (*Remove the map*) under a loaded map, or the privacy page,
+withdraws it — in every open tab. The map shows the same Google search as the links (`mapsEmbed` in `src/data/site.mjs`);
 for the exact pin, paste the clinic's own *Google Maps → Share → Embed a map* address there.
+
+## Privacy
+
+The site sets **no cookies** and loads **no analytics, advertising or tracking**; there is nothing optional to accept,
+so there is no consent banner. If analytics are ever wanted, they need an opt-in banner with *Accept* and *Reject*
+equally prominent, settings to withdraw, and nothing loaded before *Accept* (CLAUDE.md).
+
+`/privatesia/` (*Privatësia*, linked in the footer, in all three languages, `src/pages/privacy.mjs`) says what the site
+really does and must be kept in step with it:
+
+- **On the device** (localStorage / sessionStorage, never sent anywhere): *Lista ime* (`hp-list`), the chosen language
+  (`hp-lang`), the map choice (`hp-map`, 6 months) and the assistant chat (`hp-chat-<lang>`, deleted with the tab).
+  The page shows each one's state (text and symbol) with a *Delete* button and *Delete everything*. With storage
+  blocked, the features work for the page view and the page says nothing is saved.
+- **The server** (GitHub Pages for the preview; `hosting` in `src/data/site.mjs` names the production host, otherwise
+  the page says "the site's hosting provider") receives the usual request data.
+- **Outside services only when the visitor chooses them**: Google Maps (after *Shfaq hartën*), WhatsApp / Viber /
+  e-mail (the visitor sends the prepared message), Facebook (a link), the phone. With `formEndpoint` set, the page also
+  names the form service.
+
+Change `UPDATED` in `src/pages/privacy.mjs` when the text or a data flow changes. The page makes no compliance claims.
 
 ## Social profiles
 
@@ -351,6 +374,8 @@ before launch – stock people must never be presented as Human+ staff (no names
 | `src/assets/og/og-sq.png`, `og-en.png` | the 1200 × 630 pictures WhatsApp / Facebook show when a link is shared |
 | `src/static/` | favicons and app icons, copied to the site root |
 | `scripts/build.mjs` | builds `dist/`: pages, sitemap, robots, manifest, llms.txt, 404 and `.htaccess` for Hostinger |
+| `src/lib/security.mjs` | the Content-Security-Policy (meta tag and production header), Permissions-Policy, Referrer-Policy |
+| `src/pages/privacy.mjs` | the privacy page `/privatesia/` (data on the device with delete buttons, server, outside services) |
 | `scripts/check.mjs` | checks `dist/`: links, anchors, images (alt, width, height), one H1, titles, descriptions, hreflang, ids, JSON-LD, sitemap |
 | `scripts/serve.mjs` | local preview server |
 | `scripts/import-catalogue.mjs` | turns a catalogue export into `src/data/catalogue.json` (see below) |
@@ -391,6 +416,35 @@ npm run preview
 
 Then open http://localhost:8080 (Albanian), http://localhost:8080/en/ or http://localhost:8080/de/.
 
+## Security
+
+**Content-Security-Policy** (`src/lib/security.mjs`) — every page carries it in a `<meta>` tag (GitHub Pages cannot
+send headers); production also sends it as a header with `frame-ancestors 'none'`. Scripts: only the site's own files
+and the one inline script (`BOOT_JS`, allowed by its SHA-256 hash), so an injected script does not run. Styles allow
+`'unsafe-inline'` because the decorative layers and photo crops use `style` attributes (hashing them would break older
+iPhones). Images, fonts, data: the site itself (plus `data:` images in the CSS). Frames: Google Maps only. Forms: the
+site itself (WhatsApp / e-mail open as links). A new outside service (embed, font, form service) must be added there
+and on the privacy page, never as an inline `<script>`.
+
+**Production headers** (`.htaccess`, written by `scripts/build.mjs` for `SITE_URL=https://humanplusks.com`):
+CSP, `X-Content-Type-Options: nosniff`, `X-Frame-Options: DENY`, `Referrer-Policy: strict-origin-when-cross-origin`,
+`Permissions-Policy` (camera, microphone, geolocation, payment … off), `Cross-Origin-Opener-Policy: same-origin`,
+HSTS, gzip, a year of caching for files with `?v=<hash>` and fonts, `no-cache` for HTML, one-hop redirects
+(http and www → https://humanplusks.com, safe behind a proxy that sends `X-Forwarded-Proto`), the retired departments'
+301s and a 404 page per language. Checked on Apache 2.4.58 with a local certificate for humanplusks.com and www.
+
+**HSTS** starts at `max-age=300` (5 minutes) on purpose. Once https://humanplusks.com and https://www.humanplusks.com
+both work with a valid certificate and http redirects (SSL Labs, no warnings in the browser), rebuild with
+`HSTS_MAX_AGE=31536000` and upload again (SSL Labs' A+ needs at least six months). Leave out `includeSubDomains` unless
+every subdomain (mail, webmail, cPanel …) is on HTTPS, and do not add `preload` without the owner's explicit decision —
+it is hard to undo.
+
+**TLS** (protocols, ciphers, certificate) is set by the host, not by any file in this repository: on the host or CDN
+turn on TLS 1.2 and 1.3 only, and turn off TLS 1.0 / 1.1, CBC suites and static-RSA key exchange where the panel allows
+it; the certificate must cover both `humanplusks.com` and `www.humanplusks.com`. GitHub Pages manages TLS and HSTS for
+`*.github.io` itself and cannot send `frame-ancestors` / `X-Frame-Options`, so the preview can be framed by other
+sites; production cannot.
+
 ## Publishing
 
 **Preview – GitHub Pages.** Every push builds and checks the site. On the repository's default branch the workflow
@@ -416,6 +470,12 @@ non-www redirects, the 404 page, caching, security headers). Include the hidden 
 
 **Other hosts** (Netlify, Cloudflare Pages, Vercel): build command `node scripts/build.mjs`, output folder `dist`,
 environment variable `SITE_URL=https://humanplusks.com`. A sub-folder needs `BASE_PATH=/folder/` as well.
+They ignore `.htaccess`: set the headers from [Security](#security) in their own header settings.
+
+**Rollback.** Each publish is a new commit on the `gh-pages` branch on top of the previous one, so the previous
+deployment stays in its history (the workflow log prints it as "Previous deployment (rollback point)"). To go back,
+reset `gh-pages` to that commit (`git push -f origin <commit>:gh-pages` from a clone with write access), or revert the
+change on the source branch and push. For production, keep a zip of `public_html` before each upload.
 
 ## Facts and sources
 
@@ -461,6 +521,9 @@ people, until the clinic's own photos are added.
 - **Mini map** – shows the Google search for the clinic; replace `mapsEmbed` with the clinic's own embed link for the
   exact pin.
 - **Site assistant** – answers from the site's texts only; read its texts (`src/data/chat.mjs`) with the clinic.
+- **Hosting** – `hosting` in `src/data/site.mjs` is empty until the production host is known; the privacy page then
+  says "the site's hosting provider".
+- **HSTS** – 5 minutes until HTTPS on the real domain is checked (see [Security](#security)).
 
 ## Before launch
 
@@ -475,6 +538,9 @@ people, until the clinic's own photos are added.
 - [ ] **Photos** of the building, reception, sample room, lab and doctors (with everyone's permission) into
       `src/assets/photos/` – see [Photos](#photos). The illustrations work until then.
 - [ ] Build with `SITE_URL=https://humanplusks.com`, upload `dist/` to Hostinger, check https://humanplusks.com/en/sherbim/pediatri/.
+- [ ] On the host: certificate for humanplusks.com **and** www, TLS 1.2 / 1.3 only; run SSL Labs
+      (https://www.ssllabs.com/ssltest/) and https://securityheaders.com on both names and note the dated results.
+- [ ] Then rebuild with `HSTS_MAX_AGE=31536000` and upload again; fill in `hosting` in `src/data/site.mjs`.
 - [ ] Add the site to Google Search Console and submit `https://humanplusks.com/sitemap.xml`.
 - [ ] Update the Google Business Profile with the website, hours and phones.
 
@@ -489,6 +555,14 @@ people, until the clinic's own photos are added.
   with the longest names (and longest German compounds) at 320 px in each language; no console errors;
 - photo slots: a real JPEG / WebP with a phone copy replaces its scene (srcset, width and height read from the file);
 - opening status at Monday 06:10 / 10:00, Friday 19:30, Saturday 17:00 and Sunday 12:00;
+- security and privacy (October 2026): the CSP refuses an injected inline or outside script (the old build ran both)
+  with 0 violations on 19 pages and 9 journeys; no cookies and no outside request before the map click; 35 map-consent
+  and storage scenarios (fresh visit, no choice, accept, reload, withdraw, 200-day-old, undated and future-dated
+  choices, cross-tab withdrawal, privacy-page deletion, blocked storage, a form draft kept); the production `.htaccess`
+  on Apache 2.4.58: redirects, headers, gzip, caching, per-language 404, framing refused;
+- design and speed: 36 before/after screenshots (18 pages × 1440 / 390 px) identical apart from the map note and the
+  footer link; Lighthouse (simulated mobile and desktop) 99–100 performance, 100 accessibility and best practices
+  before and after; reload and back/forward keep the scroll position;
 - language menu (same page in the other language, on desktop and phone); catalogue search (Albanian, English,
   German, Serbian, abbreviations), categories, "show more", details, list across pages and tabs (and lists saved by the earlier version), panel add, booking validation, WhatsApp text, `.ics` time zone, contact form.
 

@@ -226,19 +226,22 @@ const G = dict('gallery', {
 const MAP = dict('minimap', {
   sq: {
     show: 'Shfaq hartën',
-    consent: 'Harta ngarkohet nga Google Maps vetëm kur e hapni. Google mund të vendosë cookies.',
+    consent: 'Harta ngarkohet nga Google Maps vetëm kur e hapni. Google mund të vendosë cookies. Zgjedhja ruhet në këtë pajisje për 6 muaj.',
+    off: 'Hiq hartën',
     open: 'Hap në Google Maps',
     frame: 'Harta: {name}, {addr}',
   },
   en: {
     show: 'Show the map',
-    consent: 'The map loads from Google Maps only when you open it. Google may set cookies.',
+    consent: 'The map loads from Google Maps only when you open it. Google may set cookies. Your choice is kept on this device for 6 months.',
+    off: 'Remove the map',
     open: 'Open in Google Maps',
     frame: 'Map: {name}, {addr}',
   },
   de: {
     show: 'Karte anzeigen',
-    consent: 'Die Karte wird erst von Google Maps geladen, wenn Sie sie öffnen. Google kann dabei Cookies setzen.',
+    consent: 'Die Karte wird erst von Google Maps geladen, wenn Sie sie öffnen. Google kann dabei Cookies setzen. Ihre Wahl wird 6 Monate auf diesem Gerät gespeichert.',
+    off: 'Karte entfernen',
     open: 'In Google Maps öffnen',
     frame: 'Karte: {name}, {addr}',
   },
@@ -260,7 +263,7 @@ export function miniMap(ctx, { id = '', cls = '' } = {}) {
       <p class="minimap-pin"><strong>${esc(SITE.fullName)}</strong><span>${esc(addr)}</span></p>
       <div class="minimap-consent js-only">
         <button class="btn btn-primary" type="button" data-map-load>${icon('map', { size: 18 })}${esc(t.show)}</button>
-        <p>${esc(t.consent)}</p>
+        <p>${esc(t.consent)} <a href="${esc(ctx.url('privatesia'))}#harta">${esc(u.nav_privacy)}</a></p>
       </div>
     </div>
     <figcaption class="minimap-bar">
@@ -268,6 +271,7 @@ export function miniMap(ctx, { id = '', cls = '' } = {}) {
       <span class="minimap-links">
         <a href="${esc(SITE.mapsDirections)}" target="_blank" rel="noopener">${icon('route', { size: 16 })}${esc(u.directions)}</a>
         <a href="${esc(SITE.mapsUrl)}" target="_blank" rel="noopener">${icon('external-link', { size: 16 })}${esc(t.open)}</a>
+        <button class="minimap-off" type="button" data-map-off hidden>${icon('x', { size: 16 })}${esc(t.off)}</button>
       </span>
     </figcaption>
   </figure>`;
