@@ -1814,6 +1814,12 @@
     "Plus (Kortizol në",
     "Plus (kortizol në"
    ]
+  ],
+  "d": [
+   [
+    "ritmin ditor hormonal, hormonet seksuale dhe metabolizmin",
+    "ritmin ditor hormonal, hormonet dhe metabolizmin"
+   ]
   ]
  },
  "k17262": {
@@ -5133,6 +5139,38 @@
    [
     "(urinë spontane)",
     "(mostër e vetme)"
+   ]
+  ]
+ },
+ "k49084": {
+  "n": [
+   [
+    "DHEA (hormon seksual)",
+    "DHEA (dehidroepiandrosteron)"
+   ]
+  ]
+ },
+ "k17916": {
+  "d": [
+   [
+    "pararendës i hormoneve seksuale",
+    "pararendës i hormoneve androgjene dhe estrogjene"
+   ]
+  ]
+ },
+ "k17931": {
+  "d": [
+   [
+    "proteinë transportuese e hormoneve seksuale",
+    "proteinë transportuese e testosteronit dhe estradiolit"
+   ]
+  ]
+ },
+ "k82021": {
+  "d": [
+   [
+    "duke përfshirë hormone seksuale, kortizol",
+    "duke përfshirë kortizol"
    ]
   ]
  }

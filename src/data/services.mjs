@@ -107,13 +107,14 @@ export const SERVICES = [
   {
     slug: 'hormone',
     group: 'lab',
+    cat: 'hormone-seksuale',
     icon: 'flask-round',
     tone: 'sun',
     name: { sq: 'Hormone', en: 'Hormones', de: 'Hormone' },
     short: {
       sq: 'Tiroidja, hormonet riprodhuese, kortizoli dhe testi i shtatzënisë nga gjaku.',
       en: 'Thyroid, reproductive hormones, cortisol and the blood pregnancy test.',
-      de: 'Schilddrüse, Sexualhormone, Cortisol und der Schwangerschaftstest aus dem Blut.',
+      de: 'Schilddrüse, Fortpflanzungshormone, Cortisol und der Schwangerschaftstest aus dem Blut.',
     },
     intro: {
       sq: 'Shumë hormone ndryshojnë gjatë ditës ose gjatë ciklit, prandaj ora e marrjes së mostrës ka rëndësi. Ju tregojmë kur të vini — dhe endokrinologu ose gjinekologu i lexon rezultatet bashkë me simptomat tuaja.',
@@ -137,7 +138,7 @@ export const SERVICES = [
       ],
       de: [
         'Schilddrüse: TSH, FT4, FT3, Anti-TPO, Anti-TG',
-        'Sexualhormone: FSH, LH, Östradiol, Progesteron, Prolaktin, Testosteron, AMH',
+        'Fortpflanzungshormone: FSH, LH, Östradiol, Progesteron, Prolaktin, Testosteron, AMH',
         'Beta-hCG — der Schwangerschaftstest aus dem Blut',
         'Cortisol, DHEA-S und Parathormon (PTH)',
         'Insulin und HOMA-Index',
