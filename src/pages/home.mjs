@@ -7,14 +7,15 @@ import { UI } from '../data/ui.mjs';
 import { esc, h, icon, brand, dict, L, accent } from '../lib/html.mjs';
 import { hoursTable, status } from '../lib/layout.mjs';
 import { labBackground } from '../lib/labbg.mjs';
-import { sectionHead, serviceCard, panelCard, testSearch, ctaBand, faqList, shortName, centreGallery, miniMap } from '../lib/parts.mjs';
+import { sectionHead, panelCard, testSearch, ctaBand, faqList, shortName, centreGallery, miniMap } from '../lib/parts.mjs';
+import { serviceGroups } from './services.mjs';
 import { finderTeaser } from '../lib/finder.mjs';
 import { photo } from '../lib/photo.mjs';
 
 const T = dict('home', {
   sq: {
     title: 'Human+ Qendra Diagnostike — laborator, pediatri dhe specialistë në Prishtinë',
-    description: 'Human+ në Prishtinë që nga viti 2011: laborator biokimik, hematologjik dhe mikrobiologjik, pediatri, gjinekologji dhe specialistë. Kërkoni analizat, rezervoni termin, na shkruani në WhatsApp.',
+    description: 'Human+ në Prishtinë që nga viti 2011: laborator me hematologji, biokimi, hormone, imunologji dhe mikrobiologji; pediatri, gjinekologji dhe endokrinologji. Kërkoni analizat, rezervoni termin, na shkruani në WhatsApp.',
     eyebrow: 'Qendra Diagnostike · Prishtinë · që nga 2011',
     h1: 'Diagnozë e saktë, kujdes *njerëzor*.',
     lead: 'Laborator i plotë, pediatri, gjinekologji dhe specialistë nën një çati. Kërkoni analizën që ju duhet, shikoni si të përgatiteni dhe rezervoni termin — në pak minuta.',
@@ -34,11 +35,11 @@ const T = dict('home', {
     svc_eyebrow: 'Shërbimet',
     svc_help: 'Nuk e dini ku të filloni?',
     svc_help_text: 'Na shkruani çfarë ju shqetëson — ju drejtojmë te mjeku ose te analiza e duhur.',
-    svc_title: 'Një qendër, *shtatë* shërbime.',
+    svc_title: 'Laboratori dhe *specialistët* nën një çati.',
     svc_text: 'Nga kontrolli i parë i fëmijës deri te analizat hormonale dhe kulturat mikrobiologjike — mjekët dhe laboratori punojnë së bashku, në të njëjtën ndërtesë.',
     lab_eyebrow: 'Laboratori',
     lab_title: 'Laboratori ynë, *vazhdimësi* e BAKTOLAB-it.',
-    lab_text: 'Analizat biokimike, hematologjike dhe mikrobiologjike bëhen këtu në qendër. Kërkoni një analizë, shtojeni në listë dhe na e dërgoni për çmimin dhe terminin.',
+    lab_text: 'Hematologji, biokimi, hormone, imunologji dhe mikrobiologji, përfshirë parazitologjinë dhe mikologjinë — të gjitha këtu në qendër. Kërkoni një analizë, shtojeni në listë dhe na e dërgoni për çmimin dhe terminin.',
     lab_all: 'Shiko të gjitha analizat',
     pan_eyebrow: 'Paketat',
     pan_title: 'Check-up i menduar *për ju*.',
@@ -80,7 +81,7 @@ const T = dict('home', {
   },
   en: {
     title: 'Human+ Diagnostic Centre — laboratory, paediatrics and specialists in Prishtina',
-    description: 'Human+ in Prishtina since 2011: biochemistry, haematology and microbiology laboratory, paediatrics, gynaecology and specialists. Find your tests, book an appointment, message us on WhatsApp.',
+    description: 'Human+ in Prishtina since 2011: a laboratory for haematology, biochemistry, hormones, immunology and microbiology; paediatrics, gynaecology and endocrinology. Find your tests, book an appointment, message us on WhatsApp.',
     eyebrow: 'Diagnostic Centre · Prishtina · since 2011',
     h1: 'Precise diagnosis, *human* care.',
     lead: 'A full laboratory, paediatrics, gynaecology and specialists under one roof. Find the test you need, see how to prepare and book an appointment — in a few minutes.',
@@ -100,11 +101,11 @@ const T = dict('home', {
     svc_eyebrow: 'Services',
     svc_help: 'Not sure where to start?',
     svc_help_text: 'Tell us what is bothering you — we will point you to the right doctor or test.',
-    svc_title: 'One centre, *seven* services.',
+    svc_title: 'The laboratory and *specialists* under one roof.',
     svc_text: 'From a child’s first check-up to hormone tests and microbiology cultures — doctors and the laboratory work together, in the same building.',
     lab_eyebrow: 'Laboratory',
     lab_title: 'Our laboratory, the *continuation* of BAKTOLAB.',
-    lab_text: 'Biochemistry, haematology and microbiology tests are done here at the centre. Find a test, add it to your list and send it to us for the price and an appointment.',
+    lab_text: 'Haematology, biochemistry, hormones, immunology and microbiology, including parasitology and mycology — all here at the centre. Find a test, add it to your list and send it to us for the price and an appointment.',
     lab_all: 'See all lab tests',
     pan_eyebrow: 'Check-ups',
     pan_title: 'Check-ups made *for you*.',
@@ -146,7 +147,7 @@ const T = dict('home', {
   },
   de: {
     title: 'Human+ Diagnostikzentrum — Labor, Kinderheilkunde und Fachärzte in Prishtina',
-    description: 'Human+ in Prishtina seit 2011: Labor für Biochemie, Hämatologie und Mikrobiologie, Kinderheilkunde, Gynäkologie und Fachärzte. Finden Sie Ihre Analysen, buchen Sie einen Termin, schreiben Sie uns auf WhatsApp.',
+    description: 'Human+ in Prishtina seit 2011: Labor für Hämatologie, Biochemie, Hormone, Immunologie und Mikrobiologie; Kinderheilkunde, Gynäkologie und Endokrinologie. Finden Sie Ihre Analysen, buchen Sie einen Termin, schreiben Sie uns auf WhatsApp.',
     eyebrow: 'Diagnostikzentrum · Prishtina · seit 2011',
     h1: 'Präzise Diagnose, *menschliche* Betreuung.',
     lead: 'Ein vollständiges Labor, Kinderheilkunde, Gynäkologie und Fachärzte unter einem Dach. Finden Sie die Analyse, die Sie brauchen, sehen Sie, wie Sie sich vorbereiten, und buchen Sie einen Termin — in wenigen Minuten.',
@@ -166,11 +167,11 @@ const T = dict('home', {
     svc_eyebrow: 'Leistungen',
     svc_help: 'Unsicher, wo Sie anfangen sollen?',
     svc_help_text: 'Schreiben Sie uns, was Sie beschäftigt — wir helfen Ihnen, den richtigen Arzt oder die passende Analyse zu finden.',
-    svc_title: 'Ein Zentrum, *sieben* Leistungen.',
+    svc_title: 'Labor und *Fachärzte* unter einem Dach.',
     svc_text: 'Von der ersten Untersuchung Ihres Kindes bis zu Hormonanalysen und mikrobiologischen Kulturen — Ärzte und Labor arbeiten zusammen, im selben Gebäude.',
     lab_eyebrow: 'Labor',
     lab_title: 'Unser Labor, die *Fortführung* von BAKTOLAB.',
-    lab_text: 'Biochemische, hämatologische und mikrobiologische Analysen werden hier im Zentrum durchgeführt. Finden Sie eine Analyse, fügen Sie sie Ihrer Liste hinzu und senden Sie sie uns, um Preis und Termin zu erfragen.',
+    lab_text: 'Hämatologie, Biochemie, Hormone, Immunologie und Mikrobiologie einschließlich Parasitologie und Mykologie — alles hier im Zentrum. Finden Sie eine Analyse, fügen Sie sie Ihrer Liste hinzu und senden Sie sie uns, um Preis und Termin zu erfragen.',
     lab_all: 'Alle Analysen ansehen',
     pan_eyebrow: 'Check-ups',
     pan_title: 'Check-ups, *für Sie* zusammengestellt.',
@@ -280,8 +281,9 @@ export function homePage(ctx) {
         ${sectionHead({ eyebrow: t.svc_eyebrow, title: t.svc_title, text: t.svc_text, id: 'h-svc' })}
         <a class="btn btn-outline" href="${esc(ctx.url('sherbimet'))}">${esc(u.all_services)}${icon('arrow-right', { size: 18 })}</a>
       </div>
-      <ul class="svc-grid">${SERVICES.map((s, i) => serviceCard(ctx, s, i))}
-        <li class="svc svc-help reveal"><div class="svc-help-in">
+      <div class="svc-groups">${serviceGroups(ctx, {
+        heading: 'h3',
+        extra: h`<li class="svc svc-help reveal"><div class="svc-help-in">
           <span class="tile">${icon('message-circle-question', { size: 22 })}</span>
           <h3>${esc(t.svc_help)}</h3>
           <p>${esc(t.svc_help_text)}</p>
@@ -289,8 +291,8 @@ export function homePage(ctx) {
             <a class="btn btn-wa btn-sm" href="${esc(ctx.wa())}" target="_blank" rel="noopener">${brand('whatsapp', { size: 16 })}WhatsApp</a>
             <a class="btn btn-light btn-sm" href="${esc(ctx.url('rezervo'))}">${icon('calendar-check', { size: 16 })}${esc(u.book_short)}</a>
           </div>
-        </div></li>
-      </ul>
+        </div></li>`,
+      })}</div>
     </div>
   </section>`;
 

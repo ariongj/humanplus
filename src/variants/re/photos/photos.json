@@ -107,6 +107,51 @@
   "position": "50% 50%",
   "credit": "Unsplash photo-1625131135576-97ddbb6f063c (Unsplash License)"
  },
+ "sherbim-hematologji": {
+  "alt": {
+   "sq": "Dorë me dorezë mban një epruvetë me gjak mbi mbajtësen e mostrave",
+   "en": "A gloved hand holds a blood sample tube above a sample rack",
+   "de": "Eine Hand im Handschuh hält ein Blutröhrchen über einen Probenständer"
+  },
+  "position": "50% 50%",
+  "credit": "Unsplash photo-1639772823849-6efbd173043c (Unsplash License)"
+ },
+ "sherbim-biokimi": {
+  "alt": {
+   "sq": "Epruveta me kapakë me ngjyra në laborator",
+   "en": "Sample tubes with coloured caps in the laboratory",
+   "de": "Probenröhrchen mit farbigen Verschlüssen im Labor"
+  },
+  "position": "50% 50%",
+  "credit": "Unsplash photo-1606206591513-adbfbdd7a177 (Unsplash License)"
+ },
+ "sherbim-hormone": {
+  "alt": {
+   "sq": "Dorë me dorezë zgjedh një epruvetë me mostër gjaku",
+   "en": "A gloved hand picks a blood sample tube",
+   "de": "Eine Hand im Handschuh greift nach einem Blutröhrchen"
+  },
+  "position": "50% 50%",
+  "credit": "Unsplash photo-1697192156499-d85cfe1452c0 (Unsplash License)"
+ },
+ "sherbim-imunologji": {
+  "alt": {
+   "sq": "Duar me doreza punojnë me mostra në laborator",
+   "en": "Gloved hands work with samples in the laboratory",
+   "de": "Hände in Handschuhen arbeiten im Labor mit Proben"
+  },
+  "position": "50% 50%",
+  "credit": "Unsplash photo-1615461066159-fea0960485d5 (Unsplash License)"
+ },
+ "sherbim-mikrobiologji": {
+  "alt": {
+   "sq": "Mikroskop dhe duar me doreza në laborator",
+   "en": "A microscope and gloved hands in the laboratory",
+   "de": "Ein Mikroskop und Hände in Handschuhen im Labor"
+  },
+  "position": "50% 50%",
+  "credit": "Unsplash photo-1639772823907-a716be4bdecc (Unsplash License)"
+ },
  "sherbim-pediatri": {
   "alt": {
    "sq": "Djalë me nënën e tij gjatë një vizite te mjeku",
@@ -125,33 +170,6 @@
   "position": "50% 22%",
   "credit": "Unsplash photo-1758691462878-6edc3d3da1be (Unsplash License)"
  },
- "sherbim-laboratori-biokimik-dhe-hematologjik": {
-  "alt": {
-   "sq": "Duar me doreza punojnë me mostra në laborator",
-   "en": "Gloved hands work with samples in the laboratory",
-   "de": "Hände in Handschuhen arbeiten im Labor mit Proben"
-  },
-  "position": "50% 50%",
-  "credit": "Unsplash photo-1615461066159-fea0960485d5 (Unsplash License)"
- },
- "sherbim-laboratori-mikrobiologjik": {
-  "alt": {
-   "sq": "Mikroskop dhe duar me doreza në laborator",
-   "en": "A microscope and gloved hands in the laboratory",
-   "de": "Ein Mikroskop und Hände in Handschuhen im Labor"
-  },
-  "position": "50% 50%",
-  "credit": "Unsplash photo-1639772823907-a716be4bdecc (Unsplash License)"
- },
- "sherbim-mjekesi-familjare": {
-  "alt": {
-   "sq": "Pacientes i matet tensioni i gjakut",
-   "en": "A patient has her blood pressure measured",
-   "de": "Bei einer Patientin wird der Blutdruck gemessen"
-  },
-  "position": "50% 35%",
-  "credit": "Unsplash photo-1758691462123-8a17ae95d203 (Unsplash License)"
- },
  "sherbim-endokrinologji": {
   "alt": {
    "sq": "Mjeke me stetoskop në kabinet",
@@ -160,14 +178,5 @@
   },
   "position": "50% 22%",
   "credit": "Unsplash photo-1758691462858-f1286e5daf40 (Unsplash License)"
- },
- "sherbim-suplemente-dhe-nutricion": {
-  "alt": {
-   "sq": "Grua me një tabletë dhe një gotë ujë",
-   "en": "A woman with a tablet and a glass of water",
-   "de": "Eine Frau mit einer Tablette und einem Glas Wasser"
-  },
-  "position": "50% 40%",
-  "credit": "Unsplash photo-1674049406313-abb5511e0111 (Unsplash License)"
  }
 }

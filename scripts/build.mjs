@@ -124,7 +124,7 @@ function clinicJsonLd(lang) {
     openingHoursSpecification: Object.entries(SITE.hours)
       .filter(([, v]) => v)
       .map(([d, [opens, closes]]) => ({ '@type': 'OpeningHoursSpecification', dayOfWeek: `https://schema.org/${days[d]}`, opens, closes })),
-    medicalSpecialty: ['Pediatric', 'Gynecologic', 'PrimaryCare', 'Endocrine', 'LaboratoryScience'].map((s) => `https://schema.org/${s}`),
+    medicalSpecialty: ['LaboratoryScience', 'Pediatric', 'Gynecologic', 'Endocrine'].map((s) => `https://schema.org/${s}`),
     availableLanguage: LANGS,
     sameAs: SOCIALS.map((s) => s.url),
     contactPoint: SITE.phones.map((p) => ({ '@type': 'ContactPoint', telephone: p.tel, contactType: 'customer service', availableLanguage: LANGS })),
@@ -241,11 +241,15 @@ for (const lang of LANGS) {
   ctx.page = page;
   write(lang === 'sq' ? '404.html' : `${lang}/404.html`, layout(ctx, page.body));
 }
-// Departments the clinic no longer lists: their old addresses send visitors on to the services page (not in the
-// sitemap, not indexed; the production .htaccess also answers them with a 301).
+// Former service addresses (departments the clinic no longer lists, the two former lab pages): they send visitors on
+// to their new place (not in the sitemap, not indexed; the production .htaccess also answers them with a 301).
+const retiredTo = (target, lang) => {
+  const [p, hash] = target.split('#');
+  return `${urlFor(p, lang)}${hash ? `#${hash}` : ''}`;
+};
 for (const lang of LANGS) {
-  const to = urlFor('sherbimet', lang);
-  for (const slug of RETIRED_SERVICES) {
+  for (const [slug, target] of Object.entries(RETIRED_SERVICES)) {
+    const to = retiredTo(target, lang);
     write(
       path.join(lang === 'sq' ? '' : lang, `sherbim/${slug}`, 'index.html'),
       `<!doctype html>\n<html lang="${lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>${SITE.fullName}</title><meta name="robots" content="noindex"><link rel="canonical" href="${ORIGIN}${to}"><meta http-equiv="refresh" content="0; url=${to}"></head>\n<body><p><a href="${to}">${UI[lang].nav_services} · ${SITE.fullName}</a></p></body></html>\n`,
@@ -300,7 +304,7 @@ write(
   'llms.txt',
   `# ${SITE.fullName}
 
-> Diagnostic centre in Prishtina, Kosovo, since ${SITE.founded}: biochemistry, haematology and microbiology laboratory (continuing the ${SITE.predecessor} laboratory), paediatrics, gynaecology, family medicine, endocrinology, supplements and nutrition.
+> Diagnostic centre in Prishtina, Kosovo, since ${SITE.founded}. Laboratory (continuing the ${SITE.predecessor} laboratory) with five modules: haematology, biochemistry, hormones, immunology, and microbiology including parasitology and mycology. Specialist services: paediatrics, gynaecology and endocrinology, with more specialties coming.
 
 - Address: ${SITE.address.street}, ${SITE.address.postalCode} ${SITE.address.cityEn}, Kosovo
 - Phone: ${SITE.phones.map((p) => p.display).join(' · ')}
@@ -334,8 +338,8 @@ AddType font/woff2 .woff2
 ErrorDocument 404 ${BASE}404.html
 
 # One hop to https://<domain without www>. The X-Forwarded-Proto check keeps a CDN / proxy that ends TLS in front
-# of the server (and talks to it over HTTP) from looping. Then the retired departments' old addresses go to the
-# services page (their folders also hold a redirect page, for servers without mod_rewrite).
+# of the server (and talks to it over HTTP) from looping. Then the former service addresses go to their new place
+# (their folders also hold a redirect page, for servers without mod_rewrite).
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteCond %{HTTP_HOST} ^www\\.(.+)$ [NC]
@@ -343,7 +347,7 @@ ErrorDocument 404 ${BASE}404.html
   RewriteCond %{HTTPS} !=on
   RewriteCond %{HTTP:X-Forwarded-Proto} !=https
   RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-${LANGS.map((lang) => `  RewriteRule ^${lang === 'sq' ? '' : `${lang}/`}sherbim/(${RETIRED_SERVICES.join('|')})/?$ https://%{HTTP_HOST}${urlFor('sherbimet', lang)} [L,R=301]`).join('\n')}
+${LANGS.flatMap((lang) => Object.entries(RETIRED_SERVICES).map(([slug, target]) => `  RewriteRule ^${lang === 'sq' ? '' : `${lang}/`}sherbim/${slug}/?$ https://%{HTTP_HOST}${retiredTo(target, lang)} [L,R=301,NE]`)).join('\n')}
 </IfModule>
 
 <IfModule mod_headers.c>

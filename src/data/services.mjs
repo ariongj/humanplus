@@ -1,15 +1,240 @@
-// Departments ("Shërbimet"). The slugs keep the previous site's address pattern (/sherbim/pediatri/,
-// /en/sherbim/pediatri/), so old links and search results keep working.
-// Pediatrics text follows the previous site; the other descriptions describe each specialty's usual scope and
-// stay deliberately general — confirm the details with the clinic (README → What is placeholder).
+// The centre's services, as the clinic lists them: the laboratory with its five modules, then the specialist
+// services. Each has a page at /sherbim/<slug>/ (and /en/, /de/). `group`: 'lab' (a laboratory module) or 'spec'
+// (a specialist service); `cat`: the catalogue category its "see them in the catalogue" link opens.
+// Pediatrics text follows the previous site; the other descriptions describe each field's usual scope and stay
+// deliberately general — confirm the details with the clinic (README → What is placeholder).
 
-// Departments the clinic no longer lists. Their old addresses (/sherbim/<slug>/ in every language) send visitors to
-// /sherbimet/ (a redirect page, and a 301 in .htaccess on the production server) — see scripts/build.mjs.
-export const RETIRED_SERVICES = ['urologji', 'gastroenterologji', 'dermatologji'];
+// Former addresses (/sherbim/<slug>/ in every language) and where they now lead: a redirect page, and a 301 in
+// .htaccess on the production server — see scripts/build.mjs. Paths are site paths; "#id" opens a section.
+export const RETIRED_SERVICES = {
+  urologji: 'sherbimet',
+  gastroenterologji: 'sherbimet',
+  dermatologji: 'sherbimet',
+  'mjekesi-familjare': 'sherbimet',
+  'suplemente-dhe-nutricion': 'sherbimet',
+  'laboratori-biokimik-dhe-hematologjik': 'sherbimet#laboratori',
+  'laboratori-mikrobiologjik': 'sherbim/mikrobiologji',
+};
 
 export const SERVICES = [
   {
+    slug: 'hematologji',
+    group: 'lab',
+    cat: 'hematologji',
+    icon: 'droplet',
+    tone: 'rose',
+    name: { sq: 'Hematologji', en: 'Haematology', de: 'Hämatologie' },
+    short: {
+      sq: 'Gjaku dhe koagulimi: hemogrami i plotë, sedimentimi, koagulimi dhe grupi i gjakut.',
+      en: 'Blood and clotting: complete blood count, ESR, coagulation and blood group.',
+      de: 'Blut und Gerinnung: großes Blutbild, Blutsenkung, Gerinnung und Blutgruppe.',
+    },
+    intro: {
+      sq: 'Hemogrami është shpesh analiza e parë që kërkon mjeku: tregon qelizat e kuqe dhe të bardha, hemoglobinën dhe trombocitet. Këtu bëhen edhe analizat e koagulimit dhe grupi i gjakut — mostra merret në qendër dhe rezultatin e shqyrton mjeku juaj.',
+      en: 'The blood count is often the first test a doctor asks for: it shows red and white cells, haemoglobin and platelets. Coagulation tests and the blood group are done here too — the sample is taken at the centre and your doctor reviews the result.',
+      de: 'Das Blutbild ist oft die erste Analyse, die Ihr Arzt anordnet: Es zeigt rote und weiße Blutkörperchen, Hämoglobin und Blutplättchen. Auch Gerinnungswerte und die Blutgruppe werden hier bestimmt — die Probe wird im Zentrum entnommen, und Ihr Arzt beurteilt das Ergebnis.',
+    },
+    items: {
+      sq: [
+        'Hemogrami i plotë — qelizat e kuqe dhe të bardha, hemoglobina, trombocitet',
+        'Sedimentimi (SE)',
+        'Koagulimi: koha e protrombinës (PT/INR), aPTT, fibrinogjeni',
+        'Grupi i gjakut dhe faktori Rh',
+        'Retikulocitet',
+      ],
+      en: [
+        'Complete blood count — red and white cells, haemoglobin, platelets',
+        'Erythrocyte sedimentation rate (ESR)',
+        'Coagulation: prothrombin time (PT/INR), aPTT, fibrinogen',
+        'Blood group and Rh factor',
+        'Reticulocytes',
+      ],
+      de: [
+        'Großes Blutbild — rote und weiße Blutkörperchen, Hämoglobin, Blutplättchen',
+        'Blutsenkungsgeschwindigkeit (BSG)',
+        'Gerinnung: Prothrombinzeit (PT/INR), aPTT, Fibrinogen',
+        'Blutgruppe und Rhesusfaktor',
+        'Retikulozyten',
+      ],
+    },
+    tests: ['cbc', 'esr', 'pt-inr', 'aptt', 'fibrinogen', 'blood-group', 'reticulocytes', 'ferritin'],
+  },
+  {
+    slug: 'biokimi',
+    group: 'lab',
+    cat: 'biokimi',
+    icon: 'flask-conical',
+    tone: 'brand',
+    name: { sq: 'Biokimi', en: 'Biochemistry', de: 'Biochemie' },
+    short: {
+      sq: 'Glukoza, yndyrnat, funksioni i veshkave dhe i mëlçisë, elektrolitët, vitaminat dhe mineralet.',
+      en: 'Glucose, lipids, kidney and liver function, electrolytes, vitamins and minerals.',
+      de: 'Blutzucker, Blutfette, Nieren- und Leberwerte, Elektrolyte, Vitamine und Mineralstoffe.',
+    },
+    intro: {
+      sq: 'Analizat biokimike tregojnë si punojnë organet dhe metabolizmi: sheqeri, yndyrnat, veshkat dhe mëlçia. Shumica bëhen nga e njëjta mostër gjaku, shpesh esëll në mëngjes — shikoni përgatitjen para se të vini.',
+      en: 'Biochemistry tests show how your organs and metabolism are working: sugar, fats, kidneys and liver. Most are done from the same blood sample, often fasting in the morning — check the preparation before you come.',
+      de: 'Biochemische Analysen zeigen, wie Organe und Stoffwechsel arbeiten: Zucker, Fette, Nieren und Leber. Die meisten Werte werden aus derselben Blutprobe bestimmt, oft nüchtern am Morgen — sehen Sie sich vor Ihrem Besuch die Vorbereitung an.',
+    },
+    items: {
+      sq: [
+        'Glukoza, HbA1c, insulina dhe testi i tolerancës ndaj glukozës',
+        'Profili lipidik: kolesteroli, HDL, LDL, trigliceridet',
+        'Veshkat: urea, kreatinina, acidi urik, mikroalbuminuria',
+        'Mëlçia: AST, ALT, GGT, fosfataza alkaline, bilirubina',
+        'Elektrolitët, kalciumi, fosfati dhe proteinat',
+        'Vitamina dhe minerale: D, B12, acidi folik, hekuri, feritina, magnezi',
+      ],
+      en: [
+        'Glucose, HbA1c, insulin and the glucose tolerance test',
+        'Lipid profile: cholesterol, HDL, LDL, triglycerides',
+        'Kidneys: urea, creatinine, uric acid, microalbumin',
+        'Liver: AST, ALT, GGT, alkaline phosphatase, bilirubin',
+        'Electrolytes, calcium, phosphate and proteins',
+        'Vitamins and minerals: D, B12, folic acid, iron, ferritin, magnesium',
+      ],
+      de: [
+        'Glukose, HbA1c, Insulin und oraler Glukosetoleranztest',
+        'Lipidprofil: Cholesterin, HDL, LDL, Triglyceride',
+        'Nieren: Harnstoff, Kreatinin, Harnsäure, Mikroalbumin',
+        'Leber: AST, ALT, GGT, alkalische Phosphatase, Bilirubin',
+        'Elektrolyte, Calcium, Phosphat und Eiweiß',
+        'Vitamine und Mineralstoffe: D, B12, Folsäure, Eisen, Ferritin, Magnesium',
+      ],
+    },
+    tests: ['glucose', 'hba1c', 'cholesterol', 'triglycerides', 'creatinine', 'uric-acid', 'alt', 'ggt', 'electrolytes', 'vitd', 'b12', 'iron'],
+  },
+  {
+    slug: 'hormone',
+    group: 'lab',
+    icon: 'flask-round',
+    tone: 'sun',
+    name: { sq: 'Hormone', en: 'Hormones', de: 'Hormone' },
+    short: {
+      sq: 'Tiroidja, hormonet riprodhuese, kortizoli dhe testi i shtatzënisë nga gjaku.',
+      en: 'Thyroid, reproductive hormones, cortisol and the blood pregnancy test.',
+      de: 'Schilddrüse, Sexualhormone, Cortisol und der Schwangerschaftstest aus dem Blut.',
+    },
+    intro: {
+      sq: 'Shumë hormone ndryshojnë gjatë ditës ose gjatë ciklit, prandaj ora e marrjes së mostrës ka rëndësi. Ju tregojmë kur të vini — dhe endokrinologu ose gjinekologu i lexon rezultatet bashkë me simptomat tuaja.',
+      en: 'Many hormones change over the day or across the cycle, so the time the sample is taken matters. We tell you when to come — and the endocrinologist or gynaecologist reads the results together with your symptoms.',
+      de: 'Viele Hormone schwanken im Tagesverlauf oder während des Zyklus, deshalb kommt es auf den Zeitpunkt der Probenentnahme an. Wir sagen Ihnen, wann Sie kommen sollten — und der Endokrinologe oder Gynäkologe beurteilt die Ergebnisse zusammen mit Ihren Beschwerden.',
+    },
+    items: {
+      sq: [
+        'Tiroidja: TSH, FT4, FT3, anti-TPO, anti-TG',
+        'Hormonet riprodhuese: FSH, LH, estradioli, progesteroni, prolaktina, testosteroni, AMH',
+        'Beta-hCG — testi i shtatzënisë nga gjaku',
+        'Kortizoli, DHEA-S dhe parathormoni (PTH)',
+        'Insulina dhe indeksi HOMA',
+      ],
+      en: [
+        'Thyroid: TSH, FT4, FT3, anti-TPO, anti-TG',
+        'Reproductive hormones: FSH, LH, oestradiol, progesterone, prolactin, testosterone, AMH',
+        'Beta-hCG — the blood pregnancy test',
+        'Cortisol, DHEA-S and parathyroid hormone (PTH)',
+        'Insulin and the HOMA index',
+      ],
+      de: [
+        'Schilddrüse: TSH, FT4, FT3, Anti-TPO, Anti-TG',
+        'Sexualhormone: FSH, LH, Östradiol, Progesteron, Prolaktin, Testosteron, AMH',
+        'Beta-hCG — der Schwangerschaftstest aus dem Blut',
+        'Cortisol, DHEA-S und Parathormon (PTH)',
+        'Insulin und HOMA-Index',
+      ],
+    },
+    tests: ['tsh', 'ft4', 'ft3', 'anti-tpo', 'fsh', 'lh', 'estradiol', 'progesterone', 'prolactin', 'testosterone', 'cortisol', 'beta-hcg'],
+  },
+  {
+    slug: 'imunologji',
+    group: 'lab',
+    cat: 'imunologji',
+    icon: 'shield-check',
+    tone: 'sky',
+    name: { sq: 'Imunologji', en: 'Immunology', de: 'Immunologie' },
+    short: {
+      sq: 'Inflamacioni, sëmundjet autoimune, alergjitë dhe antitrupat ndaj infeksioneve.',
+      en: 'Inflammation, autoimmune disease, allergies and antibodies to infections.',
+      de: 'Entzündung, Autoimmunerkrankungen, Allergien und Antikörper gegen Infektionen.',
+    },
+    intro: {
+      sq: 'Analizat imunologjike tregojnë si reagon sistemi mbrojtës i trupit: nëse ka inflamacion dhe nëse trupi prodhon antitrupa kundër vetes, ndaj një alergjeni apo ndaj një infeksioni. Rezultatin jua shpjegon mjeku juaj.',
+      en: 'Immunology tests show how the body’s defences are reacting: whether there is inflammation, and whether the body makes antibodies against itself, against an allergen or against an infection. Your doctor explains the result.',
+      de: 'Immunologische Analysen zeigen, wie die Abwehr des Körpers reagiert: ob eine Entzündung vorliegt und ob der Körper Antikörper gegen sich selbst, gegen ein Allergen oder gegen eine Infektion bildet. Ihr Arzt erklärt Ihnen das Ergebnis.',
+    },
+    items: {
+      sq: [
+        'Inflamacioni: CRP, ASO, faktori reumatoid',
+        'Sëmundjet autoimune: ANA, anti-dsDNA, ENA, anti-CCP, komplementi C3 dhe C4',
+        'Sëmundja celiake: anti-transglutaminaza IgA dhe IgA totale',
+        'Alergjitë: IgE totale, panel alergjish, intoleranca ushqimore',
+        'Antitrupat ndaj infeksioneve: hepatiti B dhe C, HIV, toksoplazma, rubeola, CMV',
+      ],
+      en: [
+        'Inflammation: CRP, ASO, rheumatoid factor',
+        'Autoimmune disease: ANA, anti-dsDNA, ENA, anti-CCP, complement C3 and C4',
+        'Coeliac disease: anti-transglutaminase IgA and total IgA',
+        'Allergies: total IgE, allergy panel, food intolerance',
+        'Antibodies to infections: hepatitis B and C, HIV, toxoplasma, rubella, CMV',
+      ],
+      de: [
+        'Entzündung: CRP, ASO, Rheumafaktor',
+        'Autoimmunerkrankungen: ANA, Anti-dsDNA, ENA, Anti-CCP, Komplement C3 und C4',
+        'Zöliakie: Anti-Transglutaminase-IgA und Gesamt-IgA',
+        'Allergien: Gesamt-IgE, Allergiepanel, Nahrungsmittelunverträglichkeit',
+        'Antikörper gegen Infektionen: Hepatitis B und C, HIV, Toxoplasmose, Röteln, CMV',
+      ],
+    },
+    tests: ['crp', 'aso', 'rf', 'ana', 'anti-ccp', 'ttg-iga', 'ige', 'allergy-panel', 'food-intolerance', 'hbsag', 'anti-hcv', 'toxo-igg'],
+  },
+  {
+    slug: 'mikrobiologji',
+    group: 'lab',
+    cat: 'mikrobiologji',
+    icon: 'microscope',
+    tone: 'mint',
+    name: { sq: 'Mikrobiologji', en: 'Microbiology', de: 'Mikrobiologie' },
+    short: {
+      sq: 'Kultura me antibiogram, strisho, parazitologji dhe mikologji — për të gjetur shkaktarin e infeksionit.',
+      en: 'Cultures with antibiotic sensitivity, swabs, parasitology and mycology — to find what causes an infection.',
+      de: 'Kulturen mit Antibiogramm, Abstriche, Parasitologie und Mykologie — um den Erreger einer Infektion zu finden.',
+    },
+    intro: {
+      sq: 'Kur ka dyshim për infeksion, kultura tregon cili mikrob e shkakton dhe antibiogrami se cili antibiotik vepron. Kështu mjeku zgjedh trajtimin e duhur — pa provuar kuturu. Moduli përfshin edhe parazitologjinë (parazitët në feçe) dhe mikologjinë (kërpudhat, p.sh. Candida).',
+      en: 'When an infection is suspected, a culture shows which microbe causes it and the sensitivity test which antibiotic works. Your doctor can then choose the right treatment instead of guessing. The module also covers parasitology (parasites in stool) and mycology (fungi such as Candida).',
+      de: 'Besteht der Verdacht auf eine Infektion, zeigt eine Kultur, welcher Keim sie verursacht, und das Antibiogramm, welches Antibiotikum wirkt. So kann Ihr Arzt die richtige Behandlung wählen, statt zu raten. Dazu gehören auch die Parasitologie (Parasiten im Stuhl) und die Mykologie (Pilze wie Candida).',
+    },
+    items: {
+      sq: [
+        'Urinokulturë me antibiogram',
+        'Koprokulturë',
+        'Strisho e fytit, e hundës, vaginale dhe cervikale',
+        'Helicobacter pylori',
+        'Parazitologji: analiza e feçes për parazitë',
+        'Mikologji: kultura për kërpudha (p.sh. Candida)',
+      ],
+      en: [
+        'Urine culture with antibiotic sensitivity',
+        'Stool culture',
+        'Throat, nasal, vaginal and cervical swabs',
+        'Helicobacter pylori',
+        'Parasitology: stool test for parasites',
+        'Mycology: fungal culture (e.g. Candida)',
+      ],
+      de: [
+        'Urinkultur mit Antibiogramm',
+        'Stuhlkultur',
+        'Rachen-, Nasen-, Vaginal- und Zervixabstrich',
+        'Helicobacter pylori',
+        'Parasitologie: Stuhluntersuchung auf Parasiten',
+        'Mykologie: Pilzkultur (z. B. Candida)',
+      ],
+    },
+    tests: ['urine-culture', 'stool-culture', 'throat-swab', 'nasal-swab', 'vaginal-swab', 'h-pylori', 'stool-parasites'],
+  },
+  {
     slug: 'pediatri',
+    group: 'spec',
     icon: 'baby',
     tone: 'sun',
     name: { sq: 'Pediatri', en: 'Paediatrics', de: 'Kinderheilkunde' },
@@ -53,6 +278,7 @@ export const SERVICES = [
   },
   {
     slug: 'gjinekologji',
+    group: 'spec',
     icon: 'venus',
     tone: 'rose',
     name: { sq: 'Gjinekologji', en: 'Gynaecology', de: 'Gynäkologie' },
@@ -97,129 +323,8 @@ export const SERVICES = [
     tests: ['beta-hcg', 'fsh', 'lh', 'estradiol', 'progesterone', 'prolactin', 'tsh', 'ferritin', 'vaginal-swab', 'urine-culture'],
   },
   {
-    slug: 'laboratori-biokimik-dhe-hematologjik',
-    icon: 'test-tubes',
-    tone: 'brand',
-    name: { sq: 'Laboratori biokimik dhe hematologjik', en: 'Biochemistry & Haematology Laboratory', de: 'Biochemisches und hämatologisches Labor' },
-    nameShort: { sq: 'Laboratori biokimik', en: 'Biochemistry lab', de: 'Biochemisches Labor' },
-    short: {
-      sq: 'Analiza të gjakut dhe urinës: hemogram, glukozë, yndyrna, funksion i veshkave dhe i mëlçisë, hormone, vitamina.',
-      en: 'Blood and urine tests: blood count, glucose, lipids, kidneys and liver, hormones, vitamins.',
-      de: 'Blut- und Urinuntersuchungen: Blutbild, Blutzucker, Blutfette, Nieren und Leber, Hormone, Vitamine.',
-    },
-    intro: {
-      sq: 'Laboratori ynë është vazhdimësi e punës së Laboratorit BAKTOLAB. Kryejmë analiza biokimike dhe hematologjike për pacientë të të gjitha moshave — mostrat merren këtu në qendër dhe rezultatet i shqyrton mjeku juaj.',
-      en: 'Our laboratory continues the work of the BAKTOLAB laboratory. We run biochemistry and haematology tests for patients of every age — samples are taken here at the centre and your doctor reviews the results.',
-      de: 'Unser Labor setzt die Arbeit des Labors BAKTOLAB fort. Wir führen biochemische und hämatologische Analysen für Patienten jeden Alters durch — die Proben werden hier im Zentrum entnommen, und Ihr Arzt beurteilt die Ergebnisse.',
-    },
-    items: {
-      sq: [
-        'Hematologji: hemogrami i plotë, sedimentimi, koagulimi, grupi i gjakut',
-        'Biokimi: glukoza, HbA1c, profili lipidik, veshkat, mëlçia, elektrolitët',
-        'Hormone: tiroidja, hormonet riprodhuese, kortizoli, PSA',
-        'Vitamina dhe minerale: D, B12, acidi folik, hekuri, feritina, magnezi',
-        'Inflamacion: CRP, ASO, faktori reumatoid',
-        'Alergji: IgE totale, panel alergjish, intolerancë ushqimore',
-      ],
-      en: [
-        'Haematology: complete blood count, ESR, coagulation, blood group',
-        'Biochemistry: glucose, HbA1c, lipid profile, kidneys, liver, electrolytes',
-        'Hormones: thyroid, reproductive hormones, cortisol, PSA',
-        'Vitamins and minerals: D, B12, folic acid, iron, ferritin, magnesium',
-        'Inflammation: CRP, ASO, rheumatoid factor',
-        'Allergy: total IgE, allergy panel, food intolerance',
-      ],
-      de: [
-        'Hämatologie: vollständiges Blutbild, Blutsenkung, Gerinnung, Blutgruppe',
-        'Biochemie: Glukose, HbA1c, Lipidprofil, Nieren, Leber, Elektrolyte',
-        'Hormone: Schilddrüse, Sexualhormone, Cortisol, PSA',
-        'Vitamine und Mineralstoffe: D, B12, Folsäure, Eisen, Ferritin, Magnesium',
-        'Entzündungswerte: CRP, ASO, Rheumafaktor',
-        'Allergie: Gesamt-IgE, Allergiepanel, Nahrungsmittelunverträglichkeit',
-      ],
-    },
-    tests: ['cbc', 'esr', 'glucose', 'hba1c', 'cholesterol', 'triglycerides', 'creatinine', 'alt', 'tsh', 'vitd', 'b12', 'crp'],
-  },
-  {
-    slug: 'laboratori-mikrobiologjik',
-    icon: 'microscope',
-    tone: 'brand',
-    name: { sq: 'Laboratori mikrobiologjik', en: 'Microbiology Laboratory', de: 'Mikrobiologisches Labor' },
-    nameShort: { sq: 'Laboratori mikrobiologjik', en: 'Microbiology lab', de: 'Mikrobiologisches Labor' },
-    short: {
-      sq: 'Urinokulturë, koprokulturë, strisho dhe antibiogram — për të gjetur shkaktarin e infeksionit.',
-      en: 'Urine and stool cultures, swabs and antibiotic sensitivity tests — to find what causes an infection.',
-      de: 'Urin- und Stuhlkulturen, Abstriche und Antibiogramm — um den Erreger einer Infektion zu finden.',
-    },
-    intro: {
-      sq: 'Kur ka dyshim për infeksion, kultura tregon cili mikrob e shkakton dhe antibiogrami se cili antibiotik vepron. Kështu mjeku zgjedh trajtimin e duhur — pa provuar kuturu.',
-      en: 'When an infection is suspected, a culture shows which microbe causes it and the sensitivity test which antibiotic works. Your doctor can then choose the right treatment instead of guessing.',
-      de: 'Besteht der Verdacht auf eine Infektion, zeigt eine Kultur, welcher Keim sie verursacht, und das Antibiogramm, welches Antibiotikum wirkt. So kann Ihr Arzt die richtige Behandlung wählen, statt zu raten.',
-    },
-    items: {
-      sq: [
-        'Urinokulturë me antibiogram',
-        'Koprokulturë dhe analizë e feçes për parazitë',
-        'Strisho e fytit dhe e hundës',
-        'Strisho vaginale dhe cervikale',
-        'Helicobacter pylori',
-      ],
-      en: [
-        'Urine culture with antibiotic sensitivity',
-        'Stool culture and stool test for parasites',
-        'Throat and nasal swab',
-        'Vaginal and cervical swab',
-        'Helicobacter pylori',
-      ],
-      de: [
-        'Urinkultur mit Antibiogramm',
-        'Stuhlkultur und Stuhluntersuchung auf Parasiten',
-        'Rachen- und Nasenabstrich',
-        'Vaginal- und Zervixabstrich',
-        'Helicobacter pylori',
-      ],
-    },
-    tests: ['urine-culture', 'stool-culture', 'throat-swab', 'nasal-swab', 'vaginal-swab', 'h-pylori', 'stool-parasites'],
-  },
-  {
-    slug: 'mjekesi-familjare',
-    icon: 'stethoscope',
-    tone: 'mint',
-    name: { sq: 'Mjekësi familjare', en: 'Family Medicine', de: 'Allgemeinmedizin' },
-    short: {
-      sq: 'Vizita e parë për të rriturit: kontroll i përgjithshëm, ndjekje e sëmundjeve kronike dhe drejtim te specialisti.',
-      en: 'The first port of call for adults: general check-up, follow-up of long-term conditions and referral to a specialist.',
-      de: 'Erste Anlaufstelle für Erwachsene: allgemeine Untersuchung, Verlaufskontrolle chronischer Erkrankungen und Überweisung zum Facharzt.',
-    },
-    intro: {
-      sq: 'Mjeku i familjes ju njeh në tërësi: shikon simptomat, analizat dhe historinë tuaj, dhe ju tregon hapin e radhës — trajtim, analiza të tjera apo një specialist brenda qendrës.',
-      en: 'A family doctor looks at the whole picture: your symptoms, test results and history, and tells you the next step — treatment, further tests or a specialist within the centre.',
-      de: 'Der Hausarzt betrachtet das Gesamtbild — Ihre Beschwerden, Laborergebnisse und Vorgeschichte — und nennt Ihnen den nächsten Schritt: Behandlung, weitere Untersuchungen oder einen Facharzt innerhalb des Zentrums.',
-    },
-    items: {
-      sq: [
-        'Kontroll i përgjithshëm shëndetësor',
-        'Matje e tensionit dhe ndjekje e tensionit të lartë dhe diabetit',
-        'Shpjegim i analizave laboratorike',
-        'Drejtim te specialisti i duhur brenda qendrës',
-      ],
-      en: [
-        'General health check-up',
-        'Blood-pressure checks and follow-up of high blood pressure and diabetes',
-        'Explanation of your lab results',
-        'Referral to the right specialist within the centre',
-      ],
-      de: [
-        'Allgemeine Gesundheitsuntersuchung',
-        'Blutdruckmessung und Verlaufskontrolle bei Bluthochdruck und Diabetes',
-        'Erklärung Ihrer Laborergebnisse',
-        'Überweisung an den passenden Facharzt innerhalb des Zentrums',
-      ],
-    },
-    tests: ['cbc', 'glucose', 'hba1c', 'cholesterol', 'creatinine', 'tsh', 'urinalysis'],
-  },
-  {
     slug: 'endokrinologji',
+    group: 'spec',
     icon: 'activity',
     tone: 'violet',
     name: { sq: 'Endokrinologji', en: 'Endocrinology', de: 'Endokrinologie' },
@@ -258,38 +363,7 @@ export const SERVICES = [
     },
     tests: ['tsh', 'ft4', 'ft3', 'anti-tpo', 'glucose', 'hba1c', 'insulin', 'cortisol'],
   },
-  {
-    slug: 'suplemente-dhe-nutricion',
-    icon: 'leaf',
-    tone: 'sun',
-    name: { sq: 'Suplemente dhe nutricion', en: 'Supplements & Nutrition', de: 'Nahrungsergänzung und Ernährung' },
-    short: {
-      sq: 'Këshillim për ushqyerjen dhe suplementet ushqimore — bazuar në analizat tuaja.',
-      en: 'Advice on nutrition and food supplements — based on your test results.',
-      de: 'Beratung zu Ernährung und Nahrungsergänzung — auf Grundlage Ihrer Laborergebnisse.',
-    },
-    intro: {
-      sq: 'Suplementi i duhur fillon nga analiza e duhur. Shikojmë së bashku vlerat tuaja dhe ju këshillojmë për ushqyerjen dhe suplementet ushqimore që kanë kuptim për ju.',
-      en: 'The right supplement starts with the right test. We look at your values together and advise you on nutrition and the food supplements that make sense for you.',
-      de: 'Die richtige Nahrungsergänzung beginnt mit der richtigen Analyse. Wir sehen uns Ihre Werte gemeinsam an und beraten Sie zur Ernährung und zu den Nahrungsergänzungsmitteln, die für Sie sinnvoll sind.',
-    },
-    items: {
-      sq: [
-        'Këshillim për ushqyerjen e fëmijëve dhe të rriturve',
-        'Suplemente ushqimore sipas nevojës dhe analizave',
-        'Vitamina D, B12, hekuri dhe magnezi — kur duhen, sipas rekomandimit të mjekut',
-      ],
-      en: [
-        'Nutrition advice for children and adults',
-        'Food supplements based on need and test results',
-        'Vitamin D, B12, iron and magnesium — when they are needed, as your doctor recommends',
-      ],
-      de: [
-        'Ernährungsberatung für Kinder und Erwachsene',
-        'Nahrungsergänzungsmittel nach Bedarf und Laborergebnissen',
-        'Vitamin D, B12, Eisen und Magnesium — wenn sie nötig sind, nach Empfehlung Ihres Arztes',
-      ],
-    },
-    tests: ['vitd', 'b12', 'folate', 'iron', 'ferritin', 'magnesium'],
-  },
 ];
+
+export const LAB = SERVICES.filter((s) => s.group === 'lab');
+export const SPECIALISTS = SERVICES.filter((s) => s.group === 'spec');

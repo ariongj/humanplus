@@ -206,15 +206,16 @@ export const INTENTS = {
   thanks: ['faleminderit', 'flm', 'rrofsh', 'thanks', 'thank you', 'danke'],
 };
 
-// Words that point to one department (by its slug in src/data/services.mjs).
+// Words that point to one service — a lab module or a specialist service (by its slug in src/data/services.mjs).
 export const SERVICE_WORDS = {
+  hematologji: ['hematolog', 'haematolog', 'hamatolog', 'koagul', 'coagul', 'gerinnung'],
+  biokimi: ['biokim', 'biochem'],
+  hormone: ['hormon'],
+  imunologji: ['imunolog', 'immunolog', 'autoimun', 'autoimmun'],
+  mikrobiologji: ['mikrobiolog', 'microbiolog', 'kultur', 'culture', 'antibiogram', 'parazitolog', 'parasitolog', 'mikolog', 'mycolog', 'mykolog'],
   pediatri: ['pediatr', 'paediatr', 'femij', 'bebe', 'foshnj', 'child', 'kid', 'kids', 'baby', 'babies', 'kinderarzt', 'kinderheil', 'saugling', 'neugebor'],
   gjinekologji: ['gjinekolog', 'shtatzan', 'gynaecolog', 'gynecolog', 'pregnan', 'frauenarzt', 'frauenheil', 'gynakolog', 'schwanger'],
-  'laboratori-biokimik-dhe-hematologjik': ['biokim', 'hematolog', 'biochem', 'haematolog', 'hamatolog'],
-  'laboratori-mikrobiologjik': ['mikrobiolog', 'microbiolog', 'kultur', 'culture', 'antibiogram'],
-  'mjekesi-familjare': ['familjar', 'family doctor', 'family medicine', 'general practi', 'hausarzt', 'allgemeinmed'],
   endokrinologji: ['endokrin', 'endocrin', 'diabet'],
-  'suplemente-dhe-nutricion': ['suplement', 'nutricion', 'dieta', 'supplement', 'nutrition', 'diet', 'ernahr', 'nahrungserg'],
 };
 
 // Left out when the rest of a question is used as a test name ("sa kushton vitamina D" → "vitamina d").

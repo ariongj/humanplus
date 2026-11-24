@@ -1,7 +1,7 @@
 // /rezervo/ — booking request: service → day → time → details → WhatsApp / Viber / e-mail (+ calendar file).
 // Nothing is booked automatically: reception confirms every request (README → How the booking request works).
 import { SITE } from '../data/site.mjs';
-import { SERVICES } from '../data/services.mjs';
+import { LAB, SPECIALISTS, RETIRED_SERVICES } from '../data/services.mjs';
 import { UI } from '../data/ui.mjs';
 import { esc, h, icon, brand, dict, L } from '../lib/html.mjs';
 import { pageHero } from '../lib/parts.mjs';
@@ -196,7 +196,9 @@ export function bookingPage(ctx) {
   const { lang } = ctx;
   const t = BOOK[lang];
   const u = UI[lang];
-  const options = [LAB_OPTION, ...SERVICES.filter((s) => !s.slug.startsWith('laboratori'))];
+  const options = [LAB_OPTION, ...SPECIALISTS];
+  // ?sherbimi=<a lab module, or a former lab page> preselects "Lab tests"
+  const labSlugs = [...LAB.map((s) => s.slug), ...Object.keys(RETIRED_SERVICES).filter((k) => k.startsWith('laboratori'))].join(' ');
   const hero = pageHero(ctx, { trail: [[u.book, 'rezervo']], eyebrow: t.eyebrow, title: t.h1, lead: t.lead, cls: 'page-hero-book' });
   const step = (n, title, hint, content, id) => h`<fieldset class="step-box" id="${id}" data-step="${n}">
     <legend><span class="step-badge" aria-hidden="true">${n}</span><span class="sr-only">${esc(t.step)} ${n} ${esc(t.of)} 4: </span>${esc(title)}</legend>
@@ -207,7 +209,7 @@ export function bookingPage(ctx) {
   const form = h`<form class="booking js-only" novalidate data-booking>
     <p class="form-error" role="alert" data-form-error hidden>${icon('circle-alert', { size: 18 })}<span>${esc(t.err_summary)}</span></p>
     ${step(1, t.s1, t.s1_hint, h`<div class="choice-grid">${options.map(
-      (s) => h`<label class="choice"><input type="radio" name="service" value="${s.slug}" data-label="${esc(L(s.name, lang))}" /><span class="choice-card"><span class="tile tile-${s.tone} tile-sm">${icon(s.icon, { size: 18 })}</span><span>${esc(L(s.nameShort ?? s.name, lang))}</span>${icon('check', { size: 18, cls: 'choice-check' })}</span></label>`,
+      (s) => h`<label class="choice"><input type="radio" name="service" value="${s.slug}" data-label="${esc(L(s.name, lang))}"${s === LAB_OPTION ? ` data-also="${labSlugs}"` : ''} /><span class="choice-card"><span class="tile tile-${s.tone} tile-sm">${icon(s.icon, { size: 18 })}</span><span>${esc(L(s.nameShort ?? s.name, lang))}</span>${icon('check', { size: 18, cls: 'choice-check' })}</span></label>`,
     )}</div>`, 'b-service')}
     ${step(2, t.s2, t.s2_hint, h`<div class="day-grid" data-days></div>`, 'b-day')}
     ${step(3, t.s3, t.s3_hint, h`<div class="time-grid" data-times></div>`, 'b-time')}

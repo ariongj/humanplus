@@ -566,11 +566,10 @@
       $('#b-time-hint').textContent = dateLabel(o);
     }
 
-    // Preselect a service from ?sherbimi= (the lab pages map to "Lab tests").
+    // Preselect a service from ?sherbimi= (a lab module or a former lab page selects "Lab tests": data-also).
     var pre = new URLSearchParams(location.search).get('sherbimi');
     if (pre) {
-      if (/^laboratori/.test(pre)) pre = 'analiza';
-      var r = $('input[name="service"][value="' + pre + '"]', bk);
+      var r = $$('input[name="service"]', bk).filter(function (x) { return x.value === pre || (x.getAttribute('data-also') || '').split(' ').indexOf(pre) > -1; })[0];
       if (r) r.checked = true;
     }
 

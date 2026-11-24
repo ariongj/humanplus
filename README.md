@@ -1,7 +1,8 @@
 # Human+ Qendra Diagnostike – website
 
 The new website for **Human+ Qendra Diagnostike** (Rruga B, Nr. 16, Prishtinë), a diagnostic centre since 2011 with a
-biochemistry, haematology and microbiology laboratory, paediatrics, gynaecology and specialists under one roof.
+laboratory (haematology, biochemistry, hormones, immunology, microbiology) and specialist services (paediatrics,
+gynaecology, endocrinology) under one roof.
 Albanian first, English and German one click away. The previous site at humanplusks.com was a brochure; this one is built around
 what patients actually come to do: **find a test, see how to prepare, ask the price, book a time.** The lab-test catalogue,
 check-up panels, preparation guide and online booking follow the lab sites the client likes (beo-lab.rs), in Human+'s own look.
@@ -38,8 +39,8 @@ links such as `/en/sherbim/pediatri/` keep working.
 | Page | Address | What it does |
 | --- | --- | --- |
 | Ballina / Home | `/` | hero with a doctor and the lab, test search and live opening status; quick actions, services, inside the centre (lab, sample room, paediatrics, specialists, reception), lab, check-ups, paediatrics, how it works, hours, FAQ |
-| Shërbimet / Services | `/sherbimet/` | the seven departments, specialists and laboratory |
-| Department pages | `/sherbim/<slug>/` | a picture of that department, what it offers, its most requested tests (add to list), book / WhatsApp / call |
+| Shërbimet / Services | `/sherbimet/` | the laboratory's five modules, then the specialist services |
+| Service pages | `/sherbim/<slug>/` | a picture, what it offers, its most requested tests (add to list) and a link to its catalogue category, book / WhatsApp / call |
 | Analizat / Lab tests | `/analizat/` | the full catalogue: search (Albanian, Serbian, abbreviations), 20 categories, details (description, sample, preparation, components), "Add" to *My list* |
 | Paketat / Check-ups | `/paketat/` | 20 panels in four groups — general (basic, children, women, men 40+, vitamins); sugar, heart and organs (diabetes, heart, thyroid, kidneys, liver, anaemia, bones, stomach & bowel); immunity, joints and allergies (autoimmune, joints & rheumatism, allergy); hormones, pregnancy and procedures (female hormones / PCOS, pregnancy first check, before surgery, hepatitis / HIV / syphilis) — add a whole panel or ask the price |
 | Përgatitja / Preparation | `/pergatitja/` | fasting, morning tests, cycle-day hormones, PSA, urine, stool, swabs, children, samples from home |
@@ -48,10 +49,19 @@ links such as `/en/sherbim/pediatri/` keep working.
 | Kontakt / Contact | `/kontakt/` | address and map link, three phones, WhatsApp, Viber, e-mail, Facebook, hours, message form |
 | Pyetje / FAQ | `/pyetje/` | ten questions (FAQPage data for Google) |
 
-The seven departments: Pediatri, Gjinekologji, Laboratori biokimik dhe hematologjik, Laboratori mikrobiologjik,
-Mjekësi familjare, Endokrinologji, Suplemente dhe nutricion. Urology, gastroenterology and dermatology were taken off
-(October 2026); their old addresses (`/sherbim/urologji/` …, in every language) lead to `/sherbimet/` – a redirect page,
-and a 301 in `.htaccess` on the production server (`RETIRED_SERVICES` in `src/data/services.mjs`).
+The services follow the clinic's own list (November 2026, handwritten note "Laboratori dhe shërbimet specialistike"):
+
+- **Laboratori** – five modules, each with its page: Hematologji, Biokimi, Hormone, Imunologji and Mikrobiologji
+  (with parazitologji and mikologji).
+- **Shërbimet specialistike** – Pediatri, Gjinekologji, Endokrinologji, and a card saying more specialties are coming
+  ("si dhe drejtime të tjera në ardhje në Human+"; no page of its own, it points to the contact page).
+
+The services page and the home page show the two groups in that order (`serviceGroups()` in `src/pages/services.mjs`).
+Former addresses keep working (`RETIRED_SERVICES` in `src/data/services.mjs`: a redirect page, and a 301 in `.htaccess`
+on the production server): urology, gastroenterology and dermatology (taken off in October 2026), family medicine and
+supplements & nutrition (not on the clinic's list, November 2026) lead to `/sherbimet/`; the former biochemistry &
+haematology lab page to the laboratory group (`/sherbimet/#laboratori`) and the microbiology lab page to
+`/sherbim/mikrobiologji/`. Booking links from a lab module (`?sherbimi=hormone`) select *Lab tests*.
 
 ### On every page
 
@@ -116,7 +126,7 @@ request by e-mail.
 A chat window on every page (*Pyetni asistentin* / *Ask our assistant* / *Assistent fragen*) that answers **only
 from what the site already says**: opening hours with the live status, the address with directions and the map,
 phones, WhatsApp, Viber, e-mail and social profiles, how booking works, the preparation guide, the check-up panels,
-the seven departments, the FAQ, and the full lab catalogue – type a test name ("vitamina D", "TSH", "Harnsäure") to get
+the laboratory modules and specialist services, the FAQ, and the full lab catalogue – type a test name ("vitamina D", "TSH", "Harnsäure") to get
 its sample and preparation with an **Add to list** button. Price questions get the clinic's answer (reception gives
 prices) plus the list and WhatsApp; anything it does not know goes to reception on WhatsApp with the question
 already typed.
@@ -295,14 +305,14 @@ JPEG, WebP, PNG or AVIF, about 1600 px on the long side; optionally a phone copy
 | --- | --- | --- |
 | `hero` | home page, large picture | a doctor with a stethoscope and a tablet, the lab behind the glass |
 | `lab` | home page small picture, *inside the centre*, check-ups page | a laboratory technician holding up a sample tube |
-| `analyzer` | lab-tests page, biochemistry lab page | the analyser, centrifuge and sample rack |
+| `analyzer` | lab-tests page | the analyser, centrifuge and sample rack |
 | `sampling` | *inside the centre*, preparation page | the sample room: blood-draw chair and a nurse labelling a tube |
 | `pediatrics` | home page paediatrics, *inside the centre*, paediatrics page | a paediatrician listening to a child with a teddy bear |
 | `consult` | *inside the centre*, services page | a specialist at the desk with a patient |
 | `reception` | *inside the centre* | the reception with the Human+ logo |
 | `about`, `contact` | about and contact page headers | the reception with the Human+ logo |
 | `team-doctor`, `team-lab`, `team-nurse` | about page, the team | portraits of the three roles |
-| `sherbim-<slug>` (e.g. `sherbim-pediatri`) | that department's page | the specialist's room, drawn with a different doctor per department |
+| `sherbim-<slug>` (e.g. `sherbim-pediatri`, `sherbim-hematologji`) | that service's page | a lab scene for each lab module; the specialist's room, with a different doctor, for each specialist service |
 
 Use only the clinic's own photos, with the permission of everyone who can be recognised in them (patients only with
 written consent; avoid screens and papers with patient data). Good first set: the building and entrance, reception,
@@ -347,7 +357,7 @@ before launch – stock people must never be presented as Human+ staff (no names
 | File | What it is |
 | --- | --- |
 | `src/data/site.mjs` | **name, address, phones, WhatsApp / Viber number, e-mail, Facebook, opening hours, booking slots** – edit this first |
-| `src/data/services.mjs` | the seven departments: names, texts, what they offer, related tests; `RETIRED_SERVICES` (old addresses that redirect) |
+| `src/data/services.mjs` | the services: five lab modules and the specialist services — names, texts, what they offer, related tests; `RETIRED_SERVICES` (old addresses and where they lead) |
 | `src/data/catalogue.json` | the full lab catalogue behind `/analizat/` (made by `scripts/import-catalogue.mjs`) |
 | `src/data/catalogue-fixes.json` | corrections to the Albanian catalogue texts, applied by the importer (hand-editable) |
 | `src/data/tests.mjs` | the 89 common tests used on department pages and in the check-up panels (sq, en, de), preparation rules, the panels and their groups (`PANEL_GROUPS`), links to their catalogue pages |
@@ -387,8 +397,10 @@ before launch – stock people must never be presented as Human+ staff (no names
   share picture). `whatsapp` is the number booking and list messages go to (digits only, e.g. `38344709072`).
 - **Opening hours**: `hours` in `src/data/site.mjs` (`0` = Sunday … `6` = Saturday, `null` = closed). The status,
   the hours tables, the booking times and the Google data all follow.
-- **A department**: `src/data/services.mjs`. Change the texts in both `sq` and `en`; `tests` lists the test ids
-  shown on its page. Adding one also adds its page, menu entry and sitemap line.
+- **A service**: `src/data/services.mjs`. `group` is `lab` (a laboratory module) or `spec` (a specialist service);
+  change the texts in `sq`, `en` and `de`; `tests` lists the test ids shown on its page and `cat` the catalogue
+  category its link opens. Adding one also adds its page, its card in its group, the footer entry and the sitemap line.
+  Taking one off: move its slug to `RETIRED_SERVICES` with where its address should lead.
 - **Lab tests and panels**: `src/data/tests.mjs`. One line per test: `id`, `cat`, `sample`, `prep` (a key of `PREP`),
   names in both languages and `aka` (extra search words). Panels list test ids.
 - **Texts of a page**: the dictionary at the top of its file in `src/pages/`.
@@ -430,8 +442,8 @@ and on the privacy page, never as an inline `<script>`.
 CSP, `X-Content-Type-Options: nosniff`, `X-Frame-Options: DENY`, `Referrer-Policy: strict-origin-when-cross-origin`,
 `Permissions-Policy` (camera, microphone, geolocation, payment … off), `Cross-Origin-Opener-Policy: same-origin`,
 HSTS, gzip, a year of caching for files with `?v=<hash>` and fonts, `no-cache` for HTML, one-hop redirects
-(http and www → https://humanplusks.com, safe behind a proxy that sends `X-Forwarded-Proto`), the retired departments'
-301s and a 404 page per language. Checked on Apache 2.4.58 with a local certificate for humanplusks.com and www.
+(http and www → https://humanplusks.com, safe behind a proxy that sends `X-Forwarded-Proto`), the former service
+addresses' 301s and a 404 page per language. Checked on Apache 2.4.58 with a local certificate for humanplusks.com and www.
 
 **HSTS** starts at `max-age=300` (5 minutes) on purpose. Once https://humanplusks.com and https://www.humanplusks.com
 both work with a valid certificate and http redirects (SSL Labs, no warnings in the browser), rebuild with
@@ -497,8 +509,9 @@ people, until the clinic's own photos are added.
 
 ## What is placeholder / to confirm with the clinic
 
-- **Department texts** – Paediatrics follows the old site; the other nine describe each specialty's usual scope in
-  general words. Ask each doctor to read their page.
+- **Service texts** – Paediatrics follows the old site; the lab modules and the other specialist services describe
+  each field's usual scope in general words. Ask the lab and each doctor to read their page (which tests each lab
+  module really runs in-house).
 - **Lab catalogue** – the 1 006 entries come from the BeoLab public catalogue the client supplied (see
   [Lab catalogue](#lab-catalogue)); names and descriptions are working Albanian translations, and the English
   and German ones (`src/data/catalogue-translations.json`) are working translations of those. The 89 common tests

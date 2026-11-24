@@ -1,5 +1,5 @@
 import { SITE } from '../data/site.mjs';
-import { SERVICES } from '../data/services.mjs';
+import { SERVICES, LAB, SPECIALISTS } from '../data/services.mjs';
 import { UI } from '../data/ui.mjs';
 import { esc, h, icon, brand, dict, L } from '../lib/html.mjs';
 import { SERVICE_PHOTOS } from '../data/photos.mjs';
@@ -7,13 +7,19 @@ import { pageHero, sectionHead, serviceCard, testRow, ctaBand, TEST_BY_ID } from
 
 const T = dict('services', {
   sq: {
-    title: 'Shërbimet — pediatri, gjinekologji, laborator dhe specialistë',
-    description: 'Shtatë shërbime në Human+ Prishtinë: pediatri, gjinekologji, laborator biokimik, hematologjik dhe mikrobiologjik, mjekësi familjare, endokrinologji, suplemente dhe nutricion.',
+    title: 'Shërbimet — laboratori, pediatri, gjinekologji dhe endokrinologji',
+    description: 'Laboratori i Human+ në Prishtinë — hematologji, biokimi, hormone, imunologji dhe mikrobiologji (parazitologji dhe mikologji) — dhe shërbimet specialistike: pediatri, gjinekologji dhe endokrinologji.',
     eyebrow: 'Shërbimet',
-    h1: 'Shtatë shërbime, *një* qendër.',
+    h1: 'Laboratori dhe *shërbimet* specialistike.',
     lead: 'Mjekët specialistë dhe laboratori punojnë në të njëjtën ndërtesë — analizat që kërkon mjeku i bëni aty për aty, dhe rezultatet i shqyrtoni me të njëjtin ekip.',
     lab_group: 'Laboratori',
-    doc_group: 'Mjekët specialistë',
+    lab_text: 'Pesë module, një laborator — mostra merret këtu në qendër.',
+    doc_group: 'Shërbimet specialistike',
+    doc_text: 'Mjekët specialistë punojnë në të njëjtën ndërtesë me laboratorin.',
+    soon: 'Drejtime të tjera së shpejti',
+    soon_text: 'Human+ po zgjerohet me drejtime të reja specialistike. Na pyesni për mjekun që ju nevojitet.',
+    soon_cta: 'Na pyesni',
+    tests_cat: 'Shiko në katalog',
     cta_title: 'Nuk e dini cilin *specialist* ju duhet?',
     cta_text: 'Na telefononi ose na shkruani — ju drejtojmë te mjeku ose analiza e duhur.',
     // detail
@@ -30,13 +36,19 @@ const T = dict('services', {
     wa_msg: 'Përshëndetje Human+! Kam një pyetje për shërbimin:',
   },
   en: {
-    title: 'Services — paediatrics, gynaecology, laboratory and specialists',
-    description: 'Seven services at Human+ Prishtina: paediatrics, gynaecology, biochemistry, haematology and microbiology laboratory, family medicine, endocrinology, supplements and nutrition.',
+    title: 'Services — laboratory, paediatrics, gynaecology and endocrinology',
+    description: 'The Human+ laboratory in Prishtina — haematology, biochemistry, hormones, immunology and microbiology (parasitology and mycology) — and the specialist services: paediatrics, gynaecology and endocrinology.',
     eyebrow: 'Services',
-    h1: 'Seven services, *one* centre.',
+    h1: 'Laboratory and *specialist* services.',
     lead: 'Specialists and the laboratory work in the same building — the tests your doctor asks for are done on the spot, and you go through the results with the same team.',
     lab_group: 'Laboratory',
-    doc_group: 'Specialists',
+    lab_text: 'Five modules, one laboratory — samples are taken here at the centre.',
+    doc_group: 'Specialist services',
+    doc_text: 'The specialists work in the same building as the laboratory.',
+    soon: 'More specialties coming',
+    soon_text: 'Human+ is adding further specialties. Ask us about the doctor you need.',
+    soon_cta: 'Ask us',
+    tests_cat: 'See them in the catalogue',
     cta_title: 'Not sure which *specialist* you need?',
     cta_text: 'Call or message us — we will point you to the right doctor or test.',
     what: 'What we offer',
@@ -52,13 +64,19 @@ const T = dict('services', {
     wa_msg: 'Hello Human+! I have a question about:',
   },
   de: {
-    title: 'Leistungen — Kinderheilkunde, Gynäkologie, Labor und Fachärzte',
-    description: 'Sieben Leistungen bei Human+ Prishtina: Kinderheilkunde, Gynäkologie, Labor für Biochemie, Hämatologie und Mikrobiologie, Allgemeinmedizin, Endokrinologie, Nahrungsergänzung und Ernährung.',
+    title: 'Leistungen — Labor, Kinderheilkunde, Gynäkologie und Endokrinologie',
+    description: 'Das Labor von Human+ in Prishtina — Hämatologie, Biochemie, Hormone, Immunologie und Mikrobiologie (Parasitologie und Mykologie) — und die fachärztlichen Leistungen: Kinderheilkunde, Gynäkologie und Endokrinologie.',
     eyebrow: 'Leistungen',
-    h1: 'Sieben Leistungen, *ein* Zentrum.',
+    h1: 'Labor und *fachärztliche* Leistungen.',
     lead: 'Fachärzte und Labor arbeiten im selben Gebäude — die Analysen, die Ihr Arzt anordnet, werden direkt vor Ort durchgeführt, und die Ergebnisse besprechen Sie mit demselben Team.',
     lab_group: 'Labor',
-    doc_group: 'Fachärzte',
+    lab_text: 'Fünf Bereiche, ein Labor — die Proben werden hier im Zentrum entnommen.',
+    doc_group: 'Fachärztliche Leistungen',
+    doc_text: 'Die Fachärzte arbeiten im selben Gebäude wie das Labor.',
+    soon: 'Weitere Fachrichtungen folgen',
+    soon_text: 'Human+ erweitert sein Angebot um weitere Fachrichtungen. Fragen Sie uns nach dem Arzt, den Sie brauchen.',
+    soon_cta: 'Fragen Sie uns',
+    tests_cat: 'Im Katalog ansehen',
     cta_title: 'Unsicher, welchen *Facharzt* Sie brauchen?',
     cta_text: 'Rufen Sie an oder schreiben Sie uns — wir helfen Ihnen, den richtigen Arzt oder die passende Analyse zu finden.',
     what: 'Unser Angebot',
@@ -75,27 +93,40 @@ const T = dict('services', {
   },
 });
 
-const isLab = (s) => s.slug.startsWith('laboratori');
+const isLab = (s) => s.group === 'lab';
+
+/** The card that closes the specialist group: more specialties are coming (the clinic's own words). */
+export function soonCard(ctx) {
+  const t = T[ctx.lang];
+  return h`<li class="svc svc-soon reveal"><div class="svc-soon-in">
+    <span class="svc-top"><span class="tile">${icon('sparkles', { size: 26 })}</span></span>
+    <h3>${esc(t.soon)}</h3>
+    <p>${esc(t.soon_text)}</p>
+    <a class="svc-more" href="${esc(ctx.url('kontakt'))}">${esc(t.soon_cta)}${icon('arrow-right', { size: 18 })}</a>
+  </div></li>`;
+}
+
+/** The two groups — Laboratori (its modules) and the specialist services — as on /sherbimet/ and the home page. */
+export function serviceGroups(ctx, { extra = '', heading = 'h2' } = {}) {
+  const t = T[ctx.lang];
+  // the grid takes as many columns as the group has cards (up to five), so no row is left half empty
+  const group = (id, title, text, list, more = []) => h`<div class="svc-group" id="${id}">
+    <div class="svc-group-head"><${heading} class="group-title">${esc(title)}</${heading}><p>${esc(text)}</p></div>
+    <ul class="svc-grid svc-grid-${Math.min(list.length + more.length, 5)}">${list.map((s, i) => serviceCard(ctx, s, i))}${more.join('')}</ul>
+  </div>`;
+  return group('laboratori', t.lab_group, t.lab_text, LAB) + group('specialistet', t.doc_group, t.doc_text, SPECIALISTS, [soonCard(ctx), ...(extra ? [extra] : [])]);
+}
 
 export function servicesPage(ctx) {
   const { lang } = ctx;
   const t = T[lang];
   const hero = pageHero(ctx, { trail: [[UI[lang].nav_services, 'sherbimet']], eyebrow: t.eyebrow, title: t.h1, lead: t.lead, photo: 'consult' });
-  // the grid takes as many columns as the group has cards (up to five), so no row is left half empty
-  const group = (title, list, offset) => h`<section class="section section-tight" aria-label="${esc(title)}">
-    <div class="wrap">
-      <h2 class="group-title">${esc(title)}</h2>
-      <ul class="svc-grid svc-grid-${Math.min(list.length, 5)}">${list.map((s, i) => serviceCard(ctx, s, offset + i))}</ul>
-    </div>
-  </section>`;
-  const docs = SERVICES.filter((s) => !isLab(s));
-  const labs = SERVICES.filter(isLab);
   return {
     id: 'services',
     title: `${t.title} · ${SITE.name}`,
     description: t.description,
     jsonld: [hero.jsonld],
-    body: hero.html + group(t.doc_group, docs, 0) + group(t.lab_group, labs, docs.length) + ctaBand(ctx, { title: t.cta_title, text: t.cta_text }),
+    body: hero.html + h`<section class="section section-tight"><div class="wrap svc-groups">${serviceGroups(ctx)}</div></section>` + ctaBand(ctx, { title: t.cta_title, text: t.cta_text }),
   };
 }
 
@@ -115,7 +146,7 @@ export function servicePage(ctx, s) {
   </div>`;
   const hero = pageHero(ctx, {
     trail: [[u.nav_services, 'sherbimet'], [name, `sherbim/${s.slug}`]],
-    eyebrow: isLab(s) ? T[lang].lab_group : u.nav_services,
+    eyebrow: isLab(s) ? T[lang].lab_group : T[lang].doc_group,
     title: name,
     lead: L(s.intro, lang),
     photo: [`sherbim-${s.slug}`, SERVICE_PHOTOS[s.slug]],
@@ -135,7 +166,7 @@ export function servicePage(ctx, s) {
       <div class="wrap">
         <div class="split-head">
           ${sectionHead({ eyebrow: u.nav_tests, title: t.tests, text: t.tests_text, id: 'h-tests' })}
-          <a class="btn btn-outline" href="${esc(ctx.url('analizat'))}">${esc(t.tests_all)}${icon('arrow-right', { size: 18 })}</a>
+          <a class="btn btn-outline" href="${esc(ctx.url('analizat'))}${s.cat ? `?kategoria=${s.cat}` : ''}">${esc(s.cat ? t.tests_cat : t.tests_all)}${icon('arrow-right', { size: 18 })}</a>
         </div>
         <ul class="tests tests-cards">${s.tests.map((id) => testRow(ctx, TEST_BY_ID.get(id)))}</ul>
       </div>

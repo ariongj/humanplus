@@ -58,15 +58,16 @@ export const PHOTOS = {
   },
 };
 
-// Department pages: slot "sherbim-<slug>" (e.g. sherbim-pediatri.jpg). Without a photo, the scene below —
-// the specialist's room drawn with a different doctor for each department.
+// Service pages: slot "sherbim-<slug>" (e.g. sherbim-pediatri.jpg). Without a photo, the scene below — a lab
+// scene for each laboratory module, the specialist's room with a different doctor for each specialist service.
 const consult = (doc, prop) => ({ scene: 'consult', variant: { doc, prop }, alt: PHOTOS.consult.alt });
 export const SERVICE_PHOTOS = {
+  hematologji: PHOTOS.sampling,
+  biokimi: PHOTOS.analyzer,
+  hormone: PHOTOS['team-lab'],
+  imunologji: PHOTOS.hero,
+  mikrobiologji: PHOTOS.lab,
   pediatri: PHOTOS.pediatrics,
   gjinekologji: consult({ skin: 'a', hair: 'long', hairColor: '#2b1d16' }, 'ultrasound'),
-  'laboratori-biokimik-dhe-hematologjik': PHOTOS.analyzer,
-  'laboratori-mikrobiologjik': PHOTOS.lab,
-  'mjekesi-familjare': consult({ skin: 'b', hair: 'short', hairColor: '#16110e', glasses: true }),
   endokrinologji: consult({ skin: 'c', hair: 'bun', hairColor: '#16110e' }),
-  'suplemente-dhe-nutricion': consult({ skin: 'b', hair: 'long', hairColor: '#5a3520' }),
 };

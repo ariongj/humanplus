@@ -46,6 +46,7 @@ const isRedirect = (f) => /<meta http-equiv="refresh"/.test(src.get(f));
 for (const f of html.filter(isRedirect)) {
   const to = (src.get(f).match(/http-equiv="refresh" content="0; url=([^"]+)"/) || [])[1];
   if (!to || !fs.existsSync(target(to))) err(f, `redirect to a missing page (${to})`);
+  else if (to.includes('#') && !fs.readFileSync(target(to), 'utf8').includes(` id="${to.split('#')[1]}"`)) err(f, `redirect to a missing section (${to})`);
 }
 
 for (const f of html.filter((x) => !isRedirect(x))) {

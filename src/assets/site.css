@@ -469,9 +469,19 @@ main:focus { outline: none; }
 .split-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 20px 32px; margin-bottom: 32px; }
 .group-title { font-size: 1.35rem; margin-bottom: 18px; }
 
-/* service cards */
+/* service cards, in two groups: the laboratory's modules, then the specialist services (pages/services.mjs) */
 .svc-grid { display: grid; gap: 14px; }
-/* home: the eighth card, for visitors who do not know which department they need */
+.svc-groups { display: grid; gap: 40px; }
+.svc-group-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 16px; margin-bottom: 18px; }
+.svc-group-head .group-title { margin: 0; }
+.svc-group-head p { color: var(--muted); font-size: 0.95rem; }
+/* "more specialties coming" — the clinic's own words; not a page of its own */
+.svc-soon-in { display: flex; flex-direction: column; height: 100%; padding: 22px; background: var(--tint); border: 1.5px dashed var(--line-2); border-radius: var(--r-lg); }
+.svc-soon-in .tile { background: var(--brand-50); color: var(--brand); }
+.svc-soon-in .svc-more { text-decoration: none; }
+.svc-soon-in .svc-more:hover { text-decoration: underline; }
+.svc-soon-in .svc-more:hover .i { transform: translateX(4px); }
+/* home: the last card, for visitors who do not know which service they need */
 .svc-help-in { display: flex; flex-direction: column; height: 100%; padding: 22px; border-radius: var(--r-lg); background: var(--deep); color: #e3efe8; }
 .svc-help-in .tile { background: rgb(255 255 255 / 0.1); color: var(--green); }
 .svc.svc-help h3 { margin-top: 14px; font-size: 1.2rem; color: #fff; }
@@ -1243,7 +1253,6 @@ html[lang='de'] body { hyphens: auto; overflow-wrap: break-word; }
   .btn-book { display: inline-flex; }
   .logo { width: 146px; }
   .svc-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-  .page-home .svc-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .svc-grid-5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
   .svc-grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .panel-grid { grid-template-columns: repeat(4, 1fr); }

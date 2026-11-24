@@ -22,7 +22,9 @@ the repo.
   `src/data/catalogue-translations.json` (hand-editable; German under `de`), Albanian corrections in
   `src/data/catalogue-fixes.json` (applied by the importer, URLs stay), page `src/pages/catalogue.mjs` + `src/assets/catalogue.js`.
   Show only the page language (no Serbian on screen; it stays a search alias).
-- Departments `src/data/services.mjs`, common tests and panels `src/data/tests.mjs`, FAQ `src/data/faq.mjs`,
+- Services `src/data/services.mjs` (the clinic's list: Laboratori with five modules — hematologji, biokimi, hormone,
+  imunologji, mikrobiologji — then the specialist services; former addresses in `RETIRED_SERVICES`), common tests
+  and panels `src/data/tests.mjs`, FAQ `src/data/faq.mjs`,
   shared UI text `src/data/ui.mjs`, page texts at the top of each `src/pages/*.mjs`.
 - Design: `src/assets/site.css` (tokens at the top). Follow the Human+ brand book in the light look the owner wants: green, white
   and bluish white (bluish-white bands, green lab/CTA bands, deep-green footer); green buttons carry black text; green

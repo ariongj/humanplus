@@ -174,7 +174,7 @@ export function testPage(ctx, id) {
       <span class="add-off">${icon('plus', { size: 18 })}${esc(u.list_add)}</span><span class="add-on">${icon('check', { size: 18 })}${esc(u.list_added)}</span>
     </button>
     <a class="btn btn-wa btn-block" href="${esc(ctx.wa(`${t.ask_msg}: ${x.n}.`))}" target="_blank" rel="noopener">${brand('whatsapp', { size: 18 })}${esc(t.ask)}</a>
-    <a class="btn btn-outline btn-block" href="${esc(ctx.url('rezervo'))}?sherbimi=${/mikrobiologji|parazitologji/.test(x.c[0]) ? 'laboratori-mikrobiologjik' : 'laboratori-biokimik-dhe-hematologjik'}">${icon('calendar-check', { size: 18 })}${esc(t.book)}</a>
+    <a class="btn btn-outline btn-block" href="${esc(ctx.url('rezervo'))}?sherbimi=analiza">${icon('calendar-check', { size: 18 })}${esc(t.book)}</a>
   </div>`;
 
   const hero = pageHero(ctx, {
