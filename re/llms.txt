@@ -27,4 +27,5 @@
 - [kontakt](https://ariongj.github.io/humanplus/re/kontakt/) · [en](https://ariongj.github.io/humanplus/re/en/kontakt/) · [de](https://ariongj.github.io/humanplus/re/de/kontakt/)
 - [pyetje](https://ariongj.github.io/humanplus/re/pyetje/) · [en](https://ariongj.github.io/humanplus/re/en/pyetje/) · [de](https://ariongj.github.io/humanplus/re/de/pyetje/)
 - [privatesia](https://ariongj.github.io/humanplus/re/privatesia/) · [en](https://ariongj.github.io/humanplus/re/en/privatesia/) · [de](https://ariongj.github.io/humanplus/re/de/privatesia/)
+- [stafi](https://ariongj.github.io/humanplus/re/stafi/) · [en](https://ariongj.github.io/humanplus/re/en/stafi/) · [de](https://ariongj.github.io/humanplus/re/de/stafi/)
 - Lab tests: one page per test at https://ariongj.github.io/humanplus/re/analizat/<test>/ (1006 tests; English under /en/analizat/<test>/, German under /de/analizat/<test>/)

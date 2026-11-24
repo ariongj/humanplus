@@ -145,6 +145,14 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ariongj.github.io/humanplus/privatesia/"/>
   </url>
   <url>
+    <loc>https://ariongj.github.io/humanplus/stafi/</loc>
+    <lastmod>2026-11-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://ariongj.github.io/humanplus/stafi/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ariongj.github.io/humanplus/en/stafi/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ariongj.github.io/humanplus/de/stafi/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ariongj.github.io/humanplus/stafi/"/>
+  </url>
+  <url>
     <loc>https://ariongj.github.io/humanplus/analizat/1-25-dihidroksi-vitamine-d3-kalcitriol/</loc>
     <lastmod>2026-11-24</lastmod>
     <xhtml:link rel="alternate" hreflang="sq" href="https://ariongj.github.io/humanplus/analizat/1-25-dihidroksi-vitamine-d3-kalcitriol/"/>
@@ -8337,6 +8345,14 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ariongj.github.io/humanplus/privatesia/"/>
   </url>
   <url>
+    <loc>https://ariongj.github.io/humanplus/en/stafi/</loc>
+    <lastmod>2026-11-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://ariongj.github.io/humanplus/stafi/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ariongj.github.io/humanplus/en/stafi/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ariongj.github.io/humanplus/de/stafi/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ariongj.github.io/humanplus/stafi/"/>
+  </url>
+  <url>
     <loc>https://ariongj.github.io/humanplus/en/analizat/1-25-dihidroksi-vitamine-d3-kalcitriol/</loc>
     <lastmod>2026-11-24</lastmod>
     <xhtml:link rel="alternate" hreflang="sq" href="https://ariongj.github.io/humanplus/analizat/1-25-dihidroksi-vitamine-d3-kalcitriol/"/>
@@ -16527,6 +16543,14 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://ariongj.github.io/humanplus/en/privatesia/"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://ariongj.github.io/humanplus/de/privatesia/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ariongj.github.io/humanplus/privatesia/"/>
+  </url>
+  <url>
+    <loc>https://ariongj.github.io/humanplus/de/stafi/</loc>
+    <lastmod>2026-11-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://ariongj.github.io/humanplus/stafi/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ariongj.github.io/humanplus/en/stafi/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ariongj.github.io/humanplus/de/stafi/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ariongj.github.io/humanplus/stafi/"/>
   </url>
   <url>
     <loc>https://ariongj.github.io/humanplus/de/analizat/1-25-dihidroksi-vitamine-d3-kalcitriol/</loc>
