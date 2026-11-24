@@ -31,7 +31,7 @@ export const SERVICES = [
     },
     intro: {
       sq: 'Hemogrami është shpesh analiza e parë që kërkon mjeku: tregon qelizat e kuqe dhe të bardha, hemoglobinën dhe trombocitet. Këtu bëhen edhe analizat e koagulimit dhe grupi i gjakut — mostra merret në qendër dhe rezultatin e shqyrton mjeku juaj.',
-      en: 'The blood count is often the first test a doctor asks for: it shows red and white cells, haemoglobin and platelets. Coagulation tests and the blood group are done here too — the sample is taken at the centre and your doctor reviews the result.',
+      en: 'The blood count is often the first test a doctor asks for: it shows red and white cells, haemoglobin and platelets. Coagulation tests and blood grouping are done here too — the sample is taken at the centre and your doctor reviews the result.',
       de: 'Das Blutbild ist oft die erste Analyse, die Ihr Arzt anordnet: Es zeigt rote und weiße Blutkörperchen, Hämoglobin und Blutplättchen. Auch Gerinnungswerte und die Blutgruppe werden hier bestimmt — die Probe wird im Zentrum entnommen, und Ihr Arzt beurteilt das Ergebnis.',
     },
     items: {
@@ -73,7 +73,7 @@ export const SERVICES = [
     },
     intro: {
       sq: 'Analizat biokimike tregojnë si punojnë organet dhe metabolizmi: sheqeri, yndyrnat, veshkat dhe mëlçia. Shumica bëhen nga e njëjta mostër gjaku, shpesh esëll në mëngjes — shikoni përgatitjen para se të vini.',
-      en: 'Biochemistry tests show how your organs and metabolism are working: sugar, fats, kidneys and liver. Most are done from the same blood sample, often fasting in the morning — check the preparation before you come.',
+      en: 'Biochemistry tests show how your organs and metabolism are working: sugar, fats, kidneys and liver. Most are done from the same blood sample, often taken in the morning on an empty stomach — check how to prepare before you come.',
       de: 'Biochemische Analysen zeigen, wie Organe und Stoffwechsel arbeiten: Zucker, Fette, Nieren und Leber. Die meisten Werte werden aus derselben Blutprobe bestimmt, oft nüchtern am Morgen — sehen Sie sich vor Ihrem Besuch die Vorbereitung an.',
     },
     items: {
@@ -201,8 +201,8 @@ export const SERVICES = [
     },
     intro: {
       sq: 'Kur ka dyshim për infeksion, kultura tregon cili mikrob e shkakton dhe antibiogrami se cili antibiotik vepron. Kështu mjeku zgjedh trajtimin e duhur — pa provuar kuturu. Moduli përfshin edhe parazitologjinë (parazitët në feçe) dhe mikologjinë (kërpudhat, p.sh. Candida).',
-      en: 'When an infection is suspected, a culture shows which microbe causes it and the sensitivity test which antibiotic works. Your doctor can then choose the right treatment instead of guessing. The module also covers parasitology (parasites in stool) and mycology (fungi such as Candida).',
-      de: 'Besteht der Verdacht auf eine Infektion, zeigt eine Kultur, welcher Keim sie verursacht, und das Antibiogramm, welches Antibiotikum wirkt. So kann Ihr Arzt die richtige Behandlung wählen, statt zu raten. Dazu gehören auch die Parasitologie (Parasiten im Stuhl) und die Mykologie (Pilze wie Candida).',
+      en: 'When an infection is suspected, a culture shows which microbe causes it and the sensitivity test shows which antibiotic works. Your doctor can then choose the right treatment instead of guessing. The module also covers parasitology (parasites in stool) and mycology (fungi such as Candida).',
+      de: 'Besteht der Verdacht auf eine Infektion, zeigt eine Kultur, welcher Keim sie verursacht, und das Antibiogramm, welches Antibiotikum wirkt. So kann Ihr Arzt die richtige Behandlung wählen, statt zu raten. Der Bereich umfasst auch die Parasitologie (Parasiten im Stuhl) und die Mykologie (Pilze wie Candida).',
     },
     items: {
       sq: [

@@ -192,7 +192,7 @@ const G = dict('gallery', {
     ped: 'Pediatria',
     ped_d: 'Pediatri dhe laborator në të njëjtin vend.',
     spec: 'Specialistët',
-    spec_d: 'Gjinekologji dhe endokrinologji — drejtime të tjera vijnë së shpejti.',
+    spec_d: 'Gjinekologji dhe endokrinologji — drejtime të tjera do të shtohen.',
     rec: 'Recepsioni',
     rec_d: 'Ju orienton dhe e konfirmon terminin.',
   },

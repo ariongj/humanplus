@@ -85,7 +85,7 @@ const T = dict('centre', {
     story_eyebrow: 'Our story',
     story_title: 'From a laboratory to a *centre*.',
     story_1: 'Human Plus Diagnostic Centre continues the work of the BAKTOLAB laboratory and has served patients in Prishtina since 2011 — with the tests and the doctor in the same place.',
-    story_2: 'Today the laboratory with its five modules — haematology, biochemistry, hormones, immunology and microbiology — paediatrics, gynaecology and endocrinology work together on Rruga B. Patients do not have to go from one address to another — and they go through the results with the doctor who ordered them.',
+    story_2: 'Today the laboratory with its five modules — haematology, biochemistry, hormones, immunology and microbiology — works together with paediatrics, gynaecology and endocrinology on Rruga B. Patients do not have to go from one address to another — and they go through the results with the doctor who ordered them.',
     year_1: 'Year founded',
     year_2: 'Services under one roof',
     year_3: 'Days open a week',

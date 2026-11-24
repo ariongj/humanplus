@@ -7,16 +7,16 @@ import { pageHero, sectionHead, serviceCard, testRow, ctaBand, TEST_BY_ID } from
 
 const T = dict('services', {
   sq: {
-    title: 'Shërbimet — laboratori, pediatri, gjinekologji dhe endokrinologji',
+    title: 'Shërbimet — laborator, pediatri, gjinekologji dhe endokrinologji',
     description: 'Laboratori i Human+ në Prishtinë — hematologji, biokimi, hormone, imunologji dhe mikrobiologji (parazitologji dhe mikologji) — dhe shërbimet specialistike: pediatri, gjinekologji dhe endokrinologji.',
     eyebrow: 'Shërbimet',
-    h1: 'Laboratori dhe *shërbimet* specialistike.',
+    h1: 'Laboratori dhe shërbimet *specialistike*.',
     lead: 'Mjekët specialistë dhe laboratori punojnë në të njëjtën ndërtesë — analizat që kërkon mjeku i bëni aty për aty, dhe rezultatet i shqyrtoni me të njëjtin ekip.',
     lab_group: 'Laboratori',
     lab_text: 'Pesë module, një laborator — mostra merret këtu në qendër.',
     doc_group: 'Shërbimet specialistike',
     doc_text: 'Mjekët specialistë punojnë në të njëjtën ndërtesë me laboratorin.',
-    soon: 'Drejtime të tjera së shpejti',
+    soon: 'Drejtime të tjera do të shtohen',
     soon_text: 'Human+ po zgjerohet me drejtime të reja specialistike. Na pyesni për mjekun që ju nevojitet.',
     soon_cta: 'Na pyesni',
     tests_cat: 'Shiko në katalog',
