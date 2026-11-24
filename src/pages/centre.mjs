@@ -23,6 +23,7 @@ const T = dict('centre', {
     year_2: 'Shërbime nën një çati',
     year_3: 'Ditë pune në javë',
     team_eyebrow: 'Ekipi',
+    team_all: 'Njihuni me stafin',
     team_title: 'Njerëz që e njohin *punën* dhe pacientin.',
     team_text: 'Mjekë specialistë, teknikë të laboratorit dhe infermierë — një ekip që punon së bashku çdo ditë, nga marrja e mostrës deri te shpjegimi i rezultatit.',
     team_1: 'Mjekë specialistë',
@@ -90,6 +91,7 @@ const T = dict('centre', {
     year_2: 'Services under one roof',
     year_3: 'Days open a week',
     team_eyebrow: 'The team',
+    team_all: 'Meet the team',
     team_title: 'People who know their *work* and their patients.',
     team_text: 'Specialist doctors, laboratory technicians and nurses — one team working together every day, from taking the sample to explaining the result.',
     team_1: 'Specialist doctors',
@@ -157,6 +159,7 @@ const T = dict('centre', {
     year_2: 'Leistungen unter einem Dach',
     year_3: 'Tage pro Woche geöffnet',
     team_eyebrow: 'Das Team',
+    team_all: 'Unser Team kennenlernen',
     team_title: 'Menschen, die ihre *Arbeit* und den Patienten kennen.',
     team_text: 'Fachärzte, Labortechniker und Pflegekräfte — ein Team, das jeden Tag zusammenarbeitet, von der Probenentnahme bis zur Erklärung des Ergebnisses.',
     team_1: 'Fachärzte',
@@ -212,6 +215,16 @@ const T = dict('centre', {
   },
 });
 
+/** The team's roles (specialist doctors, laboratory technicians, nurses), on the about page and on /stafi/. */
+export function teamRoles(ctx) {
+  const t = T[ctx.lang];
+  return h`<ul class="team-grid">${[
+    ['team-doctor', t.team_1, t.team_1_d],
+    ['team-lab', t.team_2, t.team_2_d],
+    ['team-nurse', t.team_3, t.team_3_d],
+  ].map(([slot, ti, d]) => h`<li class="team-card reveal">${photo(ctx, slot, { cls: 'team-photo', sizes: '(min-width: 960px) 30vw, (min-width: 560px) 50vw, 100vw' })}<div class="team-text"><h3>${esc(ti)}</h3><p>${esc(d)}</p></div></li>`)}</ul>`;
+}
+
 export function aboutPage(ctx) {
   const { lang } = ctx;
   const t = T[lang];
@@ -237,12 +250,11 @@ export function aboutPage(ctx) {
   </section>`;
   const team = h`<section class="section section-tint" aria-labelledby="h-team">
     <div class="wrap">
-      ${sectionHead({ eyebrow: t.team_eyebrow, title: t.team_title, text: t.team_text, id: 'h-team' })}
-      <ul class="team-grid">${[
-        ['team-doctor', t.team_1, t.team_1_d],
-        ['team-lab', t.team_2, t.team_2_d],
-        ['team-nurse', t.team_3, t.team_3_d],
-      ].map(([slot, ti, d]) => h`<li class="team-card reveal">${photo(ctx, slot, { cls: 'team-photo', sizes: '(min-width: 960px) 30vw, (min-width: 560px) 50vw, 100vw' })}<div class="team-text"><h3>${esc(ti)}</h3><p>${esc(d)}</p></div></li>`)}</ul>
+      <div class="split-head">
+        ${sectionHead({ eyebrow: t.team_eyebrow, title: t.team_title, text: t.team_text, id: 'h-team' })}
+        <a class="btn btn-outline" href="${esc(ctx.url('stafi'))}">${esc(t.team_all)}${icon('arrow-right', { size: 18 })}</a>
+      </div>
+      ${teamRoles(ctx)}
     </div>
   </section>`;
   const inside = h`<section class="section" aria-labelledby="h-inside">

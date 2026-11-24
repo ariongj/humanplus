@@ -863,6 +863,35 @@ html[lang='de'] body { hyphens: auto; overflow-wrap: break-word; }
 .team-text h3 { font-size: 1.15rem; }
 .team-text p { color: var(--ink-2); }
 
+/* staff (/stafi/, src/pages/team.mjs): a card per person — the clinic's photo, or the initials until there is one */
+.staff-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
+.staff-card > a { display: flex; flex-direction: column; height: 100%; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-xl); overflow: hidden; text-decoration: none; box-shadow: var(--shadow-sm); transition: border-color 0.2s, box-shadow 0.25s; }
+.staff-card > a:hover { border-color: var(--brand-100); box-shadow: var(--shadow); }
+.staff-photo { aspect-ratio: 4 / 4.4; border-radius: 0; }
+.staff-initials { display: grid; place-items: center; background: linear-gradient(160deg, var(--brand-50), var(--tint)); }
+.staff-initials span { display: grid; place-items: center; width: 46%; aspect-ratio: 1; border-radius: 50%; background: var(--surface); color: var(--brand); font-size: clamp(1.6rem, 1.2rem + 2vw, 2.6rem); font-weight: 700; letter-spacing: 0.02em; box-shadow: var(--shadow-sm); }
+.staff-text { display: grid; gap: 4px; padding: 16px 18px 20px; border-top: 1px solid var(--line); flex: 1; align-content: start; }
+.staff-name { font-size: 1.1rem; color: var(--ink); }
+.staff-role { color: var(--ink-2); }
+.staff-svc { color: var(--muted); font-size: 0.9rem; }
+.staff-text .svc-more { margin-top: 10px; }
+.staff-card > a:hover .svc-more .i { transform: translateX(4px); }
+.member-pic { max-width: 320px; }
+@media (max-width: 559px) { .member-pic { max-width: 200px; } }
+.member-pic .staff-photo { border: 5px solid #fff; border-radius: 18px; box-shadow: var(--shadow-lg); }
+.member-body h2 { margin-top: 36px; font-size: clamp(1.25rem, 1.1rem + 0.7vw, 1.55rem); }
+.member-body h2:first-child { margin-top: 0; }
+.member-body > p { margin-top: 12px; color: var(--ink-2); max-width: 68ch; }
+.member-body .pill-links { margin-top: 14px; }
+.member-back a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; margin-top: 28px; color: var(--brand); font-weight: 700; text-decoration: none; }
+.member-back a:hover { text-decoration: underline; }
+/* no profiles yet: an honest note, with the phone and WhatsApp */
+.empty-panel { display: flex; flex-wrap: wrap; gap: 18px 24px; align-items: flex-start; padding: 28px; background: var(--surface); border: 1.5px dashed var(--line-2); border-radius: var(--r-xl); }
+.empty-panel > div { flex: 1 1 280px; }
+.empty-panel h2 { font-size: clamp(1.25rem, 1.1rem + 0.7vw, 1.55rem); }
+.empty-panel p { margin-top: 8px; color: var(--ink-2); max-width: 62ch; }
+.empty-panel .actions { margin-top: 18px; }
+
 /* ---------- inner pages ---------- */
 .page-hero { padding: 24px 0 44px; background: var(--sky-band); color: var(--ink); border-bottom: 1px solid var(--line); position: relative; overflow: hidden; }
 .page-hero-in { position: relative; z-index: 1; display: grid; gap: 28px; align-items: end; }

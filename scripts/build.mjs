@@ -23,6 +23,7 @@ import { privacyPage } from '../src/pages/privacy.mjs';
 import { aboutPage, contactPage, faqPage, notFoundPage } from '../src/pages/centre.mjs';
 import { sceneFiles, photoFiles, PHOTO_DIR } from '../src/lib/photo.mjs';
 import { TEST_ROUTES } from '../src/pages/test.mjs';
+import { teamPage, TEAM_ROUTES } from '../src/pages/team.mjs';
 import { chatData } from '../src/lib/chat.mjs';
 import { UI } from '../src/data/ui.mjs';
 import { csp, PERMISSIONS_POLICY, REFERRER_POLICY } from '../src/lib/security.mjs';
@@ -90,6 +91,8 @@ const ROUTES = [
   ['kontakt', contactPage],
   ['pyetje', faqPage],
   ['privatesia', privacyPage],
+  ['stafi', teamPage],
+  ...TEAM_ROUTES,
   // One page per test of the lab catalogue: /analizat/<slug>/.
   ...TEST_ROUTES,
 ];

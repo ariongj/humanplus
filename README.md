@@ -45,7 +45,9 @@ links such as `/en/sherbim/pediatri/` keep working.
 | Paketat / Check-ups | `/paketat/` | 20 panels in four groups — general (basic, children, women, men 40+, vitamins); sugar, heart and organs (diabetes, heart, thyroid, kidneys, liver, anaemia, bones, stomach & bowel); immunity, joints and allergies (autoimmune, joints & rheumatism, allergy); hormones, pregnancy and procedures (female hormones / PCOS, pregnancy first check, before surgery, hepatitis / HIV / syphilis) — add a whole panel or ask the price |
 | Përgatitja / Preparation | `/pergatitja/` | fasting, morning tests, cycle-day hormones, PSA, urine, stool, swabs, children, samples from home |
 | Rezervo / Book | `/rezervo/` | booking request: service → day → time → details → WhatsApp, Viber or e-mail |
-| Rreth nesh / About | `/rreth-nesh/` | since 2011, BAKTOLAB, the team (specialists, lab technicians, nurses), inside the centre, how they work |
+| Rreth nesh / About | `/rreth-nesh/` | since 2011, BAKTOLAB, the team (specialists, lab technicians, nurses) with a link to the staff page, inside the centre, how they work |
+| Stafi / Our team | `/stafi/` | the doctors and staff by group (doctors, laboratory, nurses, reception); until the clinic sends the profiles, a note that they are being prepared, with phone and WhatsApp (see [Staff](#staff)) |
+| Staff pages | `/stafi/<slug>/` | one person: photo or initials, role and services, biography, education, languages, book with them |
 | Kontakt / Contact | `/kontakt/` | address and map link, three phones, WhatsApp, Viber, e-mail, Facebook, hours, message form |
 | Pyetje / FAQ | `/pyetje/` | ten questions (FAQPage data for Google) |
 
@@ -62,6 +64,29 @@ on the production server): urology, gastroenterology and dermatology (taken off 
 supplements & nutrition (not on the clinic's list, November 2026) lead to `/sherbimet/`; the former biochemistry &
 haematology lab page to the laboratory group (`/sherbimet/#laboratori`) and the microbiology lab page to
 `/sherbim/mikrobiologji/`. Booking links from a lab module (`?sherbimi=hormone`) select *Lab tests*.
+
+## Staff
+
+`/stafi/` (*Stafi* / *Our team* / *Unser Team*, linked in the footer and from the about page) lists the clinic's
+doctors and staff, and each person gets a biography page at `/stafi/<slug>/`. The service pages they work in show
+them under *Kush ju pret* (*Who you will see*). The people are in `src/data/team.mjs` — **the list is empty** until
+the clinic sends the details, and `/stafi/` then says that the profiles are being prepared (no names, photos or
+biographies are made up).
+
+**Per person, the clinic sends:**
+
+- the full name as they want it written, with their title (e.g. *Dr. sc.*);
+- the group (doctor, laboratory, nurse, reception) and the services they work in (`pediatri`, `hormone`, …);
+- a short biography in Albanian (2–4 paragraphs), and optionally education / specialisation and the languages they
+  speak — the English and German texts are translated for the site and read back by the person;
+- optionally a portrait (about 1200 px, plain background), with the person's **written consent** for the name, the
+  text and the photo.
+
+Add one entry per person to `TEAM` in `src/data/team.mjs` (the format is at the top of the file); the build stops if
+a slug is repeated, a group or service is unknown, or a text is missing in one of the three languages. The photo goes
+in `src/assets/photos/stafi-<slug>.jpg` (or `.webp`, optional phone copy `stafi-<slug>-sm.jpg`); without one the card
+shows the person's initials, never an illustration or a stock photo. Each page carries `Person` data for search
+engines and a booking link that preselects the person's first service.
 
 ### On every page
 
@@ -311,7 +336,8 @@ JPEG, WebP, PNG or AVIF, about 1600 px on the long side; optionally a phone copy
 | `consult` | *inside the centre*, services page | a specialist at the desk with a patient |
 | `reception` | *inside the centre* | the reception with the Human+ logo |
 | `about`, `contact` | about and contact page headers | the reception with the Human+ logo |
-| `team-doctor`, `team-lab`, `team-nurse` | about page, the team | portraits of the three roles |
+| `team-doctor`, `team-lab`, `team-nurse` | about page and staff page, the team | portraits of the three roles |
+| `stafi-<slug>` | that person's card and page (see [Staff](#staff)) | none: the person's initials |
 | `sherbim-<slug>` (e.g. `sherbim-pediatri`, `sherbim-hematologji`) | that service's page | a lab scene for each lab module; the specialist's room, with a different doctor, for each specialist service |
 
 Use only the clinic's own photos, with the permission of everyone who can be recognised in them (patients only with
@@ -365,6 +391,8 @@ before launch – stock people must never be presented as Human+ staff (no names
 | `src/data/lab-human-plus.json` | (optional) facts Human+ has confirmed per test, e.g. the result time |
 | `src/pages/test.mjs` | the page of each lab test, `/analizat/<test>/` |
 | `src/data/faq.mjs` | questions and answers |
+| `src/data/team.mjs` | the doctors and staff for `/stafi/` (empty until the clinic sends them; see [Staff](#staff)) |
+| `src/pages/team.mjs` | the staff page, each person's page, and *Kush ju pret* on the service pages |
 | `src/data/ui.mjs` | shared interface texts (menu, buttons, status, list, footer) in sq, en and de |
 | `src/pages/*.mjs` | one file per page group, with that page's texts at the top |
 | `src/lib/layout.mjs` | head tags, top bar, header, footer, phone bar, list drawer |
@@ -526,6 +554,8 @@ people, until the clinic's own photos are added.
 - **Good to know notes and test pages** – the notes (`src/data/lab-notes.mjs`) are plain-word versions of an editorial
   safety review, not yet approved by the Human+ doctors; the test pages show the reference data until the lab confirms
   which tests it offers. No result times are shown until Human+ confirms them (`src/data/lab-human-plus.json`).
+- **Staff** – `/stafi/` has no names yet; it says the profiles are being prepared until the clinic sends each
+  person's details and consent (see [Staff](#staff)).
 - **Pictures** – all pictures are illustrated stand-ins until the clinic sends real photos (see [Photos](#photos)).
   The scenes show generic staff and rooms; they do not depict the clinic's actual staff, rooms or equipment.
 
@@ -546,6 +576,8 @@ people, until the clinic's own photos are added.
 - [ ] **Lab catalogue**: confirm that the client may reuse the BeoLab catalogue texts commercially (the export itself
       asks for this check), have the lab review the Albanian translations (and a German-speaking doctor the German ones), and mark the tests Human+ does not offer
       (remove them in `scripts/import-catalogue.mjs` or the export, then re-import).
+- [ ] **Staff profiles**: name, title, services, a short biography and (optionally) a photo for each doctor and
+      staff member, each with written consent – into `src/data/team.mjs` (see [Staff](#staff)).
 - [ ] Confirm the WhatsApp / Viber number and send one test booking from a staff phone.
 - [ ] Decide whether reception wants booking requests by e-mail as well (`formEndpoint`).
 - [ ] **Photos** of the building, reception, sample room, lab and doctors (with everyone's permission) into

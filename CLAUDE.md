@@ -26,6 +26,9 @@ the repo.
   imunologji, mikrobiologji — then the specialist services; former addresses in `RETIRED_SERVICES`), common tests
   and panels `src/data/tests.mjs`, FAQ `src/data/faq.mjs`,
   shared UI text `src/data/ui.mjs`, page texts at the top of each `src/pages/*.mjs`.
+- Staff `src/data/team.mjs` → `/stafi/` and `/stafi/<slug>/` (`src/pages/team.mjs`; also *Kush ju pret* on service
+  pages). Only real people with their written consent; empty until the clinic sends them (the page then says the
+  profiles are being prepared). Photo slot `stafi-<slug>`, initials without one. README → Staff.
 - Design: `src/assets/site.css` (tokens at the top). Follow the Human+ brand book in the light look the owner wants: green, white
   and bluish white (bluish-white bands, green lab/CTA bands, deep-green footer); green buttons carry black text; green
   text on white uses `--brand` / `--green-lg`; font Pangram (files in `src/assets/fonts/pangram/`, Outfit until then);

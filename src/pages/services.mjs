@@ -4,6 +4,7 @@ import { UI } from '../data/ui.mjs';
 import { esc, h, icon, brand, dict, L } from '../lib/html.mjs';
 import { SERVICE_PHOTOS } from '../data/photos.mjs';
 import { pageHero, sectionHead, serviceCard, testRow, ctaBand, TEST_BY_ID } from '../lib/parts.mjs';
+import { serviceStaff } from './team.mjs';
 
 const T = dict('services', {
   sq: {
@@ -193,6 +194,6 @@ export function servicePage(ctx, s) {
     title: `${name} · ${SITE.fullName}`,
     description: `${L(s.short, lang)} ${name} ${t.detail_desc_suffix}`,
     jsonld: [hero.jsonld, svcLd],
-    body: hero.html + items + tests + more + ctaBand(ctx, { title: T[lang].cta_title, text: T[lang].cta_text }),
+    body: hero.html + items + serviceStaff(ctx, s.slug) + tests + more + ctaBand(ctx, { title: T[lang].cta_title, text: T[lang].cta_text }),
   };
 }

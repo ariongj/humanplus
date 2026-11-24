@@ -205,6 +205,7 @@ function footer(ctx) {
         <h2 class="mt">${esc(t.footer_centre)}</h2>
         <ul>
           <li><a href="${esc(ctx.url('rreth-nesh'))}">${esc(t.nav_about)}</a></li>
+          <li><a href="${esc(ctx.url('stafi'))}">${esc(t.nav_team)}</a></li>
           <li><a href="${esc(ctx.url('rezervo'))}">${esc(t.book)}</a></li>
           <li><a href="${esc(ctx.url('pyetje'))}">${esc(t.nav_faq)}</a></li>
           <li><a href="${esc(ctx.url('kontakt'))}">${esc(t.nav_contact)}</a></li>
