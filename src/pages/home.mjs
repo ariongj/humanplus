@@ -315,7 +315,7 @@ export function homePage(ctx) {
         <a class="btn btn-light" href="${esc(ctx.url('analizat'))}">${icon('test-tubes', { size: 18 })}${esc(t.lab_all)} (${CATALOGUE.count})</a>
       </div>
       <ul class="lab-areas">
-        ${['biokimi', 'imunokimi', 'mikrobiologji', 'alergologji', 'serologji', 'hematologji', 'gjenetike-pcr', 'hormone-seksuale']
+        ${['biokimi', 'imunokimi', 'mikrobiologji', 'alergologji', 'serologji', 'hematologji', 'gjenetike-pcr', 'hormone']
           .map((id) => CATALOGUE.categories.find((c) => c.id === id))
           .filter(Boolean)
           .map(

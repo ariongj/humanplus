@@ -17,7 +17,7 @@ import { iconSprite, useIconSprite } from '../src/lib/html.mjs';
 import { homePage } from '../src/pages/home.mjs';
 import { servicesPage, servicePage } from '../src/pages/services.mjs';
 import { panelsPage, prepPage } from '../src/pages/lab.mjs';
-import { testsPage, catalogueFor } from '../src/pages/catalogue.mjs';
+import { testsPage, catalogueFor, CATALOGUE } from '../src/pages/catalogue.mjs';
 import { bookingPage } from '../src/pages/booking.mjs';
 import { privacyPage } from '../src/pages/privacy.mjs';
 import { aboutPage, contactPage, faqPage, notFoundPage } from '../src/pages/centre.mjs';
@@ -256,6 +256,17 @@ for (const lang of LANGS) {
     );
   }
 }
+// Tests that moved to a new address (a corrected name, catalogue-fixes.json "u"): the former one redirects.
+const MOVED_TESTS = CATALOGUE.entries.flatMap((x) => (x.uo ?? []).map((old) => [old, x.u]));
+for (const lang of LANGS) {
+  for (const [old, now] of MOVED_TESTS) {
+    const to = urlFor(`analizat/${now}`, lang);
+    write(
+      path.join(lang === 'sq' ? '' : lang, `analizat/${old}`, 'index.html'),
+      `<!doctype html>\n<html lang="${lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>${SITE.fullName}</title><meta name="robots" content="noindex"><link rel="canonical" href="${ORIGIN}${to}"><meta http-equiv="refresh" content="0; url=${to}"></head>\n<body><p><a href="${to}">${UI[lang].nav_tests} · ${SITE.fullName}</a></p></body></html>\n`,
+    );
+  }
+}
 // Illustrated scenes used by the pages (stand-ins until the clinic's photos are in src/assets/photos/).
 const scenes = sceneFiles();
 for (const [name, svg] of scenes) write(`assets/scenes/${name}`, svg);
@@ -348,6 +359,7 @@ ErrorDocument 404 ${BASE}404.html
   RewriteCond %{HTTP:X-Forwarded-Proto} !=https
   RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 ${LANGS.flatMap((lang) => Object.entries(RETIRED_SERVICES).map(([slug, target]) => `  RewriteRule ^${lang === 'sq' ? '' : `${lang}/`}sherbim/${slug}/?$ https://%{HTTP_HOST}${retiredTo(target, lang)} [L,R=301,NE]`)).join('\n')}
+${LANGS.flatMap((lang) => MOVED_TESTS.map(([old, now]) => `  RewriteRule ^${lang === 'sq' ? '' : `${lang}/`}analizat/${old}/?$ https://%{HTTP_HOST}${urlFor(`analizat/${now}`, lang)} [L,R=301]`)).join('\n')}
 </IfModule>
 
 <IfModule mod_headers.c>

@@ -107,7 +107,7 @@ export const SERVICES = [
   {
     slug: 'hormone',
     group: 'lab',
-    cat: 'hormone-seksuale',
+    cat: 'hormone',
     icon: 'flask-round',
     tone: 'sun',
     name: { sq: 'Hormone', en: 'Hormones', de: 'Hormone' },

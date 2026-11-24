@@ -35,7 +35,7 @@ const CATS = {
   biohemija: ['biokimi', 'Biochemistry', 'flask-conical', 'Biochemie'],
   imunohemija: ['imunokimi', 'Immunochemistry', 'activity', 'Immunchemie'],
   'imunohemija-eliza': ['imunokimi-elisa', 'Immunochemistry (ELISA)', 'activity', 'Immunchemie (ELISA)'],
-  'polni-hormoni': ['hormone-seksuale', 'Hormones', 'flask-round', 'Hormone', 'Hormone'], // the clinic: just "Hormone"
+  'polni-hormoni': ['hormone', 'Hormones', 'flask-round', 'Hormone', 'Hormone'], // the clinic: just "Hormone"
   'testovi-u-trudnoci': ['shtatzeni', 'Pregnancy tests', 'baby', 'Schwangerschaftstests'],
   'tumor-markeri': ['markues-tumorale', 'Tumour markers', 'shield-check', 'Tumormarker'],
   alergologija: ['alergologji', 'Allergology', 'sparkles', 'Allergologie'],
@@ -175,6 +175,7 @@ const categories = Object.values(CATS)
 // Corrections to the Albanian texts (src/data/catalogue-fixes.json, hand-editable), applied after the page addresses
 // are made so a corrected name keeps its URL: { "<id>": { "n": [[old, new]], "d": [[old, new]] },
 // "text": { "<whole sample / collection / preparation text>": "<corrected text>" } }. The old name stays searchable.
+// "u": "<new address>" moves a test whose name changed; its former address (kept in `uo`) redirects to the new one.
 {
   const file = path.join(ROOT, 'src/data/catalogue-fixes.json');
   const FIX = fs.existsSync(file) ? JSON.parse(fs.readFileSync(file, 'utf8')) : {};
@@ -191,6 +192,11 @@ const categories = Object.values(CATS)
         }
       }
       if (f.n) x.q = fold([x.q, x.n].join(' '));
+      if (f.u && f.u !== x.u) {
+        if (entries.some((y) => y.u === f.u)) throw new Error(`catalogue-fixes: address "${f.u}" is taken`);
+        x.uo = [...(x.uo ?? []), x.u];
+        x.u = f.u;
+      }
     }
     for (const field of ['sp', 'co', 'p']) if (x[field] && TEXT[x[field]]) { x[field] = TEXT[x[field]]; applied++; }
   }
