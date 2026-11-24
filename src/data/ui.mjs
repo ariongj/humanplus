@@ -215,7 +215,7 @@ export const UI = dict('ui', {
     nav_panels: 'Check-ups',
     nav_prep: 'Vorbereitung',
     nav_about: 'Über uns',
-    nav_team: 'Unser Team',
+    nav_team: 'Team',
     nav_contact: 'Kontakt',
     nav_faq: 'FAQ',
     nav_privacy: 'Datenschutz',

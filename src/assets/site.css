@@ -246,12 +246,13 @@ main:focus { outline: none; }
 .list-btn { white-space: nowrap; }
 /* menu + language + list + booking in one row: the list keeps only its icon and count until there is room */
 .book-short { display: none; }
-@media (min-width: 1120px) and (max-width: 1279px) {
+@media (min-width: 1120px) and (max-width: 1439px) {
   .nav a { padding: 0 9px; }
   .list-btn-label { display: none !important; }
   .book-long { display: none; }
   .book-short { display: inline; }
 }
+@media (min-width: 1120px) and (max-width: 1199px) { .nav a { padding: 0 6px; } }
 .nav a:hover { color: var(--brand); }
 .nav a[aria-current='page'] { color: var(--ink); box-shadow: inset 0 -3px 0 var(--green); }
 .header-actions { display: flex; align-items: center; gap: 8px; margin-left: auto; }
@@ -865,7 +866,7 @@ html[lang='de'] body { hyphens: auto; overflow-wrap: break-word; }
 
 /* staff (/stafi/, src/pages/team.mjs): a card per person — the clinic's photo, or the initials until there is one */
 .staff-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
-.staff-card > a { display: flex; flex-direction: column; height: 100%; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-xl); overflow: hidden; text-decoration: none; box-shadow: var(--shadow-sm); transition: border-color 0.2s, box-shadow 0.25s; }
+.staff-card > a { position: relative; display: flex; flex-direction: column; height: 100%; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-xl); overflow: hidden; text-decoration: none; box-shadow: var(--shadow-sm); transition: border-color 0.2s, box-shadow 0.25s; }
 .staff-card > a:hover { border-color: var(--brand-100); box-shadow: var(--shadow); }
 .staff-photo { aspect-ratio: 4 / 4.4; border-radius: 0; }
 .staff-initials { display: grid; place-items: center; background: linear-gradient(160deg, var(--brand-50), var(--tint)); }
@@ -876,7 +877,22 @@ html[lang='de'] body { hyphens: auto; overflow-wrap: break-word; }
 .staff-svc { color: var(--muted); font-size: 0.9rem; }
 .staff-text .svc-more { margin-top: 10px; }
 .staff-card > a:hover .svc-more .i { transform: translateX(4px); }
-.member-pic { max-width: 320px; }
+.member-pic { position: relative; max-width: 320px; }
+/* fictional sample profiles (preview only): a label on each picture and a note above them */
+.sample-tag { position: absolute; top: 12px; left: 12px; z-index: 1; padding: 4px 10px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line-2); color: var(--ink); font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.02em; box-shadow: var(--shadow-sm); }
+.svc-groups > .sample-note { margin-top: 0; }
+.member-body > .sample-note { margin: 0 0 28px; max-width: 68ch; }
+.member-body > .sample-note + h2 { margin-top: 0; }
+/* phones: one compact row per person (picture left, text right), so a long list stays easy to scan */
+@media (max-width: 559px) {
+  .staff-grid { grid-template-columns: 1fr; gap: 12px; }
+  .staff-card > a { flex-direction: row; }
+  .staff-card .staff-photo { flex: none; width: 116px; min-height: 136px; aspect-ratio: auto; }
+  .staff-card .staff-initials span { width: 64px; font-size: 1.5rem; }
+  .staff-text { align-content: center; padding: 14px 16px; border-top: 0; border-left: 1px solid var(--line); min-width: 0; overflow-wrap: break-word; }
+  .staff-text .svc-more { margin-top: 6px; }
+  .staff-card .sample-tag { top: 8px; left: 8px; padding: 2px 8px; font-size: 0.75rem; }
+}
 @media (max-width: 559px) { .member-pic { max-width: 200px; } }
 .member-pic .staff-photo { border: 5px solid #fff; border-radius: 18px; box-shadow: var(--shadow-lg); }
 .member-body h2 { margin-top: 36px; font-size: clamp(1.25rem, 1.1rem + 0.7vw, 1.55rem); }

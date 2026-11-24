@@ -451,6 +451,9 @@ const portrait = (p, who, tone = C.mint2) => `<defs><radialGradient id="${p}-pg"
 SCENES['team-doctor'] = (p) => portrait(p, { skin: 'b', hair: 'long', hairColor: HAIR.dark, steth: true, arms: 'down' });
 SCENES['team-lab'] = (p) => portrait(p, { skin: 'a', hair: 'cap', hairColor: '#cfe3f5', mask: true, glasses: true, scrub: '#1f9e8a', glove: true, arms: 'down' }, '#e0edf9');
 SCENES['team-nurse'] = (p) => portrait(p, { skin: 'c', hair: 'bun', hairColor: HAIR.black, top: 'scrubs', scrub: C.green, arms: 'down' });
+// A portrait drawn from options (person() options; hairColor may name a HAIR colour; tone = background), for the
+// fictional sample profiles of src/data/team-samples.mjs only.
+SCENES.portrait = (p, { tone = C.mint2, hairColor, ...who } = {}) => portrait(p, { arms: 'down', ...who, hairColor: HAIR[hairColor] ?? hairColor ?? HAIR.dark }, tone);
 
 // Gentle motion inside the pictures: the analyser's trace redraws and its light blinks (still for reduced motion).
 const STYLE = `<style>.sc-graph{stroke-dasharray:240;animation:sc-draw 6s ease-in-out infinite}.sc-blink{animation:sc-blink 2.4s ease-in-out infinite}@keyframes sc-draw{0%{stroke-dashoffset:240}40%,100%{stroke-dashoffset:0}}@keyframes sc-blink{50%{opacity:.25}}@media (prefers-reduced-motion:reduce){.sc-graph,.sc-blink{animation:none}}</style>`;

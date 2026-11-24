@@ -14,6 +14,7 @@ export const NAV = [
   ['paketat', 'nav_panels'],
   ['pergatitja', 'nav_prep'],
   ['rreth-nesh', 'nav_about'],
+  ['stafi', 'nav_team'],
   ['kontakt', 'nav_contact'],
 ];
 

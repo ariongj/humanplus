@@ -1,9 +1,11 @@
 // /stafi/ — the clinic's doctors and staff (src/data/team.mjs), grouped as specialist doctors, laboratory, nursing and
 // reception, and /stafi/<slug>/ — one biography page per person. Only real people with their permission; until the
-// clinic sends the details, /stafi/ says that the profiles are being prepared and shows the team's roles. README → Staff.
+// clinic sends the details, /stafi/ says that the profiles are being prepared and shows the team's roles — or, on the
+// GitHub Pages preview, fictional sample profiles marked as such (src/data/team-samples.mjs). README → Staff.
 import { SITE } from '../data/site.mjs';
 import { SERVICES } from '../data/services.mjs';
 import { TEAM, TEAM_GROUPS } from '../data/team.mjs';
+import { TEAM_SAMPLES } from '../data/team-samples.mjs';
 import { UI } from '../data/ui.mjs';
 import { esc, h, icon, brand, dict, L } from '../lib/html.mjs';
 import { pageHero, sectionHead, ctaBand } from '../lib/parts.mjs';
@@ -35,6 +37,10 @@ const T = dict('team', {
     all: 'Të gjithë stafi',
     on_service: 'Kush ju pret',
     member_desc: '{name} — {title} në Human+ Qendra Diagnostike, Prishtinë.',
+    sample_tag: 'Shembull',
+    sample_h: 'Profile shembull',
+    sample_t: 'Emrat, biografitë dhe portretet këtu janë fiktive, vetëm për të treguar si do të duket faqja. Profilet e vërteta do t’i sjellë Human+.',
+    sample_desc: 'Profil shembull me emër dhe biografi fiktive, për të treguar pamjen e faqes së stafit të Human+.',
   },
   en: {
     title: 'Our team — the doctors and staff of Human+',
@@ -60,6 +66,10 @@ const T = dict('team', {
     all: 'All staff',
     on_service: 'Who will see you',
     member_desc: '{name} — {title} at Human+ Diagnostic Centre, Prishtina.',
+    sample_tag: 'Example',
+    sample_h: 'Sample profiles',
+    sample_t: 'The names, biographies and portraits here are fictional, only to show how the page will look. The real profiles will come from Human+.',
+    sample_desc: 'A sample profile with a fictional name and biography, showing how the Human+ staff pages will look.',
   },
   de: {
     title: 'Unser Team — Ärzte und Mitarbeitende von Human+',
@@ -85,18 +95,29 @@ const T = dict('team', {
     all: 'Das ganze Team',
     on_service: 'Wer Sie betreut',
     member_desc: '{name} — {title} im Human+ Diagnostikzentrum, Prishtina.',
+    sample_tag: 'Beispiel',
+    sample_h: 'Beispielprofile',
+    sample_t: 'Die Namen, Lebensläufe und Porträts hier sind erfunden und zeigen nur, wie die Seite aussehen wird. Die echten Profile kommen von Human+.',
+    sample_desc: 'Ein Beispielprofil mit erfundenem Namen und Lebenslauf, das zeigt, wie die Teamseiten von Human+ aussehen werden.',
   },
 });
 
 const LANGS = ['sq', 'en', 'de'];
 const SERVICE_BY_SLUG = new Map(SERVICES.map((s) => [s.slug, s]));
 
+// While TEAM is empty, the GitHub Pages preview shows the fictional sample profiles, so the layout can be judged; a
+// build for the clinic's own domain never does (STAFF_SAMPLES=1 / 0 forces it either way, e.g. for a local preview).
+const PREVIEW = /github\.io$/.test(new URL(process.env.SITE_URL ?? 'https://humanplusks.com').hostname);
+export const SAMPLES = !TEAM.length && (process.env.STAFF_SAMPLES ? process.env.STAFF_SAMPLES === '1' : PREVIEW);
+const PEOPLE = SAMPLES ? TEAM_SAMPLES : TEAM;
+
 // The list must be complete before it is published: a missing translation or an unknown service stops the build.
 (function check() {
   const seen = new Set();
   const full = (v) => v && LANGS.every((l) => (Array.isArray(v[l]) ? v[l].length && v[l].every((x) => String(x).trim()) : String(v[l] ?? '').trim()));
-  for (const m of TEAM) {
+  for (const m of PEOPLE) {
     const who = m.slug || m.name || '(no slug)';
+    if (!SAMPLES && m.portrait) throw new Error(`team.mjs ${who}: a real person gets their photo or initials, not an illustrated portrait`);
     if (!/^[a-z0-9]+(-[a-z0-9]+)*$/.test(m.slug ?? '') || seen.has(m.slug)) throw new Error(`team.mjs: slug "${m.slug}" missing, invalid or repeated`);
     seen.add(m.slug);
     if (!String(m.name ?? '').trim()) throw new Error(`team.mjs ${who}: name missing`);
@@ -116,8 +137,8 @@ const initials = (name) => {
 };
 const picture = (ctx, m, { eager = false, sizes } = {}) => {
   const slot = `stafi-${m.slug}`;
-  return hasPhoto(slot)
-    ? photo(ctx, slot, { cls: 'staff-photo', eager, sizes, fallback: { scene: 'doctor', alt: { sq: m.name, en: m.name, de: m.name } } })
+  return hasPhoto(slot) || m.portrait
+    ? photo(ctx, slot, { cls: 'staff-photo', eager, sizes, fallback: { scene: 'portrait', variant: m.portrait, alt: { sq: m.name, en: m.name, de: m.name } } })
     : h`<div class="staff-photo staff-initials" aria-hidden="true"><span>${esc(initials(m.name))}</span></div>`;
 };
 const serviceNames = (m, lang) => (m.services ?? []).map((s) => L(SERVICE_BY_SLUG.get(s).nameShort ?? SERVICE_BY_SLUG.get(s).name, lang));
@@ -128,6 +149,7 @@ export function staffCard(ctx, m) {
   const t = T[lang];
   return h`<li class="staff-card reveal"><a href="${esc(ctx.url(`stafi/${m.slug}`))}">
     ${picture(ctx, m, { sizes: '(min-width: 960px) 22vw, (min-width: 560px) 45vw, 100vw' })}
+    ${SAMPLES ? h`<span class="sample-tag">${esc(t.sample_tag)}</span>` : ''}
     <span class="staff-text">
       <strong class="staff-name">${esc(m.name)}</strong>
       <span class="staff-role">${esc(L(m.title, lang))}</span>
@@ -145,13 +167,13 @@ const order = (list) => {
 
 /** The people who work in one service (for its page), or '' while there are none. */
 export function serviceStaff(ctx, slug) {
-  const people = order(TEAM.filter((m) => (m.services ?? []).includes(slug)));
+  const people = order(PEOPLE.filter((m) => (m.services ?? []).includes(slug)));
   if (!people.length) return '';
   const t = T[ctx.lang];
   return h`<section class="section section-tight" aria-labelledby="h-staff">
     <div class="wrap">
       <div class="split-head">
-        ${sectionHead({ eyebrow: UI[ctx.lang].nav_team, title: t.on_service, id: 'h-staff' })}
+        ${sectionHead({ eyebrow: UI[ctx.lang].nav_team, title: t.on_service, text: SAMPLES ? `${t.sample_h}. ${t.sample_t}` : '', id: 'h-staff' })}
         <a class="btn btn-outline" href="${esc(ctx.url('stafi'))}">${esc(t.all)}${icon('arrow-right', { size: 18 })}</a>
       </div>
       <ul class="staff-grid">${people.map((m) => staffCard(ctx, m))}</ul>
@@ -163,9 +185,9 @@ export function teamPage(ctx) {
   const { lang } = ctx;
   const t = T[lang];
   const hero = pageHero(ctx, { trail: [[t.eyebrow, 'stafi']], eyebrow: t.eyebrow, title: t.h1, lead: t.lead });
-  const groups = TEAM_GROUPS.map((g) => [g, order(TEAM.filter((m) => m.group === g))]).filter(([, list]) => list.length);
+  const groups = TEAM_GROUPS.map((g) => [g, order(PEOPLE.filter((m) => m.group === g))]).filter(([, list]) => list.length);
   const body = groups.length
-    ? h`<section class="section section-tight"><div class="wrap svc-groups">${groups.map(
+    ? h`<section class="section section-tight"><div class="wrap svc-groups">${SAMPLES ? sampleNote(t) : ''}${groups.map(
         ([g, list]) => h`<div class="svc-group" id="${g}">
           <div class="svc-group-head"><h2 class="group-title">${esc(t[`g_${g}`])}</h2></div>
           <ul class="staff-grid">${list.map((m) => staffCard(ctx, m))}</ul>
@@ -210,7 +232,7 @@ export function memberPage(ctx, m) {
     title: m.name,
     lead: [title, ...serviceNames(m, lang)].join(' · '),
     cls: 'member-hero',
-    aside: h`<div class="member-pic">${picture(ctx, m, { eager: true, sizes: '(min-width: 960px) 26vw, 60vw' })}</div>`,
+    aside: h`<div class="member-pic">${picture(ctx, m, { eager: true, sizes: '(min-width: 960px) 26vw, 60vw' })}${SAMPLES ? h`<span class="sample-tag">${esc(t.sample_tag)}</span>` : ''}</div>`,
   });
   const names = new Intl.DisplayNames([lang], { type: 'language' });
   // English and German write language names with a capital; Albanian in lower case (only the list's first word up)
@@ -221,6 +243,7 @@ export function memberPage(ctx, m) {
   const body = h`<section class="section section-tight" aria-labelledby="h-bio">
     <div class="wrap svc-layout">
       <div class="member-body">
+        ${SAMPLES ? sampleNote(t) : ''}
         <h2 id="h-bio">${esc(t.bio)}</h2>
         ${L(m.bio, lang).map((p) => h`<p>${esc(p)}</p>`)}
         ${m.education ? h`<h2>${esc(t.education)}</h2><ul class="ticks">${L(m.education, lang).map((e) => h`<li>${icon('circle-check', { size: 20 })}<span>${esc(e)}</span></li>`)}</ul>` : ''}
@@ -235,7 +258,7 @@ export function memberPage(ctx, m) {
         <h2>${esc(t.book_h)}</h2>
         <p>${esc(t.book_t)}</p>
         <a class="btn btn-primary btn-block" href="${esc(book)}">${icon('calendar-check', { size: 18 })}${esc(u.book)}</a>
-        <a class="btn btn-wa btn-block" href="${esc(ctx.wa(fill(t.wa_msg, { name: m.name })))}" target="_blank" rel="noopener">${brand('whatsapp', { size: 18 })}WhatsApp</a>
+        <a class="btn btn-wa btn-block" href="${esc(SAMPLES ? ctx.wa() : ctx.wa(fill(t.wa_msg, { name: m.name })))}" target="_blank" rel="noopener">${brand('whatsapp', { size: 18 })}WhatsApp</a>
         <a class="btn btn-outline btn-block" href="tel:${SITE.phones[0].tel}">${icon('phone', { size: 18 })}${esc(SITE.phones[0].display)}</a>
       </div></aside>
     </div>
@@ -249,13 +272,20 @@ export function memberPage(ctx, m) {
     worksFor: { '@id': ctx.clinicId },
     ...(langs.length ? { knowsLanguage: m.languages } : {}),
   };
+  // A sample is no one: not indexed, no Person data for search engines, and its title says it is an example.
   return {
     id: 'member',
-    title: `${m.name} · ${title} · ${SITE.name}`,
-    description: fill(t.member_desc, { name: m.name, title }),
-    jsonld: [hero.jsonld, personLd],
+    title: `${SAMPLES ? `${t.sample_tag}: ` : ''}${m.name} · ${title} · ${SITE.name}`,
+    description: SAMPLES ? t.sample_desc : fill(t.member_desc, { name: m.name, title }),
+    noindex: SAMPLES,
+    jsonld: SAMPLES ? [hero.jsonld] : [hero.jsonld, personLd],
     body: hero.html + body,
   };
 }
 
-export const TEAM_ROUTES = TEAM.map((m) => [`stafi/${m.slug}`, (ctx) => memberPage(ctx, m)]);
+/** The notice above the sample profiles: the people are fictional. */
+function sampleNote(t) {
+  return h`<p class="note note-info sample-note">${icon('info', { size: 18 })}<span><strong>${esc(t.sample_h)}.</strong> ${esc(t.sample_t)}</span></p>`;
+}
+
+export const TEAM_ROUTES = PEOPLE.map((m) => [`stafi/${m.slug}`, (ctx) => memberPage(ctx, m)]);

@@ -46,7 +46,7 @@ links such as `/en/sherbim/pediatri/` keep working.
 | Përgatitja / Preparation | `/pergatitja/` | fasting, morning tests, cycle-day hormones, PSA, urine, stool, swabs, children, samples from home |
 | Rezervo / Book | `/rezervo/` | booking request: service → day → time → details → WhatsApp, Viber or e-mail |
 | Rreth nesh / About | `/rreth-nesh/` | since 2011, BAKTOLAB, the team (specialists, lab technicians, nurses) with a link to the staff page, inside the centre, how they work |
-| Stafi / Our team | `/stafi/` | the doctors and staff by group (doctors, laboratory, nurses, reception); until the clinic sends the profiles, a note that they are being prepared, with phone and WhatsApp (see [Staff](#staff)) |
+| Stafi / Our team | `/stafi/` | in the header menu: the doctors and staff by group (doctors, laboratory, nurses, reception); until the clinic sends the profiles, a note that they are being prepared, with phone and WhatsApp — on the preview, fictional sample profiles instead (see [Staff](#staff)) |
 | Staff pages | `/stafi/<slug>/` | one person: photo or initials, role and services, biography, education, languages, book with them |
 | Kontakt / Contact | `/kontakt/` | address and map link, three phones, WhatsApp, Viber, e-mail, Facebook, hours, message form |
 | Pyetje / FAQ | `/pyetje/` | ten questions (FAQPage data for Google) |
@@ -67,7 +67,7 @@ haematology lab page to the laboratory group (`/sherbimet/#laboratori`) and the 
 
 ## Staff
 
-`/stafi/` (*Stafi* / *Our team* / *Unser Team*, linked in the footer and from the about page) lists the clinic's
+`/stafi/` (*Stafi* / *Our team* / *Team*, in the header menu, the footer and on the about page) lists the clinic's
 doctors and staff, and each person gets a biography page at `/stafi/<slug>/`. The service pages they work in show
 them under *Kush ju pret* (*Who you will see*). The people are in `src/data/team.mjs` — **the list is empty** until
 the clinic sends the details, and `/stafi/` then says that the profiles are being prepared (no names, photos or
@@ -88,10 +88,24 @@ in `src/assets/photos/stafi-<slug>.jpg` (or `.webp`, optional phone copy `stafi-
 shows the person's initials, never an illustration or a stock photo. Each page carries `Person` data for search
 engines and a booking link that preselects the person's first service.
 
+**Sample profiles (preview only).** So that the pages can be judged before the real details arrive, the GitHub Pages
+preview (both versions) shows eight **fictional** people from `src/data/team-samples.mjs`: three doctors (one for each
+specialist service), three in the laboratory, a nurse and a receptionist, with made-up names, biographies, education
+and illustrated portraits (the receptionist has none, to show the initials). They exist only to show the layout:
+
+- every card and page is labelled *Shembull* / *Example* / *Beispiel*, and a note above them says the people are
+  fictional; the page titles start with the label;
+- their pages are not indexed and carry no `Person` data; their WhatsApp button sends the general message, not a name;
+- a build for the clinic's domain (`SITE_URL=https://humanplusks.com`, also `npm test`) never includes them, and they
+  disappear everywhere as soon as `TEAM` has its first real person. `STAFF_SAMPLES=1` (or `0`) forces them on or off,
+  e.g. for a local preview: `STAFF_SAMPLES=1 node scripts/build.mjs`.
+
 ### On every page
 
 1. **Header** (always first, sticky) – logo, menu, the language menu (**SQ ▾** with EN / DE), **Lista ime** (with
-   the number of tests) and **Rezervo termin**. On phones: logo, the language menu, the list and the menu button.
+   the number of tests) and **Rezervo termin**. From 1120 to 1439 px the list keeps only its icon and the button says
+   **Rezervo**, so the seven menu items fit in every language. On phones: logo, the language menu, the list and the
+   menu button.
 2. **Info strip** under the header – live status (*Hapur tani · deri në 19:00* / *Mbyllur tani · hapet të hënën në
    07:30*, worked out in Kosovo time), phone, address, e-mail and the social profiles (Facebook; Instagram and
    TikTok once their links are set); one line on phones (status, plus the phone from 480 px).
@@ -392,6 +406,7 @@ before launch – stock people must never be presented as Human+ staff (no names
 | `src/pages/test.mjs` | the page of each lab test, `/analizat/<test>/` |
 | `src/data/faq.mjs` | questions and answers |
 | `src/data/team.mjs` | the doctors and staff for `/stafi/` (empty until the clinic sends them; see [Staff](#staff)) |
+| `src/data/team-samples.mjs` | fictional sample profiles, shown only on the preview while `team.mjs` is empty |
 | `src/pages/team.mjs` | the staff page, each person's page, and *Kush ju pret* on the service pages |
 | `src/data/ui.mjs` | shared interface texts (menu, buttons, status, list, footer) in sq, en and de |
 | `src/pages/*.mjs` | one file per page group, with that page's texts at the top |
@@ -554,8 +569,9 @@ people, until the clinic's own photos are added.
 - **Good to know notes and test pages** – the notes (`src/data/lab-notes.mjs`) are plain-word versions of an editorial
   safety review, not yet approved by the Human+ doctors; the test pages show the reference data until the lab confirms
   which tests it offers. No result times are shown until Human+ confirms them (`src/data/lab-human-plus.json`).
-- **Staff** – `/stafi/` has no names yet; it says the profiles are being prepared until the clinic sends each
-  person's details and consent (see [Staff](#staff)).
+- **Staff** – `/stafi/` has no real names yet: the production site says the profiles are being prepared until the
+  clinic sends each person's details and consent; the preview shows eight labelled, **fictional** sample profiles
+  (`src/data/team-samples.mjs`) so the layout can be judged (see [Staff](#staff)).
 - **Pictures** – all pictures are illustrated stand-ins until the clinic sends real photos (see [Photos](#photos)).
   The scenes show generic staff and rooms; they do not depict the clinic's actual staff, rooms or equipment.
 
